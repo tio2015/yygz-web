@@ -1,53 +1,46 @@
 /*
- * 植物提取科普知识库
- * Design: Dark investor-grade, emerald accent
- * Sections: Hero → 什么是植物提取 → 三条路径对比 → 国家实验室 → C端市场空白 → 七味配方 → 参考文献
+ * 养生将军 · 本草新解 - 首页
+ * Design: 深色投资决策界面，翠绿色主调
+ * 内容：品类教育 + 科普，不做产品功效声明
  */
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Link } from "wouter";
 import { motion } from "framer-motion";
 import {
   Leaf,
   Microscope,
   Network,
+  Beaker,
   FlaskConical,
-  Building2,
-  TrendingUp,
+  ArrowRight,
+  ExternalLink,
   BookOpen,
   ChevronDown,
   ChevronUp,
-  Menu,
-  X,
-  Check,
-  AlertTriangle,
-  Globe,
-  ArrowRight,
-  Beaker,
-  Factory,
+  Wine,
+  Shield,
+  Moon,
   Sparkles,
+  Building2,
+  TrendingUp,
+  Globe,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
+import { Navigation, Footer } from "@/components/Layout";
 import {
+  HOME_DATA,
   HERO_IMAGE,
-  WHAT_IS,
-  THREE_PATHS,
-  LABS,
-  MARKET_GAP,
-  FORMULA,
-  OVERSEAS,
+  INGREDIENT_IMAGES,
   REFERENCES,
 } from "@/lib/data";
 
-/* ─── Helpers ─── */
-function fadeInUp(delay = 0) {
-  return {
-    initial: { opacity: 0, y: 24 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-60px" },
-    transition: { duration: 0.5, delay, ease: [0, 0, 0.2, 1] as const },
-  };
-}
+const fadeInUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-50px" },
+  transition: { duration: 0.5, delay, ease: [0.25, 0.46, 0.45, 0.94] as const },
+});
 
 const ICON_MAP: Record<string, React.ElementType> = {
   leaf: Leaf,
@@ -82,101 +75,29 @@ const PATH_COLORS: Record<string, { bg: string; text: string; border: string; ba
   },
 };
 
-/* ─── Navigation ─── */
-function Navigation() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+const EFFICACY_CARDS = [
+  { id: "jiujiu", label: "植物分子与酒精代谢", icon: Wine, color: "emerald", desc: "NAD+辅酶再生、ADH/ALDH双激活、多靶点协同" },
+  { id: "hugan", label: "植物分子与肝脏保护", icon: Shield, color: "amber", desc: "抗氧化应激、NF-κB通路调控、抗纤维化" },
+  { id: "zhumian", label: "植物分子与睡眠调节", icon: Moon, color: "indigo", desc: "GABA受体调节、HPA轴应激、适应原" },
+  { id: "yangyan", label: "植物分子与皮肤健康", icon: Sparkles, color: "rose", desc: "内源性抗氧化、微循环改善、细胞修复" },
+];
 
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
-  const links = [
-    { href: "#what-is", label: "植物提取" },
-    { href: "#three-paths", label: "三条路径" },
-    { href: "#labs", label: "科研平台" },
-    { href: "#market", label: "市场洞察" },
-    { href: "#formula", label: "七味配方" },
-    { href: "#overseas", label: "海外对标" },
-  ];
-
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/90 backdrop-blur-lg border-b border-border/50"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container flex items-center justify-between h-14">
-        <a href="#" className="flex items-center gap-2">
-          <Leaf className="w-5 h-5 text-emerald-400" />
-          <span className="font-bold font-[var(--font-heading)] text-sm">
-            植物提取科普
-          </span>
-        </a>
-
-        {/* Desktop */}
-        <div className="hidden sm:flex items-center gap-6">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
-        </div>
-
-        {/* Mobile toggle */}
-        <button
-          className="sm:hidden p-2"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? (
-            <X className="w-5 h-5" />
-          ) : (
-            <Menu className="w-5 h-5" />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="sm:hidden bg-background/95 backdrop-blur-lg border-b border-border/50 px-4 pb-4"
-        >
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setMobileOpen(false)}
-              className="block py-2.5 text-sm text-muted-foreground hover:text-foreground"
-            >
-              {l.label}
-            </a>
-          ))}
-        </motion.div>
-      )}
-    </nav>
-  );
-}
+const COLOR_MAP: Record<string, { bg: string; text: string; border: string }> = {
+  emerald: { bg: "bg-emerald-500/10", text: "text-emerald-400", border: "border-emerald-500/30" },
+  amber: { bg: "bg-amber-500/10", text: "text-amber-400", border: "border-amber-500/30" },
+  indigo: { bg: "bg-indigo-500/10", text: "text-indigo-400", border: "border-indigo-500/30" },
+  rose: { bg: "bg-rose-500/10", text: "text-rose-400", border: "border-rose-500/30" },
+  red: { bg: "bg-red-500/10", text: "text-red-400", border: "border-red-500/30" },
+  blue: { bg: "bg-blue-500/10", text: "text-blue-400", border: "border-blue-500/30" },
+};
 
 /* ─── Hero Section ─── */
 function HeroSection() {
+  const { hero } = HOME_DATA;
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <img
-          src={HERO_IMAGE}
-          alt=""
-          className="w-full h-full object-cover opacity-30"
-        />
+        <img src={HERO_IMAGE} alt="" className="w-full h-full object-cover opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
       </div>
       <div className="relative container pt-20 pb-16 sm:pt-32 sm:pb-28">
@@ -184,40 +105,29 @@ function HeroSection() {
           <div className="flex items-center gap-2 mb-4">
             <div className="h-px flex-1 max-w-[40px] bg-emerald-400" />
             <span className="text-xs tracking-[0.2em] uppercase text-emerald-400 font-[var(--font-heading)] font-medium">
-              Science of Botanicals
+              {hero.tagline}
             </span>
           </div>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-[var(--font-heading)] leading-[1.1] mb-5 tracking-tight">
-            植物提取
+            {hero.title}
             <br />
-            <span className="text-muted-foreground">被忽略的科学</span>
+            <span className="text-muted-foreground text-2xl sm:text-3xl lg:text-4xl">
+              {hero.subtitle}
+            </span>
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl font-[var(--font-body)]">
-            中国拥有全球最强的植物提取产业链，却几乎没有面向消费者的品牌。这里用分子药理学的语言，讲清楚植物提取到底在做什么，和传统煎制、化学合成有什么本质区别。
+            {hero.description}
           </p>
         </motion.div>
 
-        <motion.div
-          {...fadeInUp(0.2)}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-10"
-        >
-          {[
-            { value: "50%+", label: "已批准药物源于天然产物" },
-            { value: "70-90%", label: "现代提取有效成分利用率" },
-            { value: "358亿", label: "全球植物提取物市场(美元)" },
-            { value: "≈0", label: "中国C端植物提取品牌" },
-          ].map((stat, i) => (
-            <Card
-              key={i}
-              className="bg-card/60 backdrop-blur-sm border-border/50"
-            >
+        <motion.div {...fadeInUp(0.2)} className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-10">
+          {hero.stats.map((stat, i) => (
+            <Card key={i} className="bg-card/60 backdrop-blur-sm border-border/50">
               <CardContent className="p-3 sm:p-4">
                 <div className="text-lg sm:text-2xl font-bold font-[var(--font-heading)] text-emerald-400">
                   {stat.value}
                 </div>
-                <div className="text-xs text-muted-foreground mt-1">
-                  {stat.label}
-                </div>
+                <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
               </CardContent>
             </Card>
           ))}
@@ -229,36 +139,31 @@ function HeroSection() {
 
 /* ─── What Is Plant Extraction ─── */
 function WhatIsSection() {
+  const { whatIs } = HOME_DATA;
   return (
     <section id="what-is" className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-10">
         <div className="flex items-center gap-3 mb-2">
           <Beaker className="w-5 h-5 text-emerald-400" />
           <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
-            {WHAT_IS.title}
+            {whatIs.title}
           </h2>
         </div>
-        <p className="text-sm text-muted-foreground max-w-3xl">
-          {WHAT_IS.subtitle}
-        </p>
+        <p className="text-sm text-muted-foreground max-w-3xl">{whatIs.subtitle}</p>
       </motion.div>
 
       <div className="grid sm:grid-cols-3 gap-5">
-        {WHAT_IS.points.map((point, i) => {
+        {whatIs.points.map((point, i) => {
           const Icon = ICON_MAP[point.icon] || Leaf;
           return (
             <motion.div key={i} {...fadeInUp(i * 0.1)}>
-              <Card className="bg-card/60 border-border/50 h-full hover:border-emerald-500/30 transition-colors">
+              <Card className="bg-card/60 border-border/30 h-full hover:border-emerald-500/30 transition-colors">
                 <CardContent className="p-5 sm:p-6">
                   <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5 text-emerald-400" />
                   </div>
-                  <h3 className="font-bold font-[var(--font-heading)] mb-2">
-                    {point.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {point.desc}
-                  </p>
+                  <h3 className="font-bold font-[var(--font-heading)] mb-2">{point.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{point.desc}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -271,121 +176,98 @@ function WhatIsSection() {
 
 /* ─── Three Paths Comparison ─── */
 function ThreePathsSection() {
-  const [activeTab, setActiveTab] = useState("extraction");
-
+  const { threePaths } = HOME_DATA;
   return (
     <section id="three-paths" className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-10">
         <div className="flex items-center gap-3 mb-2">
           <FlaskConical className="w-5 h-5 text-emerald-400" />
           <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
-            {THREE_PATHS.title}
+            {threePaths.title}
           </h2>
         </div>
-        <p className="text-sm text-muted-foreground max-w-3xl">
-          {THREE_PATHS.subtitle}
-        </p>
+        <p className="text-sm text-muted-foreground">{threePaths.subtitle}</p>
       </motion.div>
 
-      {/* Path Cards */}
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="bg-muted/30 mb-6 w-full sm:w-auto flex">
-          {THREE_PATHS.paths.map((p) => (
-            <TabsTrigger
-              key={p.id}
-              value={p.id}
-              className="flex-1 sm:flex-none text-xs sm:text-sm"
-            >
-              <span className={`mr-1.5 ${PATH_COLORS[p.color].text}`}>●</span>
-              {p.name}
-            </TabsTrigger>
-          ))}
+      <Tabs defaultValue="extraction" className="w-full">
+        <TabsList className="w-full justify-start bg-card/40 border border-border/30 mb-6 flex-wrap h-auto gap-1 p-1">
+          {threePaths.paths.map((p) => {
+            const c = PATH_COLORS[p.color];
+            return (
+              <TabsTrigger
+                key={p.id}
+                value={p.id}
+                className={`text-xs data-[state=active]:${c.text} data-[state=active]:${c.bg}`}
+              >
+                <span className={`w-2 h-2 rounded-full mr-1.5 ${c.text.replace("text-", "bg-")}`} />
+                {p.name}
+              </TabsTrigger>
+            );
+          })}
         </TabsList>
 
-        {THREE_PATHS.paths.map((path) => {
-          const colors = PATH_COLORS[path.color];
+        {threePaths.paths.map((path) => {
+          const c = PATH_COLORS[path.color];
           return (
             <TabsContent key={path.id} value={path.id}>
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Card className={`${colors.bg} border ${colors.border}`}>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
+                <Card className={`${c.bg} border ${c.border}`}>
                   <CardContent className="p-5 sm:p-8">
-                    <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <h3
-                            className={`text-lg sm:text-xl font-bold font-[var(--font-heading)] ${colors.text}`}
-                          >
-                            {path.name}
-                          </h3>
-                          <span
-                            className={`text-xs px-2 py-0.5 rounded-full ${colors.badge}`}
-                          >
-                            {path.era}
-                          </span>
-                        </div>
-                        <p className="text-xs text-muted-foreground mb-1">
-                          方法：{path.method}
-                        </p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {path.description}
-                        </p>
-                      </div>
-                      <div className="flex gap-4 sm:gap-6">
-                        <div className="text-center">
-                          <div
-                            className={`text-xl sm:text-2xl font-bold font-[var(--font-heading)] ${colors.text}`}
-                          >
-                            {path.extractionRate}
-                          </div>
-                          <div className="text-xs text-muted-foreground">
-                            提取率
-                          </div>
-                        </div>
-                      </div>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-5">
+                      <h3 className={`text-xl font-bold font-[var(--font-heading)] ${c.text}`}>
+                        {path.name}
+                      </h3>
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${c.badge} w-fit`}>
+                        {path.era}
+                      </span>
                     </div>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      方法：{path.method}
+                    </p>
+                    <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
+                      {path.description}
+                    </p>
 
-                    <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="grid sm:grid-cols-2 gap-5">
                       <div>
-                        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3">
+                        <h4 className="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-3">
                           优势
                         </h4>
-                        <div className="space-y-2">
-                          {path.pros.map((pro: string, i: number) => (
-                            <div key={i} className="flex items-start gap-2">
-                              <Check className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
-                              <span className="text-sm">{pro}</span>
-                            </div>
+                        <ul className="space-y-2">
+                          {path.pros.map((pro, i) => (
+                            <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <span className="text-emerald-400 mt-1 text-xs">+</span>
+                              {pro}
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       </div>
                       <div>
-                        <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3">
+                        <h4 className="text-xs font-semibold uppercase tracking-wider text-red-400 mb-3">
                           局限
                         </h4>
-                        <div className="space-y-2">
-                          {path.cons.map((con: string, i: number) => (
-                            <div key={i} className="flex items-start gap-2">
-                              <AlertTriangle className="w-3.5 h-3.5 text-amber-400 mt-0.5 shrink-0" />
-                              <span className="text-sm text-muted-foreground">
-                                {con}
-                              </span>
-                            </div>
+                        <ul className="space-y-2">
+                          {path.cons.map((con, i) => (
+                            <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <span className="text-red-400 mt-1 text-xs">-</span>
+                              {con}
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       </div>
                     </div>
 
-                    <div className="mt-5 pt-4 border-t border-border/30">
-                      <p className="text-xs text-muted-foreground">
-                        <span className="font-medium text-foreground">
-                          关键差异：
-                        </span>{" "}
-                        {path.keyLoss}
-                      </p>
+                    <div className="mt-5 pt-5 border-t border-border/20 grid grid-cols-2 gap-4">
+                      <div>
+                        <span className="text-xs text-muted-foreground">有效成分提取率</span>
+                        <div className={`text-lg font-bold font-[var(--font-heading)] ${c.text}`}>
+                          {path.extractionRate}
+                        </div>
+                      </div>
+                      <div>
+                        <span className="text-xs text-muted-foreground">关键损失</span>
+                        <div className="text-sm text-muted-foreground">{path.keyLoss}</div>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -394,218 +276,106 @@ function ThreePathsSection() {
           );
         })}
       </Tabs>
-
-      {/* Comparison Table */}
-      <motion.div {...fadeInUp(0.2)} className="mt-10">
-        <h3 className="text-sm font-bold font-[var(--font-heading)] mb-4">
-          核心指标对比
-        </h3>
-
-        {/* Desktop table */}
-        <div className="hidden sm:block overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-border/50">
-                <th className="text-left py-3 pr-4 text-muted-foreground font-medium">
-                  指标
-                </th>
-                <th className="text-left py-3 px-4 text-amber-400 font-medium">
-                  传统煎制
-                </th>
-                <th className="text-left py-3 px-4 text-sky-400 font-medium">
-                  化学合成
-                </th>
-                <th className="text-left py-3 px-4 text-emerald-400 font-medium">
-                  现代植物提取
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {THREE_PATHS.comparisonTable.map((row, i) => (
-                <tr key={i} className="border-b border-border/20">
-                  <td className="py-3 pr-4 font-medium text-foreground">
-                    {row.metric}
-                  </td>
-                  <td className="py-3 px-4 text-muted-foreground">
-                    {row.traditional}
-                  </td>
-                  <td className="py-3 px-4 text-muted-foreground">
-                    {row.synthesis}
-                  </td>
-                  <td className="py-3 px-4 text-emerald-400 font-medium">
-                    {row.extraction}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Mobile cards */}
-        <div className="sm:hidden space-y-3">
-          {THREE_PATHS.comparisonTable.map((row, i) => (
-            <Card key={i} className="bg-card/40 border-border/30">
-              <CardContent className="p-3">
-                <div className="font-medium text-sm mb-2">{row.metric}</div>
-                <div className="grid grid-cols-3 gap-2 text-xs">
-                  <div>
-                    <div className="text-amber-400 font-medium mb-0.5">
-                      煎制
-                    </div>
-                    <div className="text-muted-foreground">
-                      {row.traditional}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-sky-400 font-medium mb-0.5">合成</div>
-                    <div className="text-muted-foreground">
-                      {row.synthesis}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-emerald-400 font-medium mb-0.5">
-                      提取
-                    </div>
-                    <div className="text-emerald-400">{row.extraction}</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </motion.div>
     </section>
   );
 }
 
-/* ─── Labs Section ─── */
-function LabsSection() {
+/* ─── Efficacy Research Cards ─── */
+function EfficacySection() {
   return (
-    <section id="labs" className="container py-12 sm:py-24">
+    <section id="research" className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-10">
         <div className="flex items-center gap-3 mb-2">
-          <Building2 className="w-5 h-5 text-emerald-400" />
+          <BookOpen className="w-5 h-5 text-emerald-400" />
           <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
-            {LABS.title}
+            前沿科学研究
           </h2>
         </div>
         <p className="text-sm text-muted-foreground max-w-3xl">
-          {LABS.subtitle}
+          植物活性分子在多个健康维度上的科学研究正在快速推进，以下是四个重点方向
         </p>
       </motion.div>
 
       <div className="grid sm:grid-cols-2 gap-5">
-        {LABS.institutions.map((lab, i) => (
-          <motion.div key={i} {...fadeInUp(i * 0.1)}>
-            <Card className="bg-card/60 border-border/50 h-full hover:border-emerald-500/30 transition-colors">
-              <CardContent className="p-5 sm:p-6">
-                <div className="flex items-start gap-3 mb-3">
-                  <Badge
-                    variant="outline"
-                    className={`shrink-0 text-xs ${
-                      lab.level === "国家级"
-                        ? "border-red-500/40 text-red-400 bg-red-500/10"
-                        : "border-sky-500/40 text-sky-400 bg-sky-500/10"
-                    }`}
-                  >
-                    {lab.level}
-                  </Badge>
-                </div>
-                <h3 className="font-bold font-[var(--font-heading)] text-sm sm:text-base mb-2 leading-snug">
-                  {lab.name}
-                </h3>
-                <p className="text-xs text-muted-foreground mb-2">
-                  <span className="text-foreground font-medium">研究方向：</span>
-                  {lab.focus}
-                </p>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {lab.significance}
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
+        {EFFICACY_CARDS.map((card, i) => {
+          const colors = COLOR_MAP[card.color] || COLOR_MAP.emerald;
+          const Icon = card.icon;
+          return (
+            <motion.div key={card.id} {...fadeInUp(i * 0.1)}>
+              <Link href={`/efficacy/${card.id}`}>
+                <Card
+                  className={`${colors.bg} border ${colors.border} h-full hover:scale-[1.02] transition-all duration-300 group`}
+                >
+                  <CardContent className="p-5 sm:p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className={`w-10 h-10 rounded-lg ${colors.bg} flex items-center justify-center`}>
+                        <Icon className={`w-5 h-5 ${colors.text}`} />
+                      </div>
+                      <ArrowRight
+                        className={`w-4 h-4 ${colors.text} opacity-0 group-hover:opacity-100 transition-opacity`}
+                      />
+                    </div>
+                    <h3 className={`font-bold font-[var(--font-heading)] mb-2 ${colors.text}`}>
+                      {card.label}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {card.desc}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
 }
 
-/* ─── Market Gap Section ─── */
+/* ─── Market Gap ─── */
 function MarketGapSection() {
+  const { marketGap } = HOME_DATA;
   return (
     <section id="market" className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-10">
         <div className="flex items-center gap-3 mb-2">
-          <Globe className="w-5 h-5 text-emerald-400" />
+          <TrendingUp className="w-5 h-5 text-emerald-400" />
           <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
-            {MARKET_GAP.title}
+            {marketGap.title}
           </h2>
         </div>
-        <p className="text-sm text-muted-foreground max-w-3xl">
-          {MARKET_GAP.subtitle}
-        </p>
+        <p className="text-sm text-muted-foreground max-w-3xl">{marketGap.subtitle}</p>
       </motion.div>
 
-      {/* Stats */}
-      <motion.div
-        {...fadeInUp(0.1)}
-        className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10"
-      >
-        {MARKET_GAP.stats.map((stat, i) => (
-          <Card key={i} className="bg-card/60 border-border/50">
-            <CardContent className="p-5">
-              <div className="text-xs text-muted-foreground mb-1">
-                {stat.label}
-              </div>
-              <div className="flex items-baseline gap-1">
-                <span className="text-2xl sm:text-3xl font-bold font-[var(--font-heading)] text-emerald-400">
-                  {stat.value}
-                </span>
-                <span className="text-sm text-muted-foreground">
-                  {stat.unit}
-                </span>
-              </div>
-              <div className="flex items-center gap-1 mt-1">
-                <TrendingUp className="w-3 h-3 text-emerald-400" />
-                <span className="text-xs text-emerald-400">{stat.growth}</span>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </motion.div>
-
-      {/* Paradox flow */}
-      <div className="space-y-4">
-        {MARKET_GAP.paradox.map((item, i) => (
+      <div className="grid sm:grid-cols-3 gap-4 mb-8">
+        {marketGap.stats.map((stat, i) => (
           <motion.div key={i} {...fadeInUp(i * 0.1)}>
-            <Card
-              className={`border-border/50 ${
-                i === MARKET_GAP.paradox.length - 1
-                  ? "bg-emerald-500/5 border-emerald-500/30"
-                  : "bg-card/40"
-              }`}
-            >
-              <CardContent className="p-5 flex items-start gap-4">
-                <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-sm font-bold font-[var(--font-heading)] ${
-                    i === MARKET_GAP.paradox.length - 1
-                      ? "bg-emerald-500/20 text-emerald-400"
-                      : "bg-muted/50 text-muted-foreground"
-                  }`}
-                >
-                  {i + 1}
+            <Card className="bg-card/60 border-border/30">
+              <CardContent className="p-5">
+                <div className="text-2xl sm:text-3xl font-bold font-[var(--font-heading)] text-emerald-400">
+                  {stat.value}
+                  <span className="text-sm text-muted-foreground ml-1">{stat.unit}</span>
                 </div>
-                <div>
-                  <h3 className="font-bold font-[var(--font-heading)] text-sm sm:text-base mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {item.desc}
-                  </p>
+                <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
+                <div className="text-xs text-emerald-400/70 mt-1">{stat.growth}</div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-4">
+        {marketGap.paradox.map((item, i) => (
+          <motion.div key={i} {...fadeInUp(i * 0.1)}>
+            <Card className="bg-card/40 border-border/20 h-full">
+              <CardContent className="p-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-emerald-400 font-bold font-[var(--font-heading)] text-sm">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-bold font-[var(--font-heading)] text-sm">{item.title}</h3>
                 </div>
-                {i < MARKET_GAP.paradox.length - 1 && (
-                  <ArrowRight className="w-4 h-4 text-muted-foreground/30 shrink-0 mt-1 hidden sm:block" />
-                )}
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
               </CardContent>
             </Card>
           </motion.div>
@@ -617,123 +387,82 @@ function MarketGapSection() {
 
 /* ─── Formula Section ─── */
 function FormulaSection() {
-  const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
+  const { formula } = HOME_DATA;
+  const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
     <section id="formula" className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-10">
         <div className="flex items-center gap-3 mb-2">
-          <Sparkles className="w-5 h-5 text-emerald-400" />
+          <Leaf className="w-5 h-5 text-emerald-400" />
           <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
-            {FORMULA.title}
+            {formula.title}
           </h2>
         </div>
-        <p className="text-sm text-muted-foreground max-w-3xl">
-          {FORMULA.subtitle}
-        </p>
+        <p className="text-sm text-muted-foreground max-w-3xl">{formula.subtitle}</p>
       </motion.div>
 
-      <div className="space-y-3">
-        {FORMULA.ingredients.map((ing, i) => {
-          const isExpanded = expandedIdx === i;
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {formula.ingredients.map((ing, i) => {
+          const isExpanded = expanded === i;
+          const colors = COLOR_MAP[ing.color] || COLOR_MAP.emerald;
+          const imgSrc = INGREDIENT_IMAGES[ing.imageKey];
           return (
             <motion.div key={i} {...fadeInUp(i * 0.05)}>
               <Card
-                className={`bg-card/60 border-border/50 transition-all cursor-pointer hover:border-emerald-500/30 ${
-                  isExpanded ? "border-emerald-500/40" : ""
+                className={`border-border/30 h-full transition-all duration-300 overflow-hidden ${
+                  isExpanded ? `${colors.border} border` : "hover:border-border/50"
                 }`}
-                onClick={() => setExpandedIdx(isExpanded ? null : i)}
               >
+                {imgSrc && (
+                  <div className="h-32 overflow-hidden">
+                    <img src={imgSrc} alt={ing.name} className="w-full h-full object-cover" />
+                  </div>
+                )}
                 <CardContent className="p-4 sm:p-5">
-                  {/* Header row */}
-                  <div className="flex items-center gap-3">
-                    {/* Ingredient image */}
-                    {ing.image && (
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden shrink-0 border border-border/30">
-                        <img
-                          src={ing.image}
-                          alt={ing.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    )}
-                    <span
-                      className={`text-xs px-2 py-0.5 rounded border font-medium ${
-                        ROLE_COLORS[ing.role] || ROLE_COLORS["佐"]
-                      }`}
-                    >
-                      {ing.role} · {ing.roleLabel}
-                    </span>
-                    <h3 className="font-bold font-[var(--font-heading)] text-base sm:text-lg flex-1">
-                      {ing.name}
-                    </h3>
+                  <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      <div className="hidden sm:flex gap-1.5">
-                        {ing.molecules.map((m, j) => (
-                          <Badge
-                            key={j}
-                            variant="outline"
-                            className="text-xs border-border/50 text-muted-foreground"
-                          >
-                            {m}
-                          </Badge>
-                        ))}
-                      </div>
-                      {isExpanded ? (
-                        <ChevronUp className="w-4 h-4 text-muted-foreground" />
-                      ) : (
-                        <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                      )}
+                      <span
+                        className={`text-xs px-2 py-0.5 rounded-full border ${ROLE_COLORS[ing.role]}`}
+                      >
+                        {ing.role} · {ing.roleLabel}
+                      </span>
+                      <h3 className="font-bold font-[var(--font-heading)]">{ing.name}</h3>
                     </div>
+                    <button
+                      onClick={() => setExpanded(isExpanded ? null : i)}
+                      className="p-1 rounded hover:bg-accent/50 transition-colors"
+                    >
+                      {isExpanded ? (
+                        <ChevronUp className="w-4 h-4" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4" />
+                      )}
+                    </button>
                   </div>
 
-                  {/* Mobile molecules */}
-                  <div className="sm:hidden flex gap-1.5 mt-2 flex-wrap">
-                    {ing.molecules.map((m, j) => (
-                      <Badge
+                  <p className="text-xs text-muted-foreground italic mb-3">{ing.tradition}</p>
+
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {ing.molecules.map((mol, j) => (
+                      <span
                         key={j}
-                        variant="outline"
-                        className="text-xs border-border/50 text-muted-foreground"
+                        className={`text-xs px-2 py-0.5 rounded-full ${colors.bg} ${colors.text} border ${colors.border}`}
                       >
-                        {m}
-                      </Badge>
+                        {mol}
+                      </span>
                     ))}
                   </div>
 
-                  {/* Expanded content */}
                   {isExpanded && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
-                      transition={{ duration: 0.2 }}
-                      className="mt-4 pt-4 border-t border-border/30 space-y-3"
+                      className="border-t border-border/20 pt-3 mt-1"
                     >
-                      {/* Large image in expanded view */}
-                      {ing.image && (
-                        <div className="w-full h-40 sm:h-52 rounded-lg overflow-hidden">
-                          <img
-                            src={ing.image}
-                            alt={ing.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      )}
-                      <div>
-                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">
-                          传统记载
-                        </div>
-                        <p className="text-sm text-foreground/80 italic">
-                          {ing.tradition}
-                        </p>
-                      </div>
-                      <div>
-                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">
-                          现代分子药理学
-                        </div>
-                        <p className="text-sm text-foreground/90 leading-relaxed">
-                          {ing.modernScience}
-                        </p>
-                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {ing.modernScience}
+                      </p>
                     </motion.div>
                   )}
                 </CardContent>
@@ -746,105 +475,60 @@ function FormulaSection() {
   );
 }
 
-/* ─── Overseas Benchmark Section ─── */
-const BRAND_COLORS: Record<string, { bg: string; text: string; border: string; accent: string }> = {
-  rose: {
-    bg: "bg-rose-500/10",
-    text: "text-rose-400",
-    border: "border-rose-500/30",
-    accent: "text-rose-300",
-  },
-  red: {
-    bg: "bg-red-500/10",
-    text: "text-red-400",
-    border: "border-red-500/30",
-    accent: "text-red-300",
-  },
-  blue: {
-    bg: "bg-blue-500/10",
-    text: "text-blue-400",
-    border: "border-blue-500/30",
-    accent: "text-blue-300",
-  },
-};
-
+/* ─── Overseas Section ─── */
 function OverseasSection() {
+  const { overseas } = HOME_DATA;
   return (
     <section id="overseas" className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-10">
         <div className="flex items-center gap-3 mb-2">
           <Globe className="w-5 h-5 text-emerald-400" />
           <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
-            {OVERSEAS.title}
+            {overseas.title}
           </h2>
         </div>
-        <p className="text-sm text-muted-foreground max-w-3xl">
-          {OVERSEAS.subtitle}
-        </p>
+        <p className="text-sm text-muted-foreground max-w-3xl">{overseas.subtitle}</p>
       </motion.div>
 
-      <div className="grid sm:grid-cols-3 gap-5">
-        {OVERSEAS.brands.map((brand, i) => {
-          const colors = BRAND_COLORS[brand.color] || BRAND_COLORS.blue;
+      <div className="grid sm:grid-cols-3 gap-5 mb-8">
+        {overseas.brands.map((brand, i) => {
+          const colors = COLOR_MAP[brand.color] || COLOR_MAP.emerald;
           return (
             <motion.div key={i} {...fadeInUp(i * 0.1)}>
-              <Card
-                className={`h-full border-border/50 hover:${colors.border} transition-colors`}
-              >
-                <CardContent className="p-5 sm:p-6 space-y-4">
-                  {/* Header */}
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">{brand.flag}</span>
+              <Card className={`${colors.bg} border ${colors.border} h-full`}>
+                <CardContent className="p-5 sm:p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-lg">{brand.flag === "JP" ? "🇯🇵" : brand.flag === "KR" ? "🇰🇷" : "🇩🇪"}</span>
                     <div>
-                      <h3 className="font-bold font-[var(--font-heading)] text-base">
+                      <h3 className={`font-bold font-[var(--font-heading)] ${colors.text}`}>
                         {brand.brand}
                       </h3>
-                      <p className="text-xs text-muted-foreground">
+                      <span className="text-xs text-muted-foreground">
                         {brand.country} · 创立于{brand.founded}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Key metrics */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-baseline">
-                      <span className="text-xs text-muted-foreground">年营收</span>
-                      <span className={`text-sm font-bold font-[var(--font-heading)] ${colors.text}`}>
-                        {brand.revenue}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-baseline">
-                      <span className="text-xs text-muted-foreground">所在市场规模</span>
-                      <span className="text-sm font-medium">
-                        {brand.marketSize}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-baseline">
-                      <span className="text-xs text-muted-foreground">增长趋势</span>
-                      <span className="text-xs text-emerald-400">
-                        {brand.marketGrowth}
                       </span>
                     </div>
                   </div>
 
-                  {/* Core & Highlight */}
-                  <div className="pt-3 border-t border-border/20 space-y-2">
-                    <div>
-                      <span className="text-xs text-muted-foreground">核心产品：</span>
-                      <span className="text-xs font-medium">{brand.core}</span>
+                  <div className="space-y-2 mb-4">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">年营收</span>
+                      <span className={`font-semibold ${colors.text}`}>{brand.revenue}</span>
                     </div>
-                    <Badge
-                      variant="outline"
-                      className={`text-xs ${colors.border} ${colors.accent}`}
-                    >
-                      {brand.highlight}
-                    </Badge>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">市场规模</span>
+                      <span className="text-foreground">{brand.marketSize}</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">核心产品</span>
+                      <span className="text-foreground text-right max-w-[60%]">{brand.core}</span>
+                    </div>
                   </div>
 
-                  {/* Story */}
-                  <p className="text-sm text-muted-foreground leading-relaxed pt-2">
-                    {brand.story}
-                  </p>
+                  <div className={`text-xs px-3 py-1.5 rounded-full ${colors.bg} ${colors.text} border ${colors.border} text-center mb-4`}>
+                    {brand.highlight}
+                  </div>
+
+                  <p className="text-sm text-muted-foreground leading-relaxed">{brand.story}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -852,12 +536,11 @@ function OverseasSection() {
         })}
       </div>
 
-      {/* Insight */}
-      <motion.div {...fadeInUp(0.3)} className="mt-8">
+      <motion.div {...fadeInUp(0.3)}>
         <Card className="bg-emerald-500/5 border-emerald-500/20">
-          <CardContent className="p-5 sm:p-6">
-            <p className="text-sm text-foreground/90 leading-relaxed">
-              {OVERSEAS.insight}
+          <CardContent className="p-5 sm:p-6 text-center">
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              {overseas.insight}
             </p>
           </CardContent>
         </Card>
@@ -866,14 +549,70 @@ function OverseasSection() {
   );
 }
 
-/* ─── References Section ─── */
-function ReferencesSection() {
-  const [expanded, setExpanded] = useState(false);
-  const shown = expanded ? REFERENCES : REFERENCES.slice(0, 4);
-
+/* ─── Labs Preview ─── */
+function LabsPreview() {
   return (
-    <section className="container py-12 sm:py-24">
-      <motion.div {...fadeInUp()} className="mb-6">
+    <section id="labs" className="container py-12 sm:py-24">
+      <motion.div {...fadeInUp()} className="mb-10">
+        <div className="flex items-center gap-3 mb-2">
+          <Building2 className="w-5 h-5 text-emerald-400" />
+          <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
+            科研平台
+          </h2>
+        </div>
+        <p className="text-sm text-muted-foreground max-w-3xl">
+          植物提取不是在厨房里煮茶，是需要国家级科研平台支撑的系统工程
+        </p>
+      </motion.div>
+
+      <motion.div {...fadeInUp(0.1)}>
+        <Card className="bg-card/60 border-border/30 hover:border-emerald-500/30 transition-colors">
+          <CardContent className="p-5 sm:p-8">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                国家级
+              </span>
+              <h3 className="font-bold font-[var(--font-heading)]">
+                国家植物功能成分利用工程技术研究中心
+              </h3>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              国内植物功能成分利用领域唯一的国家工程技术研究中心。由中国工程院院士刘仲华教授领衔，承担国家重点研发计划、973计划、863计划等省级及以上科研项目200余项，获国家科技进步二等奖3项。
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+              {[
+                { value: "200+", label: "省级以上科研项目" },
+                { value: "100+", label: "授权发明专利" },
+                { value: "3项", label: "国家科技进步二等奖" },
+                { value: "200+", label: "SCI/EI论文" },
+              ].map((s, i) => (
+                <div key={i} className="text-center">
+                  <div className="text-lg font-bold font-[var(--font-heading)] text-emerald-400">
+                    {s.value}
+                  </div>
+                  <div className="text-xs text-muted-foreground">{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <Link
+              href="/labs"
+              className="inline-flex items-center gap-1.5 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
+            >
+              查看全部科研平台
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </section>
+  );
+}
+
+/* ─── References ─── */
+function ReferencesSection() {
+  return (
+    <section id="references" className="container py-12 sm:py-24">
+      <motion.div {...fadeInUp()} className="mb-8">
         <div className="flex items-center gap-3 mb-2">
           <BookOpen className="w-5 h-5 text-emerald-400" />
           <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
@@ -882,98 +621,37 @@ function ReferencesSection() {
         </div>
       </motion.div>
 
-      <div className="space-y-2">
-        {shown.map((ref) => (
-          <motion.div key={ref.id} {...fadeInUp()}>
-            <div className="flex gap-3 py-2.5 border-b border-border/20">
-              <span className="text-xs text-muted-foreground font-mono w-6 shrink-0">
+      <div className="space-y-3">
+        {REFERENCES.map((ref, i) => (
+          <motion.div key={ref.id} {...fadeInUp(i * 0.03)}>
+            <div className="flex items-start gap-3 text-sm">
+              <span className="text-emerald-400 font-mono text-xs mt-0.5 shrink-0">
                 [{ref.id}]
               </span>
-              <div className="flex-1">
-                <p className="text-sm">
-                  <span className="text-muted-foreground">
-                    {ref.authors}{" "}
-                  </span>
-                  {ref.url ? (
-                    <a
-                      href={ref.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground font-medium hover:text-emerald-400 underline underline-offset-2 decoration-border/50 hover:decoration-emerald-400/50 transition-colors"
-                    >
-                      {ref.title}
-                    </a>
-                  ) : (
-                    <span className="text-foreground font-medium">
-                      {ref.title}
-                    </span>
-                  )}
-                  <span className="text-muted-foreground">
-                    . {ref.journal}, {ref.year}.
-                  </span>
-                </p>
-                {ref.note && (
-                  <p className="text-xs text-emerald-400/80 mt-0.5">
-                    {ref.note}
-                  </p>
+              <div className="text-muted-foreground leading-relaxed">
+                <span>{ref.authors} </span>
+                {ref.url ? (
+                  <a
+                    href={ref.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground hover:text-emerald-400 transition-colors inline-flex items-center gap-1"
+                  >
+                    {ref.title}
+                    <ExternalLink className="w-3 h-3 shrink-0" />
+                  </a>
+                ) : (
+                  <span className="text-foreground">{ref.title}</span>
                 )}
+                <span>
+                  . <em>{ref.journal}</em>, {ref.year}.
+                </span>
               </div>
             </div>
           </motion.div>
         ))}
       </div>
-
-      {REFERENCES.length > 4 && (
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="mt-4 text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors"
-        >
-          {expanded ? (
-            <>
-              <ChevronUp className="w-3 h-3" /> 收起
-            </>
-          ) : (
-            <>
-              <ChevronDown className="w-3 h-3" /> 展开全部 ({REFERENCES.length}{" "}
-              篇)
-            </>
-          )}
-        </button>
-      )}
     </section>
-  );
-}
-
-/* ─── Footer ─── */
-function Footer() {
-  return (
-    <footer className="border-t border-border/30 pt-12 pb-8">
-      <div className="container">
-        {/* 联系方式 */}
-        <div className="flex flex-col items-center gap-4 mb-10">
-          <p className="text-sm text-muted-foreground text-center">
-            如需了解更多科技成果转化情况，请扫码联系
-          </p>
-          <img
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/kAczzBEmXCnGqGSC.png"
-            alt="联系二维码"
-            className="w-32 h-32 rounded-lg"
-          />
-        </div>
-        {/* 底部信息 */}
-        <div className="border-t border-border/20 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <Leaf className="w-4 h-4 text-emerald-400" />
-            <span className="text-xs text-muted-foreground">
-              植物提取科普知识库
-            </span>
-          </div>
-          <p className="text-xs text-muted-foreground text-center sm:text-right max-w-md">
-            本站内容仅供科学知识普及，不构成任何医疗建议或产品功效声明。所有数据均来源于公开发表的学术文献和行业报告。
-          </p>
-        </div>
-      </div>
-    </footer>
   );
 }
 
@@ -986,7 +664,8 @@ export default function Home() {
         <HeroSection />
         <WhatIsSection />
         <ThreePathsSection />
-        <LabsSection />
+        <EfficacySection />
+        <LabsPreview />
         <MarketGapSection />
         <FormulaSection />
         <OverseasSection />

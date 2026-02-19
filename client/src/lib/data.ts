@@ -1,442 +1,551 @@
-/* ─── 植物提取科普知识库 · 数据层 ─── */
+/* ─── 养生将军 · 本草新解 · 数据层 ─── */
 
 export const HERO_IMAGE =
   "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-1_1771532273000_na1fn_aGVyby1ib3RhbmljYWw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTFfMTc3MTUzMjI3MzAwMF9uYTFmbl9hR1Z5YnkxaWIzUmhibWxqWVd3LnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=ilNzKoasIjQhFm4G5EIZDQhcLnf6AI25nyb0UMmm-Q52eZlQQYvXrpTTllvznn9Lko1Atgx6ng5JhCxV8STWwrHTchpTzjI6E0I5VwMiOE85aWvaNbXMLODU0kFnDeUnsijAcKBNnJ858nXNJeoSQLO75e2~e7rYrF5~epDrEqSzjt91d3qwtR-sI0Qpoij2Y22QM9uhwjv8cumze7nUhIi~a7qWr98UZ9IOjsuEiYX88HemSn0Kfvdakm1v7KeI5KBKTXDm0gN7bWkZdQ4u127ynP6Ud2V1pJjBaa9VxNgSGE34CRMTLj5~ZnyRE2tftoL6wji9UIHDixGoGzw2Wg__";
 
-/* ─── Section 1: 什么是植物提取 ─── */
-export const WHAT_IS = {
-  title: "从一片叶子到一个分子",
-  subtitle:
-    "植物提取，是用现代科学的手术刀，精准切开植物的细胞壁，把藏在里面的活性分子完整地请出来。",
-  points: [
-    {
-      title: "植物活性分子",
-      desc: "植物在亿万年进化中产生了数以万计的次级代谢产物：黄酮类、萜类、多酚类、皂苷类、生物碱。这些分子是植物的\"免疫系统\"，也是人类健康的宝库。全球超过50%的已批准药物，直接或间接来源于植物天然产物。",
-      icon: "leaf",
-    },
-    {
-      title: "分子药理学",
-      desc: "现代分子药理学能精确解析每一种植物活性分子的作用靶点和信号通路。比如葛根中的葛根素，可以特异性地提高乙醇脱氢酶（ADH）和乙醛脱氢酶（ALDH2）的活性；灵芝三萜能抑制NF-κB促炎信号通路。",
-      icon: "microscope",
-    },
-    {
-      title: "多靶点协同效应",
-      desc: "与化学合成的单一分子不同，植物提取物天然含有数十种活性成分。它们通过\"多成分-多靶点-多通路\"的网络药理学机制产生协同效应，整体效果大于各部分之和。学术界称之为 Entourage Effect。",
-      icon: "network",
-    },
-  ],
+export const QR_CODE =
+  "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/kAczzBEmXCnGqGSC.png";
+
+/* ─── 原料图片 ─── */
+export const INGREDIENT_IMAGES: Record<string, string> = {
+  gegen:
+    "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-2_1771532290000_na1fn_aW5ncmVkaWVudC1nZWdlbg.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTJfMTc3MTUzMjI5MDAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFuWldkbGJnLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=R2STWKEYwma1C3woYD~4j2CTVicSOQ-fCyjzfd6xtFXYrRU~AIu5WZmlauXLF~nKW7y4FNg5JMdZ1GbbHMkGioeIXdYmoWjLQxWVSZZgHEBobQrS0jePq5J8zT2FknNtBP15K9x-~4j0WSu2LP6YIwWLapisjSKulNt5SJDzXX6epefGPnAPe85VJ6JTyMwcwwG0-fL16-1nz98IpCWG6rdB4dYQ6gdd3GlrDUr6FKMr89Tf3--l5OjRzQVpC-xSm5H6rfxpV9dYLkA7PC9mRFY4gbwy~Q1OW8CO57wD1qWKZFCPsGEUZ6ZbArLx89tRLo0jpVJSyFa5MLamgso3QQ__",
+  renshen:
+    "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-3_1771532281000_na1fn_aW5ncmVkaWVudC1yZW5zaGVu.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTNfMTc3MTUzMjI4MTAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzF5Wlc1emFHVnUucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=sihHxQRS~1DulevSHNPBrqxeOZZ9DYeH-nxeV4XgzsF09gQl6JpKb-h3g5TN-qwqi6Eg6MHOR1~2-EHrxKLeyf2VzrZJ9Vue7et7b3Zyh8S1Q1Rhas3rv5BLllr0DIEdXjRRa9W0DVe8YCm0Yjd1exXSoTPtfq6ly~qC0AFh30-RxGoS4N2UeE~F~dKifUXropRyqNlZOG31~k1fujo~QfTrMreJHaAl8buspvWcFjDtgCkn9dz2uXrdUYTTe3~v6Ekc-ajS7Dr5X-gO92iisggGauxFRH3mxtwcHpin6TENeCxZKCIY-6vwOiZy3SbpliRss1yHvyGL81YdhZRBwA__",
+  gaoliangjiang:
+    "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-4_1771532266000_na1fn_aW5ncmVkaWVudC1nYW9saWFuZ2ppYW5n.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTRfMTc3MTUzMjI2NjAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFuWVc5c2FXRnVaMnBwWVc1bi5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=POpUfYe81~~lzmozpJi5inN74IU38Sv9q-lc9~pl2lFnA6Pxy6zTYjfTuau-wrbSznBq7A7EhoXalj0LNbW0OC2CsVVhha9c3gPgxnhqXxizz5psVcx8Jhh3JQDfJyYxiU6So-0iXZ-xEXt-R-P4sX7wIi4o9HOZwx6feYv0Xfh8fCWco3qkwHqco2o7FEKkuCLfR~S6d4xxy5pj3jCtBswQupWqD8jhuwZbOBVSMP9j8Jd5KKpSNAtvPDFlbEqeQWmrdXXDq~2NErDKRC3FpfdPoC8vLbjIL7fBkeHtiqL7hs6e29~X1hOHl~Ur5J6ygFSQm0OPAzMk~qFFrP8WFg__",
+  lingzhi:
+    "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=600&q=80",
+  fuzhuan:
+    "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/KXE9q1FBNJwpmkxUCzabVY-img-1_1771532370000_na1fn_aW5ncmVkaWVudC1mdXpodWFu.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L0tYRTlxMUZCTkp3cG1reFVDemFiVlktaW1nLTFfMTc3MTUzMjM3MDAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFtZFhwb2RXRnUucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=T-ZUwkpzZ6p5WdOtkp3VaGQKg45f9BkGMxDqDvewEZ00xCa6a5NYxp8mXPzREu4InkVQ3dPfsTYRanG1QKfkB64t~WCnz~duynRO~p95mJ5tOMCZl3uohaBOlVcbbUgS0FOpQ86G6MJrAGZ~qHtUENiHnnFBX3vClqnSDtMuUd2iOGEOAq87VHKmmpN-7G5pnpKhGwFq9kUAZwvaQq2G2dXkd79udtXUQC~buqJcJYgIwJFx4DGXuRaCa~6YhN6st8d58r9hFB5KgTSA7~11UZ0x8pYnB1s0j2WnLzr96Ch1H5qcR2plvpRk5WdpuYhxu0EN0SDndCNJDZfKFpr8sQ__",
+  apple:
+    "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/KXE9q1FBNJwpmkxUCzabVY-img-2_1771532361000_na1fn_aW5ncmVkaWVudC1hcHBsZQ.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L0tYRTlxMUZCTkp3cG1reFVDemFiVlktaW1nLTJfMTc3MTUzMjM2MTAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFoY0hCc1pRLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=kuBvyaXCbVwi1yf4nrjBYfYrDje9WMO6cOpW1LVyIUhGqNYRoGOlMryeyFwbShZ1r-QPK4Hs09mImzaS6BiiHu6AQRju0OZ6ja~MlJUritgE3be7xqPqtGcQHh4IlWV8BYGSm36DIrikCHgBud~GRxIWs6uXccONmh-pzGNVBe9oZJnaLrErOfhKWUWJax0XXk2bbxOoeLSsUceV1636s1SI6-5RHeLGkW6CkMhozsROLULOyY5RRSmujrAIfkfORtfMWWBeBVMKcr8dSU0obzf2TvU9vwZADdr74-fVhBQI5d9klxSJi8IZMGfz1qp0HaVR1Sho-6n-UEviApml~w__",
+  luohanguo:
+    "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/KXE9q1FBNJwpmkxUCzabVY-img-3_1771532368000_na1fn_aW5ncmVkaWVudC1sdW9oYW5ndW8.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L0tYRTlxMUZCTkp3cG1reFVDemFiVlktaW1nLTNfMTc3MTUzMjM2ODAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFzZFc5b1lXNW5kVzgucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=MY9QGjD9J7gknEzdBa7ycg9zcPmqvLL456CqpejO67EXbf8PfKlBG3nVRjXo4x6K0UEDoqmX6GomxkYz-X6SUIVu0TDIVOVD915NhD02XoDNc--djsZpKAp1ZrETMvqIfL6NVSi8KGP-FJL8b9xLC~QDJboMFpo~oKnWJWCV3F732UMepNaSY5AdVVzZI-qr-ANbuIjlf6nfXZnwV2qqFiRE7w-6npYZRNl~Y0QDPMKdmCgqB7roEG7JdLoSw-LtBxu7N8iHwJ5wkfvRYFuR6eC0v2GRcBYwFsfKm9zX5BFCzmIB~x68b0iMyWhrH1MvF1RLQoHlfZnlSpOdMkRmaQ__",
 };
 
-/* ─── Section 2: 三条路径对比 ─── */
-export const THREE_PATHS = {
-  title: "同一棵植物，三种打开方式",
-  subtitle: "以葛根为例，看三种技术路径如何处理同一味原料",
-  paths: [
-    {
-      id: "traditional",
-      name: "传统煎制",
-      era: "千年传承",
-      color: "amber",
-      method: "水煮熬制",
-      description:
-        "将葛根切片，加水大火煮沸后小火慢熬30-60分钟。这是最古老的方式，依赖经验和手感。",
-      pros: [
-        "传承千年的经验智慧",
-        "整体调理的哲学思想",
-        "原料易得、操作简单",
-      ],
-      cons: [
-        "有效成分提取率仅10-30%",
-        "高温破坏热敏性活性分子",
-        "批次间差异大，无法标准化",
-        "口感苦涩，依从性差",
-      ],
-      extractionRate: "10-30%",
-      keyLoss: "葛根素在100°C下降解率约15-25%",
-    },
-    {
-      id: "synthesis",
-      name: "化学合成",
-      era: "现代化学",
-      color: "sky",
-      method: "化学反应合成单体分子",
-      description:
-        "在实验室中用化学反应从零合成葛根素单体分子。纯度极高，但只有一种分子。",
-      pros: [
-        "纯度可达99%以上",
-        "批次一致性极高",
-        "剂量精确可控",
-      ],
-      cons: [
-        "只有单一分子，丢失协同效应",
-        "合成过程可能引入有害溶剂残留",
-        "成本高，工艺复杂",
-        "缺少植物基质中的辅助因子",
-      ],
-      extractionRate: "N/A",
-      keyLoss: "丢失大豆苷元、黄酮类等数十种协同分子",
-    },
-    {
-      id: "extraction",
-      name: "现代植物提取",
-      era: "科技融合",
-      color: "emerald",
-      method: "超临界萃取 / 膜分离 / 大孔树脂吸附",
-      description:
-        "用精确控温控压的现代工艺，在不破坏活性分子结构的前提下，把植物中的有效成分群完整地提取出来。",
-      pros: [
-        "有效成分提取率70-90%",
-        "保留多组分协同效应",
-        "可标准化控制有效成分含量",
-        "低温操作保护热敏分子",
-      ],
-      cons: [
-        "设备投入大，技术门槛高",
-        "需要深厚的植物化学研究基础",
-        "产业化需要国家级实验室支撑",
-      ],
-      extractionRate: "70-90%",
-      keyLoss: "最大限度保留全组分活性",
-    },
-  ],
-  comparisonTable: [
-    {
-      metric: "有效成分提取率",
-      traditional: "10-30%",
-      synthesis: "N/A（化学合成）",
-      extraction: "70-90%",
-    },
-    {
-      metric: "活性分子多样性",
-      traditional: "部分保留",
-      synthesis: "单一分子",
-      extraction: "完整保留",
-    },
-    {
-      metric: "批次标准化",
-      traditional: "低",
-      synthesis: "极高",
-      extraction: "高",
-    },
-    {
-      metric: "协同效应",
-      traditional: "有但不稳定",
-      synthesis: "无",
-      extraction: "有且可控",
-    },
-    {
-      metric: "热敏分子保护",
-      traditional: "差（100°C水煮）",
-      synthesis: "不涉及",
-      extraction: "好（低温萃取）",
-    },
-    {
-      metric: "安全性",
-      traditional: "高（食用历史）",
-      synthesis: "需验证（溶剂残留）",
-      extraction: "高（天然+质控）",
-    },
-  ],
+/* ─── 首页数据 ─── */
+export const HOME_DATA = {
+  hero: {
+    tagline: "Science of Botanicals",
+    title: "本草新解",
+    subtitle: "用分子药理学的语言，重新理解植物的力量",
+    description:
+      "中国拥有全球最强的植物提取产业链，却几乎没有面向消费者的品牌。这里用前沿科学的视角，讲清楚植物活性分子到底在做什么。",
+    stats: [
+      { value: "50%+", label: "已批准药物源于天然产物" },
+      { value: "70-90%", label: "现代提取有效成分利用率" },
+      { value: "358亿", label: "全球植物提取物市场(美元)" },
+      { value: "≈0", label: "中国C端植物提取品牌" },
+    ],
+  },
+  whatIs: {
+    title: "从一片叶子到一个分子",
+    subtitle:
+      "植物提取，是用现代科学的手术刀，精准切开植物的细胞壁，把藏在里面的活性分子完整地请出来。",
+    points: [
+      {
+        title: "植物活性分子",
+        desc: "植物在亿万年进化中产生了数以万计的次级代谢产物：黄酮类、萜类、多酚类、皂苷类、生物碱。这些分子是植物的\"免疫系统\"，也是人类健康的宝库。全球超过50%的已批准药物，直接或间接来源于植物天然产物。",
+        icon: "leaf",
+      },
+      {
+        title: "分子药理学",
+        desc: "现代分子药理学能精确解析每一种植物活性分子的作用靶点和信号通路。比如葛根中的葛根素，可以特异性地提高乙醇脱氢酶（ADH）和乙醛脱氢酶（ALDH2）的活性；灵芝三萜能抑制NF-κB促炎信号通路。",
+        icon: "microscope",
+      },
+      {
+        title: "多靶点协同效应",
+        desc: "与化学合成的单一分子不同，植物提取物天然含有数十种活性成分。它们通过\"多成分-多靶点-多通路\"的网络药理学机制产生协同效应，整体效果大于各部分之和。学术界称之为 Entourage Effect。",
+        icon: "network",
+      },
+    ],
+  },
+  threePaths: {
+    title: "同一棵植物，三种打开方式",
+    subtitle: "以葛根为例，看三种技术路径如何处理同一味原料",
+    paths: [
+      {
+        id: "traditional",
+        name: "传统煎制",
+        era: "千年传承",
+        color: "amber",
+        method: "水煮熬制",
+        description:
+          "将葛根切片，加水大火煮沸后小火慢熬30-60分钟。这是最古老的方式，依赖经验和手感。",
+        pros: ["传承千年的经验智慧", "整体调理的哲学思想", "原料易得、操作简单"],
+        cons: [
+          "有效成分提取率仅10-30%",
+          "高温破坏热敏性活性分子",
+          "批次间差异大，无法标准化",
+          "口感苦涩，依从性差",
+        ],
+        extractionRate: "10-30%",
+        keyLoss: "葛根素在100°C下降解率约15-25%",
+      },
+      {
+        id: "synthesis",
+        name: "化学合成",
+        era: "现代化学",
+        color: "sky",
+        method: "化学反应合成单体分子",
+        description:
+          "在实验室中用化学反应从零合成葛根素单体分子。纯度极高，但只有一种分子。",
+        pros: ["纯度可达99%以上", "批次一致性极高", "剂量精确可控"],
+        cons: [
+          "只有单一分子，丢失协同效应",
+          "合成过程可能引入有害溶剂残留",
+          "成本高，工艺复杂",
+          "缺少植物基质中的辅助因子",
+        ],
+        extractionRate: "N/A",
+        keyLoss: "丢失大豆苷元、黄酮类等数十种协同分子",
+      },
+      {
+        id: "extraction",
+        name: "现代植物提取",
+        era: "科技融合",
+        color: "emerald",
+        method: "超临界萃取 / 膜分离 / 大孔树脂吸附",
+        description:
+          "用精确控温控压的现代工艺，在不破坏活性分子结构的前提下，把植物中的有效成分群完整地提取出来。",
+        pros: [
+          "有效成分提取率70-90%",
+          "保留多组分协同效应",
+          "可标准化控制有效成分含量",
+          "低温操作保护热敏分子",
+        ],
+        cons: [
+          "设备投入大，技术门槛高",
+          "需要深厚的植物化学研究基础",
+          "产业化需要国家级实验室支撑",
+        ],
+        extractionRate: "70-90%",
+        keyLoss: "最大限度保留全组分活性",
+      },
+    ],
+  },
+  formula: {
+    title: "七味食药同源",
+    subtitle: "每一味原料都有千年的食用历史，每一种活性分子都有现代科学的解析",
+    ingredients: [
+      {
+        name: "葛根",
+        role: "君",
+        roleLabel: "核心主力",
+        imageKey: "gegen",
+        tradition: "《神农本草经》列为中品，\"主消渴，身大热，呕吐\"",
+        molecules: ["葛根素", "大豆苷元", "黄酮类"],
+        modernScience:
+          "葛根素可特异性提高ADH和ALDH2活性，大豆苷元具有植物雌激素样作用，黄酮类成分是强效抗氧化剂。",
+        color: "emerald",
+      },
+      {
+        name: "人参",
+        role: "君",
+        roleLabel: "核心主力",
+        imageKey: "renshen",
+        tradition: "\"百草之王\"，《神农本草经》列为上品，\"主补五脏，安精神\"",
+        molecules: ["人参皂苷", "皂苷Rb1", "三萜类"],
+        modernScience:
+          "人参皂苷抑制NF-κB促炎信号通路，皂苷Rb1调节GABA受体，具有适应原样作用调节HPA轴应激反应。",
+        color: "red",
+      },
+      {
+        name: "高良姜",
+        role: "臣",
+        roleLabel: "辅助增强",
+        imageKey: "gaoliangjiang",
+        tradition: "《名医别录》记载，\"温胃散寒，消食止痛\"",
+        molecules: ["姜黄素", "高良姜素"],
+        modernScience:
+          "姜黄素和高良姜素增强ADH和ALDH2活性，与葛根协同增效。同时具有强大的抗炎、抗溃疡作用。",
+        color: "orange",
+      },
+      {
+        name: "灵芝",
+        role: "臣",
+        roleLabel: "辅助增强",
+        imageKey: "lingzhi",
+        tradition: "\"仙草\"，《神农本草经》列为上品，\"补气安神，止咳平喘\"",
+        molecules: ["灵芝三萜", "灵芝多糖"],
+        modernScience:
+          "灵芝三萜抑制NF-κB通路，灵芝多糖增强免疫调节、促进细胞新陈代谢，调节GABA受体协同安神。",
+        color: "purple",
+      },
+      {
+        name: "年份茯砖茶",
+        role: "臣",
+        roleLabel: "辅助增强",
+        imageKey: "fuzhuan",
+        tradition: "\"黑茶之祖\"，边疆民族\"宁可三日无粮，不可一日无茶\"",
+        molecules: ["茶多酚", "茶多糖", "他汀类"],
+        modernScience:
+          "茶多酚和茶多糖结合毒素加速排出，益生菌代谢产物调节肠道菌群，天然他汀类成分调节血脂代谢。",
+        color: "yellow",
+      },
+      {
+        name: "青苹果",
+        role: "佐",
+        roleLabel: "协助兼治",
+        imageKey: "apple",
+        tradition: "\"日食一苹果，医生远离我\"，酸甘生津、开胃醒脾",
+        molecules: ["维生素C", "多酚"],
+        modernScience:
+          "维生素C和多酚是强效抗氧化剂，直接清除自由基并上调SOD、GSH等抗氧化酶系统。酸甘之性缓解口干。",
+        color: "green",
+      },
+      {
+        name: "罗汉果",
+        role: "佐",
+        roleLabel: "协助兼治",
+        imageKey: "luohanguo",
+        tradition: "\"神仙果\"，《岭南采药录》记载，\"理痰火咳嗽\"",
+        molecules: ["罗汉果甜苷", "三萜类"],
+        modernScience:
+          "罗汉果甜苷甜度为蔗糖300倍但零热量，三萜类成分润肺通便，有助于将代谢废物从肠道排出。",
+        color: "teal",
+      },
+    ],
+  },
+  overseas: {
+    title: "他们已经做到了",
+    subtitle:
+      "日本、韩国、欧洲的植物提取品牌早已完成C端品类教育，并创造了数十亿美元的市场",
+    brands: [
+      {
+        country: "日本",
+        flag: "JP",
+        brand: "津村 Tsumura",
+        founded: "1893年",
+        revenue: "12.2亿美元",
+        marketSize: "231亿美元（2025）",
+        core: "128种汉方处方制剂",
+        highlight: "80%纳入日本国民医保",
+        story:
+          "津村用了130年，把中国传来的草药方剂做成了标准化提取物制剂。128种汉方处方中有80%被纳入日本国民医保体系。",
+        color: "rose",
+      },
+      {
+        country: "韩国",
+        flag: "KR",
+        brand: "正官庄 CheongKwanJang",
+        founded: "1899年",
+        revenue: "10.4亿美元",
+        marketSize: "7.5亿美元（红参市场）",
+        core: "6年根红参提取物",
+        highlight: "全球人参市场份额41.9%",
+        story:
+          "正官庄只做一件事：把高丽红参做到极致。6年根种植、标准化提取、全球化品牌。单一原料做到10亿美元级。",
+        color: "red",
+      },
+      {
+        country: "欧洲",
+        flag: "DE",
+        brand: "Schwabe / Bionorica",
+        founded: "1866年",
+        revenue: "数十亿欧元（合计）",
+        marketSize: "653亿美元（2024）",
+        core: "银杏叶提取物 EGb 761",
+        highlight: "EMA植物药专论体系",
+        story:
+          "Schwabe的银杏叶提取物EGb 761是全球植物药的标杆产品。欧洲建立了完整的植物药专论体系，用临床试验数据说话。",
+        color: "blue",
+      },
+    ],
+    insight:
+      "日本用汉方、韩国用红参、欧洲用植物药，都完成了从传统草药到现代消费品牌的跨越。中国拥有最丰富的药用植物资源和最强的提取产业链，这个赛道上的C端品牌机会，还在等待被填补。",
+  },
+  marketGap: {
+    title: "一个奇怪的现象",
+    subtitle:
+      "中国有全球最强的植物提取产业链，却几乎没有面向消费者的植物提取品牌",
+    stats: [
+      { label: "全球植物提取物市场（2023）", value: "358亿", unit: "美元", growth: "CAGR 10.5%" },
+      { label: "中国药用植物提取物（2025）", value: "8.65亿", unit: "美元", growth: "CAGR 9.24%" },
+      { label: "中国膳食补充剂（2024）", value: "259亿", unit: "美元", growth: "CAGR 10.4%" },
+    ],
+    paradox: [
+      { title: "产业链全球领先", desc: "中国是全球最大的植物提取物生产国和出口国。从原料种植、提取工艺到质量检测，产业链完整且成熟。" },
+      { title: "出口为主，内销为辅", desc: "绝大部分植物提取物以B2B形式出口到欧美日韩，被国外品牌做成保健品、化妆品后高价卖回中国。" },
+      { title: "C端品牌几乎空白", desc: "国内消费者能买到的要么是传统中成药，要么是进口保健品。\"植物提取\"这个品类在C端几乎没有认知。" },
+      { title: "海外已有成功先例", desc: "日本的\"汉方\"、韩国的\"红参\"、欧洲的\"植物药\"都已完成C端品类教育。中国在这个赛道上还是空白。" },
+    ],
+  },
 };
 
-/* ─── Section 3: 国家重点实验室 ─── */
-export const LABS = {
-  title: "谁在做这件事",
-  subtitle:
-    "植物提取不是在厨房里煮茶，是需要国家级科研平台支撑的系统工程",
-  institutions: [
+/* ─── 四大功效页面数据（讲植物分子的科学研究，不讲产品功效） ─── */
+export const EFFICACY_PAGES = {
+  jiujiu: {
+    id: "jiujiu",
+    title: "植物分子与酒精代谢",
+    subtitle: "前沿科学如何理解植物活性分子在酒精代谢中的作用",
+    color: "emerald",
+    icon: "wine",
+    heroDesc:
+      "酒精代谢的核心瓶颈在于辅酶NAD+的再生速率。越来越多的研究发现，特定植物活性分子能够通过多种机制加速这一过程。",
+    sections: [
+      {
+        title: "核心机制：NAD+辅酶再生",
+        content:
+          "每代谢一分子乙醇，肝细胞内的醇脱氢酶（ADH）和醛脱氢酶（ALDH）会消耗两分子NAD+，导致NAD+/NADH比值迅速下降。2025年发表于Nature Metabolism的研究明确指出，肝细胞线粒体内的NAD+含量是肝脏再生能力的直接限制因素。因此，加速NAD+再生，打破这一限速步骤，是所有研究的核心方向。",
+      },
+      {
+        title: "葛根素：ADH/ALDH双激活",
+        content:
+          "葛根中的葛根素（Puerarin）是研究最为深入的植物活性分子之一。大量研究证实，葛根素可以特异性地提高乙醇脱氢酶（ADH）和乙醛脱氢酶（ALDH2）的活性，加速乙醇→乙醛→乙酸的代谢转化链。2026年发表于Analytical Chemistry的研究开发了NADH荧光探针，从天然产物中筛选出柚皮苷作为ADH/ALDH2双效激动剂。",
+      },
+      {
+        title: "二氢杨梅素（DHM）：NAD+水平提升43%",
+        content:
+          "2025年发表于Frontiers in Pharmacology的综述指出，来自枳椇子的二氢杨梅素（DHM）能通过激活AMPK，使肝脏NAD+水平提升43%，并恢复SIRT1和线粒体SIRT3的表达。这一发现为理解植物多酚类分子如何参与辅酶代谢提供了重要线索。",
+      },
+      {
+        title: "姜黄素与高良姜素：协同增效",
+        content:
+          "高良姜中的姜黄素和高良姜素被研究发现能增强ADH和ALDH2活性，与葛根素产生协同效应。这种\"多成分-多靶点\"的协同作用，正是植物提取物区别于单一化学合成分子的核心优势。",
+      },
+      {
+        title: "茶多酚与益生菌代谢产物",
+        content:
+          "茯砖茶中的茶多酚和茶多糖能结合毒素加速排出。更值得关注的是，茯砖茶特有的冠突散囊菌发酵产生的益生菌代谢产物，能调节肠道菌群，影响酒精在肠道的首过代谢。",
+      },
+    ],
+    references: [
+      { authors: "Ding, Q., et al.", title: "Hepatocyte mitochondrial NAD+ content is limiting for liver regeneration", journal: "Nature Metabolism", year: 2025, url: "https://www.nature.com/articles/s42255-025-01408-5" },
+      { authors: "Li, C., et al.", title: "Food plants as adjuvant medicines: protective effects in alcoholic liver disease", journal: "Frontiers in Pharmacology", year: 2025, url: "https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2025.1586238/full" },
+      { authors: "Li, J., et al.", title: "NADH-Activated Probe for Screening ADH/ALDH2 Dual Agonists", journal: "Analytical Chemistry", year: 2026, url: "https://pubs.acs.org/doi/10.1021/acs.analchem.5c05218" },
+      { authors: "Haseba, T.", title: "Enzymatic Control of Alcohol Metabolism in the Body", journal: "Int. J. Mol. Sci.", year: 2025, url: "https://www.mdpi.com/1422-0067/26/19/9479" },
+      { authors: "Tang, Y., et al.", title: "Pt atomic sites enhance NAD+ regeneration for alcohol detoxification", journal: "National Science Review", year: 2025, url: "https://academic.oup.com/nsr/article/12/11/nwaf379/8251686" },
+    ],
+  },
+  hugan: {
+    id: "hugan",
+    title: "植物分子与肝脏保护",
+    subtitle: "科学研究中植物活性分子对肝细胞的保护机制",
+    color: "amber",
+    icon: "shield",
+    heroDesc:
+      "肝脏是人体最大的代谢器官，面临氧化应激、炎症和纤维化的多重威胁。植物活性分子在这三个维度上都展现出了令人瞩目的研究证据。",
+    sections: [
+      {
+        title: "抗氧化应激：自由基的天然清道夫",
+        content:
+          "葛根黄酮类、灵芝多糖和三萜、人参皂苷、青苹果中的维生素C和多酚，都是研究证实的强效抗氧化剂。它们通过直接清除自由基并上调超氧化物歧化酶（SOD）、谷胱甘肽（GSH）等内源性抗氧化酶系统，构建多层次的抗氧化防线。",
+      },
+      {
+        title: "抗炎：NF-κB通路的调控",
+        content:
+          "灵芝三萜和人参皂苷被大量研究证实能抑制NF-κB促炎信号通路，减少TNF-α、IL-6等炎症因子的释放。这条通路是肝脏炎症反应的核心枢纽，抑制它意味着从源头上减轻炎症对肝细胞的损伤。同时，这些分子还能调节Bcl-2/Bax凋亡相关蛋白，保护肝细胞免于程序性死亡。",
+      },
+      {
+        title: "抗纤维化：阻止肝星状细胞活化",
+        content:
+          "葛根素在研究中被发现能抑制肝星状细胞（HSC）的活化，减少胶原沉积，这是抗肝纤维化的关键靶点。肝纤维化是从脂肪肝发展到肝硬化的中间环节，阻断这一步骤具有重要的预防意义。",
+      },
+      {
+        title: "NMNAT1与NAD+：肝脏自我修复的关键",
+        content:
+          "2025年发表于Science Advances的研究揭示，酒精会通过IRF1泛素化降解通路下调NMNAT1表达，导致核内NAD+池枯竭，引发脂肪肝。这意味着维持肝细胞NAD+水平，是肝脏自我修复能力的基础。",
+      },
+      {
+        title: "茯砖茶：肠肝轴的调节者",
+        content:
+          "茯砖茶中天然的他汀类成分能调节血脂代谢，减轻肝脏的脂质负担。其特有的冠突散囊菌代谢产物通过调节肠道菌群，影响肠肝轴的信号传导，为肝脏健康提供了一条独特的保护路径。",
+      },
+    ],
+    references: [
+      { authors: "Ding, Q., et al.", title: "Hepatic NMNAT1 is required to defend against alcohol-associated fatty liver disease", journal: "Science Advances", year: 2025, url: "https://www.science.org/doi/10.1126/sciadv.adt6195" },
+      { authors: "Li, S. et al.", title: "Systems pharmacology analysis of synergy of TCM", journal: "Nature Scientific Reports", year: 2018, url: "https://www.nature.com/articles/s41598-018-34917-7" },
+      { authors: "Wang, S., et al.", title: "NR attenuates alcohol induced liver injuries via SirT1/PGC-1α pathway", journal: "Redox Biology", year: 2018, url: "https://www.sciencedirect.com/science/article/pii/S2213231718300508" },
+    ],
+  },
+  zhumian: {
+    id: "zhumian",
+    title: "植物分子与睡眠调节",
+    subtitle: "科学研究中植物活性分子对神经系统和睡眠质量的影响",
+    color: "indigo",
+    icon: "moon",
+    heroDesc:
+      "睡眠质量受神经递质平衡、HPA轴应激反应和身体内环境多重因素影响。多种植物活性分子在这些维度上的研究正在快速推进。",
+    sections: [
+      {
+        title: "GABA受体调节：天然的镇静通路",
+        content:
+          "人参皂苷Rb1和灵芝三萜在研究中被发现能调节GABA（γ-氨基丁酸）受体。GABA是大脑中最重要的抑制性神经递质，它的激活能降低神经元兴奋性，产生镇静和放松效应。与化学合成的苯二氮卓类药物不同，植物来源的GABA调节剂作用温和，不产生依赖性。",
+      },
+      {
+        title: "5-HT和多巴胺系统：情绪的稳定器",
+        content:
+          "人参皂苷被研究证实能调节5-羟色胺（5-HT）和多巴胺（DA）系统。5-HT是褪黑素的前体，直接影响睡眠-觉醒周期；DA系统则与情绪调节密切相关。稳定这两个系统，有助于在入睡前建立平静的心理状态。",
+      },
+      {
+        title: "HPA轴：应激反应的总开关",
+        content:
+          "人参皂苷和灵芝多糖具有\"适应原\"（Adaptogen）样作用，能帮助恢复下丘脑-垂体-肾上腺（HPA）轴的正常节律，降低皮质醇水平。长期压力导致的HPA轴过度激活是现代人失眠的主要原因之一，适应原类植物分子通过调节这一轴线，从根源上改善睡眠质量。",
+      },
+      {
+        title: "身体内环境：睡眠的生理基础",
+        content:
+          "研究表明，身体不适（如消化不良、炎症反应、代谢废物堆积）是影响睡眠质量的重要因素。植物活性分子在抗氧化、抗炎、促进代谢废物排出等方面的综合作用，能为睡眠创造更好的生理基础条件。",
+      },
+    ],
+    references: [
+      { authors: "Zhao, M. et al.", title: "Ginsenoside Rb1 promotes sleep via GABA receptor modulation", journal: "J. Ethnopharmacology", year: 2023, url: "https://pubmed.ncbi.nlm.nih.gov/36907247/" },
+      { authors: "Cui, X.Y. et al.", title: "Ganoderma lucidum extract promotes sleep in freely moving rats", journal: "Pharmacology Biochemistry and Behavior", year: 2012, url: "https://pubmed.ncbi.nlm.nih.gov/22796104/" },
+    ],
+  },
+  yangyan: {
+    id: "yangyan",
+    title: "植物分子与皮肤健康",
+    subtitle: "科学研究中植物活性分子对皮肤抗衰老和修复的作用机制",
+    color: "rose",
+    icon: "sparkles",
+    heroDesc:
+      "皮肤衰老的本质是氧化应激、炎症反应和微循环障碍的综合结果。植物活性分子在这三个维度上的研究证据正在不断积累。",
+    sections: [
+      {
+        title: "内源性抗氧化：从内而外的防护",
+        content:
+          "葛根黄酮、灵芝多糖、人参皂苷、维生素C和多酚类化合物，都是研究证实的强效抗氧化剂。它们不仅能直接清除自由基，还能上调SOD、GSH等内源性抗氧化酶系统。这种\"由内而外\"的抗氧化作用，比外用护肤品更能从根源上延缓皮肤氧化老化。",
+      },
+      {
+        title: "抗炎：皮肤衰老的隐形推手",
+        content:
+          "慢性低度炎症（Inflammaging）是皮肤衰老的重要驱动力。灵芝三萜和人参皂苷通过抑制NF-κB通路，减少TNF-α、IL-6等炎症因子，能有效对抗这种\"炎性衰老\"。研究表明，控制皮肤微环境的炎症水平，是维持皮肤年轻态的关键。",
+      },
+      {
+        title: "微循环改善：营养输送的高速公路",
+        content:
+          "葛根和人参在研究中被发现能扩张血管、改善外周血液循环。良好的微循环意味着更多的氧气和营养物质被输送到皮肤细胞，同时代谢废物被更快地清除。这是\"气色好\"的科学解释。",
+      },
+      {
+        title: "细胞代谢与修复",
+        content:
+          "灵芝多糖在研究中被发现能促进皮肤细胞的新陈代谢和修复。人参和灵芝还能调节内分泌、增强免疫力，改善因压力和熬夜导致的皮肤问题。罗汉果和青苹果的生津滋润作用，以及配方整体的排毒效应，也为皮肤健康提供了支持。",
+      },
+    ],
+    references: [
+      { authors: "Ratz-Łyko, A. et al.", title: "Polyphenols as anti-aging ingredients in cosmetics", journal: "Molecules", year: 2023, url: "https://www.mdpi.com/1420-3049/28/17/6314" },
+      { authors: "Vollmer, D.L. et al.", title: "Enhancing Skin Health with Oral Antioxidants", journal: "Nutrients", year: 2024, url: "https://www.mdpi.com/2072-6643/16/5/579" },
+    ],
+  },
+};
+
+/* ─── 国家重点实验室页面数据 ─── */
+export const LABS_PAGE = {
+  title: "科研平台",
+  subtitle: "植物提取不是在厨房里煮茶，是需要国家级科研平台支撑的系统工程",
+  labs: [
     {
       name: "国家植物功能成分利用工程技术研究中心",
       level: "国家级",
-      focus: "植物功能成分的高效提取、分离纯化和产业化应用",
-      significance:
-        "全国唯一专注于植物功能成分利用的国家级工程技术研究中心，掌握从原料筛选到产业化的全链条技术。",
+      levelColor: "emerald",
+      host: "湖南农业大学",
+      established: "2009年11月，国家科技部批准组建",
+      director: "刘仲华教授（中国工程院院士）",
+      directorAchievements: [
+        "2019年获\"何梁何利基金\"科学与技术进步奖（农学奖），中国茶学领域首次获此奖",
+        "2019年当选中国工程院院士，湖南茶界首位院士",
+      ],
+      position: "国内植物功能成分利用领域唯一的国家工程技术研究中心",
+      description:
+        "以丰富的植物资源为研究对象，采用现代分离纯化工程、发酵工程、细胞工程、基因工程领域的高新技术，以植物化学、生物化学、分析化学、分子生物学、现代药理学、现代营养学理论为基础，开展植物功能成分的高效提制与利用技术研究。将廉价的农林植物资源转化为高附加值的天然产物，应用于天然药物、保健食品、功能饮料、天然日化用品及植物源农药等领域。",
+      achievements: {
+        projects: "承担国家重点研发计划、973计划、863计划等省级及以上科研项目200余项",
+        patents: "申请发明专利150余项，获授权发明专利100余项",
+        awards: "获国家科技进步二等奖3项、省科学技术一等奖10项、二等奖15项",
+        papers: "SCI和EI收录论文200余篇，出版学术专著50余本",
+        standards: "颁布实施标准20余项",
+        innovations: "创新新种质10份，培育优良品种3个，阐明25种植物功能成分药理作用机制",
+        products: "开发植物功能成分新产品20个",
+      },
+      impact: "新增产值1.9亿元，新增效益8000多万元，带动农民增收1亿多元",
+      talent: "引进两院院士2名、神农学者2名、青年英才15名",
+      url: "https://botanical-ingredients.hunau.edu.cn/",
     },
     {
-      name: "国家中医药管理局亚健康干预技术重点实验室",
-      level: "国家级",
-      focus: "亚健康状态的中医药干预技术研究",
-      significance:
-        "将传统中医药理论与现代干预技术结合，为食药同源产品提供研究支撑。",
-    },
-    {
-      name: "湖南农业大学茶学教育部重点实验室",
+      name: "茶学教育部重点实验室",
       level: "省部级",
-      focus: "茶叶功能成分与健康效应研究",
-      significance:
-        "在茶多酚、茶多糖等功能成分的提取和活性研究方面处于国内领先水平。",
+      levelColor: "blue",
+      host: "湖南农业大学",
+      established: "教育部批准设立",
+      director: "刘仲华院士团队",
+      directorAchievements: [],
+      position: "教育部重点实验室，茶叶功能成分研究国内领先",
+      description:
+        "专注于茶叶加工、茶叶评价与检验、茶叶功能成分研究。在茶多酚、茶多糖等功能成分的提取和活性研究方面处于国内领先水平。与国家植物功能成分利用工程技术研究中心紧密合作，共同推进茶叶及植物功能成分的基础研究和产业化应用。",
+      achievements: {
+        projects: "承担多项国家自然科学基金和省部级科研项目",
+        patents: "",
+        awards: "",
+        papers: "在茶叶功能成分领域发表大量高水平SCI论文",
+        standards: "",
+        innovations: "",
+        products: "",
+      },
+      impact: "",
+      talent: "",
+      url: "https://en.hunau.edu.cn/research/ScienceandTechnologyInnovationPlatforms/",
     },
     {
-      name: "湖南师范大学大健康研究院",
+      name: "国家中医药管理局亚健康干预技术实验室",
       level: "省部级",
-      focus: "大健康产业的基础研究和应用转化",
-      significance:
-        "跨学科整合生物学、化学、医学资源，为植物提取产品的功能验证提供科学依据。",
+      levelColor: "purple",
+      host: "湖南农业大学",
+      established: "2009年",
+      director: "",
+      directorAchievements: [],
+      position: "国家中医药管理局重点实验室",
+      description:
+        "专注于亚健康状态的中医药干预技术研究，将传统中医药理论与现代干预技术结合。研究方向涵盖食药同源植物的亚健康干预应用，为植物提取产品在亚健康人群中的科学应用提供研究支撑。",
+      achievements: {
+        projects: "承担国家中医药管理局及省级科研项目",
+        patents: "",
+        awards: "",
+        papers: "",
+        standards: "",
+        innovations: "",
+        products: "",
+      },
+      impact: "",
+      talent: "",
+      url: "",
+    },
+    {
+      name: "湖南大健康研究院",
+      level: "省部级",
+      levelColor: "teal",
+      host: "湖南师范大学",
+      established: "落户浏阳经开区金阳科创城",
+      director: "",
+      directorAchievements: [],
+      position: "融合高校科研与企业产业需求的新型研究机构",
+      description:
+        "充分融合高校科研与企业产业需求，重点打造天然产物、智能康复、前沿生物技术和分子诊断四大科研高地及成果转化中心。跨学科整合生物学、化学、医学资源，为植物提取产品的功能验证提供科学依据，推动大健康产业升级。",
+      achievements: {
+        projects: "",
+        patents: "",
+        awards: "",
+        papers: "",
+        standards: "",
+        innovations: "",
+        products: "",
+      },
+      impact: "",
+      talent: "",
+      url: "",
     },
   ],
-};
-
-/* ─── Section 4: C端市场空白 ─── */
-export const MARKET_GAP = {
-  title: "一个奇怪的现象",
-  subtitle:
-    "中国有全球最强的植物提取产业链，却几乎没有面向消费者的植物提取品牌",
-  stats: [
-    {
-      label: "全球植物提取物市场（2023）",
-      value: "358亿",
-      unit: "美元",
-      growth: "CAGR 10.5%",
-    },
-    {
-      label: "中国药用植物提取物（2025）",
-      value: "8.65亿",
-      unit: "美元",
-      growth: "CAGR 9.24%",
-    },
-    {
-      label: "中国膳食补充剂（2024）",
-      value: "259亿",
-      unit: "美元",
-      growth: "CAGR 10.4%",
-    },
-  ],
-  paradox: [
-    {
-      title: "产业链全球领先",
-      desc: "中国是全球最大的植物提取物生产国和出口国。从原料种植、提取工艺到质量检测，产业链完整且成熟。",
-    },
-    {
-      title: "出口为主，内销为辅",
-      desc: "绝大部分植物提取物以B2B形式出口到欧美日韩，被国外品牌做成保健品、化妆品后高价卖回中国。",
-    },
-    {
-      title: "C端品牌几乎空白",
-      desc: "国内消费者能买到的要么是传统中成药，要么是进口保健品。\"植物提取\"这个品类在C端几乎没有认知。",
-    },
-    {
-      title: "海外已有成功先例",
-      desc: "日本的\"汉方\"、韩国的\"红参\"、欧洲的\"植物药\"都已完成C端品类教育。中国在这个赛道上还是空白。",
-    },
-  ],
-};
-
-/* ─── Section 5: 七味食药同源配方理念 ─── */
-export const FORMULA = {
-  title: "七味食药同源",
-  subtitle:
-    "每一味原料都有千年的食用历史，每一种活性分子都有现代科学的解析",
-  ingredients: [
-    {
-      name: "葛根",
-      role: "君",
-      roleLabel: "核心主力",
-      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-2_1771532290000_na1fn_aW5ncmVkaWVudC1nZWdlbg.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTJfMTc3MTUzMjI5MDAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFuWldkbGJnLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=R2STWKEYwma1C3woYD~4j2CTVicSOQ-fCyjzfd6xtFXYrRU~AIu5WZmlauXLF~nKW7y4FNg5JMdZ1GbbHMkGioeIXdYmoWjLQxWVSZZgHEBobQrS0jePq5J8zT2FknNtBP15K9x-~4j0WSu2LP6YIwWLapisjSKulNt5SJDzXX6epefGPnAPe85VJ6JTyMwcwwG0-fL16-1nz98IpCWG6rdB4dYQ6gdd3GlrDUr6FKMr89Tf3--l5OjRzQVpC-xSm5H6rfxpV9dYLkA7PC9mRFY4gbwy~Q1OW8CO57wD1qWKZFCPsGEUZ6ZbArLx89tRLo0jpVJSyFa5MLamgso3QQ__",
-      tradition: "《神农本草经》列为中品，\"主消渴，身大热，呕吐\"",
-      molecules: ["葛根素", "大豆苷元", "黄酮类"],
-      modernScience:
-        "葛根素可特异性提高ADH和ALDH2活性，大豆苷元具有植物雌激素样作用，黄酮类成分是强效抗氧化剂。",
-      color: "emerald",
-    },
-    {
-      name: "人参",
-      role: "君",
-      roleLabel: "核心主力",
-      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-3_1771532281000_na1fn_aW5ncmVkaWVudC1yZW5zaGVu.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTNfMTc3MTUzMjI4MTAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzF5Wlc1emFHVnUucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=sihHxQRS~1DulevSHNPBrqxeOZZ9DYeH-nxeV4XgzsF09gQl6JpKb-h3g5TN-qwqi6Eg6MHOR1~2-EHrxKLeyf2VzrZJ9Vue7et7b3Zyh8S1Q1Rhas3rv5BLllr0DIEdXjRRa9W0DVe8YCm0Yjd1exXSoTPtfq6ly~qC0AFh30-RxGoS4N2UeE~F~dKifUXropRyqNlZOG31~k1fujo~QfTrMreJHaAl8buspvWcFjDtgCkn9dz2uXrdUYTTe3~v6Ekc-ajS7Dr5X-gO92iisggGauxFRH3mxtwcHpin6TENeCxZKCIY-6vwOiZy3SbpliRss1yHvyGL81YdhZRBwA__",
-      tradition: "\"百草之王\"，《神农本草经》列为上品，\"主补五脏，安精神\"",
-      molecules: ["人参皂苷", "皂苷Rb1", "三萜类"],
-      modernScience:
-        "人参皂苷抑制NF-κB促炎信号通路，皂苷Rb1调节GABA受体，具有适应原样作用调节HPA轴应激反应。",
-      color: "red",
-    },
-    {
-      name: "高良姜",
-      role: "臣",
-      roleLabel: "辅助增强",
-      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-4_1771532266000_na1fn_aW5ncmVkaWVudC1nYW9saWFuZ2ppYW5n.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTRfMTc3MTUzMjI2NjAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFuWVc5c2FXRnVaMnBwWVc1bi5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=POpUfYe81~~lzmozpJi5inN74IU38Sv9q-lc9~pl2lFnA6Pxy6zTYjfTuau-wrbSznBq7A7EhoXalj0LNbW0OC2CsVVhha9c3gPgxnhqXxizz5psVcx8Jhh3JQDfJyYxiU6So-0iXZ-xEXt-R-P4sX7wIi4o9HOZwx6feYv0Xfh8fCWco3qkwHqco2o7FEKkuCLfR~S6d4xxy5pj3jCtBswQupWqD8jhuwZbOBVSMP9j8Jd5KKpSNAtvPDFlbEqeQWmrdXXDq~2NErDKRC3FpfdPoC8vLbjIL7fBkeHtiqL7hs6e29~X1hOHl~Ur5J6ygFSQm0OPAzMk~qFFrP8WFg__",
-      tradition: "《名医别录》记载，\"温胃散寒，消食止痛\"",
-      molecules: ["姜黄素", "高良姜素"],
-      modernScience:
-        "姜黄素和高良姜素增强ADH和ALDH2活性，与葛根协同增效。同时具有强大的抗炎、抗溃疡作用。",
-      color: "orange",
-    },
-    {
-      name: "灵芝",
-      role: "臣",
-      roleLabel: "辅助增强",
-      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-5_1771532267000_na1fn_aW5ncmVkaWVudC1saW5nemhp.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTVfMTc3MTUzMjI2NzAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFzYVc1bmVtaHAucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=WTAq-Ql5y3DYn28jm~ISsSDp-FTDc0BhURvewEkXUhz2JVbBTDSEKxzRW47xAvObpoS5WV9QtyL6BKkIumik5WHUkgJmkyBHtAp0tpeC9UYyncvsOouY1HQj6Lz2SOK1nnD7G00xwtr3VypFPzr1D9xviBhB35pwtg6zR4xTwl9h2uwsloh~mNBbdOZYnVTBIotobBPrjrPOGzl4eWprJtaUjovg0e8QskGYE3~NXqT3bp4z~u6C6v~LOQlHuvZyDXONbt3RULXAtHg7Kg9ehawvGWG~tWCFVVc~nYYjxNe9xKwoz-DAFMPxglm2q9hV54G8RypJe7VKdheDtlnQBQ__",
-      tradition: "\"仙草\"，《神农本草经》列为上品，\"补气安神，止咳平喘\"",
-      molecules: ["灵芝三萜", "灵芝多糖"],
-      modernScience:
-        "灵芝三萜抑制NF-κB通路，灵芝多糖增强免疫调节、促进细胞新陈代谢，调节GABA受体协同安神。",
-      color: "purple",
-    },
-    {
-      name: "年份茯砖茶",
-      role: "臣",
-      roleLabel: "辅助增强",
-      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/KXE9q1FBNJwpmkxUCzabVY-img-1_1771532370000_na1fn_aW5ncmVkaWVudC1mdXpodWFu.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L0tYRTlxMUZCTkp3cG1reFVDemFiVlktaW1nLTFfMTc3MTUzMjM3MDAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFtZFhwb2RXRnUucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=T-ZUwkpzZ6p5WdOtkp3VaGQKg45f9BkGMxDqDvewEZ00xCa6a5NYxp8mXPzREu4InkVQ3dPfsTYRanG1QKfkB64t~WCnz~duynRO~p95mJ5tOMCZl3uohaBOlVcbbUgS0FOpQ86G6MJrAGZ~qHtUENiHnnFBX3vClqnSDtMuUd2iOGEOAq87VHKmmpN-7G5pnpKhGwFq9kUAZwvaQq2G2dXkd79udtXUQC~buqJcJYgIwJFx4DGXuRaCa~6YhN6st8d58r9hFB5KgTSA7~11UZ0x8pYnB1s0j2WnLzr96Ch1H5qcR2plvpRk5WdpuYhxu0EN0SDndCNJDZfKFpr8sQ__",
-      tradition: "\"黑茶之祖\"，边疆民族\"宁可三日无粮，不可一日无茶\"",
-      molecules: ["茶多酚", "茶多糖", "他汀类"],
-      modernScience:
-        "茶多酚和茶多糖结合毒素加速排出，益生菌代谢产物调节肠道菌群，天然他汀类成分调节血脂代谢。",
-      color: "yellow",
-    },
-    {
-      name: "青苹果",
-      role: "佐",
-      roleLabel: "协助兼治",
-      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/KXE9q1FBNJwpmkxUCzabVY-img-2_1771532361000_na1fn_aW5ncmVkaWVudC1hcHBsZQ.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L0tYRTlxMUZCTkp3cG1reFVDemFiVlktaW1nLTJfMTc3MTUzMjM2MTAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFoY0hCc1pRLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=kuBvyaXCbVwi1yf4nrjBYfYrDje9WMO6cOpW1LVyIUhGqNYRoGOlMryeyFwbShZ1r-QPK4Hs09mImzaS6BiiHu6AQRju0OZ6ja~MlJUritgE3be7xqPqtGcQHh4IlWV8BYGSm36DIrikCHgBud~GRxIWs6uXccONmh-pzGNVBe9oZJnaLrErOfhKWUWJax0XXk2bbxOoeLSsUceV1636s1SI6-5RHeLGkW6CkMhozsROLULOyY5RRSmujrAIfkfORtfMWWBeBVMKcr8dSU0obzf2TvU9vwZADdr74-fVhBQI5d9klxSJi8IZMGfz1qp0HaVR1Sho-6n-UEviApml~w__",
-      tradition: "\"日食一苹果，医生远离我\"，酸甘生津、开胃醒脾",
-      molecules: ["维生素C", "多酚"],
-      modernScience:
-        "维生素C和多酚是强效抗氧化剂，直接清除自由基并上调SOD、GSH等抗氧化酶系统。酸甘之性缓解口干。",
-      color: "green",
-    },
-    {
-      name: "罗汉果",
-      role: "佐",
-      roleLabel: "协助兼治",
-      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/KXE9q1FBNJwpmkxUCzabVY-img-3_1771532368000_na1fn_aW5ncmVkaWVudC1sdW9oYW5ndW8.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L0tYRTlxMUZCTkp3cG1reFVDemFiVlktaW1nLTNfMTc3MTUzMjM2ODAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFzZFc5b1lXNW5kVzgucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=MY9QGjD9J7gknEzdBa7ycg9zcPmqvLL456CqpejO67EXbf8PfKlBG3nVRjXo4x6K0UEDoqmX6GomxkYz-X6SUIVu0TDIVOVD915NhD02XoDNc--djsZpKAp1ZrETMvqIfL6NVSi8KGP-FJL8b9xLC~QDJboMFpo~oKnWJWCV3F732UMepNaSY5AdVVzZI-qr-ANbuIjlf6nfXZnwV2qqFiRE7w-6npYZRNl~Y0QDPMKdmCgqB7roEG7JdLoSw-LtBxu7N8iHwJ5wkfvRYFuR6eC0v2GRcBYwFsfKm9zX5BFCzmIB~x68b0iMyWhrH1MvF1RLQoHlfZnlSpOdMkRmaQ__",
-      tradition: "\"神仙果\"，《岭南采药录》记载，\"理痰火咳嗽\"",
-      molecules: ["罗汉果甜苷", "三萜类"],
-      modernScience:
-        "罗汉果甜苷甜度为蔗糖300倍但零热量，三萜类成分润肺通便，有助于将代谢废物从肠道排出。",
-      color: "teal",
-    },
-  ],
-};
-
-/* ─── Section 6: 海外对标 ─── */
-export const OVERSEAS = {
-  title: "他们已经做到了",
-  subtitle:
-    "日本、韩国、欧洲的植物提取品牌早已完成C端品类教育，并创造了数十亿美元的市场",
-  brands: [
-    {
-      country: "日本",
-      flag: "🇯🇵",
-      brand: "津村 Tsumura",
-      founded: "1893年",
-      revenue: "12.2亿美元",
-      marketSize: "231亿美元（2025）",
-      marketGrowth: "预计2033年达486亿美元",
-      core: "128种汉方处方制剂",
-      highlight: "80%纳入日本国民医保",
-      story:
-        "津村用了130年，把中国传来的草药方剂做成了标准化提取物制剂。128种汉方处方中有80%被纳入日本国民医保体系。一家企业，撑起了一个品类。",
-      color: "rose",
-    },
-    {
-      country: "韩国",
-      flag: "🇰🇷",
-      brand: "正官庄 CheongKwanJang",
-      founded: "1899年",
-      revenue: "10.4亿美元",
-      marketSize: "7.5亿美元（红参市场）",
-      marketGrowth: "CAGR 5.1%",
-      core: "6年根红参提取物",
-      highlight: "全球人参市场份额41.9%，连续10年第一",
-      story:
-        "正官庄只做一件事：把高丽红参做到极致。6年根种植、标准化提取、全球化品牌。单一原料做到10亿美元级，连续10年全球人参市场第一。",
-      color: "red",
-    },
-    {
-      country: "欧洲",
-      flag: "🇩🇪",
-      brand: "Schwabe / Bionorica",
-      founded: "1866年",
-      revenue: "数十亿欧元（合计）",
-      marketSize: "653亿美元（2024）",
-      marketGrowth: "预计2033年达1105亿美元",
-      core: "银杏叶提取物 EGb 761",
-      highlight: "EMA植物药专论体系，临床试验驱动",
-      story:
-        "Schwabe的银杏叶提取物EGb 761是全球植物药的标杆产品。欧洲建立了完整的植物药专论体系（EMA），用临床试验数据说话，让植物提取物获得了和化学药同等的医学地位。",
-      color: "blue",
-    },
-  ],
-  insight:
-    "日本用汉方、韩国用红参、欧洲用植物药，都完成了从传统草药到现代消费品牌的跨越。中国拥有最丰富的药用植物资源和最强的提取产业链，这个赛道上的C端品牌机会，还在等待被填补。",
 };
 
 /* ─── 参考文献 ─── */
 export const REFERENCES = [
-  {
-    id: 1,
-    authors: "Nasim, N. et al.",
-    title:
-      "Plant-derived natural products for drug discovery: Current approaches and prospects",
-    journal: "Nucleus",
-    year: 2022,
-    note: "50%以上已批准药物直接或间接来源于天然产物",
-    url: "https://link.springer.com/article/10.1007/s13237-022-00405-3",
-  },
-  {
-    id: 2,
-    authors: "El-Saadony, M.T. et al.",
-    title:
-      "Plant bioactive compounds: extraction, biological activities, and applications",
-    journal: "Frontiers in Nutrition",
-    year: 2025,
-    note: "植物源生物活性化合物的系统综述",
-    url: "https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2025.1584985/full",
-  },
-  {
-    id: 3,
-    authors: "Cao, S. et al.",
-    title:
-      "Comparative analysis of extraction technologies for plant bioactive compounds",
-    journal: "PMC",
-    year: 2025,
-    note: "现代提取技术对比：超临界CO2、微波辅助、超声波辅助等",
-    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11835478/",
-  },
-  {
-    id: 4,
-    authors: "Li, S. et al.",
-    title: "Systems pharmacology analysis of synergy of TCM",
-    journal: "Nature Scientific Reports",
-    year: 2018,
-    note: "网络药理学证实中药复方多靶点多通路协同效应",
-    url: "https://www.nature.com/articles/s41598-018-34917-7",
-  },
-  {
-    id: 5,
-    authors: "Bitwell, C. et al.",
-    title:
-      "A review of modern and conventional extraction techniques and their impact on bioactivity",
-    journal: "ScienceDirect",
-    year: 2023,
-    note: "被引779次，提取技术对活性成分影响的权威综述",
-    url: "https://www.sciencedirect.com/science/article/pii/S2772753X23000126",
-  },
-  {
-    id: 6,
-    authors: "Sasidharan, S. et al.",
-    title:
-      "Extraction, isolation and characterization of bioactive compounds from plants",
-    journal: "African J. Traditional Medicine",
-    year: 2010,
-    note: "被引2705次，植物活性成分提取的经典文献",
-    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3218439/",
-  },
-  {
-    id: 7,
-    authors: "Cognitive Market Research",
-    title: "Plant Extract Market Report 2024-2034",
-    journal: "Industry Report",
-    year: 2024,
-    note: "全球植物提取物市场358亿美元，CAGR 10.5%",
-    url: "https://www.cognitivemarketresearch.com/report/global-plant-extract-market-report",
-  },
-  {
-    id: 8,
-    authors: "Grand View Research",
-    title: "China Dietary Supplements Market Size Report 2024-2030",
-    journal: "Industry Report",
-    year: 2024,
-    note: "中国膳食补充剂市场259亿美元，CAGR 10.4%",
-    url: "https://www.grandviewresearch.com/industry-analysis/china-dietary-supplements-market",
-  },
+  { id: 1, authors: "Nasim, N. et al.", title: "Plant-derived natural products for drug discovery", journal: "Nucleus", year: 2022, url: "https://link.springer.com/article/10.1007/s13237-022-00405-3" },
+  { id: 2, authors: "El-Saadony, M.T. et al.", title: "Plant bioactive compounds: extraction and applications", journal: "Frontiers in Nutrition", year: 2025, url: "https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2025.1584985/full" },
+  { id: 3, authors: "Cao, S. et al.", title: "Comparative analysis of extraction technologies", journal: "PMC", year: 2025, url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11835478/" },
+  { id: 4, authors: "Li, S. et al.", title: "Systems pharmacology analysis of synergy of TCM", journal: "Nature Scientific Reports", year: 2018, url: "https://www.nature.com/articles/s41598-018-34917-7" },
+  { id: 5, authors: "Bitwell, C. et al.", title: "Modern and conventional extraction techniques and bioactivity", journal: "ScienceDirect", year: 2023, url: "https://www.sciencedirect.com/science/article/pii/S2772753X23000126" },
+  { id: 6, authors: "Cognitive Market Research", title: "Plant Extract Market Report 2024-2034", journal: "Industry Report", year: 2024, url: "https://www.cognitivemarketresearch.com/report/global-plant-extract-market-report" },
+  { id: 7, authors: "Grand View Research", title: "China Dietary Supplements Market Size Report", journal: "Industry Report", year: 2024, url: "https://www.grandviewresearch.com/industry-analysis/china-dietary-supplements-market" },
 ];
