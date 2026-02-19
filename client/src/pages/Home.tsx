@@ -35,6 +35,7 @@ import {
   LABS,
   MARKET_GAP,
   FORMULA,
+  OVERSEAS,
   REFERENCES,
 } from "@/lib/data";
 
@@ -98,6 +99,7 @@ function Navigation() {
     { href: "#labs", label: "科研平台" },
     { href: "#market", label: "市场洞察" },
     { href: "#formula", label: "七味配方" },
+    { href: "#overseas", label: "海外对标" },
   ];
 
   return (
@@ -645,6 +647,16 @@ function FormulaSection() {
                 <CardContent className="p-4 sm:p-5">
                   {/* Header row */}
                   <div className="flex items-center gap-3">
+                    {/* Ingredient image */}
+                    {ing.image && (
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden shrink-0 border border-border/30">
+                        <img
+                          src={ing.image}
+                          alt={ing.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
                     <span
                       className={`text-xs px-2 py-0.5 rounded border font-medium ${
                         ROLE_COLORS[ing.role] || ROLE_COLORS["佐"]
@@ -696,6 +708,16 @@ function FormulaSection() {
                       transition={{ duration: 0.2 }}
                       className="mt-4 pt-4 border-t border-border/30 space-y-3"
                     >
+                      {/* Large image in expanded view */}
+                      {ing.image && (
+                        <div className="w-full h-40 sm:h-52 rounded-lg overflow-hidden">
+                          <img
+                            src={ing.image}
+                            alt={ing.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
                       <div>
                         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">
                           传统记载
@@ -720,6 +742,126 @@ function FormulaSection() {
           );
         })}
       </div>
+    </section>
+  );
+}
+
+/* ─── Overseas Benchmark Section ─── */
+const BRAND_COLORS: Record<string, { bg: string; text: string; border: string; accent: string }> = {
+  rose: {
+    bg: "bg-rose-500/10",
+    text: "text-rose-400",
+    border: "border-rose-500/30",
+    accent: "text-rose-300",
+  },
+  red: {
+    bg: "bg-red-500/10",
+    text: "text-red-400",
+    border: "border-red-500/30",
+    accent: "text-red-300",
+  },
+  blue: {
+    bg: "bg-blue-500/10",
+    text: "text-blue-400",
+    border: "border-blue-500/30",
+    accent: "text-blue-300",
+  },
+};
+
+function OverseasSection() {
+  return (
+    <section id="overseas" className="container py-12 sm:py-24">
+      <motion.div {...fadeInUp()} className="mb-10">
+        <div className="flex items-center gap-3 mb-2">
+          <Globe className="w-5 h-5 text-emerald-400" />
+          <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
+            {OVERSEAS.title}
+          </h2>
+        </div>
+        <p className="text-sm text-muted-foreground max-w-3xl">
+          {OVERSEAS.subtitle}
+        </p>
+      </motion.div>
+
+      <div className="grid sm:grid-cols-3 gap-5">
+        {OVERSEAS.brands.map((brand, i) => {
+          const colors = BRAND_COLORS[brand.color] || BRAND_COLORS.blue;
+          return (
+            <motion.div key={i} {...fadeInUp(i * 0.1)}>
+              <Card
+                className={`h-full border-border/50 hover:${colors.border} transition-colors`}
+              >
+                <CardContent className="p-5 sm:p-6 space-y-4">
+                  {/* Header */}
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{brand.flag}</span>
+                    <div>
+                      <h3 className="font-bold font-[var(--font-heading)] text-base">
+                        {brand.brand}
+                      </h3>
+                      <p className="text-xs text-muted-foreground">
+                        {brand.country} · 创立于{brand.founded}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Key metrics */}
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-muted-foreground">年营收</span>
+                      <span className={`text-sm font-bold font-[var(--font-heading)] ${colors.text}`}>
+                        {brand.revenue}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-muted-foreground">所在市场规模</span>
+                      <span className="text-sm font-medium">
+                        {brand.marketSize}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-muted-foreground">增长趋势</span>
+                      <span className="text-xs text-emerald-400">
+                        {brand.marketGrowth}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Core & Highlight */}
+                  <div className="pt-3 border-t border-border/20 space-y-2">
+                    <div>
+                      <span className="text-xs text-muted-foreground">核心产品：</span>
+                      <span className="text-xs font-medium">{brand.core}</span>
+                    </div>
+                    <Badge
+                      variant="outline"
+                      className={`text-xs ${colors.border} ${colors.accent}`}
+                    >
+                      {brand.highlight}
+                    </Badge>
+                  </div>
+
+                  {/* Story */}
+                  <p className="text-sm text-muted-foreground leading-relaxed pt-2">
+                    {brand.story}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Insight */}
+      <motion.div {...fadeInUp(0.3)} className="mt-8">
+        <Card className="bg-emerald-500/5 border-emerald-500/20">
+          <CardContent className="p-5 sm:p-6">
+            <p className="text-sm text-foreground/90 leading-relaxed">
+              {OVERSEAS.insight}
+            </p>
+          </CardContent>
+        </Card>
+      </motion.div>
     </section>
   );
 }
@@ -752,9 +894,20 @@ function ReferencesSection() {
                   <span className="text-muted-foreground">
                     {ref.authors}{" "}
                   </span>
-                  <span className="text-foreground font-medium">
-                    {ref.title}
-                  </span>
+                  {ref.url ? (
+                    <a
+                      href={ref.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground font-medium hover:text-emerald-400 underline underline-offset-2 decoration-border/50 hover:decoration-emerald-400/50 transition-colors"
+                    >
+                      {ref.title}
+                    </a>
+                  ) : (
+                    <span className="text-foreground font-medium">
+                      {ref.title}
+                    </span>
+                  )}
                   <span className="text-muted-foreground">
                     . {ref.journal}, {ref.year}.
                   </span>
@@ -836,6 +989,7 @@ export default function Home() {
         <LabsSection />
         <MarketGapSection />
         <FormulaSection />
+        <OverseasSection />
         <ReferencesSection />
       </main>
       <Footer />

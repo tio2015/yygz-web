@@ -1,7 +1,7 @@
 /* ─── 植物提取科普知识库 · 数据层 ─── */
 
 export const HERO_IMAGE =
-  "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/2sXNZCTjnf6Fn4sQ84bSjN-img-1_1771440572000_na1fn_aGVyby1iZw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94LzJzWE5aQ1RqbmY2Rm40c1E4NGJTak4taW1nLTFfMTc3MTQ0MDU3MjAwMF9uYTFmbl9hR1Z5YnkxaVp3LnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=wFG-F13dR~Pq4zFyLugJsyuJ~HEXRnrOD23qQF7XEwHF-IyJUw0F2W3ZutaFz4YEOKnYJZXZYEtCQfh8YTzWO6VF8KgfCNe1irswZaV~NJ38npHudoxITUIV2EEtKzpI8b0MwLpE517v8u0cH6UXQcVelWqSN2jFti-hC309ooNnCKCZW6gMkf1FGFvImVEa4ezyOI3gAN-JO6cM0xwUKiwE~~kNa96CKYiMT18NEJQUM~0FDDrmKZQ2laMNOLMHBDx-ihNWH9SUQPnInfcZWN1c8sh5MY17nb4FzjqPHoC4TwIokbV3~DlB1Q1tNu3vz19PzoXP2-Pk-n3KJXoYVg__";
+  "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-1_1771532273000_na1fn_aGVyby1ib3RhbmljYWw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTFfMTc3MTUzMjI3MzAwMF9uYTFmbl9hR1Z5YnkxaWIzUmhibWxqWVd3LnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=ilNzKoasIjQhFm4G5EIZDQhcLnf6AI25nyb0UMmm-Q52eZlQQYvXrpTTllvznn9Lko1Atgx6ng5JhCxV8STWwrHTchpTzjI6E0I5VwMiOE85aWvaNbXMLODU0kFnDeUnsijAcKBNnJ858nXNJeoSQLO75e2~e7rYrF5~epDrEqSzjt91d3qwtR-sI0Qpoij2Y22QM9uhwjv8cumze7nUhIi~a7qWr98UZ9IOjsuEiYX88HemSn0Kfvdakm1v7KeI5KBKTXDm0gN7bWkZdQ4u127ynP6Ud2V1pJjBaa9VxNgSGE34CRMTLj5~ZnyRE2tftoL6wji9UIHDixGoGzw2Wg__";
 
 /* ─── Section 1: 什么是植物提取 ─── */
 export const WHAT_IS = {
@@ -231,6 +231,7 @@ export const FORMULA = {
       name: "葛根",
       role: "君",
       roleLabel: "核心主力",
+      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-2_1771532290000_na1fn_aW5ncmVkaWVudC1nZWdlbg.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTJfMTc3MTUzMjI5MDAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFuWldkbGJnLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=R2STWKEYwma1C3woYD~4j2CTVicSOQ-fCyjzfd6xtFXYrRU~AIu5WZmlauXLF~nKW7y4FNg5JMdZ1GbbHMkGioeIXdYmoWjLQxWVSZZgHEBobQrS0jePq5J8zT2FknNtBP15K9x-~4j0WSu2LP6YIwWLapisjSKulNt5SJDzXX6epefGPnAPe85VJ6JTyMwcwwG0-fL16-1nz98IpCWG6rdB4dYQ6gdd3GlrDUr6FKMr89Tf3--l5OjRzQVpC-xSm5H6rfxpV9dYLkA7PC9mRFY4gbwy~Q1OW8CO57wD1qWKZFCPsGEUZ6ZbArLx89tRLo0jpVJSyFa5MLamgso3QQ__",
       tradition: "《神农本草经》列为中品，\"主消渴，身大热，呕吐\"",
       molecules: ["葛根素", "大豆苷元", "黄酮类"],
       modernScience:
@@ -241,6 +242,7 @@ export const FORMULA = {
       name: "人参",
       role: "君",
       roleLabel: "核心主力",
+      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-3_1771532281000_na1fn_aW5ncmVkaWVudC1yZW5zaGVu.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTNfMTc3MTUzMjI4MTAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzF5Wlc1emFHVnUucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=sihHxQRS~1DulevSHNPBrqxeOZZ9DYeH-nxeV4XgzsF09gQl6JpKb-h3g5TN-qwqi6Eg6MHOR1~2-EHrxKLeyf2VzrZJ9Vue7et7b3Zyh8S1Q1Rhas3rv5BLllr0DIEdXjRRa9W0DVe8YCm0Yjd1exXSoTPtfq6ly~qC0AFh30-RxGoS4N2UeE~F~dKifUXropRyqNlZOG31~k1fujo~QfTrMreJHaAl8buspvWcFjDtgCkn9dz2uXrdUYTTe3~v6Ekc-ajS7Dr5X-gO92iisggGauxFRH3mxtwcHpin6TENeCxZKCIY-6vwOiZy3SbpliRss1yHvyGL81YdhZRBwA__",
       tradition: "\"百草之王\"，《神农本草经》列为上品，\"主补五脏，安精神\"",
       molecules: ["人参皂苷", "皂苷Rb1", "三萜类"],
       modernScience:
@@ -251,6 +253,7 @@ export const FORMULA = {
       name: "高良姜",
       role: "臣",
       roleLabel: "辅助增强",
+      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-4_1771532266000_na1fn_aW5ncmVkaWVudC1nYW9saWFuZ2ppYW5n.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTRfMTc3MTUzMjI2NjAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFuWVc5c2FXRnVaMnBwWVc1bi5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=POpUfYe81~~lzmozpJi5inN74IU38Sv9q-lc9~pl2lFnA6Pxy6zTYjfTuau-wrbSznBq7A7EhoXalj0LNbW0OC2CsVVhha9c3gPgxnhqXxizz5psVcx8Jhh3JQDfJyYxiU6So-0iXZ-xEXt-R-P4sX7wIi4o9HOZwx6feYv0Xfh8fCWco3qkwHqco2o7FEKkuCLfR~S6d4xxy5pj3jCtBswQupWqD8jhuwZbOBVSMP9j8Jd5KKpSNAtvPDFlbEqeQWmrdXXDq~2NErDKRC3FpfdPoC8vLbjIL7fBkeHtiqL7hs6e29~X1hOHl~Ur5J6ygFSQm0OPAzMk~qFFrP8WFg__",
       tradition: "《名医别录》记载，\"温胃散寒，消食止痛\"",
       molecules: ["姜黄素", "高良姜素"],
       modernScience:
@@ -261,6 +264,7 @@ export const FORMULA = {
       name: "灵芝",
       role: "臣",
       roleLabel: "辅助增强",
+      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/jbY0GChLpYRA8ZCKlrBBvJ-img-5_1771532267000_na1fn_aW5ncmVkaWVudC1saW5nemhp.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L2piWTBHQ2hMcFlSQThaQ0tsckJCdkotaW1nLTVfMTc3MTUzMjI2NzAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFzYVc1bmVtaHAucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=WTAq-Ql5y3DYn28jm~ISsSDp-FTDc0BhURvewEkXUhz2JVbBTDSEKxzRW47xAvObpoS5WV9QtyL6BKkIumik5WHUkgJmkyBHtAp0tpeC9UYyncvsOouY1HQj6Lz2SOK1nnD7G00xwtr3VypFPzr1D9xviBhB35pwtg6zR4xTwl9h2uwsloh~mNBbdOZYnVTBIotobBPrjrPOGzl4eWprJtaUjovg0e8QskGYE3~NXqT3bp4z~u6C6v~LOQlHuvZyDXONbt3RULXAtHg7Kg9ehawvGWG~tWCFVVc~nYYjxNe9xKwoz-DAFMPxglm2q9hV54G8RypJe7VKdheDtlnQBQ__",
       tradition: "\"仙草\"，《神农本草经》列为上品，\"补气安神，止咳平喘\"",
       molecules: ["灵芝三萜", "灵芝多糖"],
       modernScience:
@@ -271,6 +275,7 @@ export const FORMULA = {
       name: "年份茯砖茶",
       role: "臣",
       roleLabel: "辅助增强",
+      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/KXE9q1FBNJwpmkxUCzabVY-img-1_1771532370000_na1fn_aW5ncmVkaWVudC1mdXpodWFu.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L0tYRTlxMUZCTkp3cG1reFVDemFiVlktaW1nLTFfMTc3MTUzMjM3MDAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFtZFhwb2RXRnUucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=T-ZUwkpzZ6p5WdOtkp3VaGQKg45f9BkGMxDqDvewEZ00xCa6a5NYxp8mXPzREu4InkVQ3dPfsTYRanG1QKfkB64t~WCnz~duynRO~p95mJ5tOMCZl3uohaBOlVcbbUgS0FOpQ86G6MJrAGZ~qHtUENiHnnFBX3vClqnSDtMuUd2iOGEOAq87VHKmmpN-7G5pnpKhGwFq9kUAZwvaQq2G2dXkd79udtXUQC~buqJcJYgIwJFx4DGXuRaCa~6YhN6st8d58r9hFB5KgTSA7~11UZ0x8pYnB1s0j2WnLzr96Ch1H5qcR2plvpRk5WdpuYhxu0EN0SDndCNJDZfKFpr8sQ__",
       tradition: "\"黑茶之祖\"，边疆民族\"宁可三日无粮，不可一日无茶\"",
       molecules: ["茶多酚", "茶多糖", "他汀类"],
       modernScience:
@@ -281,6 +286,7 @@ export const FORMULA = {
       name: "青苹果",
       role: "佐",
       roleLabel: "协助兼治",
+      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/KXE9q1FBNJwpmkxUCzabVY-img-2_1771532361000_na1fn_aW5ncmVkaWVudC1hcHBsZQ.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L0tYRTlxMUZCTkp3cG1reFVDemFiVlktaW1nLTJfMTc3MTUzMjM2MTAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFoY0hCc1pRLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=kuBvyaXCbVwi1yf4nrjBYfYrDje9WMO6cOpW1LVyIUhGqNYRoGOlMryeyFwbShZ1r-QPK4Hs09mImzaS6BiiHu6AQRju0OZ6ja~MlJUritgE3be7xqPqtGcQHh4IlWV8BYGSm36DIrikCHgBud~GRxIWs6uXccONmh-pzGNVBe9oZJnaLrErOfhKWUWJax0XXk2bbxOoeLSsUceV1636s1SI6-5RHeLGkW6CkMhozsROLULOyY5RRSmujrAIfkfORtfMWWBeBVMKcr8dSU0obzf2TvU9vwZADdr74-fVhBQI5d9klxSJi8IZMGfz1qp0HaVR1Sho-6n-UEviApml~w__",
       tradition: "\"日食一苹果，医生远离我\"，酸甘生津、开胃醒脾",
       molecules: ["维生素C", "多酚"],
       modernScience:
@@ -291,6 +297,7 @@ export const FORMULA = {
       name: "罗汉果",
       role: "佐",
       roleLabel: "协助兼治",
+      image: "https://private-us-east-1.manuscdn.com/sessionFile/YkFRAwpqtEPCRLrGXX29J5/sandbox/KXE9q1FBNJwpmkxUCzabVY-img-3_1771532368000_na1fn_aW5ncmVkaWVudC1sdW9oYW5ndW8.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvWWtGUkF3cHF0RVBDUkxyR1hYMjlKNS9zYW5kYm94L0tYRTlxMUZCTkp3cG1reFVDemFiVlktaW1nLTNfMTc3MTUzMjM2ODAwMF9uYTFmbl9hVzVuY21Wa2FXVnVkQzFzZFc5b1lXNW5kVzgucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=MY9QGjD9J7gknEzdBa7ycg9zcPmqvLL456CqpejO67EXbf8PfKlBG3nVRjXo4x6K0UEDoqmX6GomxkYz-X6SUIVu0TDIVOVD915NhD02XoDNc--djsZpKAp1ZrETMvqIfL6NVSi8KGP-FJL8b9xLC~QDJboMFpo~oKnWJWCV3F732UMepNaSY5AdVVzZI-qr-ANbuIjlf6nfXZnwV2qqFiRE7w-6npYZRNl~Y0QDPMKdmCgqB7roEG7JdLoSw-LtBxu7N8iHwJ5wkfvRYFuR6eC0v2GRcBYwFsfKm9zX5BFCzmIB~x68b0iMyWhrH1MvF1RLQoHlfZnlSpOdMkRmaQ__",
       tradition: "\"神仙果\"，《岭南采药录》记载，\"理痰火咳嗽\"",
       molecules: ["罗汉果甜苷", "三萜类"],
       modernScience:
@@ -298,6 +305,59 @@ export const FORMULA = {
       color: "teal",
     },
   ],
+};
+
+/* ─── Section 6: 海外对标 ─── */
+export const OVERSEAS = {
+  title: "他们已经做到了",
+  subtitle:
+    "日本、韩国、欧洲的植物提取品牌早已完成C端品类教育，并创造了数十亿美元的市场",
+  brands: [
+    {
+      country: "日本",
+      flag: "🇯🇵",
+      brand: "津村 Tsumura",
+      founded: "1893年",
+      revenue: "12.2亿美元",
+      marketSize: "231亿美元（2025）",
+      marketGrowth: "预计2033年达486亿美元",
+      core: "128种汉方处方制剂",
+      highlight: "80%纳入日本国民医保",
+      story:
+        "津村用了130年，把中国传来的草药方剂做成了标准化提取物制剂。128种汉方处方中有80%被纳入日本国民医保体系。一家企业，撑起了一个品类。",
+      color: "rose",
+    },
+    {
+      country: "韩国",
+      flag: "🇰🇷",
+      brand: "正官庄 CheongKwanJang",
+      founded: "1899年",
+      revenue: "10.4亿美元",
+      marketSize: "7.5亿美元（红参市场）",
+      marketGrowth: "CAGR 5.1%",
+      core: "6年根红参提取物",
+      highlight: "全球人参市场份额41.9%，连续10年第一",
+      story:
+        "正官庄只做一件事：把高丽红参做到极致。6年根种植、标准化提取、全球化品牌。单一原料做到10亿美元级，连续10年全球人参市场第一。",
+      color: "red",
+    },
+    {
+      country: "欧洲",
+      flag: "🇩🇪",
+      brand: "Schwabe / Bionorica",
+      founded: "1866年",
+      revenue: "数十亿欧元（合计）",
+      marketSize: "653亿美元（2024）",
+      marketGrowth: "预计2033年达1105亿美元",
+      core: "银杏叶提取物 EGb 761",
+      highlight: "EMA植物药专论体系，临床试验驱动",
+      story:
+        "Schwabe的银杏叶提取物EGb 761是全球植物药的标杆产品。欧洲建立了完整的植物药专论体系（EMA），用临床试验数据说话，让植物提取物获得了和化学药同等的医学地位。",
+      color: "blue",
+    },
+  ],
+  insight:
+    "日本用汉方、韩国用红参、欧洲用植物药，都完成了从传统草药到现代消费品牌的跨越。中国拥有最丰富的药用植物资源和最强的提取产业链，这个赛道上的C端品牌机会，还在等待被填补。",
 };
 
 /* ─── 参考文献 ─── */
@@ -310,6 +370,7 @@ export const REFERENCES = [
     journal: "Nucleus",
     year: 2022,
     note: "50%以上已批准药物直接或间接来源于天然产物",
+    url: "https://link.springer.com/article/10.1007/s13237-022-00405-3",
   },
   {
     id: 2,
@@ -319,6 +380,7 @@ export const REFERENCES = [
     journal: "Frontiers in Nutrition",
     year: 2025,
     note: "植物源生物活性化合物的系统综述",
+    url: "https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2025.1584985/full",
   },
   {
     id: 3,
@@ -328,6 +390,7 @@ export const REFERENCES = [
     journal: "PMC",
     year: 2025,
     note: "现代提取技术对比：超临界CO2、微波辅助、超声波辅助等",
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11835478/",
   },
   {
     id: 4,
@@ -336,6 +399,7 @@ export const REFERENCES = [
     journal: "Nature Scientific Reports",
     year: 2018,
     note: "网络药理学证实中药复方多靶点多通路协同效应",
+    url: "https://www.nature.com/articles/s41598-018-34917-7",
   },
   {
     id: 5,
@@ -345,6 +409,7 @@ export const REFERENCES = [
     journal: "ScienceDirect",
     year: 2023,
     note: "被引779次，提取技术对活性成分影响的权威综述",
+    url: "https://www.sciencedirect.com/science/article/pii/S2772753X23000126",
   },
   {
     id: 6,
@@ -354,6 +419,7 @@ export const REFERENCES = [
     journal: "African J. Traditional Medicine",
     year: 2010,
     note: "被引2705次，植物活性成分提取的经典文献",
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3218439/",
   },
   {
     id: 7,
@@ -362,6 +428,7 @@ export const REFERENCES = [
     journal: "Industry Report",
     year: 2024,
     note: "全球植物提取物市场358亿美元，CAGR 10.5%",
+    url: "https://www.cognitivemarketresearch.com/report/global-plant-extract-market-report",
   },
   {
     id: 8,
@@ -370,5 +437,6 @@ export const REFERENCES = [
     journal: "Industry Report",
     year: 2024,
     note: "中国膳食补充剂市场259亿美元，CAGR 10.4%",
+    url: "https://www.grandviewresearch.com/industry-analysis/china-dietary-supplements-market",
   },
 ];
