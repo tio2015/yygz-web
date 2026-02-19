@@ -49,8 +49,8 @@
   --color-emerald-dim: oklch(0.76 0.18 155 / 15%);
   --color-coral: oklch(0.72 0.19 25);
   --color-coral-dim: oklch(0.72 0.19 25 / 15%);
-  --font-heading: 'Space Grotesk', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-heading: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  --font-body: 'Noto Sans SC', 'Space Grotesk', sans-serif;
 }
 
 :root {
