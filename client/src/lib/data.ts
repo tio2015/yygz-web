@@ -512,30 +512,6 @@ export const LABS_PAGE = {
       talent: "",
       url: "",
     },
-    {
-      name: "湖南大健康研究院",
-      level: "省部级",
-      levelColor: "teal",
-      host: "湖南师范大学",
-      established: "落户浏阳经开区金阳科创城",
-      director: "",
-      directorAchievements: [],
-      position: "融合高校科研与企业产业需求的新型研究机构",
-      description:
-        "充分融合高校科研与企业产业需求，重点打造天然产物、智能康复、前沿生物技术和分子诊断四大科研高地及成果转化中心。跨学科整合生物学、化学、医学资源，为植物提取产品的功能验证提供科学依据，推动大健康产业升级。",
-      achievements: {
-        projects: "",
-        patents: "",
-        awards: "",
-        papers: "",
-        standards: "",
-        innovations: "",
-        products: "",
-      },
-      impact: "",
-      talent: "",
-      url: "",
-    },
   ],
 };
 
