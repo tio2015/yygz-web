@@ -78,7 +78,7 @@ function HeroSection() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
       </div>
-      <div className="relative container pt-20 pb-28 sm:pt-28 sm:pb-36">
+      <div className="relative container pt-18 pb-16 sm:pt-28 sm:pb-36">
         <motion.div {...fadeInUp()} className="max-w-3xl">
           <div className="flex items-center gap-2 mb-5">
             <div className="h-px flex-1 max-w-[40px] bg-emerald" />
@@ -111,9 +111,9 @@ function HeroSection() {
               key={i}
               className="bg-card/60 backdrop-blur-sm border-border/50"
             >
-              <CardContent className="p-4">
-                <stat.icon className="w-4 h-4 text-muted-foreground mb-2" />
-                <div className="text-2xl sm:text-3xl font-bold font-[var(--font-heading)] text-foreground">
+              <CardContent className="p-3 sm:p-4">
+                <stat.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground mb-1.5 sm:mb-2" />
+                <div className="text-xl sm:text-3xl font-bold font-[var(--font-heading)] text-foreground">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </div>
                 <div className="text-xs text-muted-foreground mt-1">
@@ -131,7 +131,7 @@ function HeroSection() {
 /* ─── Core Mechanism Section ─── */
 function MechanismSection() {
   return (
-    <section className="container py-16 sm:py-24">
+    <section className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()}>
         <div className="flex items-center gap-3 mb-2">
           <Beaker className="w-5 h-5 text-emerald" />
@@ -144,7 +144,7 @@ function MechanismSection() {
         </p>
       </motion.div>
 
-      <div className="grid lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         <div className="space-y-4">
           {CORE_MECHANISM.points.map((point, i) => (
             <motion.div key={i} {...fadeInUp(i * 0.1)}>
@@ -193,7 +193,7 @@ function MechanismSection() {
 /* ─── Route Overview Cards ─── */
 function RouteOverviewSection() {
   return (
-    <section className="container py-16 sm:py-24">
+    <section className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-10">
         <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)] mb-2">
           三大技术路线总览
@@ -203,7 +203,7 @@ function RouteOverviewSection() {
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
         {TECH_ROUTES.map((route, i) => (
           <motion.div key={route.id} {...fadeInUp(i * 0.12)}>
             <Card
@@ -272,9 +272,19 @@ function RouteOverviewSection() {
 }
 
 /* ─── Comparison Matrix ─── */
+const COMPARISON_ROWS = [
+  { label: "投资时间线", getValue: (r: TechRoute) => r.timelineCn },
+  { label: "核心优势", getValue: (r: TechRoute) => r.coreAdvantage },
+  { label: "主要挑战", getValue: (r: TechRoute) => r.mainChallenge },
+  { label: "代表性期刊", getValue: (r: TechRoute) => r.keyStudies.map((s) => s.journal).join(", ") },
+  { label: "技术成熟度", getValue: (r: TechRoute) => `${r.maturity}%` },
+  { label: "投资价值", getValue: (r: TechRoute) => `${r.investability}%` },
+  { label: "市场就绪度", getValue: (r: TechRoute) => `${r.marketReadiness}%` },
+];
+
 function ComparisonSection() {
   return (
-    <section className="container py-16 sm:py-24">
+    <section className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-8">
         <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)] mb-2">
           对比矩阵
@@ -284,7 +294,8 @@ function ComparisonSection() {
         </p>
       </motion.div>
 
-      <motion.div {...fadeInUp(0.1)} className="overflow-x-auto">
+      {/* Desktop: table view */}
+      <motion.div {...fadeInUp(0.1)} className="hidden md:block overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-border/50">
@@ -306,38 +317,7 @@ function ComparisonSection() {
             </tr>
           </thead>
           <tbody>
-            {[
-              {
-                label: "投资时间线",
-                values: TECH_ROUTES.map((r) => r.timelineCn),
-              },
-              {
-                label: "核心优势",
-                values: TECH_ROUTES.map((r) => r.coreAdvantage),
-              },
-              {
-                label: "主要挑战",
-                values: TECH_ROUTES.map((r) => r.mainChallenge),
-              },
-              {
-                label: "代表性期刊",
-                values: TECH_ROUTES.map((r) =>
-                  r.keyStudies.map((s) => s.journal).join(", ")
-                ),
-              },
-              {
-                label: "技术成熟度",
-                values: TECH_ROUTES.map((r) => `${r.maturity}%`),
-              },
-              {
-                label: "投资价值",
-                values: TECH_ROUTES.map((r) => `${r.investability}%`),
-              },
-              {
-                label: "市场就绪度",
-                values: TECH_ROUTES.map((r) => `${r.marketReadiness}%`),
-              },
-            ].map((row, i) => (
+            {COMPARISON_ROWS.map((row, i) => (
               <tr
                 key={i}
                 className="border-b border-border/30 hover:bg-secondary/30 transition-colors"
@@ -345,9 +325,9 @@ function ComparisonSection() {
                 <td className="py-3 px-4 text-muted-foreground font-medium font-[var(--font-heading)] text-xs">
                   {row.label}
                 </td>
-                {row.values.map((val, j) => (
+                {TECH_ROUTES.map((route, j) => (
                   <td key={j} className="py-3 px-4 text-foreground/90">
-                    {val}
+                    {row.getValue(route)}
                   </td>
                 ))}
               </tr>
@@ -355,6 +335,36 @@ function ComparisonSection() {
           </tbody>
         </table>
       </motion.div>
+
+      {/* Mobile: card view */}
+      <div className="md:hidden space-y-4">
+        {TECH_ROUTES.map((route, i) => (
+          <motion.div key={route.id} {...fadeInUp(i * 0.1)}>
+            <Card className="bg-card/60 border-border/50" style={{ borderTopColor: routeColorMap[route.id], borderTopWidth: 3 }}>
+              <CardContent className="p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <span style={{ color: routeColorMap[route.id] }}>{routeIcons[route.id]}</span>
+                  <h3 className="text-base font-bold font-[var(--font-heading)]" style={{ color: routeColorMap[route.id] }}>
+                    {route.nameCn}
+                  </h3>
+                </div>
+                <div className="space-y-2">
+                  {COMPARISON_ROWS.map((row, j) => (
+                    <div key={j} className="flex flex-col gap-0.5">
+                      <span className="text-[10px] text-muted-foreground font-[var(--font-heading)] uppercase tracking-wider">
+                        {row.label}
+                      </span>
+                      <span className="text-sm text-foreground/90 leading-relaxed">
+                        {row.getValue(route)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 }
@@ -404,9 +414,9 @@ function StudyCard({ study, color }: { study: Study; color: string }) {
 function RouteDetailPanel({ route }: { route: TechRoute }) {
   const color = routeColorMap[route.id];
   return (
-    <div className="grid lg:grid-cols-5 gap-6">
+    <div className="grid lg:grid-cols-5 gap-5">
       {/* Left: Image + Details */}
-      <div className="lg:col-span-2 space-y-5">
+      <div className="lg:col-span-2 space-y-4">
         <div className="rounded-lg overflow-hidden aspect-video">
           <img
             src={route.image}
@@ -455,7 +465,7 @@ function RouteDetailPanel({ route }: { route: TechRoute }) {
       </div>
 
       {/* Right: Studies */}
-      <div className="lg:col-span-3 space-y-4">
+      <div className="lg:col-span-3 space-y-3">
         <h4
           className="text-sm font-bold font-[var(--font-heading)]"
           style={{ color }}
@@ -494,7 +504,7 @@ function RouteDetailPanel({ route }: { route: TechRoute }) {
 
 function DetailedRoutesSection() {
   return (
-    <section className="container py-16 sm:py-24">
+    <section className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-8">
         <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)] mb-2">
           技术路线详情
@@ -506,12 +516,12 @@ function DetailedRoutesSection() {
 
       <motion.div {...fadeInUp(0.1)}>
         <Tabs defaultValue="small-molecule" className="w-full">
-          <TabsList className="bg-secondary/50 border border-border/50 mb-6 h-auto flex-wrap">
+          <TabsList className="bg-secondary/50 border border-border/50 mb-6 h-auto flex-wrap w-full">
             {TECH_ROUTES.map((route) => (
               <TabsTrigger
                 key={route.id}
                 value={route.id}
-                className="data-[state=active]:bg-card gap-2 text-sm"
+                className="data-[state=active]:bg-card gap-1.5 text-xs sm:text-sm flex-1 sm:flex-none"
                 style={
                   {
                     "--tw-ring-color": routeColorMap[route.id],
@@ -549,7 +559,7 @@ function DetailedRoutesSection() {
 /* ─── NAD+ Precursors Section ─── */
 function PrecursorsSection() {
   return (
-    <section className="container py-16 sm:py-24">
+    <section className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-8">
         <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)] mb-2">
           NAD+ 前体对比
@@ -559,7 +569,7 @@ function PrecursorsSection() {
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
         {NAD_PRECURSORS.map((p, i) => (
           <motion.div key={i} {...fadeInUp(i * 0.1)}>
             <Card
@@ -624,7 +634,7 @@ function PrecursorsSection() {
 /* ─── Investment Takeaways ─── */
 function InvestmentSection() {
   return (
-    <section className="container py-16 sm:py-24">
+    <section className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-8">
         <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)] mb-2">
           投资决策建议
@@ -634,10 +644,10 @@ function InvestmentSection() {
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         <motion.div {...fadeInUp(0.1)}>
           <Card className="bg-emerald-dim border-emerald/20 h-full">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Target className="w-5 h-5 text-emerald" />
                 <h3 className="text-base font-bold font-[var(--font-heading)] text-emerald">
@@ -666,7 +676,7 @@ function InvestmentSection() {
 
         <motion.div {...fadeInUp(0.2)}>
           <Card className="bg-amber-dim border-amber/20 h-full">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center gap-2 mb-4">
                 <TrendingUp className="w-5 h-5 text-amber" />
                 <h3 className="text-base font-bold font-[var(--font-heading)] text-amber">
@@ -702,7 +712,7 @@ function ReferencesSection() {
   const shown = expanded ? REFERENCES : REFERENCES.slice(0, 5);
 
   return (
-    <section className="container py-16 sm:py-24">
+    <section className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-6">
         <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)] mb-2">
           参考文献
@@ -774,7 +784,7 @@ function YangshengSection() {
   const currentMech = product.mechanisms.find((m) => m.id === activeMech) || product.mechanisms[0];
 
   return (
-    <section className="container py-16 sm:py-24">
+    <section className="container py-12 sm:py-24">
       {/* Header */}
       <motion.div {...fadeInUp()} className="mb-10">
         <div className="flex items-center gap-3 mb-2">
@@ -815,7 +825,7 @@ function YangshengSection() {
           <Beaker className="w-4 h-4 text-muted-foreground" />
           配方组成 — 君臣佐使
         </h3>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
           {product.ingredients.map((ing, i) => {
             const roleStyle = roleColorMap[ing.role] || roleColorMap.zuo;
             return (
@@ -861,12 +871,12 @@ function YangshengSection() {
           四大功效模块 — 多靶点协同机制
         </h3>
 
-        <div className="flex gap-3 mb-6 flex-wrap">
+        <div className="flex gap-2 sm:gap-3 mb-5 sm:mb-6 flex-wrap">
           {product.mechanisms.map((mech) => (
             <button
               key={mech.id}
               onClick={() => setActiveMech(mech.id)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium font-[var(--font-heading)] transition-all duration-200 border ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium font-[var(--font-heading)] transition-all duration-200 border ${
                 activeMech === mech.id
                   ? "border-opacity-60 bg-opacity-15"
                   : "border-border/30 bg-secondary/30 text-muted-foreground hover:text-foreground"
@@ -895,7 +905,7 @@ function YangshengSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             {currentMech.pathways.map((pw, i) => (
               <Card
                 key={i}
@@ -925,7 +935,7 @@ function YangshengSection() {
           <Link2 className="w-4 h-4 text-muted-foreground" />
           协同作用总结
         </h3>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           {product.synergySummary.map((s, i) => {
             const mech = product.mechanisms.find((m) => m.title === s.module);
             return (
@@ -977,11 +987,11 @@ function Footer() {
   return (
     <footer className="border-t border-border/30 py-8">
       <div className="container">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+        <div className="flex flex-col items-center gap-2 text-xs text-muted-foreground text-center">
           <div>
             NAD+ 辅酶再生与酒精代谢知识库 — 二一 — 2026年2月
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
             <span>基于 13 篇核心文献构建</span>
             <span>数据截至 2026.02</span>
           </div>
@@ -992,8 +1002,17 @@ function Footer() {
 }
 
 /* ─── Navigation ─── */
+const NAV_LINKS = [
+  { href: "#mechanism", label: "核心机制" },
+  { href: "#routes", label: "技术路线" },
+  { href: "#comparison", label: "对比矩阵" },
+  { href: "#investment", label: "投资建议" },
+  { href: "#yangsheng", label: "养生将军" },
+];
+
 function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -1001,11 +1020,18 @@ function Navigation() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const handler = () => { if (window.innerWidth >= 640) setMobileOpen(false); };
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border/30"
+        scrolled || mobileOpen
+          ? "bg-background/90 backdrop-blur-lg border-b border-border/30"
           : "bg-transparent"
       }`}
     >
@@ -1016,39 +1042,49 @@ function Navigation() {
             NAD<sup>+</sup> 知识库
           </span>
         </div>
+
+        {/* Desktop nav */}
         <div className="hidden sm:flex items-center gap-5 text-xs text-muted-foreground">
-          <a
-            href="#mechanism"
-            className="hover:text-foreground transition-colors"
-          >
-            核心机制
-          </a>
-          <a
-            href="#routes"
-            className="hover:text-foreground transition-colors"
-          >
-            技术路线
-          </a>
-          <a
-            href="#comparison"
-            className="hover:text-foreground transition-colors"
-          >
-            对比矩阵
-          </a>
-          <a
-            href="#investment"
-            className="hover:text-foreground transition-colors"
-          >
-            投资建议
-          </a>
-          <a
-            href="#yangsheng"
-            className="hover:text-foreground transition-colors"
-          >
-            养生将军
-          </a>
+          {NAV_LINKS.map((link) => (
+            <a key={link.href} href={link.href} className="hover:text-foreground transition-colors">
+              {link.label}
+            </a>
+          ))}
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className="sm:hidden flex flex-col gap-1 p-2"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+        >
+          <span className={`block w-5 h-0.5 bg-foreground transition-all duration-200 ${mobileOpen ? "rotate-45 translate-y-[3px]" : ""}`} />
+          <span className={`block w-5 h-0.5 bg-foreground transition-all duration-200 ${mobileOpen ? "-rotate-45 -translate-y-[3px]" : ""}`} />
+        </button>
       </div>
+
+      {/* Mobile dropdown */}
+      {mobileOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          className="sm:hidden bg-background/95 backdrop-blur-lg border-b border-border/30"
+        >
+          <div className="container py-3 flex flex-col gap-3">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1.5"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </nav>
   );
 }
