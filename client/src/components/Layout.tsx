@@ -18,6 +18,7 @@ const EFFICACY_MENU = [
 
 const NAV_LINKS = [
   { href: "/", label: "首页" },
+  { href: "/supply-chain", label: "产业链" },
   { href: "/labs", label: "科研平台" },
 ];
 

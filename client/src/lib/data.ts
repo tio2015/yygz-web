@@ -515,6 +515,111 @@ export const LABS_PAGE = {
   ],
 };
 
+/* ─── 分子结构式图片 ─── */
+export const MOLECULE_IMAGES: Record<string, string> = {
+  puerarin: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/IlBshfuoZhhQJTrh.png",
+  ginsenoside: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/cQFwOsChXjQNuUrM.png",
+  galangin: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/rXtgtDvdLJPzzPvw.png",
+  ganodericAcid: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/SInglcBxysAEksyP.png",
+  theaflavin: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/CgtMhgFGeeGyfEkh.png",
+  polyphenol: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/TmLtbOvzLQBhMIvn.png",
+  mogroside: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/yXdTBLFIdNflgeAd.png",
+};
+
+/* ─── 功效页面关联原料映射 ─── */
+export interface RelatedIngredient {
+  name: string;
+  imageKey: string;
+  activeMolecule: string;
+  moleculeImage: string;
+  moleculeFormula: string;
+  mechanism: string;
+}
+
+export const EFFICACY_INGREDIENTS: Record<string, RelatedIngredient[]> = {
+  jiujiu: [
+    { name: "葛根", imageKey: "gegen", activeMolecule: "葛根素 Puerarin", moleculeImage: MOLECULE_IMAGES.puerarin, moleculeFormula: "C₂₁H₂₀O₉", mechanism: "特异性提高ADH和ALDH2活性，加速乙醇→乙醛→乙酸代谢链" },
+    { name: "高良姜", imageKey: "gaoliangjiang", activeMolecule: "高良姜素 Galangin", moleculeImage: MOLECULE_IMAGES.galangin, moleculeFormula: "C₁₅H₁₀O₅", mechanism: "增强ADH和ALDH2活性，与葛根素协同增效" },
+    { name: "年份茯砖茶", imageKey: "fuzhuan", activeMolecule: "茶黄素 Theaflavin", moleculeImage: MOLECULE_IMAGES.theaflavin, moleculeFormula: "C₂₉H₂₄O₁₂", mechanism: "结合毒素加速排出，益生菌代谢产物调节肠道首过代谢" },
+    { name: "人参", imageKey: "renshen", activeMolecule: "人参皂苷 Ginsenoside", moleculeImage: MOLECULE_IMAGES.ginsenoside, moleculeFormula: "C₃₆H₆₂O₈", mechanism: "抑制NF-κB通路减轻炎症，调节HPA轴缓解应激" },
+  ],
+  hugan: [
+    { name: "灵芝", imageKey: "lingzhi", activeMolecule: "灵芝三萜 Ganoderic Acid", moleculeImage: MOLECULE_IMAGES.ganodericAcid, moleculeFormula: "C₃₀H₄₄O₇", mechanism: "抑制NF-κB促炎信号通路，减少TNF-α、IL-6释放" },
+    { name: "葛根", imageKey: "gegen", activeMolecule: "葛根素 Puerarin", moleculeImage: MOLECULE_IMAGES.puerarin, moleculeFormula: "C₂₁H₂₀O₉", mechanism: "抑制肝星状细胞活化，减少胶原沉积，抗纤维化" },
+    { name: "人参", imageKey: "renshen", activeMolecule: "人参皂苷 Ginsenoside", moleculeImage: MOLECULE_IMAGES.ginsenoside, moleculeFormula: "C₃₆H₆₂O₈", mechanism: "抑制NF-κB通路，调节Bcl-2/Bax凋亡蛋白保护肝细胞" },
+    { name: "年份茯砖茶", imageKey: "fuzhuan", activeMolecule: "茶黄素 Theaflavin", moleculeImage: MOLECULE_IMAGES.theaflavin, moleculeFormula: "C₂₉H₂₄O₁₂", mechanism: "天然他汀类调节血脂，冠突散囊菌代谢产物调节肠肝轴" },
+  ],
+  zhumian: [
+    { name: "人参", imageKey: "renshen", activeMolecule: "人参皂苷Rb1", moleculeImage: MOLECULE_IMAGES.ginsenoside, moleculeFormula: "C₅₄H₉₂O₂₃", mechanism: "调节GABA受体和5-HT/DA系统，具有适应原样作用调节HPA轴" },
+    { name: "灵芝", imageKey: "lingzhi", activeMolecule: "灵芝三萜 Ganoderic Acid", moleculeImage: MOLECULE_IMAGES.ganodericAcid, moleculeFormula: "C₃₀H₄₄O₇", mechanism: "调节GABA受体协同安神，增强免疫调节" },
+    { name: "罗汉果", imageKey: "luohanguo", activeMolecule: "罗汉果甜苷V Mogroside V", moleculeImage: MOLECULE_IMAGES.mogroside, moleculeFormula: "C₆₀H₁₀₂O₂₉", mechanism: "三萜类润肺通便，帮助代谢废物排出，改善睡眠生理基础" },
+  ],
+  yangyan: [
+    { name: "青苹果", imageKey: "apple", activeMolecule: "绿原酸 Chlorogenic Acid", moleculeImage: MOLECULE_IMAGES.polyphenol, moleculeFormula: "C₁₆H₁₈O₉", mechanism: "强效抗氧化剂，直接清除自由基并上调SOD、GSH抗氧化酶系统" },
+    { name: "灵芝", imageKey: "lingzhi", activeMolecule: "灵芝多糖 Polysaccharide", moleculeImage: MOLECULE_IMAGES.ganodericAcid, moleculeFormula: "多糖复合物", mechanism: "促进皮肤细胞新陈代谢和修复，增强免疫调节" },
+    { name: "葛根", imageKey: "gegen", activeMolecule: "葛根黄酮 Puerarin", moleculeImage: MOLECULE_IMAGES.puerarin, moleculeFormula: "C₂₁H₂₀O₉", mechanism: "扩张血管改善微循环，为皮肤细胞输送更多氧气和营养" },
+    { name: "人参", imageKey: "renshen", activeMolecule: "人参皂苷 Ginsenoside", moleculeImage: MOLECULE_IMAGES.ginsenoside, moleculeFormula: "C₃₆H₆₂O₈", mechanism: "改善外周血液循环，调节内分泌增强免疫力" },
+  ],
+};
+
+/* ─── 产业链页面数据 ─── */
+export const SUPPLY_CHAIN_PAGE = {
+  title: "中国植物提取产业链",
+  subtitle: "全球最大的植物提取物制造国，却几乎没有面向消费者的品牌",
+  heroDesc: "中国每年向全球出口超过30亿美元的植物提取物原料，是日本汉方、韩国红参、欧洲植物药背后最大的供应商。但这些原料被国外品牌加工成终端产品后，又以数倍的价格卖回中国。",
+  exportData: {
+    title: "中国植物提取物出口全景",
+    source: "中国医药保健品进出口商会（CCCMHPIE）",
+    sourceUrl: "http://www.cccmhpie.org.cn/",
+    stats: [
+      { label: "2024年出口额", value: "30.1亿", unit: "美元", note: "占中药类商品出口总额57%" },
+      { label: "2024年出口量", value: "13.4万", unit: "吨", note: "同比增长21.3%" },
+      { label: "全球市场份额", value: "20%+", unit: "", note: "全球最大植物提取物供应国" },
+      { label: "全球产能占比", value: "45%+", unit: "", note: "从种植到提取，产业链最完整" },
+    ],
+    destinations: [
+      { country: "美国", share: "20.9%", amount: "3.2亿美元", note: "最大出口目的地" },
+      { country: "日本", share: "≈10%", amount: "约1.5亿美元", note: "津村等汉方企业大量采购" },
+      { country: "印度", share: "≈10%", amount: "约1.5亿美元", note: "阿育吠陀产业原料" },
+      { country: "欧洲", share: "≈15%", amount: "约4.5亿美元", note: "Schwabe等植物药企业" },
+    ],
+  },
+  paradox: {
+    title: "一个令人深思的悖论",
+    items: [
+      {
+        title: "中国种、中国提取",
+        desc: "从甘肃的黄芪、云南的三七到湖南的茶叶，中国拥有全球最丰富的药用植物资源。从超临界萃取到膜分离技术，中国的植物提取工艺已达世界领先水平。",
+        icon: "factory",
+      },
+      {
+        title: "外国贴牌、外国定价",
+        desc: "日本津村80%的汉方原料来自中国，韩国正官庄的人参提取技术源于中国传统工艺。中国企业赚的是每公斤几十美元的原料钱，外国品牌赚的是每盒几百元的品牌溢价。",
+        icon: "tag",
+      },
+      {
+        title: "高价卖回中国消费者",
+        desc: "用中国原料、中国提取技术做成的产品，贴上日本或欧洲的品牌标签，再以数倍价格通过跨境电商卖回中国。中国消费者为\"进口\"二字支付了巨大的品牌溢价。",
+        icon: "repeat",
+      },
+    ],
+  },
+  opportunity: {
+    title: "三个力量的汇聚",
+    desc: "中药智慧提供了方向，分子药理学提供了语言，国家重点实验室提供了能力。当这三个力量汇聚在一起，从\"给别人供原料\"到\"自己做终端产品\"的突破就成为可能。",
+    forces: [
+      { title: "中药智慧", desc: "数千年的临床实践积累了宝贵的配方经验和安全性数据，这是任何实验室都无法在短期内复制的。", icon: "scroll" },
+      { title: "分子药理学", desc: "现代科学能精确解析每一种植物活性分子的作用靶点和信号通路，让传统经验获得了科学语言。", icon: "microscope" },
+      { title: "国家级科研平台", desc: "国家植物功能成分利用工程技术研究中心等平台，提供了从基础研究到产业化的完整技术支撑。", icon: "building" },
+    ],
+  },
+  references: [
+    { authors: "中国医药保健品进出口商会", title: "2024年中药类商品进出口统计报告", journal: "经济参考报", year: 2024, url: "http://www.cccmhpie.org.cn/" },
+    { authors: "Chen, Y. et al.", title: "Factors associated with the export of traditional Chinese medicinal products", journal: "PLoS ONE", year: 2025, url: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0326422" },
+    { authors: "Cognitive Market Research", title: "Plant Extract Market Report 2024-2034", journal: "Industry Report", year: 2024, url: "https://www.cognitivemarketresearch.com/report/global-plant-extract-market-report" },
+  ],
+};
+
 /* ─── 参考文献 ─── */
 export const REFERENCES = [
   { id: 1, authors: "Nasim, N. et al.", title: "Plant-derived natural products for drug discovery", journal: "Nucleus", year: 2022, url: "https://link.springer.com/article/10.1007/s13237-022-00405-3" },

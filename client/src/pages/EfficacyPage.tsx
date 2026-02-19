@@ -16,7 +16,8 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Navigation, Footer } from "@/components/Layout";
-import { EFFICACY_PAGES } from "@/lib/data";
+import { EFFICACY_PAGES, EFFICACY_INGREDIENTS, HOME_DATA, INGREDIENT_IMAGES } from "@/lib/data";
+import { Leaf, Atom } from "lucide-react";
 
 const fadeInUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -127,6 +128,78 @@ export default function EfficacyPage() {
             ))}
           </div>
         </section>
+
+        {/* Related Plant Extracts - 关联植物提取活性精华 */}
+        {EFFICACY_INGREDIENTS[id as string] && (
+          <section className="container py-8 sm:py-16">
+            <motion.div {...fadeInUp()} className="mb-8">
+              <div className="flex items-center gap-3 mb-2">
+                <Atom className={`w-5 h-5 ${colors.text}`} />
+                <h2 className="text-lg sm:text-xl font-bold font-[var(--font-heading)]">
+                  含有相关活性分子的植物
+                </h2>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                以下植物中天然含有上述研究中提到的活性分子。现代植物提取技术能精准分离这些分子，保留天然活性的同时实现标准化。
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {EFFICACY_INGREDIENTS[id as string].map((ingredient, i) => {
+                const formulaItem = HOME_DATA.formula.ingredients.find((f) => f.name === ingredient.name);
+                return (
+                  <motion.div key={i} {...fadeInUp(i * 0.08)}>
+                    <Card className={`border-border/30 hover:${colors.border} transition-all overflow-hidden group`}>
+                      <CardContent className="p-0">
+                        <div className="flex">
+                          {/* Molecule structure image */}
+                          <div className="w-28 sm:w-36 shrink-0 relative overflow-hidden bg-black/30">
+                            <img
+                              src={ingredient.moleculeImage}
+                              alt={ingredient.activeMolecule}
+                              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/80" />
+                          </div>
+                          {/* Content */}
+                          <div className="flex-1 p-4 sm:p-5">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Leaf className={`w-3.5 h-3.5 ${colors.text}`} />
+                              <span className="text-xs text-muted-foreground">{ingredient.name}</span>
+                              {formulaItem?.imageKey && INGREDIENT_IMAGES[formulaItem.imageKey] && (
+                                <img src={INGREDIENT_IMAGES[formulaItem.imageKey]} alt={ingredient.name} className="w-5 h-5 rounded-full object-cover ml-auto" />
+                              )}
+                            </div>
+                            <h4 className="font-bold font-[var(--font-heading)] text-sm sm:text-base mb-1">
+                              {ingredient.activeMolecule}
+                            </h4>
+                            <p className={`text-xs font-mono ${colors.text} mb-2`}>
+                              {ingredient.moleculeFormula}
+                            </p>
+                            <p className="text-xs text-muted-foreground leading-relaxed">
+                              {ingredient.mechanism}
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Note about extraction */}
+            <motion.div {...fadeInUp(0.4)} className="mt-6">
+              <div className={`${colors.bg} border ${colors.border} rounded-lg p-4 sm:p-6`}>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed text-center font-[var(--font-body)]">
+                  <span className={`${colors.text} font-semibold`}>植物提取活性精华</span>
+                  {" "}区别于直接使用原料或传统煎制。现代超临界萃取、膜分离等技术能精准提取目标活性分子，
+                  在保留天然协同效应的同时，实现成分标准化和高生物利用度。
+                </p>
+              </div>
+            </motion.div>
+          </section>
+        )}
 
         {/* References */}
         <section className="container py-8 sm:py-16">
