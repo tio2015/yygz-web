@@ -794,9 +794,21 @@ function ReferencesSection() {
 /* ─── Footer ─── */
 function Footer() {
   return (
-    <footer className="border-t border-border/30 py-8">
+    <footer className="border-t border-border/30 pt-12 pb-8">
       <div className="container">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        {/* 联系方式 */}
+        <div className="flex flex-col items-center gap-4 mb-10">
+          <p className="text-sm text-muted-foreground text-center">
+            如需了解更多科技成果转化情况，请扫码联系
+          </p>
+          <img
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/kAczzBEmXCnGqGSC.png"
+            alt="联系二维码"
+            className="w-32 h-32 rounded-lg"
+          />
+        </div>
+        {/* 底部信息 */}
+        <div className="border-t border-border/20 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Leaf className="w-4 h-4 text-emerald-400" />
             <span className="text-xs text-muted-foreground">
