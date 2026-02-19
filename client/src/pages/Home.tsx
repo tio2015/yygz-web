@@ -26,6 +26,11 @@ import {
   ChevronDown,
   ChevronUp,
   ExternalLink,
+  Shield,
+  Moon,
+  Sparkles,
+  Leaf,
+  Link2,
 } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import MaturityBar from "@/components/MaturityBar";
@@ -36,8 +41,9 @@ import {
   NAD_PRECURSORS,
   COMPARISON_DIMENSIONS,
   REFERENCES,
+  YANGSHENG_PRODUCT,
 } from "@/lib/data";
-import type { TechRoute, Study } from "@/lib/data";
+import type { TechRoute, Study, Ingredient, MechanismModule } from "@/lib/data";
 
 const routeIcons: Record<string, React.ReactNode> = {
   photocatalysis: <Zap className="w-5 h-5" />,
@@ -746,6 +752,226 @@ function ReferencesSection() {
   );
 }
 
+/* ─── 养生将军产品案例 ─── */
+
+const mechIconMap: Record<string, React.ReactNode> = {
+  Zap: <Zap className="w-5 h-5" />,
+  Shield: <Shield className="w-5 h-5" />,
+  Moon: <Moon className="w-5 h-5" />,
+  Sparkles: <Sparkles className="w-5 h-5" />,
+};
+
+const roleColorMap: Record<string, { bg: string; text: string; border: string }> = {
+  jun: { bg: "bg-amber/10", text: "text-amber", border: "border-amber/30" },
+  chen: { bg: "bg-cyan/10", text: "text-cyan", border: "border-cyan/30" },
+  zuo: { bg: "bg-emerald/10", text: "text-emerald", border: "border-emerald/30" },
+  shi: { bg: "bg-purple-400/10", text: "text-purple-400", border: "border-purple-400/30" },
+};
+
+function YangshengSection() {
+  const [activeMech, setActiveMech] = useState("detox");
+  const product = YANGSHENG_PRODUCT;
+  const currentMech = product.mechanisms.find((m) => m.id === activeMech) || product.mechanisms[0];
+
+  return (
+    <section className="container py-16 sm:py-24">
+      {/* Header */}
+      <motion.div {...fadeInUp()} className="mb-10">
+        <div className="flex items-center gap-3 mb-2">
+          <Leaf className="w-5 h-5 text-emerald" />
+          <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
+            产品案例：{product.name}
+          </h2>
+          <Badge variant="outline" className="text-xs text-muted-foreground border-border/50">
+            {product.type}
+          </Badge>
+        </div>
+        <p className="text-sm text-muted-foreground max-w-3xl">
+          {product.tagline}
+        </p>
+      </motion.div>
+
+      {/* Product Overview */}
+      <motion.div {...fadeInUp(0.1)} className="mb-10">
+        <Card className="bg-card/60 border-border/50">
+          <CardContent className="p-6">
+            <p className="text-sm text-foreground/90 leading-relaxed mb-4">
+              {product.description}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {product.institutions.map((inst, i) => (
+                <Badge key={i} variant="outline" className="text-[10px] text-muted-foreground border-border/40">
+                  {inst}
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      {/* Ingredients - 君臣佐使 */}
+      <motion.div {...fadeInUp(0.15)} className="mb-10">
+        <h3 className="text-base font-bold font-[var(--font-heading)] mb-4 flex items-center gap-2">
+          <Beaker className="w-4 h-4 text-muted-foreground" />
+          配方组成 — 君臣佐使
+        </h3>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {product.ingredients.map((ing, i) => {
+            const roleStyle = roleColorMap[ing.role] || roleColorMap.zuo;
+            return (
+              <motion.div key={i} {...fadeInUp(i * 0.05)}>
+                <Card className="bg-card/60 border-border/50 h-full">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h4 className="text-base font-bold font-[var(--font-heading)] text-foreground">
+                        {ing.name}
+                      </h4>
+                      <Badge
+                        variant="outline"
+                        className={`text-[10px] ${roleStyle.bg} ${roleStyle.text} ${roleStyle.border}`}
+                      >
+                        {ing.roleLabel}
+                      </Badge>
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+                      {ing.modernMechanism}
+                    </p>
+                    <div className="flex flex-wrap gap-1">
+                      {ing.keyCompounds.map((c, j) => (
+                        <span
+                          key={j}
+                          className="text-[10px] px-1.5 py-0.5 rounded bg-secondary text-muted-foreground"
+                        >
+                          {c}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
+
+      {/* Mechanism Modules - Interactive Tabs */}
+      <motion.div {...fadeInUp(0.2)} className="mb-10">
+        <h3 className="text-base font-bold font-[var(--font-heading)] mb-4 flex items-center gap-2">
+          <Target className="w-4 h-4 text-muted-foreground" />
+          四大功效模块 — 多靶点协同机制
+        </h3>
+
+        <div className="flex gap-3 mb-6 flex-wrap">
+          {product.mechanisms.map((mech) => (
+            <button
+              key={mech.id}
+              onClick={() => setActiveMech(mech.id)}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium font-[var(--font-heading)] transition-all duration-200 border ${
+                activeMech === mech.id
+                  ? "border-opacity-60 bg-opacity-15"
+                  : "border-border/30 bg-secondary/30 text-muted-foreground hover:text-foreground"
+              }`}
+              style={
+                activeMech === mech.id
+                  ? {
+                      color: mech.color,
+                      borderColor: `${mech.color}66`,
+                      backgroundColor: `${mech.color}15`,
+                    }
+                  : undefined
+              }
+            >
+              <span style={activeMech === mech.id ? { color: mech.color } : undefined}>
+                {mechIconMap[mech.icon]}
+              </span>
+              {mech.title}
+            </button>
+          ))}
+        </div>
+
+        <motion.div
+          key={currentMech.id}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="grid md:grid-cols-3 gap-4">
+            {currentMech.pathways.map((pw, i) => (
+              <Card
+                key={i}
+                className="bg-card/60 border-border/50"
+                style={{ borderLeftColor: `${currentMech.color}44`, borderLeftWidth: 3 }}
+              >
+                <CardContent className="p-5">
+                  <h4
+                    className="text-sm font-bold font-[var(--font-heading)] mb-2"
+                    style={{ color: currentMech.color }}
+                  >
+                    {pw.name}
+                  </h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {pw.detail}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Synergy Summary */}
+      <motion.div {...fadeInUp(0.25)} className="mb-10">
+        <h3 className="text-base font-bold font-[var(--font-heading)] mb-4 flex items-center gap-2">
+          <Link2 className="w-4 h-4 text-muted-foreground" />
+          协同作用总结
+        </h3>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {product.synergySummary.map((s, i) => {
+            const mech = product.mechanisms.find((m) => m.title === s.module);
+            return (
+              <Card key={i} className="bg-card/60 border-border/50">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span style={{ color: mech?.color || "#34d399" }}>
+                      {mech ? mechIconMap[mech.icon] : <Zap className="w-4 h-4" />}
+                    </span>
+                    <span
+                      className="text-sm font-bold font-[var(--font-heading)]"
+                      style={{ color: mech?.color || "#34d399" }}
+                    >
+                      {s.module}
+                    </span>
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {s.formula}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+      </motion.div>
+
+      {/* NAD+ Connection */}
+      <motion.div {...fadeInUp(0.3)}>
+        <Card className="bg-emerald-dim border-emerald/20">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-2 mb-3">
+              <Beaker className="w-4 h-4 text-emerald" />
+              <span className="text-sm font-bold font-[var(--font-heading)] text-emerald">
+                与NAD+再生理论的关联
+              </span>
+            </div>
+            <p className="text-sm text-foreground/90 leading-relaxed">
+              {product.nadConnection}
+            </p>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </section>
+  );
+}
+
 /* ─── Footer ─── */
 function Footer() {
   return (
@@ -815,6 +1041,12 @@ function Navigation() {
           >
             投资建议
           </a>
+          <a
+            href="#yangsheng"
+            className="hover:text-foreground transition-colors"
+          >
+            养生将军
+          </a>
         </div>
       </div>
     </nav>
@@ -840,6 +1072,9 @@ export default function Home() {
       <PrecursorsSection />
       <div id="investment">
         <InvestmentSection />
+      </div>
+      <div id="yangsheng">
+        <YangshengSection />
       </div>
       <ReferencesSection />
       <Footer />

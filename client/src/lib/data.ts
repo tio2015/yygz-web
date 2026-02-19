@@ -257,6 +257,181 @@ export const COMPARISON_DIMENSIONS = [
   { key: "marketReadiness", label: "市场就绪度", description: "距离商业化产品的距离" }
 ] as const;
 
+/* ─── 养生将军产品案例 ─── */
+
+export interface Ingredient {
+  name: string;
+  role: string; // 君/臣/佐/使
+  roleLabel: string;
+  modernMechanism: string;
+  keyCompounds: string[];
+}
+
+export interface MechanismModule {
+  id: string;
+  title: string;
+  icon: string; // lucide icon name
+  color: string;
+  pathways: {
+    name: string;
+    detail: string;
+  }[];
+}
+
+export const YANGSHENG_PRODUCT = {
+  name: "养生将军",
+  type: "固体饮料",
+  tagline: "食药同源植物配方，多靶点协同的解酒护肝体系",
+  description: "以食药同源植物高良姜、葛根、人参、灵芝、年份茯砖茶、青苹果、罗汉果为原料，采用现代提取分离纯化技术，高效萃取生物活性成分精华，研制的具有解酒、护肝、助眠、养颜多重生物活性的速溶固体饮料。",
+  institutions: [
+    "国家植物功能成分利用工程技术研究中心",
+    "北京一叶归真生物科技有限公司",
+    "国家中医药管理局亚健康干预技术重点实验室",
+    "湖南农业大学茶学教育部重点实验室",
+    "湖南师范大学大健康研究院"
+  ],
+  ingredients: [
+    {
+      name: "葛根",
+      role: "jun",
+      roleLabel: "君药",
+      modernMechanism: "葛根素、大豆苷元显著提高ADH和ALDH2活性，加速乙醇代谢；黄酮类成分减轻酒精对血脑屏障通透性影响；抑制肝星状细胞活化，抗肝纤维化",
+      keyCompounds: ["葛根素", "大豆苷元", "黄酮类"]
+    },
+    {
+      name: "人参",
+      role: "jun",
+      roleLabel: "君药",
+      modernMechanism: "人参皂苷抑制NF-κB促炎信号通路，减少TNF-α、IL-6等炎症因子；皂苷Rb1调节GABA受体镇静安神；具有适应原样作用调节HPA轴",
+      keyCompounds: ["人参皂苷", "皂苷Rb1", "三萜类"]
+    },
+    {
+      name: "高良姜",
+      role: "chen",
+      roleLabel: "臣药",
+      modernMechanism: "姜黄素、高良姜素增强ADH和ALDH2活性，与葛根协同增效；强大的抗炎、抗溃疡作用保护胃黏膜",
+      keyCompounds: ["姜黄素", "高良姜素"]
+    },
+    {
+      name: "灵芝",
+      role: "chen",
+      roleLabel: "臣药",
+      modernMechanism: "灵芝三萜抑制NF-κB通路减轻酒精性肝炎；多糖增强免疫调节、促进皮肤细胞新陈代谢；调节GABA受体协同安神助眠",
+      keyCompounds: ["灵芝三萜", "灵芝多糖"]
+    },
+    {
+      name: "年份茯砖茶",
+      role: "chen",
+      roleLabel: "臣药",
+      modernMechanism: "茶多酚、茶多糖及益生菌代谢产物结合酒精及毒素加速肾脏排出；他汀类天然成分调节血脂，减轻酒精性脂肪肝",
+      keyCompounds: ["茶多酚", "茶多糖", "他汀类"]
+    },
+    {
+      name: "青苹果",
+      role: "zuo",
+      roleLabel: "佐药",
+      modernMechanism: "维生素C和多酚是强大抗氧化剂，直接清除自由基并上调SOD、GSH等抗氧化酶系统；酸甘之性缓解酒后口干舌燥",
+      keyCompounds: ["维生素C", "多酚"]
+    },
+    {
+      name: "罗汉果",
+      role: "zuo",
+      roleLabel: "佐药",
+      modernMechanism: "通便作用有助于将酒毒从大肠排出；清热润肺缓解咽喉干燥；提供津液滋润",
+      keyCompounds: ["罗汉果甜苷", "三萜类"]
+    }
+  ] as Ingredient[],
+  mechanisms: [
+    {
+      id: "detox",
+      title: "解酒",
+      icon: "Zap",
+      color: "#d4a017",
+      pathways: [
+        {
+          name: "加速乙醇代谢",
+          detail: "葛根素+大豆苷元提高ADH/ALDH2活性，高良姜素协同增效，加速乙醇→乙醛→乙酸全链路转化"
+        },
+        {
+          name: "保护胃肠道与血脑屏障",
+          detail: "高良姜抗炎抗溃疡保护胃黏膜，减少恶心呕吐；葛根黄酮减轻酒精对血脑屏障通透性影响，缓解头晕等神经症状"
+        },
+        {
+          name: "促进排泄与吸附毒素",
+          detail: "茯砖茶茶多酚、茶多糖及益生菌代谢产物结合酒精及毒素加速肾脏排出；罗汉果通便助肠道排毒"
+        }
+      ]
+    },
+    {
+      id: "liver",
+      title: "护肝",
+      icon: "Shield",
+      color: "#34d399",
+      pathways: [
+        {
+          name: "抗氧化应激与清除自由基",
+          detail: "葛根黄酮类、灵芝多糖和三萜、人参皂苷、青苹果维C和多酚，直接清除自由基并上调SOD、GSH等抗氧化酶系统，减轻脂质过氧化损伤"
+        },
+        {
+          name: "抗炎与抑制肝细胞凋亡",
+          detail: "灵芝三萜和人参皂苷抑制NF-κB促炎信号通路，减少TNF-α、IL-6等炎症因子产生；调节Bcl-2/Bax凋亡相关蛋白，抑制肝细胞程序性死亡"
+        },
+        {
+          name: "调节肝脏代谢与抗纤维化",
+          detail: "葛根素抑制肝星状细胞活化，减少胶原沉积，具有抗肝纤维化潜力；茯砖茶他汀类天然成分调节血脂，减轻酒精性脂肪肝"
+        }
+      ]
+    },
+    {
+      id: "sleep",
+      title: "助眠",
+      icon: "Moon",
+      color: "#818cf8",
+      pathways: [
+        {
+          name: "调节神经递质",
+          detail: "人参皂苷Rb1和灵芝三萜调节GABA受体产生镇静安神作用；调节5-HT和多巴胺系统稳定情绪，促进睡眠"
+        },
+        {
+          name: "调节HPA轴",
+          detail: "人参皂苷和灵芝多糖具有适应原样作用，帮助机体恢复HPA轴正常节律，降低应激反应，改善睡眠质量"
+        },
+        {
+          name: "改善身体内环境",
+          detail: "通过解酒护肝减轻身体不适（口干、胃肠不适），为睡眠创造良好的生理基础"
+        }
+      ]
+    },
+    {
+      id: "beauty",
+      title: "养颜",
+      icon: "Sparkles",
+      color: "#f472b6",
+      pathways: [
+        {
+          name: "内源性抗氧化与抗炎",
+          detail: "全面的抗氧化、抗炎成分通过血液循环作用于全身包括皮肤，从内部延缓皮肤老化"
+        },
+        {
+          name: "改善微循环",
+          detail: "葛根和人参扩张血管改善外周血液循环，为皮肤输送更多氧气和营养，带走代谢废物"
+        },
+        {
+          name: "调节内分泌与免疫力",
+          detail: "人参和灵芝调节内分泌增强免疫功能，改善因压力、熬夜导致的皮肤问题；灵芝多糖促进皮肤细胞新陈代谢和修复"
+        }
+      ]
+    }
+  ] as MechanismModule[],
+  synergySummary: [
+    { module: "解酒", formula: "葛根 + 高良姜协同加速酒精代谢，茯砖茶 + 罗汉果促进排泄" },
+    { module: "护肝", formula: "葛根 + 灵芝 + 人参的强大抗氧化、抗炎组合，保护肝细胞" },
+    { module: "助眠", formula: "人参 + 灵芝调节神经递质和HPA轴，从根源消除身体不适" },
+    { module: "养颜", formula: "全面内源抗氧化、改善循环、调节免疫，由内而外" }
+  ],
+  nadConnection: "养生将军的解酒机制与NAD+再生理论高度契合：葛根素和高良姜素通过提高ADH/ALDH2活性加速乙醇代谢，本质上就是在加速NAD+的消耗和再生循环。配方中的抗氧化成分（灵芝三萜、人参皂苷、维C）则通过保护线粒体功能间接维护NAD+的再生能力。这是一个从传统经验出发、与现代NAD+代谢科学不谋而合的产品案例。"
+};
+
 export const REFERENCES = [
   { id: 1, text: "Cederbaum, A. I. (2012). Alcohol metabolism. Clinics in liver disease, 16(4), 667-685." },
   { id: 2, text: "Haseba, T. (2025). Enzymatic Control of Alcohol Metabolism in the Body. IJMS, 26(19), 9479." },
