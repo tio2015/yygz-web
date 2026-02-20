@@ -3,6 +3,7 @@
  * Design: 深色投资决策界面，翠绿色主调
  * 内容：中国植物提取产业链全景，从供原料到做品牌的机遇
  */
+import { useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import {
@@ -20,6 +21,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Navigation, Footer } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { SUPPLY_CHAIN_PAGE } from "@/lib/data";
 
 const fadeInUp = (delay = 0) => ({
@@ -44,8 +46,17 @@ const FORCE_ICONS: Record<string, React.ElementType> = {
 export default function SupplyChainPage() {
   const data = SUPPLY_CHAIN_PAGE;
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="中国植物提取产业链全景 | 养生将军·本草新解"
+        description="中国植物提取产业链全景分析。从原料出口到品牌升级，了解植物提取固体饮料的全产业链机遇与挑战。"
+        path="/supply-chain"
+      />
       <Navigation />
       <main>
         {/* Hero */}

@@ -28,6 +28,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Navigation, Footer } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import {
   HOME_DATA,
   HERO_IMAGE,
@@ -89,18 +90,83 @@ const COLOR_MAP: Record<string, { bg: string; text: string; border: string }> = 
   rose: { bg: "bg-rose-500/10", text: "text-rose-400", border: "border-rose-500/30" },
   red: { bg: "bg-red-500/10", text: "text-red-400", border: "border-red-500/30" },
   blue: { bg: "bg-blue-500/10", text: "text-blue-400", border: "border-blue-500/30" },
+  orange: { bg: "bg-orange-500/10", text: "text-orange-400", border: "border-orange-500/30" },
+  purple: { bg: "bg-purple-500/10", text: "text-purple-400", border: "border-purple-500/30" },
+  yellow: { bg: "bg-yellow-500/10", text: "text-yellow-400", border: "border-yellow-500/30" },
+  green: { bg: "bg-green-500/10", text: "text-green-400", border: "border-green-500/30" },
+  teal: { bg: "bg-teal-500/10", text: "text-teal-400", border: "border-teal-500/30" },
 };
+
+/* ─── Product Scene Cards ─── */
+const SCENE_CARDS = [
+  {
+    icon: Wine,
+    title: "酒桌自在",
+    desc: "应酬是中国商业的潜规则，你的身体需要科学的准备",
+    tags: "NAD+辅酶再生 · ADH/ALDH双激活",
+    href: "/efficacy/jiujiu",
+    color: "amber",
+  },
+  {
+    icon: Moon,
+    title: "安然入睡",
+    desc: "高质量的睡眠不靠安眠药，植物分子有更温和的方式",
+    tags: "GABA受体调节 · HPA轴应激 · 适应原",
+    href: "/efficacy/zhumian",
+    color: "indigo",
+  },
+  {
+    icon: Sparkles,
+    title: "由内焕颜",
+    desc: "真正的年轻从细胞内部开始，而不是涂在脸上",
+    tags: "内源性抗氧化 · 微循环改善 · 细胞修复",
+    href: "/efficacy/yangyan",
+    color: "rose",
+  },
+];
+
+/* ─── Formula Logic Data ─── */
+const FORMULA_LOGIC = [
+  {
+    ring: "君",
+    ringLabel: "核心主力",
+    color: "red",
+    herbs: "葛根、人参",
+    desc: "提供核心活性分子，主攻目标通路",
+  },
+  {
+    ring: "臣",
+    ringLabel: "辅助增强",
+    color: "amber",
+    herbs: "高良姜、灵芝",
+    desc: "增强君药效果，激活多靶点协同",
+  },
+  {
+    ring: "佐",
+    ringLabel: "协助兼治",
+    color: "emerald",
+    herbs: "年份茯砖茶",
+    desc: "辅助代谢通路，平衡整体反应",
+  },
+  {
+    ring: "使",
+    ringLabel: "调和引导",
+    color: "teal",
+    herbs: "青苹果、罗汉果",
+    desc: "调和配方，提升整体协调性",
+  },
+];
 
 /* ─── Hero Section ─── */
 function HeroSection() {
   const { hero } = HOME_DATA;
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden min-h-[85vh] sm:min-h-[70vh] flex items-center">
       <div className="absolute inset-0">
-        <img src={HERO_IMAGE} alt="" className="w-full h-full object-cover opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
+        <img src={HERO_IMAGE} alt="" className="w-full h-full object-cover opacity-25 brightness-110 contrast-110" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
       </div>
-      <div className="relative container pt-20 pb-16 sm:pt-32 sm:pb-28">
+      <div className="relative container pt-20 pb-16 sm:pt-28 sm:pb-24">
         <motion.div {...fadeInUp()} className="max-w-3xl">
           <div className="flex items-center gap-2 mb-4">
             <div className="h-px flex-1 max-w-[40px] bg-emerald-400" />
@@ -110,13 +176,15 @@ function HeroSection() {
           </div>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-[var(--font-heading)] leading-[1.1] mb-5 tracking-tight">
             {hero.title}
-            <br />
-            <span className="text-muted-foreground text-2xl sm:text-3xl lg:text-4xl">
-              {hero.subtitle}
-            </span>
           </h1>
+          <p className="text-lg sm:text-xl text-muted-foreground/90 font-[var(--font-heading)] mb-4">
+            七味食药同源 × 现代植物提取 × 君臣佐使配方
+          </p>
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl font-[var(--font-body)]">
             {hero.description}
+          </p>
+          <p className="text-sm text-emerald-400/80 mt-4 font-[var(--font-body)]">
+            养生将军，从科研到产品的全链路实践者
           </p>
         </motion.div>
 
@@ -385,6 +453,112 @@ function MarketGapSection() {
   );
 }
 
+/* ─── Formula Logic Visualization ─── */
+function FormulaLogicSection() {
+  return (
+    <motion.div {...fadeInUp()} className="mb-10">
+      <div className="flex items-center gap-3 mb-2">
+        <Network className="w-5 h-5 text-emerald-400" />
+        <h3 className="text-lg sm:text-xl font-bold font-[var(--font-heading)]">
+          千年配方智慧 × 现代科学验证
+        </h3>
+      </div>
+
+      {/* Concentric ring visualization */}
+      <div className="relative mt-8 mb-8">
+        {/* Mobile: vertical layout */}
+        <div className="sm:hidden space-y-3">
+          {FORMULA_LOGIC.map((item, i) => {
+            const colors = COLOR_MAP[item.color] || COLOR_MAP.emerald;
+            return (
+              <div key={i} className={`${colors.bg} border ${colors.border} rounded-lg p-4`}>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className={`text-xs px-2 py-0.5 rounded-full border font-semibold ${
+                    item.ring === "君" ? ROLE_COLORS["君"] :
+                    item.ring === "臣" ? ROLE_COLORS["臣"] :
+                    "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                  }`}>
+                    {item.ring} · {item.ringLabel}
+                  </span>
+                  <span className={`font-bold font-[var(--font-heading)] ${colors.text}`}>
+                    {item.herbs}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground">{item.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Desktop: concentric ring visualization */}
+        <div className="hidden sm:block">
+          <div className="relative w-full max-w-2xl mx-auto" style={{ aspectRatio: "2/1" }}>
+            {/* Rings */}
+            {FORMULA_LOGIC.map((item, i) => {
+              const colors = COLOR_MAP[item.color] || COLOR_MAP.emerald;
+              const sizes = ["w-44 h-44", "w-64 h-64", "w-80 h-80", "w-96 h-96"];
+              const positions = [
+                { left: "50%", top: "50%", transform: "translate(-50%, -50%)" },
+                { left: "50%", top: "50%", transform: "translate(-50%, -50%)" },
+                { left: "50%", top: "50%", transform: "translate(-50%, -50%)" },
+                { left: "50%", top: "50%", transform: "translate(-50%, -50%)" },
+              ];
+              return (
+                <div
+                  key={i}
+                  className={`absolute ${sizes[i]} rounded-full border ${colors.border} ${colors.bg}`}
+                  style={positions[i]}
+                />
+              );
+            })}
+
+            {/* Labels positioned around rings */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30 font-semibold">
+                君 · 核心主力
+              </span>
+              <p className="text-sm font-bold font-[var(--font-heading)] text-red-400 mt-1">葛根、人参</p>
+              <p className="text-xs text-muted-foreground mt-0.5">主攻目标通路</p>
+            </div>
+
+            <div className="absolute left-[12%] top-1/2 -translate-y-1/2 text-left z-10">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 font-semibold">
+                臣 · 辅助增强
+              </span>
+              <p className="text-sm font-bold font-[var(--font-heading)] text-amber-400 mt-1">高良姜、灵芝</p>
+              <p className="text-xs text-muted-foreground mt-0.5">多靶点协同</p>
+            </div>
+
+            <div className="absolute right-[8%] top-[25%] text-right z-10">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-semibold">
+                佐 · 协助兼治
+              </span>
+              <p className="text-sm font-bold font-[var(--font-heading)] text-emerald-400 mt-1">年份茯砖茶</p>
+              <p className="text-xs text-muted-foreground mt-0.5">平衡整体反应</p>
+            </div>
+
+            <div className="absolute right-[5%] bottom-[15%] text-right z-10">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-400 border border-teal-500/30 font-semibold">
+                使 · 调和引导
+              </span>
+              <p className="text-sm font-bold font-[var(--font-heading)] text-teal-400 mt-1">青苹果、罗汉果</p>
+              <p className="text-xs text-muted-foreground mt-0.5">提升整体协调性</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Card className="bg-emerald-500/5 border-emerald-500/20">
+        <CardContent className="p-4 sm:p-5">
+          <p className="text-sm text-muted-foreground leading-relaxed text-center font-[var(--font-body)]">
+            每一味都有明确分工的精准配伍。现代分子药理学研究证实，多组分协同效应（Entourage Effect）的整体效果大于各部分之和。
+          </p>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
+
 /* ─── Formula Section ─── */
 function FormulaSection() {
   const { formula } = HOME_DATA;
@@ -401,6 +575,9 @@ function FormulaSection() {
         </div>
         <p className="text-sm text-muted-foreground max-w-3xl">{formula.subtitle}</p>
       </motion.div>
+
+      {/* Formula Logic Visualization */}
+      <FormulaLogicSection />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {formula.ingredients.map((ing, i) => {
@@ -467,6 +644,61 @@ function FormulaSection() {
                   )}
                 </CardContent>
               </Card>
+            </motion.div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+/* ─── Product Scenes Section (NEW) ─── */
+function ProductScenesSection() {
+  return (
+    <section id="scenes" className="container py-12 sm:py-24">
+      <motion.div {...fadeInUp()} className="mb-10">
+        <div className="flex items-center gap-3 mb-2">
+          <Leaf className="w-5 h-5 text-amber-400" />
+          <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
+            养生将军 · 让科学走进生活
+          </h2>
+        </div>
+        <p className="text-sm text-muted-foreground max-w-3xl">
+          以现代植物提取技术，将七味食药同源原料的活性分子完整保留，按君臣佐使原则科学配伍
+        </p>
+      </motion.div>
+
+      <div className="grid sm:grid-cols-3 gap-5">
+        {SCENE_CARDS.map((card, i) => {
+          const colors = COLOR_MAP[card.color] || COLOR_MAP.amber;
+          const Icon = card.icon;
+          return (
+            <motion.div key={i} {...fadeInUp(i * 0.1)}>
+              <Link href={card.href}>
+                <Card
+                  className={`border ${colors.border} h-full hover:scale-[1.02] transition-all duration-300 group bg-gradient-to-b from-${card.color === "amber" ? "amber" : card.color === "indigo" ? "indigo" : "rose"}-500/5 to-transparent`}
+                >
+                  <CardContent className="p-5 sm:p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className={`w-10 h-10 rounded-lg ${colors.bg} flex items-center justify-center`}>
+                        <Icon className={`w-5 h-5 ${colors.text}`} />
+                      </div>
+                      <ArrowRight
+                        className={`w-4 h-4 ${colors.text} opacity-0 group-hover:opacity-100 transition-opacity`}
+                      />
+                    </div>
+                    <h3 className={`text-lg font-bold font-[var(--font-heading)] mb-2 ${colors.text}`}>
+                      {card.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                      {card.desc}
+                    </p>
+                    <div className={`text-xs px-3 py-1.5 rounded-full ${colors.bg} ${colors.text} border ${colors.border} inline-block`}>
+                      {card.tags}
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             </motion.div>
           );
         })}
@@ -659,15 +891,21 @@ function ReferencesSection() {
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="养生将军·本草新解 | 用科学重新理解植物的力量"
+        description="养生将军以现代植物提取技术，完整保留天然活性分子，按君臣佐使原则科学配伍。从一片叶子到一个分子，用前沿科学重新解读千年本草智慧。"
+        path="/"
+      />
       <Navigation />
       <main>
         <HeroSection />
         <WhatIsSection />
         <ThreePathsSection />
         <EfficacySection />
+        <FormulaSection />
+        <ProductScenesSection />
         <LabsPreview />
         <MarketGapSection />
-        <FormulaSection />
         <OverseasSection />
         <ReferencesSection />
       </main>
