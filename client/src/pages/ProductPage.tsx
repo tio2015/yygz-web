@@ -24,12 +24,11 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { SEOHead } from "@/components/SEOHead";
+import { INGREDIENT_IMAGES } from "@/lib/data";
 
 // ─────────────────────────────────────────────
-// 灵芝图片 URL
+// 原料图片引用自 data.ts INGREDIENT_IMAGES
 // ─────────────────────────────────────────────
-const LINGZHI_IMAGE_URL =
-  "https://images.unsplash.com/photo-1598128558393-70ff21433be0?w=400&q=80";
 
 // ─────────────────────────────────────────────
 // 动画 Variants（复用全站统一标准）
@@ -66,8 +65,7 @@ const HERBS = [
         science:
           "可特异性提高 ADH 和 ALDH2 活性，加速乙醇→乙醛→乙酸代谢链；抑制肝星状细胞活化，抗纤维化；扩张血管改善微循环",
         classic: "《神农本草经》列为中品，主消渴，身大热，呕吐",
-        image:
-          "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=400&q=80",
+        image: INGREDIENT_IMAGES.gegen,
       },
       {
         name: "人参",
@@ -75,8 +73,7 @@ const HERBS = [
         science:
           "调节 GABA 受体产生镇静放松效应；调节 5-HT/DA 系统稳定情绪和睡眠-觉醒周期；适应原样作用恢复 HPA 轴正常节律；抑制 NF-κB 通路抗炎",
         classic: "《神农本草经》列为上品，百草之王，主补五脏，安精神",
-        image:
-          "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=400&q=80",
+        image: INGREDIENT_IMAGES.renshen,
       },
     ],
   },
@@ -91,8 +88,7 @@ const HERBS = [
         science:
           "增强 ADH 和 ALDH2 活性，与葛根素产生协同增效；强大的抗炎、抗溃疡作用",
         classic: "温胃散寒，消食止痛",
-        image:
-          "https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?w=400&q=80",
+        image: INGREDIENT_IMAGES.gaoliangjiang,
       },
       {
         name: "灵芝",
@@ -100,7 +96,7 @@ const HERBS = [
         science:
           "灵芝三萜抑制 NF-κB 通路减少 TNF-α、IL-6 等炎症因子；灵芝多糖增强免疫调节、促进细胞新陈代谢；调节 GABA 受体协同安神",
         classic: "仙草，补气安神，止咳平喘",
-        image: LINGZHI_IMAGE_URL,
+        image: INGREDIENT_IMAGES.lingzhi,
       },
       {
         name: "茯砖茶",
@@ -108,8 +104,7 @@ const HERBS = [
         science:
           "茶多酚和茶多糖结合毒素加速排出；冠突散囊菌代谢产物调节肠道菌群，影响酒精首过代谢；天然他汀类成分调节血脂，减轻肝脏脂质负担",
         classic: "黑茶之祖，「宁可三日无粮，不可一日无茶」",
-        image:
-          "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80",
+        image: INGREDIENT_IMAGES.fuzhuan,
       },
     ],
   },
@@ -124,8 +119,7 @@ const HERBS = [
         science:
           "强效抗氧化剂，直接清除自由基并上调 SOD、GSH 等内源性抗氧化酶系统",
         classic: "酸甘生津、开胃醒脾，「日食一苹果，医生远离我」",
-        image:
-          "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=400&q=80",
+        image: INGREDIENT_IMAGES.apple,
       },
       {
         name: "罗汉果",
@@ -133,8 +127,7 @@ const HERBS = [
         science:
           "甜度为蔗糖 300 倍但零热量；三萜类成分润肺通便，帮助代谢废物从肠道排出，改善睡眠生理基础；同时作为「使」，天然清甜串联全方",
         classic: "神仙果，《岭南采药录》记载理痰火咳嗽",
-        image:
-          "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=400&q=80",
+        image: INGREDIENT_IMAGES.luohanguo,
       },
     ],
   },
