@@ -18,16 +18,17 @@ const EFFICACY_MENU = [
 
 const NAV_LINKS = [
   { href: "/", label: "首页" },
+  { href: "/product", label: "产品详情" },
   { href: "/supply-chain", label: "产业链" },
   { href: "/labs", label: "科研平台" },
 ];
 
 const FOOTER_LINKS = [
   { href: "/", label: "首页" },
+  { href: "/product", label: "产品详情" },
   { href: "/supply-chain", label: "产业链" },
   { href: "/labs", label: "科研平台" },
   { href: "/efficacy/jiujiu", label: "科学研究" },
-  { href: "/product", label: "产品详情" },
 ];
 
 export function Navigation() {
@@ -154,18 +155,6 @@ export function Navigation() {
             </AnimatePresence>
           </div>
 
-          {/* 产品详情 */}
-          <Link
-            href="/product"
-            className={`text-xs transition-colors ${
-              location === "/product"
-                ? "text-emerald-400"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            产品详情
-          </Link>
-
           {/* CTA Button */}
           <button
             onClick={scrollToContact}
@@ -226,17 +215,6 @@ export function Navigation() {
                 </Link>
               ))}
             </div>
-            {/* 产品详情 */}
-            <Link
-              href="/product"
-              className={`block py-2.5 text-sm ${
-                location === "/product"
-                  ? "text-emerald-400"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              产品详情
-            </Link>
             <div className="border-t border-border/30 mt-2 pt-3">
               <button
                 onClick={() => {
