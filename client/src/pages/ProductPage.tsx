@@ -643,17 +643,22 @@ export default function ProductPage() {
           </motion.div>
 
           {/* 院士介绍 */}
-          <motion.div {...stagger(1)} className="max-w-2xl mx-auto mb-12">
+          <motion.div {...stagger(1)} className="max-w-4xl mx-auto mb-12">
             <div className="bg-card/60 border border-emerald-500/30 rounded-xl p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0">
-                  <Award className="w-6 h-6 text-emerald-400" />
-                </div>
-                <div>
-                  <p className="text-xs text-emerald-400 uppercase tracking-widest mb-1">
-                    中国工程院院士
-                  </p>
-                  <h3 className="text-xl font-bold mb-3">刘仲华 教授</h3>
+              <div className="flex flex-col sm:flex-row items-start gap-6">
+                {/* 左侧：文字信息 */}
+                <div className="flex-1">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                      <Award className="w-6 h-6 text-emerald-400" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-emerald-400 uppercase tracking-widest mb-1">
+                        中国工程院院士
+                      </p>
+                      <h3 className="text-xl font-bold">刘仲华 教授</h3>
+                    </div>
+                  </div>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     {[
                       "国家植物功能成分利用工程技术研究中心主任",
@@ -669,6 +674,19 @@ export default function ProductPage() {
                       </li>
                     ))}
                   </ul>
+                </div>
+                {/* 右侧：院士照片 */}
+                <div className="shrink-0 sm:w-48 w-full">
+                  <div className="relative overflow-hidden rounded-xl border border-emerald-500/20">
+                    <img
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/bfBWfNxAnqTFlfTl.png"
+                      alt="刘仲华院士"
+                      className="w-full h-auto object-cover"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                      <p className="text-xs text-white/90 text-center font-medium">刘仲华 院士</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

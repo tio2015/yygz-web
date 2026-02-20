@@ -872,18 +872,21 @@ function LabsPreview() {
       <motion.div {...fadeInUp(0.1)}>
         <Card className="bg-card/60 border-border/30 hover:border-emerald-500/30 transition-colors">
           <CardContent className="p-5 sm:p-8">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                国家级
-              </span>
-              <h3 className="font-bold font-[var(--font-heading)]">
-                国家植物功能成分利用工程技术研究中心
-              </h3>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-              国内植物功能成分利用领域唯一的国家工程技术研究中心。由中国工程院院士刘仲华教授领衔，承担国家重点研发计划、973计划、863计划等省级及以上科研项目200余项，获国家科技进步二等奖2项。
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+            <div className="flex flex-col sm:flex-row gap-6">
+              {/* 左侧：文字内容 */}
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                    国家级
+                  </span>
+                  <h3 className="font-bold font-[var(--font-heading)]">
+                    国家植物功能成分利用工程技术研究中心
+                  </h3>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  国内植物功能成分利用领域唯一的国家工程技术研究中心。由中国工程院院士刘仲华教授领衔，承担国家重点研发计划、973计划、863计划等省级及以上科研项目200余项，获国家科技进步二等奖2项。
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
               {[
                 { value: "200+", label: "省级以上科研项目" },
                 { value: "100+", label: "授权发明专利" },
@@ -897,14 +900,29 @@ function LabsPreview() {
                   <div className="text-xs text-muted-foreground">{s.label}</div>
                 </div>
               ))}
+                </div>
+                <Link
+                  href="/labs"
+                  className="inline-flex items-center gap-1.5 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
+                >
+                  查看全部科研平台
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+              {/* 右侧：刘仲华院士照片 */}
+              <div className="shrink-0 sm:w-44 w-full">
+                <div className="relative overflow-hidden rounded-xl border border-emerald-500/20">
+                  <img
+                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/bfBWfNxAnqTFlfTl.png"
+                    alt="刘仲华院士"
+                    className="w-full h-auto object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2">
+                    <p className="text-xs text-white/90 text-center font-medium">刘仲华 院士</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <Link
-              href="/labs"
-              className="inline-flex items-center gap-1.5 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
-            >
-              查看全部科研平台
-              <ArrowRight className="w-4 h-4" />
-            </Link>
           </CardContent>
         </Card>
       </motion.div>
