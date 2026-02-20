@@ -881,13 +881,13 @@ function LabsPreview() {
               </h3>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-              国内植物功能成分利用领域唯一的国家工程技术研究中心。由中国工程院院士刘仲华教授领衔，承担国家重点研发计划、973计划、863计划等省级及以上科研项目200余项，获国家科技进步二等奖3项。
+              国内植物功能成分利用领域唯一的国家工程技术研究中心。由中国工程院院士刘仲华教授领衔，承担国家重点研发计划、973计划、863计划等省级及以上科研项目200余项，获国家科技进步二等奖2项。
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
               {[
                 { value: "200+", label: "省级以上科研项目" },
                 { value: "100+", label: "授权发明专利" },
-                { value: "3项", label: "国家科技进步二等奖" },
+                { value: "2项", label: "国家科技进步二等奖" },
                 { value: "200+", label: "SCI/EI论文" },
               ].map((s, i) => (
                 <div key={i} className="text-center">
