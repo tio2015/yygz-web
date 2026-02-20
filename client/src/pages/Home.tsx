@@ -258,21 +258,27 @@ function ThreePathsSection() {
       </motion.div>
 
       <Tabs defaultValue="extraction" className="w-full">
-        <TabsList className="w-full justify-start bg-card/40 border border-border/30 mb-6 flex-wrap h-auto gap-1 p-1">
+        <TabsList className="w-full justify-start bg-transparent border-0 mb-6 flex-nowrap h-auto gap-2 sm:gap-3 p-0 overflow-x-auto scrollbar-hide">
           {threePaths.paths.map((p) => {
             const c = PATH_COLORS[p.color];
             return (
               <TabsTrigger
                 key={p.id}
                 value={p.id}
-                className={`text-xs data-[state=active]:${c.text} data-[state=active]:${c.bg}`}
+                className={`relative flex-1 min-w-[100px] sm:min-w-[140px] px-3 sm:px-5 py-3 sm:py-4 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 border-2 whitespace-nowrap
+                  data-[state=inactive]:bg-card/30 data-[state=inactive]:border-border/30 data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:border-border/60
+                  data-[state=active]:${c.bg} data-[state=active]:${c.border} data-[state=active]:${c.text} data-[state=active]:shadow-lg`}
               >
-                <span className={`w-2 h-2 rounded-full mr-1.5 ${c.text.replace("text-", "bg-")}`} />
-                {p.name}
+                <span className="flex flex-col items-center gap-1.5">
+                  <span className={`w-2.5 h-2.5 rounded-full ${c.text.replace("text-", "bg-")} ring-2 ring-offset-1 ring-offset-background ${c.text.replace("text-", "ring-")}/30`} />
+                  <span>{p.name}</span>
+                  <span className="text-[10px] font-normal opacity-60 hidden sm:block">{p.era}</span>
+                </span>
               </TabsTrigger>
             );
           })}
         </TabsList>
+        <p className="text-[10px] text-muted-foreground/50 text-center mb-4 sm:hidden">点击切换查看不同技术路径</p>
 
         {threePaths.paths.map((path) => {
           const c = PATH_COLORS[path.color];
