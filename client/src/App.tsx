@@ -10,6 +10,7 @@ import EfficacyPage from "./pages/EfficacyPage";
 import LabsPage from "./pages/LabsPage";
 import SupplyChainPage from "./pages/SupplyChainPage";
 import ProductPage from "./pages/ProductPage";
+import ReferencesPage from "./pages/ReferencesPage";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
       <Route path={"/labs"} component={LabsPage} />
       <Route path={"/supply-chain"} component={SupplyChainPage} />
       <Route path={"/product"} component={ProductPage} />
+      <Route path={"/references"} component={ReferencesPage} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

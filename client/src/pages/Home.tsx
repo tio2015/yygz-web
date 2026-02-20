@@ -77,10 +77,10 @@ const PATH_COLORS: Record<string, { bg: string; text: string; border: string; ba
 };
 
 const EFFICACY_CARDS = [
-  { id: "jiujiu", label: "植物分子与酒精代谢", icon: Wine, color: "emerald", desc: "NAD+辅酶再生、ADH/ALDH双激活、多靶点协同", papers: 5, pulseClass: "animate-pulse-border-emerald" },
-  { id: "hugan", label: "植物分子与肝脏保护", icon: Shield, color: "amber", desc: "抗氧化应激、NF-κB通路调控、抗纤维化", papers: 5, pulseClass: "animate-pulse-border-amber" },
-  { id: "zhumian", label: "植物分子与睡眠调节", icon: Moon, color: "indigo", desc: "GABA受体调节、HPA轴应激、适应原", papers: 5, pulseClass: "animate-pulse-border-indigo" },
-  { id: "yangyan", label: "植物分子与皮肤健康", icon: Sparkles, color: "rose", desc: "内源性抗氧化、微循环改善、细胞修复", papers: 5, pulseClass: "animate-pulse-border-rose" },
+  { id: "jiujiu", label: "植物分子与酒精代谢", icon: Wine, color: "emerald", desc: "NAD+辅酶再生、ADH/ALDH双激活、多靶点协同", papers: 11, pulseClass: "animate-pulse-border-emerald" },
+  { id: "hugan", label: "植物分子与肝脏保护", icon: Shield, color: "amber", desc: "抗氧化应激、NF-κB通路调控、抗纤维化", papers: 11, pulseClass: "animate-pulse-border-amber" },
+  { id: "zhumian", label: "植物分子与睡眠调节", icon: Moon, color: "indigo", desc: "GABA受体调节、HPA轴应激、适应原", papers: 8, pulseClass: "animate-pulse-border-indigo" },
+  { id: "yangyan", label: "植物分子与皮肤健康", icon: Sparkles, color: "rose", desc: "内源性抗氧化、微循环改善、细胞修复", papers: 9, pulseClass: "animate-pulse-border-rose" },
 ];
 
 const COLOR_MAP: Record<string, { bg: string; text: string; border: string }> = {

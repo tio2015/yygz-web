@@ -21,6 +21,7 @@ const NAV_LINKS = [
   { href: "/product", label: "产品详情" },
   { href: "/supply-chain", label: "产业链" },
   { href: "/labs", label: "科研平台" },
+  { href: "/references", label: "文献库" },
 ];
 
 const FOOTER_LINKS = [
@@ -29,6 +30,7 @@ const FOOTER_LINKS = [
   { href: "/supply-chain", label: "产业链" },
   { href: "/labs", label: "科研平台" },
   { href: "/efficacy/jiujiu", label: "科学研究" },
+  { href: "/references", label: "文献库" },
 ];
 
 export function Navigation() {

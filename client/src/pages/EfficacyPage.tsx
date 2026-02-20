@@ -287,31 +287,38 @@ export default function EfficacyPage() {
             </div>
           </motion.div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {pageData.references.map((ref, i) => (
               <motion.div key={i} {...fadeInUp(i * 0.05)}>
                 <div className="flex items-start gap-3 text-sm">
                   <span className={`${colors.text} font-mono text-xs mt-0.5 shrink-0`}>
                     [{i + 1}]
                   </span>
-                  <div className="text-muted-foreground leading-relaxed">
-                    <span>{ref.authors} </span>
-                    {ref.url ? (
-                      <a
-                        href={ref.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-foreground hover:text-emerald-400 transition-colors inline-flex items-center gap-1"
-                      >
-                        {ref.title}
-                        <ExternalLink className="w-3 h-3 shrink-0" />
-                      </a>
-                    ) : (
-                      <span className="text-foreground">{ref.title}</span>
+                  <div className="leading-relaxed">
+                    <div className="text-muted-foreground">
+                      <span>{ref.authors} </span>
+                      {ref.url ? (
+                        <a
+                          href={ref.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-foreground hover:text-emerald-400 transition-colors inline-flex items-center gap-1"
+                        >
+                          {ref.title}
+                          <ExternalLink className="w-3 h-3 shrink-0" />
+                        </a>
+                      ) : (
+                        <span className="text-foreground">{ref.title}</span>
+                      )}
+                      <span>
+                        . <em>{ref.journal}</em>, {ref.year}.
+                      </span>
+                    </div>
+                    {(ref as any).keyFinding && (
+                      <div className={`mt-1.5 text-xs ${colors.text} opacity-80 pl-3 border-l-2 ${colors.border}`}>
+                        {(ref as any).keyFinding}
+                      </div>
                     )}
-                    <span>
-                      . <em>{ref.journal}</em>, {ref.year}.
-                    </span>
                   </div>
                 </div>
               </motion.div>
