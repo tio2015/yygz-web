@@ -372,23 +372,27 @@ function EfficacySection() {
             <motion.div key={card.id} {...fadeInUp(i * 0.1)}>
               <Link href={`/efficacy/${card.id}`}>
                 <Card
-                  className={`${colors.bg} border ${colors.border} h-full hover:scale-[1.02] transition-all duration-300 group`}
+                  className={`${colors.bg} border ${colors.border} h-full hover:scale-[1.02] hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300 group cursor-pointer relative overflow-hidden`}
                 >
-                  <CardContent className="p-5 sm:p-6">
+                  {/* Hover glow effect */}
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${colors.bg} pointer-events-none`} />
+                  <CardContent className="p-5 sm:p-6 relative">
                     <div className="flex items-start justify-between mb-4">
-                      <div className={`w-10 h-10 rounded-lg ${colors.bg} flex items-center justify-center`}>
+                      <div className={`w-10 h-10 rounded-lg ${colors.bg} flex items-center justify-center ring-2 ${colors.border} ring-offset-1 ring-offset-background`}>
                         <Icon className={`w-5 h-5 ${colors.text}`} />
                       </div>
-                      <ArrowRight
-                        className={`w-4 h-4 ${colors.text} opacity-0 group-hover:opacity-100 transition-opacity`}
-                      />
                     </div>
-                    <h3 className={`font-bold font-[var(--font-heading)] mb-2 ${colors.text}`}>
+                    <h3 className={`font-bold font-[var(--font-heading)] mb-2 ${colors.text} text-base sm:text-lg`}>
                       {card.label}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                       {card.desc}
                     </p>
+                    {/* Always-visible click prompt */}
+                    <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${colors.bg} border ${colors.border} group-hover:border-opacity-80 transition-all`}>
+                      <span className={`text-xs font-medium ${colors.text}`}>点击查看研究详情</span>
+                      <ArrowRight className={`w-3.5 h-3.5 ${colors.text} group-hover:translate-x-1 transition-transform duration-300`} />
+                    </div>
                   </CardContent>
                 </Card>
               </Link>
