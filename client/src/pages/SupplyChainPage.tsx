@@ -18,6 +18,9 @@ import {
   TrendingUp,
   ExternalLink,
   BookOpen,
+  Leaf,
+  ArrowRight,
+  CheckCircle,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Navigation, Footer } from "@/components/Layout";
@@ -272,6 +275,151 @@ export default function SupplyChainPage() {
                     全球范围内几乎没有成体系的品牌
                   </span>
                   。
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </section>
+
+        {/* Brand Bridge: 养生将军 alongside global leaders */}
+        <section className="container py-8 sm:py-16">
+          <motion.div {...fadeInUp()} className="mb-8">
+            <div className="flex items-center gap-3 mb-2">
+              <Globe className="w-5 h-5 text-emerald-400" />
+              <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
+                他们已经做到了，中国正在起步
+              </h2>
+            </div>
+            <p className="text-sm text-muted-foreground max-w-3xl">
+              日本、韩国、欧洲的植物提取品牌已经完成了从原料到品牌的跨越。养生将军正在走同样的路。
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {/* 津村 */}
+            <motion.div {...fadeInUp(0)}>
+              <Card className="border-rose-500/30 bg-rose-500/5 h-full">
+                <CardContent className="p-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-lg">🇯🇵</span>
+                    <div>
+                      <h3 className="font-bold font-[var(--font-heading)] text-rose-400 text-sm">津村 Tsumura</h3>
+                      <span className="text-[10px] text-muted-foreground">日本 · 1893年</span>
+                    </div>
+                  </div>
+                  <div className="space-y-1.5 mb-3">
+                    <div className="flex justify-between text-xs">
+                      <span className="text-muted-foreground">年营收</span>
+                      <span className="text-rose-400 font-semibold">12.2亿美元</span>
+                    </div>
+                    <div className="flex justify-between text-xs">
+                      <span className="text-muted-foreground">核心</span>
+                      <span className="text-foreground">128种汉方处方制剂</span>
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-muted-foreground leading-relaxed">把中国传来的草药方剂做成标准化提取物制剂，80%纳入国民医保。</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* 正官庄 */}
+            <motion.div {...fadeInUp(0.08)}>
+              <Card className="border-red-500/30 bg-red-500/5 h-full">
+                <CardContent className="p-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-lg">🇰🇷</span>
+                    <div>
+                      <h3 className="font-bold font-[var(--font-heading)] text-red-400 text-sm">正官庄</h3>
+                      <span className="text-[10px] text-muted-foreground">韩国 · 1899年</span>
+                    </div>
+                  </div>
+                  <div className="space-y-1.5 mb-3">
+                    <div className="flex justify-between text-xs">
+                      <span className="text-muted-foreground">年营收</span>
+                      <span className="text-red-400 font-semibold">10.4亿美元</span>
+                    </div>
+                    <div className="flex justify-between text-xs">
+                      <span className="text-muted-foreground">核心</span>
+                      <span className="text-foreground">6年根红参提取物</span>
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-muted-foreground leading-relaxed">单一原料做到极致，全球人参市场份额41.9%。</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Schwabe */}
+            <motion.div {...fadeInUp(0.16)}>
+              <Card className="border-blue-500/30 bg-blue-500/5 h-full">
+                <CardContent className="p-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-lg">🇩🇪</span>
+                    <div>
+                      <h3 className="font-bold font-[var(--font-heading)] text-blue-400 text-sm">Schwabe</h3>
+                      <span className="text-[10px] text-muted-foreground">欧洲 · 1866年</span>
+                    </div>
+                  </div>
+                  <div className="space-y-1.5 mb-3">
+                    <div className="flex justify-between text-xs">
+                      <span className="text-muted-foreground">年营收</span>
+                      <span className="text-blue-400 font-semibold">数十亿欧元</span>
+                    </div>
+                    <div className="flex justify-between text-xs">
+                      <span className="text-muted-foreground">核心</span>
+                      <span className="text-foreground">银杏叶提取物 EGb 761</span>
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-muted-foreground leading-relaxed">全球植物药标杆，用临床试验数据说话。</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* 养生将军 */}
+            <motion.div {...fadeInUp(0.24)}>
+              <Card className="border-emerald-500/50 bg-emerald-500/10 h-full relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-emerald-500/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <CardContent className="p-5 relative">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-lg">🇨🇳</span>
+                    <div>
+                      <h3 className="font-bold font-[var(--font-heading)] text-emerald-400 text-sm">养生将军</h3>
+                      <span className="text-[10px] text-muted-foreground">中国 · 植物提取固体饮料</span>
+                    </div>
+                  </div>
+                  <div className="space-y-1.5 mb-3">
+                    <div className="flex items-center gap-1.5 text-xs">
+                      <CheckCircle className="w-3 h-3 text-emerald-400 shrink-0" />
+                      <span className="text-muted-foreground">七味食药同源 × 君臣佐使配方</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs">
+                      <CheckCircle className="w-3 h-3 text-emerald-400 shrink-0" />
+                      <span className="text-muted-foreground">现代植物提取技术</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs">
+                      <CheckCircle className="w-3 h-3 text-emerald-400 shrink-0" />
+                      <span className="text-muted-foreground">国家级科研平台支撑</span>
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-emerald-400/80 leading-relaxed font-medium">
+                    中国植物提取产业链的C端品牌实践者，用科学重新理解植物的力量。
+                  </p>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-1 text-xs text-emerald-400 hover:text-emerald-300 transition-colors mt-2"
+                  >
+                    了解更多
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+
+          <motion.div {...fadeInUp(0.3)}>
+            <Card className="bg-emerald-500/5 border-emerald-500/20">
+              <CardContent className="p-5 sm:p-6 text-center">
+                <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                  日本用汉方、韩国用红参、欧洲用植物药，都完成了从传统草药到现代消费品牌的跨越。中国拥有最丰富的药用植物资源和最强的提取产业链，这个赛道上的C端品牌机会，正在被填补。
                 </p>
               </CardContent>
             </Card>

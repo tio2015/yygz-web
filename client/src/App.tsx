@@ -4,6 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { FloatingBackButton } from "./components/Layout";
 import Home from "./pages/Home";
 import EfficacyPage from "./pages/EfficacyPage";
 import LabsPage from "./pages/LabsPage";
@@ -28,6 +29,7 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
+          <FloatingBackButton />
           <Router />
         </TooltipProvider>
       </ThemeProvider>

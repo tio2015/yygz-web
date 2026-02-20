@@ -6,7 +6,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Leaf, Menu, X, ChevronDown, MessageCircle } from "lucide-react";
+import { Leaf, Menu, X, ChevronDown, MessageCircle, ArrowRight, ArrowLeft } from "lucide-react";
 import { QR_CODE } from "@/lib/data";
 
 const EFFICACY_MENU = [
@@ -123,25 +123,31 @@ export function Navigation() {
             <AnimatePresence>
               {dropdownOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -5 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full right-0 mt-2 w-40 bg-card/95 backdrop-blur-lg border border-border/50 rounded-lg shadow-xl overflow-hidden"
+                  initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                  transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className="absolute top-full right-0 mt-2 w-56 bg-card/95 backdrop-blur-xl border border-border/50 rounded-xl shadow-2xl overflow-hidden"
                 >
+                  <div className="px-3 pt-3 pb-1.5">
+                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground/50 font-semibold">探索研究方向</p>
+                  </div>
                   {EFFICACY_MENU.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`block px-4 py-3 text-xs hover:bg-accent/50 transition-colors ${
+                      className={`flex items-center gap-3 px-3 py-2.5 mx-1.5 mb-1 rounded-lg text-xs transition-all duration-200 group ${
                         location === item.href
-                          ? item.color
-                          : "text-muted-foreground"
+                          ? `${item.color} bg-accent/30`
+                          : "text-muted-foreground hover:text-foreground hover:bg-accent/40"
                       }`}
                     >
-                      {item.label}
+                      <span className={`w-2 h-2 rounded-full shrink-0 ${item.color.replace('text-', 'bg-')} ring-2 ring-offset-1 ring-offset-card ${item.color.replace('text-', 'ring-')}/30`} />
+                      <span className="flex-1 font-medium">{item.label}</span>
+                      <ArrowRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     </Link>
                   ))}
+                  <div className="h-1.5" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -188,20 +194,22 @@ export function Navigation() {
               </Link>
             ))}
             <div className="border-t border-border/30 mt-2 pt-2">
-              <p className="text-xs text-muted-foreground/60 mb-2 uppercase tracking-wider">
-                科学研究
+              <p className="text-[10px] text-muted-foreground/50 mb-2 uppercase tracking-widest font-semibold">
+                探索研究方向
               </p>
               {EFFICACY_MENU.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`block py-2.5 text-sm pl-3 ${
+                  className={`flex items-center gap-3 py-2.5 pl-3 pr-2 rounded-lg mb-0.5 transition-all ${
                     location === item.href
-                      ? item.color
-                      : "text-muted-foreground hover:text-foreground"
+                      ? `${item.color} bg-accent/20`
+                      : "text-muted-foreground hover:text-foreground hover:bg-accent/20"
                   }`}
                 >
-                  {item.label}
+                  <span className={`w-2 h-2 rounded-full shrink-0 ${item.color.replace('text-', 'bg-')}`} />
+                  <span className="flex-1 text-sm font-medium">{item.label}</span>
+                  <ArrowRight className="w-3.5 h-3.5 opacity-40" />
                 </Link>
               ))}
             </div>
@@ -220,6 +228,43 @@ export function Navigation() {
         )}
       </AnimatePresence>
     </nav>
+  );
+}
+
+/* Floating back button for sub-pages */
+export function FloatingBackButton() {
+  const [visible, setVisible] = useState(false);
+  const [location] = useLocation();
+
+  useEffect(() => {
+    const handler = () => setVisible(window.scrollY > 200);
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  // Only show on sub-pages
+  if (location === "/") return null;
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.25 }}
+          className="fixed bottom-6 left-6 z-40"
+        >
+          <Link
+            href="/"
+            className="flex items-center gap-2 px-4 py-2.5 bg-card/90 backdrop-blur-xl border border-border/50 rounded-full shadow-xl hover:bg-emerald-500 hover:text-background hover:border-emerald-500 transition-all duration-300 group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
+            <span className="text-sm font-medium">返回首页</span>
+          </Link>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
