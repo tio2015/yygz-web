@@ -3,7 +3,7 @@
  * Design: 深色投资决策界面，翠绿色主调
  * 内容：品类教育 + 科普，不做产品功效声明
  */
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import {
@@ -77,10 +77,10 @@ const PATH_COLORS: Record<string, { bg: string; text: string; border: string; ba
 };
 
 const EFFICACY_CARDS = [
-  { id: "jiujiu", label: "植物分子与酒精代谢", icon: Wine, color: "emerald", desc: "NAD+辅酶再生、ADH/ALDH双激活、多靶点协同" },
-  { id: "hugan", label: "植物分子与肝脏保护", icon: Shield, color: "amber", desc: "抗氧化应激、NF-κB通路调控、抗纤维化" },
-  { id: "zhumian", label: "植物分子与睡眠调节", icon: Moon, color: "indigo", desc: "GABA受体调节、HPA轴应激、适应原" },
-  { id: "yangyan", label: "植物分子与皮肤健康", icon: Sparkles, color: "rose", desc: "内源性抗氧化、微循环改善、细胞修复" },
+  { id: "jiujiu", label: "植物分子与酒精代谢", icon: Wine, color: "emerald", desc: "NAD+辅酶再生、ADH/ALDH双激活、多靶点协同", papers: 5, pulseClass: "animate-pulse-border-emerald" },
+  { id: "hugan", label: "植物分子与肝脏保护", icon: Shield, color: "amber", desc: "抗氧化应激、NF-κB通路调控、抗纤维化", papers: 5, pulseClass: "animate-pulse-border-amber" },
+  { id: "zhumian", label: "植物分子与睡眠调节", icon: Moon, color: "indigo", desc: "GABA受体调节、HPA轴应激、适应原", papers: 5, pulseClass: "animate-pulse-border-indigo" },
+  { id: "yangyan", label: "植物分子与皮肤健康", icon: Sparkles, color: "rose", desc: "内源性抗氧化、微循环改善、细胞修复", papers: 5, pulseClass: "animate-pulse-border-rose" },
 ];
 
 const COLOR_MAP: Record<string, { bg: string; text: string; border: string }> = {
@@ -350,8 +350,37 @@ function ThreePathsSection() {
 
 /* ─── Efficacy Research Cards ─── */
 function EfficacySection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  // Observe when section enters viewport to trigger pulse animation once
+  const sectionRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting && !hasAnimated) setHasAnimated(true); },
+      { threshold: 0.3 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [hasAnimated]);
+
+  // Mobile scroll indicator
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const handler = () => {
+      const idx = Math.round(el.scrollLeft / (el.offsetWidth * 0.82));
+      setActiveIdx(Math.min(idx, EFFICACY_CARDS.length - 1));
+    };
+    el.addEventListener("scroll", handler, { passive: true });
+    return () => el.removeEventListener("scroll", handler);
+  }, []);
+
   return (
-    <section id="research" className="container py-12 sm:py-24">
+    <section ref={sectionRef} id="research" className="container py-12 sm:py-24">
       <motion.div {...fadeInUp()} className="mb-10">
         <div className="flex items-center gap-3 mb-2">
           <BookOpen className="w-5 h-5 text-emerald-400" />
@@ -362,17 +391,30 @@ function EfficacySection() {
         <p className="text-sm text-muted-foreground max-w-3xl">
           植物活性分子在多个健康维度上的科学研究正在快速推进，以下是四个重点方向
         </p>
+        {/* Mobile swipe hint */}
+        <p className="text-xs text-muted-foreground/60 mt-2 sm:hidden flex items-center gap-1">
+          <span>左右滑动查看全部</span>
+          <ArrowRight className="w-3 h-3 animate-bounce-x" />
+        </p>
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 gap-5">
+      {/* Desktop: 2x2 grid, Mobile: horizontal scroll carousel */}
+      <div
+        ref={scrollRef}
+        className="flex sm:grid sm:grid-cols-2 gap-5 overflow-x-auto sm:overflow-visible snap-x snap-mandatory research-carousel pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0"
+      >
         {EFFICACY_CARDS.map((card, i) => {
           const colors = COLOR_MAP[card.color] || COLOR_MAP.emerald;
           const Icon = card.icon;
           return (
-            <motion.div key={card.id} {...fadeInUp(i * 0.1)}>
+            <motion.div
+              key={card.id}
+              {...fadeInUp(i * 0.1)}
+              className="min-w-[80%] sm:min-w-0 snap-center"
+            >
               <Link href={`/efficacy/${card.id}`}>
                 <Card
-                  className={`${colors.bg} border ${colors.border} h-full hover:scale-[1.02] hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300 group cursor-pointer relative overflow-hidden`}
+                  className={`${colors.bg} border ${colors.border} h-full hover:scale-[1.02] hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300 group cursor-pointer relative overflow-hidden ${hasAnimated ? card.pulseClass : ""}`}
                 >
                   {/* Hover glow effect */}
                   <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${colors.bg} pointer-events-none`} />
@@ -380,6 +422,11 @@ function EfficacySection() {
                     <div className="flex items-start justify-between mb-4">
                       <div className={`w-10 h-10 rounded-lg ${colors.bg} flex items-center justify-center ring-2 ${colors.border} ring-offset-1 ring-offset-background`}>
                         <Icon className={`w-5 h-5 ${colors.text}`} />
+                      </div>
+                      {/* Paper count badge */}
+                      <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10`}>
+                        <BookOpen className="w-3 h-3 text-muted-foreground" />
+                        <span className="text-xs text-muted-foreground font-medium">{card.papers}篇文献</span>
                       </div>
                     </div>
                     <h3 className={`font-bold font-[var(--font-heading)] mb-2 ${colors.text} text-base sm:text-lg`}>
@@ -399,6 +446,21 @@ function EfficacySection() {
             </motion.div>
           );
         })}
+      </div>
+
+      {/* Mobile scroll indicators */}
+      <div className="flex justify-center gap-2 mt-4 sm:hidden">
+        {EFFICACY_CARDS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => {
+              scrollRef.current?.scrollTo({ left: i * scrollRef.current.offsetWidth * 0.82, behavior: "smooth" });
+            }}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              i === activeIdx ? "bg-emerald-400 w-6" : "bg-white/20"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );

@@ -158,4 +158,44 @@
   .glow-emerald {
     box-shadow: 0 0 20px oklch(0.76 0.18 155 / 20%), 0 0 40px oklch(0.76 0.18 155 / 10%);
   }
+
+  /* Breathing pulse animation for research cards */
+  @keyframes border-pulse {
+    0%, 100% { border-color: oklch(0.76 0.18 155 / 0.3); box-shadow: 0 0 0 0 oklch(0.76 0.18 155 / 0); }
+    50% { border-color: oklch(0.76 0.18 155 / 0.6); box-shadow: 0 0 12px 2px oklch(0.76 0.18 155 / 0.15); }
+  }
+  @keyframes border-pulse-amber {
+    0%, 100% { border-color: oklch(0.82 0.17 80 / 0.3); box-shadow: 0 0 0 0 oklch(0.82 0.17 80 / 0); }
+    50% { border-color: oklch(0.82 0.17 80 / 0.6); box-shadow: 0 0 12px 2px oklch(0.82 0.17 80 / 0.15); }
+  }
+  @keyframes border-pulse-indigo {
+    0%, 100% { border-color: oklch(0.59 0.22 275 / 0.3); box-shadow: 0 0 0 0 oklch(0.59 0.22 275 / 0); }
+    50% { border-color: oklch(0.59 0.22 275 / 0.6); box-shadow: 0 0 12px 2px oklch(0.59 0.22 275 / 0.15); }
+  }
+  @keyframes border-pulse-rose {
+    0%, 100% { border-color: oklch(0.65 0.2 10 / 0.3); box-shadow: 0 0 0 0 oklch(0.65 0.2 10 / 0); }
+    50% { border-color: oklch(0.65 0.2 10 / 0.6); box-shadow: 0 0 12px 2px oklch(0.65 0.2 10 / 0.15); }
+  }
+
+  .animate-pulse-border-emerald {
+    animation: border-pulse 2.5s ease-in-out 3;
+  }
+  .animate-pulse-border-amber {
+    animation: border-pulse-amber 2.5s ease-in-out 3;
+  }
+  .animate-pulse-border-indigo {
+    animation: border-pulse-indigo 2.5s ease-in-out 3;
+  }
+  .animate-pulse-border-rose {
+    animation: border-pulse-rose 2.5s ease-in-out 3;
+  }
+
+  /* Mobile horizontal scroll carousel */
+  .research-carousel {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .research-carousel::-webkit-scrollbar {
+    display: none;
+  }
 }
