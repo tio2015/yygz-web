@@ -31,19 +31,30 @@ export default function Navbar() {
       }`}
     >
       <nav className="container flex items-center justify-between h-16 lg:h-20">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
+        {/* Logo - Dual brand */}
+        <Link href="/" className="flex items-center gap-2.5 group">
+          {/* 一叶归真 logo */}
+          <img
+            src={BRAND.logoBlack}
+            alt="一叶归真"
+            className="w-8 h-8 lg:w-9 lg:h-9 object-contain invert brightness-200 transition-transform duration-300 group-hover:scale-110"
+          />
+          <div className="flex flex-col leading-none">
+            <span className="text-gold-gradient font-[var(--font-heading)] text-base lg:text-lg font-semibold tracking-wider">
+              一叶归真<sup className="text-[8px] lg:text-[9px] align-super ml-0.5 text-gold/70">®</sup>
+            </span>
+          </div>
+          {/* Divider */}
+          <div className="w-px h-8 bg-gold/20 mx-1" />
+          {/* 植养萃 logo */}
           <img
             src={BRAND.logoZhiyangcui}
-            alt={BRAND.name}
-            className="w-9 h-9 lg:w-10 lg:h-10 object-contain transition-transform duration-300 group-hover:scale-110"
+            alt="植养萃"
+            className="w-9 h-9 lg:w-10 lg:h-10 object-contain brightness-150 saturate-150 transition-transform duration-300 group-hover:scale-110"
           />
-          <div className="flex flex-col">
-            <span className="text-gold-gradient font-[var(--font-heading)] text-lg lg:text-xl font-semibold tracking-wider leading-tight">
-              {BRAND.name}
-            </span>
-            <span className="text-[10px] lg:text-xs text-muted-foreground tracking-[0.2em]">
-              {BRAND.sub}
+          <div className="flex flex-col leading-none">
+            <span className="text-foreground font-[var(--font-heading)] text-base lg:text-lg font-semibold tracking-wider">
+              植养萃<sup className="text-[8px] lg:text-[9px] align-super ml-0.5 text-gold/70">®</sup>
             </span>
           </div>
         </Link>
