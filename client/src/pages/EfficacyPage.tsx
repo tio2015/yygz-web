@@ -1,5 +1,5 @@
 /*
- * 养生将军 · 本草新解 - 功效研究页面
+ * 植养萃 · 本草新解 - 功效研究页面
  * Design: 深色投资决策界面，每个功效有独特色彩
  * 内容：讲植物分子的科学研究，不讲产品功效
  */
@@ -46,32 +46,32 @@ const COLOR_MAP: Record<string, { bg: string; text: string; border: string; grad
 
 const SEO_META: Record<string, { title: string; description: string }> = {
   jiujiu: {
-    title: "植物分子与酒精代谢研究 | 养生将军·本草新解",
+    title: "植物分子与酒精代谢研究 | 植养萃·本草新解",
     description: "前沿科学如何理解植物活性分子在酒精代谢中的作用。NAD+辅酶再生、ADH/ALDH双激活、多靶点协同的科学研究解读。",
   },
   hugan: {
-    title: "植物分子与肝脏保护研究 | 养生将军·本草新解",
+    title: "植物分子与肝脏保护研究 | 植养萃·本草新解",
     description: "科学研究中植物活性分子对肝细胞的保护机制。抗氧化应激、NF-κB通路调控、抗纤维化的研究证据。",
   },
   zhumian: {
-    title: "植物分子与睡眠调节研究 | 养生将军·本草新解",
+    title: "植物分子与睡眠调节研究 | 植养萃·本草新解",
     description: "科学研究中植物活性分子对神经系统和睡眠质量的影响。GABA受体调节、HPA轴应激、适应原的研究进展。",
   },
   yangyan: {
-    title: "植物分子与皮肤健康研究 | 养生将军·本草新解",
+    title: "植物分子与皮肤健康研究 | 植养萃·本草新解",
     description: "科学研究中植物活性分子对皮肤抗衰老和修复的作用机制。内源性抗氧化、微循环改善、细胞修复的研究证据。",
   },
 };
 
 const BRAND_BRIDGE: Record<string, string> = {
   jiujiu:
-    "基于以上酒精代谢科学研究，养生将军选用葛根（君）、高良姜（臣）等原料作为核心配方，采用现代植物提取技术完整保留葛根素、高良姜素等活性分子，应用于酒桌场景的科学准备。",
+    "基于以上酒精代谢科学研究，植养萃选用葛根（君）、高良姜（臣）等原料作为核心配方，采用现代植物提取技术完整保留葛根素、高良姜素等活性分子，应用于酒桌场景的科学准备。",
   hugan:
-    "基于以上肝脏保护科学研究，养生将军选用灵芝（臣）、人参（君）等原料，采用现代植物提取技术完整保留灵芝三萜、人参皂苷等活性分子，为肝脏健康提供植物营养支持。",
+    "基于以上肝脏保护科学研究，植养萃选用灵芝（臣）、人参（君）等原料，采用现代植物提取技术完整保留灵芝三萜、人参皂苷等活性分子，为肝脏健康提供植物营养支持。",
   zhumian:
-    "基于以上睡眠调节科学研究，养生将军配方中的多味原料含有参与GABA受体调节、HPA轴应激反应的天然活性分子，为睡眠质量提供植物营养支持。",
+    "基于以上睡眠调节科学研究，植养萃配方中的多味原料含有参与GABA受体调节、HPA轴应激反应的天然活性分子，为睡眠质量提供植物营养支持。",
   yangyan:
-    "基于以上皮肤健康科学研究，养生将军配方中的茶黄素、灵芝多糖等天然抗氧化活性分子，通过现代植物提取技术完整保留，为皮肤健康提供由内而外的植物营养支持。",
+    "基于以上皮肤健康科学研究，植养萃配方中的茶黄素、灵芝多糖等天然抗氧化活性分子，通过现代植物提取技术完整保留，为皮肤健康提供由内而外的植物营养支持。",
 };
 
 export default function EfficacyPage() {
@@ -100,7 +100,7 @@ export default function EfficacyPage() {
     );
   }
 
-  const seo = SEO_META[id as string] || { title: pageData.title + " | 养生将军·本草新解", description: pageData.heroDesc };
+  const seo = SEO_META[id as string] || { title: pageData.title + " | 植养萃·本草新解", description: pageData.heroDesc };
   const colors = COLOR_MAP[pageData.color] || COLOR_MAP.emerald;
   const Icon = ICON_MAP[pageData.icon] || Wine;
 
@@ -255,7 +255,7 @@ export default function EfficacyPage() {
                   <div className="flex items-center gap-2 mb-4">
                     <Leaf className="w-5 h-5 text-emerald-400" />
                     <h3 className="text-base sm:text-lg font-bold font-[var(--font-heading)] text-emerald-400">
-                      养生将军的实践
+                      植养萃的实践
                     </h3>
                   </div>
                   <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-[var(--font-body)]">

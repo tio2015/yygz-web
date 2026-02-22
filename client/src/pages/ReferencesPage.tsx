@@ -168,7 +168,7 @@ export default function ReferencesPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead
-        title="文献库 | 养生将军·本草新解"
+        title="文献库 | 植养萃·本草新解"
         description="按原料、功效、年份三维交叉索引，收录近五年全球顶级期刊的植物活性分子研究文献。"
         path="/references"
       />

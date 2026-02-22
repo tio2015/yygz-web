@@ -1,5 +1,5 @@
 /*
- * 养生将军 · 本草新解
+ * 植养萃 · 本草新解
  * Design: 深色投资决策界面，翠绿色主调
  * 共享Layout：导航栏 + Footer
  */
@@ -84,7 +84,7 @@ export function Navigation() {
         <Link href="/" className="flex items-center gap-2">
           <Leaf className="w-5 h-5 text-emerald-400" />
           <span className="font-bold font-[var(--font-heading)] text-sm">
-            养生将军 · 本草新解
+            植养萃 · 本草新解
           </span>
         </Link>
 
@@ -282,7 +282,7 @@ export function Footer() {
             <div className="flex items-center gap-2 mb-3">
               <Leaf className="w-5 h-5 text-emerald-400" />
               <span className="font-bold font-[var(--font-heading)] text-sm">
-                养生将军 · 本草新解
+                植养萃 · 本草新解
               </span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -317,7 +317,7 @@ export function Footer() {
           {/* Right: QR Code */}
           <div id="contact-qr" className="flex flex-col items-center sm:items-end">
             <p className="text-sm text-muted-foreground text-center sm:text-right mb-3">
-              关注养生将军，了解更多本草科学
+              关注植养萃，了解更多本草科学
             </p>
             <img
               src={QR_CODE}
@@ -332,7 +332,7 @@ export function Footer() {
           <div className="flex items-center gap-2">
             <Leaf className="w-4 h-4 text-emerald-400" />
             <span className="text-xs text-muted-foreground">
-              养生将军 · 本草新解
+              植养萃 · 本草新解
             </span>
           </div>
           <p className="text-xs text-muted-foreground text-center sm:text-right max-w-lg">

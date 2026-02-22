@@ -1,5 +1,5 @@
 /*
- * 养生将军 · 本草新解 - 产业链页面
+ * 植养萃 · 本草新解 - 产业链页面
  * Design: 深色投资决策界面，翠绿色主调
  * 内容：中国植物提取产业链全景，从供原料到做品牌的机遇
  */
@@ -56,7 +56,7 @@ export default function SupplyChainPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead
-        title="中国植物提取产业链全景 | 养生将军·本草新解"
+        title="中国植物提取产业链全景 | 植养萃·本草新解"
         description="中国植物提取产业链全景分析。从原料出口到品牌升级，了解植物提取固体饮料的全产业链机遇与挑战。"
         path="/supply-chain"
       />
@@ -281,7 +281,7 @@ export default function SupplyChainPage() {
           </motion.div>
         </section>
 
-        {/* Brand Bridge: 养生将军 alongside global leaders */}
+        {/* Brand Bridge: 植养萃 alongside global leaders */}
         <section className="container py-8 sm:py-16">
           <motion.div {...fadeInUp()} className="mb-8">
             <div className="flex items-center gap-3 mb-2">
@@ -291,7 +291,7 @@ export default function SupplyChainPage() {
               </h2>
             </div>
             <p className="text-sm text-muted-foreground max-w-3xl">
-              日本、韩国、欧洲的植物提取品牌已经完成了从原料到品牌的跨越。养生将军正在走同样的路。
+              日本、韩国、欧洲的植物提取品牌已经完成了从原料到品牌的跨越。植养萃正在走同样的路。
             </p>
           </motion.div>
 
@@ -374,7 +374,7 @@ export default function SupplyChainPage() {
               </Card>
             </motion.div>
 
-            {/* 养生将军 */}
+            {/* 植养萃 */}
             <motion.div {...fadeInUp(0.24)}>
               <Card className="border-emerald-500/50 bg-emerald-500/10 h-full relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-emerald-500/10 rounded-full -translate-y-1/2 translate-x-1/2" />
@@ -382,7 +382,7 @@ export default function SupplyChainPage() {
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-lg">🇨🇳</span>
                     <div>
-                      <h3 className="font-bold font-[var(--font-heading)] text-emerald-400 text-sm">养生将军</h3>
+                      <h3 className="font-bold font-[var(--font-heading)] text-emerald-400 text-sm">植养萃</h3>
                       <span className="text-[10px] text-muted-foreground">中国 · 植物提取固体饮料</span>
                     </div>
                   </div>

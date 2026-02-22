@@ -1,5 +1,5 @@
 /**
- * 养生将军 - 产品详情页 ProductPage.tsx
+ * 植养萃 - 产品详情页 ProductPage.tsx
  * 路由路径: /product
  */
 import { useState, useEffect, useRef } from "react";
@@ -454,8 +454,8 @@ export default function ProductPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEOHead
-        title="养生将军产品详情 | 植物提取固体饮料"
-        description="养生将军，中国工程院院士刘仲华领衔研发，7种食药同源植物15倍浓缩，四向协同机制"
+        title="植养萃产品详情 | 植物提取固体饮料"
+        description="植养萃，中国工程院院士刘仲华领衔研发，7种食药同源植物15倍浓缩，四向协同机制"
       />
 
       {/* ── 1. Hero ── */}
@@ -488,7 +488,7 @@ export default function ProductPage() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl sm:text-6xl font-bold tracking-tight mb-4"
           >
-            养生将军
+            植养萃
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -638,7 +638,7 @@ export default function ProductPage() {
             <SectionTitle
               label="SCIENCE AUTHORITY"
               title="院士亲自挂帅研发"
-              sub="科研体系的高度，决定产品的上限。这正是养生将军与普通功能饮的根本差别。"
+              sub="科研体系的高度，决定产品的上限。这正是植养萃与普通功能饮的根本差别。"
             />
           </motion.div>
 
@@ -745,7 +745,7 @@ export default function ProductPage() {
                     现代植物提取
                     <br />
                     <span className="text-[10px] text-emerald-400/70">
-                      养生将军
+                      植养萃
                     </span>
                   </th>
                 </tr>
@@ -1002,7 +1002,7 @@ export default function ProductPage() {
             <SectionTitle
               label="MECHANISMS"
               title="四向协同，重塑身体的有序感"
-              sub="养生将军不是一款单一功能的产品，而是通过四向协同机制，覆盖多个日常状态场景"
+              sub="植养萃不是一款单一功能的产品，而是通过四向协同机制，覆盖多个日常状态场景"
             />
           </motion.div>
 
@@ -1279,7 +1279,7 @@ export default function ProductPage() {
               className="bg-card/60 border border-border/30 rounded-xl overflow-hidden"
             >
               {[
-                { label: "品名", value: "养生将军" },
+                { label: "品名", value: "植养萃" },
                 { label: "产品类型", value: "植物提取固体饮料（普通食品）" },
                 { label: "规格", value: "72 克（24 瓶 × 3 克/瓶）" },
                 { label: "冲调水量", value: "300 毫升" },

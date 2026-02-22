@@ -1,5 +1,5 @@
 /*
- * 养生将军 · 本草新解 - 首页
+ * 植养萃 · 本草新解 - 首页
  * Design: 深色投资决策界面，翠绿色主调
  * 内容：品类教育 + 科普，不做产品功效声明
  */
@@ -184,7 +184,7 @@ function HeroSection() {
             {hero.description}
           </p>
           <p className="text-sm text-emerald-400/80 mt-4 font-[var(--font-body)]">
-            养生将军，从科研到产品的全链路实践者
+            植养萃，从科研到产品的全链路实践者
           </p>
         </motion.div>
 
@@ -732,7 +732,7 @@ function ProductScenesSection() {
         <div className="flex items-center gap-3 mb-2">
           <Leaf className="w-5 h-5 text-amber-400" />
           <h2 className="text-xl sm:text-2xl font-bold font-[var(--font-heading)]">
-            养生将军 · 让科学走进生活
+            植养萃 · 让科学走进生活
           </h2>
         </div>
         <p className="text-sm text-muted-foreground max-w-3xl">
@@ -982,8 +982,8 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead
-        title="养生将军·本草新解 | 用科学重新理解植物的力量"
-        description="养生将军以现代植物提取技术，完整保留天然活性分子，按君臣佐使原则科学配伍。从一片叶子到一个分子，用前沿科学重新解读千年本草智慧。"
+        title="植养萃·本草新解 | 用科学重新理解植物的力量"
+        description="植养萃以现代植物提取技术，完整保留天然活性分子，按君臣佐使原则科学配伍。从一片叶子到一个分子，用前沿科学重新解读千年本草智慧。"
         path="/"
       />
       <Navigation />
