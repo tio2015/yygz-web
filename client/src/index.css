@@ -1,3 +1,22 @@
+/*
+ * ═══════════════════════════════════════════════════
+ * 一叶归真 · 植养萃 招商站
+ * Design: 暗室光影 (Dark Luxury Spotlight)
+ * 
+ * Color Philosophy:
+ *   - Charcoal (#141414) as stage backdrop
+ *   - Warm gray (#1E1E1E) for elevated surfaces
+ *   - Amber gold (#C9A84C) as brand accent
+ *   - Ivory (#F0EDE5) for body text
+ *   - Deep gold (#8B7332) for muted accents
+ * 
+ * Typography:
+ *   - Headings: Playfair Display + Noto Serif SC (宋体)
+ *   - Body: Noto Sans SC 400
+ *   - Data/Numbers: Space Grotesk
+ * ═══════════════════════════════════════════════════
+ */
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -40,53 +59,64 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  /* Custom route colors */
-  --color-amber: oklch(0.82 0.17 80);
-  --color-amber-dim: oklch(0.82 0.17 80 / 15%);
-  --color-cyan: oklch(0.75 0.14 200);
-  --color-cyan-dim: oklch(0.75 0.14 200 / 15%);
-  --color-emerald: oklch(0.76 0.18 155);
-  --color-emerald-dim: oklch(0.76 0.18 155 / 15%);
-  --color-coral: oklch(0.72 0.19 25);
-  --color-coral-dim: oklch(0.72 0.19 25 / 15%);
-  --font-heading: 'Space Grotesk', 'Noto Sans SC', sans-serif;
-  --font-body: 'Noto Sans SC', 'Space Grotesk', sans-serif;
+
+  /* Brand colors */
+  --color-gold: oklch(0.73 0.12 85);
+  --color-gold-dim: oklch(0.73 0.12 85 / 15%);
+  --color-gold-bright: oklch(0.82 0.14 85);
+  --color-ivory: oklch(0.95 0.01 85);
+  --color-charcoal: oklch(0.15 0.005 260);
+  --color-charcoal-light: oklch(0.20 0.005 260);
+
+  /* Track accent colors */
+  --color-sleep: oklch(0.55 0.18 275);
+  --color-sleep-dim: oklch(0.55 0.18 275 / 15%);
+  --color-drink: oklch(0.73 0.12 85);
+  --color-drink-dim: oklch(0.73 0.12 85 / 15%);
+  --color-beauty: oklch(0.68 0.16 10);
+  --color-beauty-dim: oklch(0.68 0.16 10 / 15%);
+
+  /* Typography */
+  --font-heading: 'Playfair Display', 'Noto Serif SC', serif;
+  --font-body: 'Noto Sans SC', sans-serif;
+  --font-data: 'Space Grotesk', 'Noto Sans SC', sans-serif;
 }
 
 :root {
-  --radius: 0.5rem;
-  --background: oklch(0.13 0.015 260);
-  --foreground: oklch(0.93 0.005 260);
-  --card: oklch(0.17 0.015 260);
-  --card-foreground: oklch(0.93 0.005 260);
-  --popover: oklch(0.17 0.015 260);
-  --popover-foreground: oklch(0.93 0.005 260);
-  --primary: oklch(0.76 0.18 155);
-  --primary-foreground: oklch(0.13 0.015 260);
-  --secondary: oklch(0.22 0.015 260);
-  --secondary-foreground: oklch(0.85 0.005 260);
-  --muted: oklch(0.22 0.01 260);
-  --muted-foreground: oklch(0.65 0.015 260);
-  --accent: oklch(0.22 0.015 260);
-  --accent-foreground: oklch(0.93 0.005 260);
-  --destructive: oklch(0.72 0.19 25);
+  --radius: 0.375rem;
+  /* Dark luxury palette */
+  --background: oklch(0.12 0.005 260);
+  --foreground: oklch(0.93 0.01 85);
+  --card: oklch(0.16 0.005 260);
+  --card-foreground: oklch(0.93 0.01 85);
+  --popover: oklch(0.16 0.005 260);
+  --popover-foreground: oklch(0.93 0.01 85);
+  --primary: oklch(0.73 0.12 85);
+  --primary-foreground: oklch(0.12 0.005 260);
+  --secondary: oklch(0.20 0.005 260);
+  --secondary-foreground: oklch(0.85 0.01 85);
+  --muted: oklch(0.20 0.005 260);
+  --muted-foreground: oklch(0.60 0.02 85);
+  --accent: oklch(0.20 0.005 260);
+  --accent-foreground: oklch(0.93 0.01 85);
+  --destructive: oklch(0.65 0.2 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.28 0.015 260);
-  --input: oklch(0.28 0.015 260);
-  --ring: oklch(0.76 0.18 155);
-  --chart-1: oklch(0.82 0.17 80);
-  --chart-2: oklch(0.75 0.14 200);
-  --chart-3: oklch(0.76 0.18 155);
-  --chart-4: oklch(0.72 0.19 25);
+  --border: oklch(0.25 0.005 260);
+  --input: oklch(0.25 0.005 260);
+  --ring: oklch(0.73 0.12 85);
+  --chart-1: oklch(0.73 0.12 85);
+  --chart-2: oklch(0.55 0.18 275);
+  --chart-3: oklch(0.68 0.16 10);
+  --chart-4: oklch(0.76 0.18 155);
   --chart-5: oklch(0.65 0.15 300);
-  --sidebar: oklch(0.15 0.015 260);
-  --sidebar-foreground: oklch(0.93 0.005 260);
-  --sidebar-primary: oklch(0.76 0.18 155);
-  --sidebar-primary-foreground: oklch(0.13 0.015 260);
-  --sidebar-accent: oklch(0.22 0.015 260);
-  --sidebar-accent-foreground: oklch(0.93 0.005 260);
-  --sidebar-border: oklch(0.28 0.015 260);
-  --sidebar-ring: oklch(0.76 0.18 155);
+  --sidebar: oklch(0.14 0.005 260);
+  --sidebar-foreground: oklch(0.93 0.01 85);
+  --sidebar-primary: oklch(0.73 0.12 85);
+  --sidebar-primary-foreground: oklch(0.12 0.005 260);
+  --sidebar-accent: oklch(0.20 0.005 260);
+  --sidebar-accent-foreground: oklch(0.93 0.01 85);
+  --sidebar-border: oklch(0.25 0.005 260);
+  --sidebar-ring: oklch(0.73 0.12 85);
 }
 
 @layer base {
@@ -148,54 +178,101 @@
     }
   }
 
-  /* Glow effects for route colors */
-  .glow-amber {
-    box-shadow: 0 0 20px oklch(0.82 0.17 80 / 20%), 0 0 40px oklch(0.82 0.17 80 / 10%);
-  }
-  .glow-cyan {
-    box-shadow: 0 0 20px oklch(0.75 0.14 200 / 20%), 0 0 40px oklch(0.75 0.14 200 / 10%);
-  }
-  .glow-emerald {
-    box-shadow: 0 0 20px oklch(0.76 0.18 155 / 20%), 0 0 40px oklch(0.76 0.18 155 / 10%);
+  /* Gold glow effect */
+  .glow-gold {
+    box-shadow: 0 0 20px oklch(0.73 0.12 85 / 20%), 0 0 60px oklch(0.73 0.12 85 / 8%);
   }
 
-  /* Breathing pulse animation for research cards */
-  @keyframes border-pulse {
-    0%, 100% { border-color: oklch(0.76 0.18 155 / 0.3); box-shadow: 0 0 0 0 oklch(0.76 0.18 155 / 0); }
-    50% { border-color: oklch(0.76 0.18 155 / 0.6); box-shadow: 0 0 12px 2px oklch(0.76 0.18 155 / 0.15); }
-  }
-  @keyframes border-pulse-amber {
-    0%, 100% { border-color: oklch(0.82 0.17 80 / 0.3); box-shadow: 0 0 0 0 oklch(0.82 0.17 80 / 0); }
-    50% { border-color: oklch(0.82 0.17 80 / 0.6); box-shadow: 0 0 12px 2px oklch(0.82 0.17 80 / 0.15); }
-  }
-  @keyframes border-pulse-indigo {
-    0%, 100% { border-color: oklch(0.59 0.22 275 / 0.3); box-shadow: 0 0 0 0 oklch(0.59 0.22 275 / 0); }
-    50% { border-color: oklch(0.59 0.22 275 / 0.6); box-shadow: 0 0 12px 2px oklch(0.59 0.22 275 / 0.15); }
-  }
-  @keyframes border-pulse-rose {
-    0%, 100% { border-color: oklch(0.65 0.2 10 / 0.3); box-shadow: 0 0 0 0 oklch(0.65 0.2 10 / 0); }
-    50% { border-color: oklch(0.65 0.2 10 / 0.6); box-shadow: 0 0 12px 2px oklch(0.65 0.2 10 / 0.15); }
+  /* Frosted glass card */
+  .glass-card {
+    background: oklch(0.16 0.005 260 / 80%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid oklch(0.73 0.12 85 / 10%);
   }
 
-  .animate-pulse-border-emerald {
-    animation: border-pulse 2.5s ease-in-out 3;
-  }
-  .animate-pulse-border-amber {
-    animation: border-pulse-amber 2.5s ease-in-out 3;
-  }
-  .animate-pulse-border-indigo {
-    animation: border-pulse-indigo 2.5s ease-in-out 3;
-  }
-  .animate-pulse-border-rose {
-    animation: border-pulse-rose 2.5s ease-in-out 3;
+  /* Gold gradient text */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, oklch(0.82 0.14 85), oklch(0.73 0.12 85), oklch(0.65 0.10 85));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  /* Mobile horizontal scroll carousel */
-  .research-carousel {
+  /* Gold line decoration */
+  .gold-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, oklch(0.73 0.12 85 / 40%), transparent);
+  }
+
+  /* Spotlight hover effect */
+  .spotlight-hover {
+    position: relative;
+    overflow: hidden;
+  }
+  .spotlight-hover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, oklch(0.73 0.12 85 / 8%) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+  .spotlight-hover:hover::before {
+    opacity: 1;
+  }
+
+  /* Section fade-in animation */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out forwards;
+  }
+
+  /* Counter animation for numbers */
+  @keyframes glow-pulse {
+    0%, 100% { text-shadow: 0 0 10px oklch(0.73 0.12 85 / 0%); }
+    50% { text-shadow: 0 0 20px oklch(0.73 0.12 85 / 30%); }
+  }
+
+  .animate-glow {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.12 0.005 260);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.30 0.005 260);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.73 0.12 85 / 50%);
+  }
+
+  /* Hide scrollbar for carousels */
+  .no-scrollbar {
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
-  .research-carousel::-webkit-scrollbar {
+  .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
 }
