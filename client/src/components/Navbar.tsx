@@ -34,7 +34,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <img
-            src={BRAND.logo3d}
+            src={BRAND.logoZhiyangcui}
             alt={BRAND.name}
             className="w-9 h-9 lg:w-10 lg:h-10 object-contain transition-transform duration-300 group-hover:scale-110"
           />

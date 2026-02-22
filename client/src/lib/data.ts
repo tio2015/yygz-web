@@ -10,6 +10,7 @@ export const BRAND = {
   tagline: "院士科研 · 药食同源 · 三大赛道",
   logo3d: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/nnryQePouIAbHdPt.png",
   logoBlack: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/CdMABrLIqerRhKoR.png",
+  logoZhiyangcui: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/bXKUXdAcSfzRdIZe.png",
   qrCode: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/TAixCBdqrHyntQKx.jpg",
 };
 

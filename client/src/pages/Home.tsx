@@ -51,7 +51,7 @@ function Hero() {
             <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-lg">
               刘仲华院士团队科研成果转化，药食同源植物固体饮料。
               <br className="hidden sm:block" />
-              睡眠、应酬、养颜三大赛道，诚邀视频号主播合作共赢。
+              睡眠、应酬、养颜三大赛道，期待与您携手共赢。
             </p>
           </div>
 
@@ -248,7 +248,7 @@ function CTASection() {
           <div className="relative z-10 space-y-6">
             <Users size={36} className="text-gold mx-auto" />
             <h2 className="text-3xl lg:text-4xl font-bold">
-              诚邀视频号主播<span className="text-gold-gradient">合作共赢</span>
+              携手合作伙伴<span className="text-gold-gradient">共赢大健康</span>
             </h2>
             <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed">
               院士科研背书 + 三赛道全覆盖 + 合规话术体系 + 全链路支持。

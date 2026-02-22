@@ -2,10 +2,9 @@
  * Partner Page: Partnership advantages, track overview, contact
  * Design: 暗室光影 - Gold accent CTA
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { PARTNERSHIP_ADVANTAGES, TRACKS, BRAND } from "@/lib/data";
-import { Award, Target, Shield, Gem, Handshake, Settings, ArrowRight, Send, CheckCircle } from "lucide-react";
-import { toast } from "sonner";
+import { Award, Target, Shield, Gem, Handshake, Settings, CheckCircle } from "lucide-react";
 
 const ADVANTAGE_ICONS: Record<string, React.ReactNode> = {
   award: <Award size={22} />,
@@ -35,15 +34,7 @@ export default function PartnerPage() {
   const ref1 = useInView();
   const ref2 = useInView();
   const ref3 = useInView();
-  const [submitted, setSubmitted] = useState(false);
-
   useEffect(() => { window.scrollTo(0, 0); }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    toast.success("感谢您的关注，请扫描下方二维码添加商务微信");
-  };
 
   return (
     <div className="pt-20 lg:pt-24 pb-16">
@@ -51,7 +42,7 @@ export default function PartnerPage() {
       <section className="container py-16 lg:py-24 text-center space-y-4">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/30 bg-gold/5 text-gold text-xs tracking-wider">
           <Handshake size={14} />
-          <span>诚邀视频号主播合作</span>
+          <span>携手渠道合作共赢</span>
         </div>
         <h1 className="text-3xl lg:text-5xl font-bold">
           合作共赢 · <span className="text-gold-gradient">一起做大健康</span>
@@ -109,87 +100,41 @@ export default function PartnerPage() {
         </div>
       </section>
 
-      {/* Contact / CTA */}
+      {/* WeChat QR Code CTA */}
       <section className="py-16 lg:py-24">
         <div ref={ref3} className="container opacity-0">
-          <div className="max-w-2xl mx-auto">
-            <div className="glass-card rounded-xl p-8 lg:p-12 space-y-8 relative overflow-hidden">
+          <div className="max-w-3xl mx-auto">
+            <div className="glass-card rounded-xl p-8 lg:p-12 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-gold/5 pointer-events-none" />
-              <div className="relative z-10">
-                <div className="text-center space-y-3 mb-8">
+              <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                {/* Left: Text */}
+                <div className="flex-1 text-center lg:text-left space-y-4">
                   <h2 className="text-2xl lg:text-3xl font-bold">开始合作</h2>
-                  <p className="text-muted-foreground text-sm">
-                    填写基本信息，我们的商务团队会在24小时内与您联系
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    扫码添加企业微信，获取完整产品资料、合作方案和主播话术手册。我们的商务团队将一对一为您服务。
                   </p>
-                </div>
-
-                {!submitted ? (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="space-y-1.5">
-                        <label className="text-xs text-muted-foreground">姓名</label>
-                        <input
-                          type="text"
-                          required
-                          className="w-full px-4 py-2.5 rounded-sm bg-charcoal-light border border-gold/10 text-foreground text-sm focus:border-gold/40 focus:outline-none transition-colors"
-                          placeholder="您的姓名"
-                        />
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-xs text-muted-foreground">手机号</label>
-                        <input
-                          type="tel"
-                          required
-                          className="w-full px-4 py-2.5 rounded-sm bg-charcoal-light border border-gold/10 text-foreground text-sm focus:border-gold/40 focus:outline-none transition-colors"
-                          placeholder="您的手机号"
-                        />
-                      </div>
+                  <div className="space-y-2 pt-2">
+                    <div className="flex items-center gap-3 text-sm text-muted-foreground lg:justify-start justify-center">
+                      <CheckCircle size={14} className="text-gold flex-shrink-0" />
+                      <span>产品资料与合规话术一键获取</span>
                     </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs text-muted-foreground">视频号/平台账号</label>
-                      <input
-                        type="text"
-                        className="w-full px-4 py-2.5 rounded-sm bg-charcoal-light border border-gold/10 text-foreground text-sm focus:border-gold/40 focus:outline-none transition-colors"
-                        placeholder="您的视频号或其他平台账号"
-                      />
+                    <div className="flex items-center gap-3 text-sm text-muted-foreground lg:justify-start justify-center">
+                      <CheckCircle size={14} className="text-gold flex-shrink-0" />
+                      <span>专属商务一对一对接合作方案</span>
                     </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs text-muted-foreground">感兴趣的赛道</label>
-                      <div className="flex flex-wrap gap-2">
-                        {TRACKS.map((t) => (
-                          <label key={t.id} className="flex items-center gap-2 px-3 py-2 rounded-sm bg-charcoal-light border border-gold/10 text-sm text-muted-foreground hover:border-gold/30 transition-colors cursor-pointer">
-                            <input type="checkbox" className="accent-[oklch(0.73_0.12_85)]" />
-                            <span>{t.brandName}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs text-muted-foreground">留言（选填）</label>
-                      <textarea
-                        rows={3}
-                        className="w-full px-4 py-2.5 rounded-sm bg-charcoal-light border border-gold/10 text-foreground text-sm focus:border-gold/40 focus:outline-none transition-colors resize-none"
-                        placeholder="您的问题或合作意向"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gold text-charcoal font-medium rounded-sm hover:bg-gold-bright transition-colors"
-                    >
-                      <Send size={16} />
-                      提交合作意向
-                    </button>
-                  </form>
-                ) : (
-                  <div className="text-center space-y-6">
-                    <CheckCircle size={48} className="text-gold mx-auto" />
-                    <p className="text-lg font-medium text-foreground">感谢您的关注</p>
-                    <p className="text-sm text-muted-foreground">请扫描下方二维码添加商务微信，获取产品资料与合作方案</p>
-                    <div className="w-44 h-44 mx-auto rounded-sm overflow-hidden border border-gold/20 p-2 bg-white">
-                      <img src={BRAND.qrCode} alt="商务微信" className="w-full h-full object-contain" />
+                    <div className="flex items-center gap-3 text-sm text-muted-foreground lg:justify-start justify-center">
+                      <CheckCircle size={14} className="text-gold flex-shrink-0" />
+                      <span>样品申请与选品培训安排</span>
                     </div>
                   </div>
-                )}
+                </div>
+                {/* Right: QR Code */}
+                <div className="flex flex-col items-center gap-3 flex-shrink-0">
+                  <div className="w-48 h-48 rounded-lg overflow-hidden border-2 border-gold/20 p-2.5 bg-white shadow-[0_0_40px_oklch(0.73_0.12_85/15%)]">
+                    <img src={BRAND.qrCode} alt="企业微信" className="w-full h-full object-contain" />
+                  </div>
+                  <p className="text-xs text-gold tracking-wider">扫码添加企业微信</p>
+                </div>
               </div>
             </div>
           </div>
