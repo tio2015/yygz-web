@@ -33,15 +33,18 @@ export default function Navbar() {
       <nav className="container flex items-center justify-between h-16 lg:h-20">
         {/* Logo - Dual brand */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          {/* 一叶归真 logo */}
-          <img
-            src={BRAND.logoBlack}
-            alt="一叶归真"
-            className="w-8 h-8 lg:w-9 lg:h-9 object-contain invert brightness-200 transition-transform duration-300 group-hover:scale-110"
-          />
+          {/* 一叶归真 logo + ® */}
+          <div className="relative flex-shrink-0">
+            <img
+              src={BRAND.logoBlack}
+              alt="一叶归真"
+              className="w-10 h-10 lg:w-12 lg:h-12 object-contain invert brightness-200 transition-transform duration-300 group-hover:scale-110"
+            />
+            <span className="absolute -top-0.5 -right-2.5 text-[7px] lg:text-[8px] text-gold/80 font-medium">®</span>
+          </div>
           <div className="flex flex-col leading-none">
-            <span className="text-gold-gradient font-[var(--font-heading)] text-base lg:text-lg font-semibold tracking-wider">
-              一叶归真<sup className="text-[8px] lg:text-[9px] align-super ml-0.5 text-gold/70">®</sup>
+            <span className="text-gold-gradient font-[var(--font-heading)] text-lg lg:text-xl font-semibold tracking-wider">
+              一叶归真
             </span>
           </div>
           {/* Divider */}
