@@ -91,15 +91,15 @@ export const TRACKS: Track[] = [
   {
     id: "drink",
     name: "应酬赛道",
-    brandName: "养生将军 / 且酌",
+    brandName: "且酌",
     tagline: "酒桌上的底气，来自科研的力量",
     color: "drink",
     colorClass: "text-[oklch(0.73_0.12_85)]",
     sceneImage: IMAGES.socialScene,
     productImage: PDF_IMAGES.qiezhuo,
-    description: "以葛根素、高良姜素等植物活性分子为核心，通过提高ADH/ALDH2活性加速酒精代谢。七味药食同源原料，君臣佐使科学配伍。",
-    targetAudience: "30-50岁商务人群，应酬频繁、关注健康、追求品质",
-    scenarios: ["商务宴请前后的身体管理", "朋友聚会的健康保障", "高频应酬人群的日常维护", "京沪高铁商务座的品质之选"],
+    description: "以枳椇子提取物、葛根素、高良姜素等植物活性分子为核心，通过提高ADH/ALDH2活性加速酒精代谢。七味药食同源原料，君臣佐使科学配伍。",
+    targetAudience: "商务人群，应酬频繁、关注健康、追求品质",
+    scenarios: ["商务宴请前后的身体管理", "朋友聚会的健康保障", "高频应酬人群的日常维护"],
     ingredients: [
       { name: "葛根", role: "提高ADH/ALDH2活性，加速酒精代谢" },
       { name: "高良姜", role: "协同增效，保护胃黏膜" },
@@ -111,7 +111,6 @@ export const TRACKS: Track[] = [
       "七种药食同源植物，君臣佐使配伍",
       "院士团队研发，双国奖技术支撑",
       "酒前一瓶打底，酒后一瓶恢复",
-      "京沪高铁商务座指定合作产品",
     ],
     broadcasterTips: [
       "强调\"身体管理\"\"健康保障\"，避免说\"解酒\"\"醒酒\"",
