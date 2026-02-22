@@ -32,32 +32,18 @@ export default function Navbar() {
     >
       <nav className="container flex items-center justify-between h-16 lg:h-20">
         {/* Logo - Dual brand */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          {/* 一叶归真 logo + ® */}
-          <div className="relative flex-shrink-0">
-            <img
-              src={BRAND.logoBlack}
-              alt="一叶归真"
-              className="w-10 h-10 lg:w-12 lg:h-12 object-contain invert brightness-200 transition-transform duration-300 group-hover:scale-110"
-            />
-            <span className="absolute -top-0.5 -right-2.5 text-[7px] lg:text-[8px] text-gold/80 font-medium">®</span>
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="text-gold-gradient font-[var(--font-heading)] text-lg lg:text-xl font-semibold tracking-wider">
-              一叶归真
-            </span>
-          </div>
-          {/* Divider */}
-          <div className="w-px h-8 bg-gold/20 mx-1" />
-          {/* 植养萃 logo */}
+        <Link href="/" className="flex items-center gap-3 group">
           <img
-            src={BRAND.logoZhiyangcui}
-            alt="植养萃"
-            className="w-9 h-9 lg:w-10 lg:h-10 object-contain brightness-150 saturate-150 transition-transform duration-300 group-hover:scale-110"
+            src={BRAND.logo3d}
+            alt="一叶归真"
+            className="w-10 h-10 lg:w-11 lg:h-11 object-contain transition-transform duration-300 group-hover:scale-110"
           />
-          <div className="flex flex-col leading-none">
-            <span className="text-foreground font-[var(--font-heading)] text-base lg:text-lg font-semibold tracking-wider">
-              植养萃<sup className="text-[8px] lg:text-[9px] align-super ml-0.5 text-gold/70">®</sup>
+          <div className="flex flex-col leading-none gap-0.5">
+            <span className="text-gold-gradient font-[var(--font-heading)] text-lg lg:text-xl font-semibold tracking-wider">
+              一叶归真<sup className="text-[8px] lg:text-[9px] align-super ml-0.5 text-gold/70">®</sup>
+            </span>
+            <span className="text-[10px] lg:text-xs text-muted-foreground tracking-[0.2em]">
+              植养萃<sup className="text-[7px] align-super ml-0.5 text-muted-foreground/60">®</sup>
             </span>
           </div>
         </Link>
