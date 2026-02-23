@@ -40,6 +40,27 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
+            <div className="pt-4 border-t border-gold/10">
+              <h4 className="text-sm font-medium text-foreground tracking-wide mb-2">集团站点</h4>
+              <div className="flex flex-col gap-2">
+                <a
+                  href="https://tio2015.github.io/yiyeguizhen-group/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-gold transition-colors w-fit"
+                >
+                  ← 返回集团主站
+                </a>
+                <a
+                  href="https://tio2015.github.io/yiyeguizhen-group/tea/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-gold transition-colors w-fit"
+                >
+                  中国茶招商站 →
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* QR Code */}
@@ -56,6 +77,7 @@ export default function Footer() {
         <div className="gold-line mt-10 mb-6" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground/50">
           <p>&copy; {new Date().getFullYear()} 北京一叶归真生物科技有限公司 版权所有</p>
+          <p>ICP备案号待填入</p>
           <p>本站所有产品均为植物固体饮料，不替代药品</p>
         </div>
       </div>

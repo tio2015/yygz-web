@@ -5,6 +5,7 @@
 import { useEffect, useRef } from "react";
 import { ACADEMICIAN, RESEARCH_PLATFORMS, PDF_IMAGES, IMAGES } from "@/lib/data";
 import { Award, Building2, FlaskConical, FileCheck } from "lucide-react";
+import { SEOHead } from "@/components/SEOHead";
 
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
@@ -31,6 +32,11 @@ export default function ResearchPage() {
 
   return (
     <div className="pt-20 lg:pt-24 pb-16">
+      <SEOHead
+        title="科研实力 - 一叶归真"
+        description="刘仲华院士团队三十年植物功能成分研究，三大国家级科研平台，双国家科技进步二等奖。"
+        path="/research"
+      />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
