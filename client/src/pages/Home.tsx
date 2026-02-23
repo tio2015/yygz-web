@@ -4,7 +4,7 @@
  */
 import { useEffect, useRef } from "react";
 import { Link } from "wouter";
-import { BRAND, IMAGES, PDF_IMAGES, TRACKS, TRUST_STATS, ACADEMICIAN } from "@/lib/data";
+import { BRAND, IMAGES, PDF_IMAGES, TRACKS, TRUST_STATS, ACADEMICIAN, FORMULA_FRAMEWORK } from "@/lib/data";
 import { ArrowRight, Award, FlaskConical, Users } from "lucide-react";
 
 function useInView(threshold = 0.15) {
@@ -111,9 +111,9 @@ function ThreeTracks() {
     <section className="py-20 lg:py-28">
       <div ref={ref} className="container opacity-0 space-y-12">
         <div className="text-center space-y-3">
-          <h2 className="text-3xl lg:text-4xl font-bold">三大赛道 · 全场景覆盖</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold">三大赛道 · <span className="text-gold-gradient">精准配比</span></h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            每个赛道对应一个高频消费场景，配套独立品牌和合规话术体系
+            {FORMULA_FRAMEWORK.subtitle}。七味药食同源原料协同作用，核心活性成分的配比经过场景化调优。
           </p>
         </div>
 
@@ -137,8 +137,9 @@ function ThreeTracks() {
 
                 {/* Content */}
                 <div className="p-5 space-y-3">
+                  <div className="text-xs text-gold/70 tracking-wider">配比侧重</div>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
-                    {track.description}
+                    {track.ratioFocus}
                   </p>
                   <div className="flex items-center gap-2 text-gold text-xs">
                     <span>了解详情</span>

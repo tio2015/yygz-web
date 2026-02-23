@@ -37,6 +37,23 @@ export const PDF_IMAGES = {
   testReport: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/vRtPutmpVXdygeaH.png",
 };
 
+/* ─── 统一配方框架 ─── */
+export const FORMULA_FRAMEWORK = {
+  title: "一套科研体系，七味药食同源",
+  subtitle: "同一配方框架，不同场景精准配比",
+  description: "植养萃全线产品基于同一套君臣佐使配伍框架，七味药食同源原料协同作用。不同场景下，核心活性成分的配比经过精准调优，让每款产品在对应场景中发挥更强的针对性。同一场景的不同产品，按品质标准调整植物活性精华的投料量级。",
+  ingredients: [
+    { name: "葛根", role: "君药", desc: "解酒毒、生津液、舒筋脉，含葛根素和大豆苷元" },
+    { name: "人参", role: "君药", desc: "大补元气、安神益智，含人参皂苷Rb1等活性成分" },
+    { name: "高良姜", role: "臣药", desc: "散寒湿、温中止呕，含高良姜素和姜黄素" },
+    { name: "灵芝", role: "臣药", desc: "补气安神、保肝养颜，含灵芝三萜和灵芝多糖" },
+    { name: "年份茯砖茶", role: "臣药", desc: "消食醒酒、去油腻，富含茶多酚和益生菌代谢产物" },
+    { name: "青苹果", role: "佐使药", desc: "生津止渴、开胃醒脾，提供维生素C和多酚" },
+    { name: "罗汉果", role: "佐使药", desc: "清热润肺、滑肠通便，给邪以出路" },
+  ],
+  synergy: "诸药合用，共奏解酒毒、健脾胃、宁心神、生津液之功。四大功效不是割裂的，而是一个协同网络。",
+};
+
 /* ─── 三大赛道 ─── */
 export interface Track {
   id: string;
@@ -50,7 +67,9 @@ export interface Track {
   description: string;
   targetAudience: string;
   scenarios: string[];
-  ingredients: { name: string; role: string }[];
+  ratioFocus: string;
+  keyMolecules: { name: string; source: string; mechanism: string }[];
+  synergyNote: string;
   complianceCopy: string[];
   broadcasterTips: string[];
   legalDisclaimer: string;
@@ -66,15 +85,16 @@ export const TRACKS: Track[] = [
     colorClass: "text-[oklch(0.55_0.18_275)]",
     sceneImage: IMAGES.sleepScene,
     productImage: PDF_IMAGES.wananMima,
-    description: "以人参皂苷、灵芝三萜等植物活性分子为核心，通过调节GABA受体和HPA轴，帮助建立平静的睡前状态。药食同源配方，温和安全。",
-    targetAudience: "30-55岁职场人群，长期高压、睡眠质量差、不愿依赖安眠药",
+    description: "同样的七味药食同源原料，在睡眠场景下强化了人参皂苷和灵芝三萜的配比。人参皂苷Rb1调节GABA受体和HPA轴，灵芝三萜平衡神经递质系统，同时葛根改善微循环、罗汉果给邪以出路，为安睡创造生理基础。",
+    targetAudience: "职场人群，长期高压、睡眠质量不佳、不愿依赖安眠药",
     scenarios: ["高压工作日的睡前放松", "出差倒时差的助眠", "更年期女性的睡眠调理", "日常轻养的睡前仪式"],
-    ingredients: [
-      { name: "人参", role: "调节GABA受体和HPA轴" },
-      { name: "灵芝", role: "安神助眠，调节5-HT系统" },
-      { name: "葛根", role: "改善微循环，缓解身体不适" },
-      { name: "罗汉果", role: "润肺通便，改善睡眠生理基础" },
+    ratioFocus: "强化人参皂苷 + 灵芝三萜配比，突出安神镇静功能",
+    keyMolecules: [
+      { name: "人参皂苷Rb1", source: "人参", mechanism: "调节GABA受体和HPA轴，降低皮质醇水平，帮助身体进入放松状态" },
+      { name: "灵芝三萜", source: "灵芝", mechanism: "调节血清素和多巴胺系统，平衡神经递质，促进深度睡眠" },
+      { name: "葛根黄酮", source: "葛根", mechanism: "扩张血管改善微循环，消除身体不适，为安睡创造生理条件" },
     ],
+    synergyNote: "人参和灵芝联手安神，葛根改善微循环消除身体不适，罗汉果给邪以出路。不是单纯的“助眠”，而是先让身体回到适合入睡的状态。",
     complianceCopy: [
       "七种药食同源植物科学配伍",
       "院士团队研发，国家级平台出品",
@@ -98,16 +118,16 @@ export const TRACKS: Track[] = [
     colorClass: "text-[oklch(0.73_0.12_85)]",
     sceneImage: IMAGES.socialScene,
     productImage: PDF_IMAGES.qiezhuo,
-    description: "以枳椇子提取物、葛根素、高良姜素等植物活性分子为核心，通过提高ADH/ALDH2活性加速酒精代谢。七味药食同源原料，君臣佐使科学配伍。",
+    description: "同样的七味药食同源原料，在应酬场景下强化了葛根素、高良姜素和枳椤子提取物的配比。葛根素和大豆苷元提高ADH/ALDH2活性，高良姜素协同增强，同时灵芝护肝、茯砖茶加速排毒，形成完整的保护链。",
     targetAudience: "商务人群，应酬频繁、关注健康、追求品质",
     scenarios: ["商务宴请前后的身体管理", "朋友聚会的健康保障", "高频应酬人群的日常维护"],
-    ingredients: [
-      { name: "葛根", role: "提高ADH/ALDH2活性，加速酒精代谢" },
-      { name: "高良姜", role: "协同增效，保护胃黏膜" },
-      { name: "人参", role: "抗炎护肝，调节应激反应" },
-      { name: "灵芝", role: "抗氧化，促进肝细胞修复" },
-      { name: "茯砖茶", role: "调节肠道菌群，加速毒素排出" },
+    ratioFocus: "强化葛根素 + 高良姜素 + 枳椤子提取物配比，突出解酒护肝功能",
+    keyMolecules: [
+      { name: "葛根素 + 大豆苷元", source: "葛根", mechanism: "提高乙醇脱氢酶(ADH)和乙醛脱氢酶(ALDH2)活性，加速乙醇→乙醛→乙酸代谢链" },
+      { name: "高良姜素 + 姜黄素", source: "高良姜", mechanism: "协同增强ADH/ALDH2活性，同时抗炎抗溃疡保护胃黏膜" },
+      { name: "灵芝三萜 + 人参皂苷", source: "灵芝/人参", mechanism: "抑制NF-κB通路，减少TNF-α/IL-6等炎的因子，保护肝细胞" },
     ],
+    synergyNote: "葛根和高良姜负责加速代谢，灵芝和人参负责护肝抗炎，茯砖茶和罗汉果负责加速排毒。三条线并行，代谢、保护、排毒同时进行。",
     complianceCopy: [
       "七种药食同源植物，君臣佐使配伍",
       "院士团队研发，双国奖技术支撑",
@@ -130,15 +150,16 @@ export const TRACKS: Track[] = [
     colorClass: "text-[oklch(0.68_0.16_10)]",
     sceneImage: IMAGES.beautyScene,
     productImage: PDF_IMAGES.nvshenjimi,
-    description: "以葛根黄酮、灵芝多糖、人参皂苷等植物活性分子为核心，通过内源性抗氧化、抗炎和改善微循环，从内而外支持皮肤健康。",
-    targetAudience: "28-50岁女性，关注抗衰老、追求由内而外的健康美",
+    description: "同样的七味药食同源原料，在养颜场景下强化了葛根黄酮、灵芝多糖和人参皂苷的配比。葛根黄酮和人参皂苷扩张血管改善微循环，灵芝多糖促进皮肤细胞代谢修复，青苹果和罗汉果提供强效抗氧化和排毒支持。",
+    targetAudience: "女性人群，关注由内而外的健康美",
     scenarios: ["日常养颜的晨间仪式", "熬夜后的肌肤修复", "换季敏感期的内调", "精致女性的健康管理"],
-    ingredients: [
-      { name: "葛根", role: "黄酮类抗氧化，改善微循环" },
-      { name: "灵芝", role: "多糖促进细胞代谢和修复" },
-      { name: "人参", role: "皂苷改善外周血液循环" },
-      { name: "青苹果", role: "维生素C和多酚，强效抗氧化" },
+    ratioFocus: "强化葛根黄酮 + 灵芝多糖 + 人参皂苷配比，突出抗氧化和微循环改善",
+    keyMolecules: [
+      { name: "葛根黄酮", source: "葛根", mechanism: "强效抗氧化，清除自由基，上调SOD/GSH，延缓皮肤氧化损伤" },
+      { name: "灵芝多糖", source: "灵芝", mechanism: "促进皮肤细胞代谢和修复，调节免疫功能，增强皮肤屏障" },
+      { name: "人参皂苷", source: "人参", mechanism: "扩张外周血管改善微循环，调节内分泌，让营养更好地到达皮肤" },
     ],
+    synergyNote: "葛根和人参改善微循环让营养到达皮肤，灵芝促进细胞修复和代谢，青苹果和罗汉果提供抗氧化和排毒支持。由内而外，先让身体健康，皮肤自然会好。",
     complianceCopy: [
       "七种药食同源植物，内调养颜",
       "院士团队研发，科学配伍",
@@ -146,7 +167,7 @@ export const TRACKS: Track[] = [
       "每天一杯，开启美丽仪式",
     ],
     broadcasterTips: [
-      "强调\"由内而外\"\"内调\"\"自然光彩\"，避免说\"美白\"\"祛斑\"",
+      "强调\"由内而外\"\"内调\"\"自然光彩\"，避免说\"美白\"\"祠斑\"",
       "可以说\"喝出好气色\"\"植物的力量\"",
       "展示产品的精致包装，强调女性专属感",
       "突出植物来源和零负担",
