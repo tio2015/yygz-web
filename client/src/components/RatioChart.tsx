@@ -2,8 +2,13 @@
  * RatioChart: 三赛道配比条形图组件
  * 从 track-ratio-v2.html 转换为 React + TailwindCSS
  * CSS 和动画逻辑全部内联，不引用外部文件
+ *
+ * 动画逻辑：
+ * 1. 切换赛道时，条形宽度立即重置为 0（无过渡）
+ * 2. 当组件滚动进入视口后，才触发条形展开动画
+ * 3. 这样无论用户何时滑到配比图，都能看到完整动画过程
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { type TrackRatioData, type RatioIngredient } from "@/lib/ratio-data";
 
 /* ── 赛道色映射 ── */
@@ -66,10 +71,11 @@ function BarFill({
   if (ing.barType === "core") {
     return (
       <div
-        className="h-full rounded transition-all duration-[1200ms] ease-[cubic-bezier(0.4,0,0.2,1)] relative"
+        className="h-full rounded relative"
         style={{
           width,
           background: colors.coreGradient,
+          transition: animated ? "width 1.2s cubic-bezier(0.4,0,0.2,1)" : "none",
         }}
       >
         <span
@@ -83,8 +89,11 @@ function BarFill({
   if (ing.barType === "base") {
     return (
       <div
-        className="h-full rounded transition-all duration-[1200ms] ease-[cubic-bezier(0.4,0,0.2,1)] bg-[rgba(201,168,76,0.38)]"
-        style={{ width }}
+        className="h-full rounded bg-[rgba(201,168,76,0.38)]"
+        style={{
+          width,
+          transition: animated ? "width 1.2s cubic-bezier(0.4,0,0.2,1)" : "none",
+        }}
       />
     );
   }
@@ -92,8 +101,11 @@ function BarFill({
   // dim
   return (
     <div
-      className="h-full rounded transition-all duration-[1200ms] ease-[cubic-bezier(0.4,0,0.2,1)] bg-[rgba(201,168,76,0.22)]"
-      style={{ width }}
+      className="h-full rounded bg-[rgba(201,168,76,0.22)]"
+      style={{
+        width,
+        transition: animated ? "width 1.2s cubic-bezier(0.4,0,0.2,1)" : "none",
+      }}
     />
   );
 }
@@ -147,30 +159,44 @@ function IngredientRow({
 /* ── 主组件 ── */
 export default function RatioChart({ data }: { data: TrackRatioData }) {
   const [animated, setAnimated] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const prevTrackRef = useRef(data.trackId);
 
+  // 切换赛道时：立即重置动画状态，并重置 inView 检测
   useEffect(() => {
-    setAnimated(false);
-    const timer = setTimeout(() => setAnimated(true), 100);
-    return () => clearTimeout(timer);
+    if (prevTrackRef.current !== data.trackId) {
+      // 赛道切换了，先把条形归零（无过渡）
+      setAnimated(false);
+      setIsInView(false);
+      prevTrackRef.current = data.trackId;
+    }
   }, [data.trackId]);
 
-  // 进入视口时触发动画
+  // IntersectionObserver：检测组件是否进入视口
+  const handleIntersection = useCallback(([entry]: IntersectionObserverEntry[]) => {
+    if (entry.isIntersecting) {
+      setIsInView(true);
+    }
+  }, []);
+
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAnimated(true);
-          obs.unobserve(el);
-        }
-      },
-      { threshold: 0.15 }
-    );
+
+    const obs = new IntersectionObserver(handleIntersection, { threshold: 0.15 });
     obs.observe(el);
     return () => obs.disconnect();
-  }, [data.trackId]);
+  }, [data.trackId, handleIntersection]);
+
+  // 进入视口后，延迟一帧再触发动画（确保浏览器先渲染了 0 宽度状态）
+  useEffect(() => {
+    if (!isInView) return;
+    const raf = requestAnimationFrame(() => {
+      setAnimated(true);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [isInView]);
 
   const colors = TRACK_COLORS[data.trackId] || TRACK_COLORS.sleep;
 
