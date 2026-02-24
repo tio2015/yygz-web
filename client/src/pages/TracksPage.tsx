@@ -4,6 +4,8 @@
  */
 import { useState, useEffect, useRef } from "react";
 import { TRACKS, FORMULA_FRAMEWORK, type Track } from "@/lib/data";
+import { TRACK_RATIO_DATA } from "@/lib/ratio-data";
+import RatioChart from "@/components/RatioChart";
 import { Moon, Wine, Sparkles, CheckCircle, MessageSquare, AlertTriangle, Beaker, ArrowRight } from "lucide-react";
 
 const TRACK_ICONS: Record<string, React.ReactNode> = {
@@ -161,6 +163,17 @@ function TrackDetail({ track }: { track: Track }) {
         <p className="text-xs text-gold tracking-wider mb-2">协同逻辑</p>
         <p className="text-sm text-muted-foreground leading-relaxed">{track.synergyNote}</p>
       </div>
+
+      {/* 配比条形图 */}
+      {(() => {
+        const ratioData = TRACK_RATIO_DATA.find((r) => r.trackId === track.id);
+        if (!ratioData) return null;
+        return (
+          <div className="mt-2">
+            <RatioChart data={ratioData} />
+          </div>
+        );
+      })()}
 
       {/* Broadcaster tips + Compliance */}
       <div ref={ref3} className="opacity-0 grid grid-cols-1 lg:grid-cols-2 gap-6">
