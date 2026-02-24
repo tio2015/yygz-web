@@ -36,7 +36,7 @@ export default function Navbar() {
           <img
             src={BRAND.logo3d}
             alt="一叶归真"
-            className="w-10 h-10 lg:w-11 lg:h-11 object-contain transition-transform duration-300 group-hover:scale-110"
+            className="w-10 h-10 lg:w-11 lg:h-11 object-contain animate-logo-spin"
           />
           <div className="flex flex-col leading-none gap-0.5">
             <span className="text-gold-gradient font-[var(--font-heading)] text-lg lg:text-xl font-semibold tracking-wider">

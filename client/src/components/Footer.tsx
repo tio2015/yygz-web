@@ -12,7 +12,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img src={BRAND.logo3d} alt={BRAND.name} className="w-10 h-10 object-contain" />
+              <img src={BRAND.logo3d} alt={BRAND.name} className="w-10 h-10 object-contain animate-logo-spin" />
               <div>
                 <p className="text-gold-gradient font-[var(--font-heading)] text-lg font-semibold tracking-wider">{BRAND.name}</p>
                 <p className="text-xs text-muted-foreground tracking-[0.2em]">{BRAND.sub}</p>
@@ -44,7 +44,7 @@ export default function Footer() {
               <h4 className="text-sm font-medium text-foreground tracking-wide mb-2">集团站点</h4>
               <div className="flex flex-col gap-2">
                 <a
-                  href="https://tio2015.github.io/yiyeguizhen-group/"
+                  href="https://yiyeguizhen.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-gold transition-colors w-fit"
@@ -52,7 +52,7 @@ export default function Footer() {
                   ← 返回集团主站
                 </a>
                 <a
-                  href="https://tio2015.github.io/yiyeguizhen-group/tea/"
+                  href="https://yiyeguizhen.com/tea/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-gold transition-colors w-fit"
