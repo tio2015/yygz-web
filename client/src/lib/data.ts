@@ -8,7 +8,7 @@ export const BRAND = {
   name: "一叶归真",
   sub: "植养萃",
   tagline: "院士科研 · 药食同源 · 三大赛道",
-  logo3d: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/nnryQePouIAbHdPt.png",
+  logo3d: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/tBXOyjKbTZupayUJ.png",
   logoBlack: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/CdMABrLIqerRhKoR.png",
   logoZhiyangcui: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/bXKUXdAcSfzRdIZe.png",
   qrCode: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/FKgfzKHjVCZpYvqq.jpg",
@@ -32,7 +32,7 @@ export const PDF_IMAGES = {
   dualAward: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/KlCGwDpkFkdeFSeH.png",
   labBuilding1: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/XUiYpdqRVHGlurzA.png",
   labBuilding2: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/wqTCsWtXsuKzZVKL.png",
-  academicianIntro: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/SiyBtNvJxmawfiJd.png",
+  academicianIntro: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/YsnfELLQmVTvCJlW.jpg",
   ingredients: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/TbTmoVQTbylFhuYJ.png",
   testReport: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/vRtPutmpVXdygeaH.png",
 };
@@ -180,7 +180,7 @@ export const TRACKS: Track[] = [
 export const ACADEMICIAN = {
   name: "刘仲华",
   title: "中国工程院院士",
-  photo: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/SiyBtNvJxmawfiJd.png",
+  photo: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/YsnfELLQmVTvCJlW.jpg",
   highlights: [
     "中国工程院院士（2019年）",
     "中共第二十届中央候补委员（2022年）",
