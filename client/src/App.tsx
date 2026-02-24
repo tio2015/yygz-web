@@ -3,7 +3,7 @@
  * Design: 暗室光影 (Dark Luxury Spotlight)
  * 4-page structure: Home / Tracks / Research / Partner
  */
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router } from "wouter";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -16,7 +16,7 @@ import ResearchPage from "@/pages/ResearchPage";
 import PartnerPage from "@/pages/PartnerPage";
 import NotFound from "@/pages/not-found";
 
-function Router() {
+function AppRouter() {
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -30,20 +30,22 @@ function Router() {
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="yygz-theme">
-      <TooltipProvider>
-        <ErrorBoundary>
-          <div className="min-h-screen bg-background text-foreground flex flex-col">
-            <Navbar />
-            <main className="flex-1">
-              <Router />
-            </main>
-            <Footer />
-          </div>
-        </ErrorBoundary>
-        <Toaster />
-      </TooltipProvider>
-    </ThemeProvider>
+    <Router base="/health">
+      <ThemeProvider defaultTheme="dark" storageKey="yygz-theme">
+        <TooltipProvider>
+          <ErrorBoundary>
+            <div className="min-h-screen bg-background text-foreground flex flex-col">
+              <Navbar />
+              <main className="flex-1">
+                <AppRouter />
+              </main>
+              <Footer />
+            </div>
+          </ErrorBoundary>
+          <Toaster />
+        </TooltipProvider>
+      </ThemeProvider>
+    </Router>
   );
 }
 
