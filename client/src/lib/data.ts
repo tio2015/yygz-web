@@ -26,7 +26,7 @@ export const IMAGES = {
 /* ─── PDF提取图片 ─── */
 export const PDF_IMAGES = {
   yangshengJiangjun: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/pOmChiahgqxEShAA.png",
-  qiezhuo: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/PEYlnUPOWmDgbgSJ.png",
+  qiezhuo: "/images/qiezhuo.png",
   wananMima: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/oZyCnRQaMgRFihCR.png",
   nvshenjimi: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/FrRdSeVbaNJZxzfT.png",
   dualAward: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/KlCGwDpkFkdeFSeH.png",
