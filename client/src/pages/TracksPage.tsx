@@ -100,11 +100,11 @@ function TrackDetail({ track }: { track: Track }) {
 
         {/* Product + Ratio Focus */}
         <div className="space-y-4">
-          <div className="flex items-center justify-center p-6 rounded-lg border border-gold/10 bg-[oklch(0.12_0.005_260)]">
+          <div className="flex items-center justify-center p-4 rounded-lg border border-gold/10 bg-[oklch(0.12_0.005_260)]">
             <img
               src={track.productImage}
               alt={track.brandName}
-              className="w-full h-auto max-h-80 object-contain rounded-md"
+              className="w-full h-auto max-h-[28rem] object-contain rounded-md"
             />
           </div>
           {/* Ratio focus badge */}
