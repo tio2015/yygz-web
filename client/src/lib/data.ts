@@ -5,6 +5,7 @@
 
 import qiezhuoImg from "@/assets/qiezhuo.jpg";
 import liuzhonghuaImg from "@/assets/liuzhonghua.jpg";
+import wananmimaImg from "@/assets/wananmima.jpg";
 
 /* ─── 品牌资产 ─── */
 export const BRAND = {
@@ -30,7 +31,7 @@ export const IMAGES = {
 export const PDF_IMAGES = {
   yangshengJiangjun: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/pOmChiahgqxEShAA.png",
   qiezhuo: qiezhuoImg,
-  wananMima: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/oZyCnRQaMgRFihCR.png",
+  wananMima: wananmimaImg,
   nvshenjimi: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/FrRdSeVbaNJZxzfT.png",
   dualAward: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/KlCGwDpkFkdeFSeH.png",
   labBuilding1: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/XUiYpdqRVHGlurzA.png",
