@@ -180,7 +180,7 @@ export const TRACKS: Track[] = [
 export const ACADEMICIAN = {
   name: "刘仲华",
   title: "中国工程院院士",
-  photo: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/YsnfELLQmVTvCJlW.jpg",
+  photo: "/health/images/liuzhonghua.png",
   highlights: [
     "中国工程院院士（2019年）",
     "湖南师范大学校长（2023年）",
