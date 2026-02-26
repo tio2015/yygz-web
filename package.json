@@ -9,7 +9,11 @@
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test:unit": "vitest run --config vitest.config.ts",
+    "test:unit:watch": "vitest --config vitest.config.ts",
+    "test:e2e": "playwright test",
+    "test": "pnpm run test:unit && pnpm run test:e2e"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
