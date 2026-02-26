@@ -3,8 +3,8 @@
  * Design: 暗室光影 (Dark Luxury Spotlight)
  * ═══════════════════════════════════════════════════ */
 
-import qiezhuoImg from "@/assets/qiezhuo.png";
-import liuzhonghuaImg from "@/assets/liuzhonghua.png";
+import qiezhuoImg from "@/assets/qiezhuo.jpg";
+import liuzhonghuaImg from "@/assets/liuzhonghua.jpg";
 
 /* ─── 品牌资产 ─── */
 export const BRAND = {
