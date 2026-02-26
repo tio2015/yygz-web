@@ -3,6 +3,9 @@
  * Design: 暗室光影 (Dark Luxury Spotlight)
  * ═══════════════════════════════════════════════════ */
 
+import qiezhuoImg from "@/assets/qiezhuo.png";
+import liuzhonghuaImg from "@/assets/liuzhonghua.png";
+
 /* ─── 品牌资产 ─── */
 export const BRAND = {
   name: "一叶归真",
@@ -26,7 +29,7 @@ export const IMAGES = {
 /* ─── PDF提取图片 ─── */
 export const PDF_IMAGES = {
   yangshengJiangjun: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/pOmChiahgqxEShAA.png",
-  qiezhuo: "/health/images/qiezhuo.png",
+  qiezhuo: qiezhuoImg,
   wananMima: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/oZyCnRQaMgRFihCR.png",
   nvshenjimi: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/FrRdSeVbaNJZxzfT.png",
   dualAward: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/KlCGwDpkFkdeFSeH.png",
@@ -180,7 +183,7 @@ export const TRACKS: Track[] = [
 export const ACADEMICIAN = {
   name: "刘仲华",
   title: "中国工程院院士",
-  photo: "/health/images/liuzhonghua.png",
+  photo: liuzhonghuaImg,
   highlights: [
     "中国工程院院士（2019年）",
     "湖南师范大学校长（2023年）",
