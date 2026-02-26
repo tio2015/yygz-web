@@ -43,6 +43,13 @@ jobs:
           ossutil cp dist/public/index.html oss://yiyeguizhen-web-hk/health/index.html \
             --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
 
+      - name: 部署 SPA 子路由（刷新不跳回主页）
+        run: |
+          for route in tracks research partner; do
+            ossutil cp dist/public/index.html oss://yiyeguizhen-web-hk/health/${route}/index.html \
+              --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
+          done
+
       - name: 部署 assets 静态资源（永久缓存）
         run: |
           ossutil cp dist/public/assets/ oss://yiyeguizhen-web-hk/health/assets/ \
