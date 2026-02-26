@@ -183,7 +183,6 @@ export const ACADEMICIAN = {
   photo: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/YsnfELLQmVTvCJlW.jpg",
   highlights: [
     "中国工程院院士（2019年）",
-    "中共第二十届中央候补委员（2022年）",
     "湖南师范大学校长（2023年）",
     "国家植物功能成分利用工程技术研究中心主任",
     "研究开发了100多种植物功能成分",
