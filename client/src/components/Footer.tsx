@@ -77,8 +77,8 @@ export default function Footer() {
         <div className="gold-line mt-10 mb-6" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground/50">
           <p>&copy; {new Date().getFullYear()} 北京一叶归真生物科技有限公司 版权所有</p>
-          <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">京ICP备2025106012号-2</a>
           <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11010802047824" rel="noreferrer" target="_blank" className="hover:text-gold transition-colors inline-flex items-center gap-1"><img src="/huizhang.jpeg" alt="" className="h-3.5 w-auto" />京公网安备11010802047824号</a>
+          <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">京ICP备2025106012号-2</a>
           <p>本站所有产品均为植物固体饮料，不替代药品</p>
         </div>
       </div>
