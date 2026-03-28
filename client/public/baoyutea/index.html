@@ -113,7 +113,17 @@
     }
     .strip-brand { font-size: 10px; letter-spacing: 0.25em; color: var(--cream-40); }
     .strip-sep { font-size: 14px; color: rgba(201,168,76,0.5); font-weight: 100; }
-    .strip-logo img { height: 20px; filter: brightness(10); opacity: 0.55; vertical-align: middle; }
+    .strip-logo img {
+      height: 26px; vertical-align: middle;
+      animation: logo-spin 6s ease-in-out infinite;
+    }
+    @keyframes logo-spin {
+      0%   { transform: rotateY(0deg);   filter: drop-shadow(0 2px 10px rgba(201,168,76,0.15)); }
+      25%  { transform: rotateY(30deg);  filter: drop-shadow(3px 2px 14px rgba(201,168,76,0.38)); }
+      50%  { transform: rotateY(0deg);   filter: drop-shadow(0 2px 10px rgba(201,168,76,0.15)); }
+      75%  { transform: rotateY(-30deg); filter: drop-shadow(-3px 2px 14px rgba(201,168,76,0.38)); }
+      100% { transform: rotateY(0deg);   filter: drop-shadow(0 2px 10px rgba(201,168,76,0.15)); }
+    }
 
     .hero-eyebrow {
       font-size: 11px; letter-spacing: 0.3em; color: var(--red); margin-bottom: 20px;
@@ -302,7 +312,7 @@
       <span class="strip-sep">·</span>
       <span class="strip-brand">选用</span>
       <div class="strip-logo">
-        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/CdMABrLIqerRhKoR.png" alt="且酌" />
+        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/tBXOyjKbTZupayUJ.png" alt="且酌" />
       </div>
       <span class="strip-brand">且酌植养成分</span>
     </div>
