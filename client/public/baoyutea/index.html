@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>且酌 × 宝玉煮茶 | 席间且酌，席后宝玉</title>
-  <meta name="description" content="且酌与宝玉煮茶联名呈献。应酬全链路东方养护方案——草本护肝，院士还元。" />
+  <title>宝玉煮茶 · 院士轻养茶 | 且酌联名出品</title>
+  <meta name="description" content="宝玉煮茶院士轻养茶，选用且酌植养萃系列东方植物功能成分，由院士团队及国家植物功能成分利用工程技术研究中心参与研发。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -34,15 +34,12 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Typography ── */
     .serif { font-family: 'Noto Serif SC', serif; }
     h1, h2, h3 { font-family: 'Noto Serif SC', serif; font-weight: 600; line-height: 1.3; }
 
-    /* ── Layout ── */
     .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 80px 0; }
+    .section { padding: 88px 0; }
 
-    /* ── Badge ── */
     .badge {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 6px 16px; border-radius: 999px;
@@ -50,8 +47,8 @@
     }
     .badge-gold { border: 1px solid rgba(201,168,76,0.4); color: var(--gold); background: var(--gold-dim); }
     .badge-red  { border: 1px solid rgba(192,57,43,0.5); color: var(--red); background: var(--red-dim); }
+    .badge-dim  { border: 1px solid rgba(245,240,232,0.12); color: var(--cream-40); background: rgba(255,255,255,0.04); }
 
-    /* ── Cards ── */
     .card {
       border-radius: 16px; padding: 36px;
       border: 1px solid rgba(255,255,255,0.08);
@@ -60,7 +57,6 @@
     .card-red  { background: linear-gradient(135deg,#1a0a08,#0D0D0D); border-color: rgba(192,57,43,0.25); }
     .card-dark { background: #141414; }
 
-    /* ── Buttons ── */
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 14px 28px; border-radius: 999px;
@@ -68,195 +64,223 @@
       transition: transform 0.2s, opacity 0.2s; cursor: pointer;
     }
     .btn:hover { transform: scale(1.04); }
-    .btn-gold { background: linear-gradient(135deg, var(--gold), #8B7332); color: #0D0D0D; }
-    .btn-outline { border: 1px solid rgba(192,57,43,0.5); color: var(--cream); }
+    .btn-red { background: linear-gradient(135deg, #c0392b, #922b21); color: #F5F0E8; }
+    .btn-gold-outline { border: 1px solid rgba(201,168,76,0.45); color: var(--gold); }
 
-    /* ── Grid ── */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
-    @media(max-width:768px) { .grid-2, .grid-4 { grid-template-columns: 1fr; } }
-    @media(min-width:480px) and (max-width:768px) { .grid-4 { grid-template-columns: 1fr 1fr; } }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    @media(max-width:768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
 
-    /* ── Fade-in animation ── */
     .fade { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade.visible { opacity: 1; transform: none; }
 
-    /* ═══════════════════════════════════ HERO ═══════════════════════════════════ */
+    /* ══ NAVBAR ══ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(13,13,13,0.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-brand { font-size: 12px; letter-spacing: 0.22em; color: var(--cream-60); font-family: 'Noto Serif SC', serif; }
+    .nav-collab { font-size: 10px; letter-spacing: 0.14em; color: rgba(201,168,76,0.55); margin-left: 10px; }
+    .nav-back { font-size: 11px; color: var(--cream-40); text-decoration: none; letter-spacing: 0.1em; transition: color 0.2s; }
+    .nav-back:hover { color: var(--gold); }
+
+    /* ══ HERO ══ */
     #hero {
-      min-height: 94vh;
+      min-height: 96vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 80px 24px;
+      text-align: center; padding: 100px 24px 80px;
       position: relative; overflow: hidden;
       background:
-        radial-gradient(ellipse 80% 55% at 50% 40%, rgba(192,57,43,0.16) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 35% at 25% 75%, rgba(201,168,76,0.09) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 60% at 50% 42%, rgba(192,57,43,0.13) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 30% at 22% 78%, rgba(201,168,76,0.07) 0%, transparent 60%),
         #0D0D0D;
     }
     #hero::before {
       content: '';
       position: absolute; inset: 0; pointer-events: none;
-      background-image: repeating-linear-gradient(0deg, rgba(245,240,232,0.025) 0px, rgba(245,240,232,0.025) 1px, transparent 1px, transparent 48px);
+      background-image: repeating-linear-gradient(0deg, rgba(245,240,232,0.02) 0px, rgba(245,240,232,0.02) 1px, transparent 1px, transparent 52px);
     }
 
-    .logo-lockup {
-      display: flex; align-items: center; justify-content: center; gap: 24px;
-      flex-wrap: wrap; margin: 32px 0;
+    .hero-collab-strip {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 36px;
+      padding: 8px 20px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
     }
-    .logo-qz {
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-    }
-    .logo-qz img { height: 38px; filter: brightness(10); opacity: 0.9; }
-    .logo-qz span { font-size: 11px; letter-spacing: 0.25em; color: var(--gold); }
+    .strip-brand { font-size: 10px; letter-spacing: 0.25em; color: var(--cream-40); }
+    .strip-sep { font-size: 14px; color: rgba(201,168,76,0.5); font-weight: 100; }
+    .strip-logo img { height: 20px; filter: brightness(10); opacity: 0.55; vertical-align: middle; }
 
-    .logo-sep { font-size: 2.4rem; font-weight: 100; color: rgba(192,57,43,0.65); line-height: 1; }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 0.3em; color: var(--red); margin-bottom: 20px;
+      font-family: 'Noto Serif SC', serif;
+    }
 
-    .logo-by {
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.15; margin-bottom: 12px;
+      font-family: 'Noto Serif SC', serif; font-weight: 700;
     }
-    .logo-by-box {
-      width: 46px; height: 46px;
-      border: 2px solid rgba(192,57,43,0.7); border-radius: 4px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 9px; font-weight: 700; line-height: 1.2; text-align: center;
-      color: var(--cream); letter-spacing: 0.05em;
-    }
-    .logo-by span { font-size: 11px; letter-spacing: 0.25em; color: rgba(245,240,232,0.65); }
 
-    .hero-headline {
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      line-height: 1.2; margin: 24px 0 16px;
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.2vw, 1.4rem);
+      color: var(--cream-60); margin-bottom: 28px;
+      letter-spacing: 0.06em;
     }
-    .hero-headline .red { color: var(--red); }
 
-    .hero-sub {
-      font-size: 16px; line-height: 1.8;
-      color: var(--cream-60); max-width: 440px;
+    .hero-tags {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+      margin-bottom: 56px;
     }
+    .hero-tag {
+      font-size: 11px; letter-spacing: 0.14em;
+      padding: 5px 14px; border-radius: 6px;
+    }
+    .hero-tag-red { background: rgba(192,57,43,0.12); color: rgba(245,240,232,0.7); border: 1px solid rgba(192,57,43,0.2); }
+    .hero-tag-gold { background: rgba(201,168,76,0.1); color: rgba(201,168,76,0.8); border: 1px solid rgba(201,168,76,0.18); }
 
     .scroll-cue {
-      margin-top: 60px;
       display: flex; flex-direction: column; align-items: center; gap: 8px;
-      opacity: 0.4; animation: bounce 2s infinite;
+      opacity: 0.35; animation: bounce 2s infinite;
     }
-    .scroll-cue-line {
-      width: 1px; height: 48px;
-      background: linear-gradient(to bottom, transparent, var(--cream));
-    }
+    .scroll-cue-line { width: 1px; height: 44px; background: linear-gradient(to bottom, transparent, var(--cream)); }
     .scroll-cue span { font-size: 10px; letter-spacing: 0.2em; color: var(--cream); }
-    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
 
-    /* ═══════════════════════════════════ STORY ══════════════════════════════════ */
-    #story { background: #0D0D0D; }
-    .section-header { text-align: center; margin-bottom: 56px; }
-    .section-header h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); margin: 12px 0; }
-    .section-header p { font-size: 14px; color: var(--cream-60); max-width: 480px; margin: 0 auto; }
+    /* ══ SECTION HEADER ══ */
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header h2 { font-size: clamp(1.6rem, 3.8vw, 2.4rem); margin: 14px 0 12px; }
+    .section-header p { font-size: 14px; color: var(--cream-60); max-width: 520px; margin: 0 auto; line-height: 1.9; }
 
-    .product-img {
-      width: 100%; border-radius: 10px; object-fit: contain;
-      max-height: 180px; margin-top: 16px;
-      background: transparent;
+    /* ══ PRODUCTS ══ */
+    #products { background: linear-gradient(180deg, #0D0D0D 0%, #120808 100%); }
+
+    .product-card {
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(192,57,43,0.2);
+      background: linear-gradient(160deg, #1a0a08 0%, #0D0D0D 100%);
+      position: relative;
     }
-    .product-placeholder {
-      width: 100%; border-radius: 10px; margin-top: 16px;
-      min-height: 140px; display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 8px;
+    .product-card-inner { padding: 36px; }
+    .product-char {
+      font-family: 'Noto Serif SC', serif; font-size: 5rem; font-weight: 700;
+      line-height: 1; margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--red), rgba(192,57,43,0.4));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .product-placeholder .char { font-size: 3.5rem; font-family: 'Noto Serif SC', serif; }
-    .product-placeholder .label { font-size: 10px; letter-spacing: 0.2em; color: var(--cream-40); }
+    .product-name { font-size: 22px; margin-bottom: 6px; }
+    .product-subtitle { font-size: 12px; color: var(--cream-40); letter-spacing: 0.12em; margin-bottom: 20px; }
+    .product-desc { font-size: 13px; color: var(--cream-60); line-height: 1.85; margin-bottom: 24px; }
+
+    .ingredient-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 8px; font-size: 11px;
+      background: rgba(201,168,76,0.08); color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.2); margin-top: 4px;
+    }
+    .ingredient-pill::before { content: '◈'; font-size: 9px; }
 
     .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
     .tag {
-      padding: 6px 12px; border-radius: 8px; font-size: 11px;
+      padding: 5px 12px; border-radius: 7px; font-size: 11px;
     }
-    .tag-gold { background: rgba(201,168,76,0.1); color: var(--gold); border: 1px solid rgba(201,168,76,0.2); }
-    .tag-red  { background: rgba(192,57,43,0.1); color: var(--red); border: 1px solid rgba(192,57,43,0.2); }
+    .tag-red { background: rgba(192,57,43,0.1); color: rgba(245,240,232,0.7); border: 1px solid rgba(192,57,43,0.18); }
 
-    .card-label {
-      display: inline-flex; padding: 4px 10px; border-radius: 4px;
-      font-size: 11px; letter-spacing: 0.15em; margin-bottom: 16px;
+    /* ══ COLLAB STORY ══ */
+    #collab { background: #0D0D0D; }
+
+    .collab-flow {
+      display: flex; align-items: stretch; gap: 0;
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 32px;
     }
-    .card-label-gold { background: rgba(201,168,76,0.15); color: var(--gold); }
-    .card-label-red  { background: rgba(192,57,43,0.15); color: var(--red); }
-
-    /* ═══════════════════════════════════ SCENES ═════════════════════════════════ */
-    #scenes { background: linear-gradient(180deg, #0D0D0D 0%, #100808 100%); }
-
-    .scene-card {
-      border-radius: 16px; padding: 24px;
-      transition: transform 0.2s;
+    .flow-block {
+      flex: 1; padding: 36px 28px;
     }
-    .scene-card:hover { transform: translateY(-4px); }
-    .scene-time {
-      display: inline-block; padding: 2px 10px; border-radius: 4px;
-      font-size: 10px; letter-spacing: 0.2em; font-weight: 500; margin-bottom: 14px;
+    .flow-block-gold { background: linear-gradient(160deg, #1a1500, #0D0D0D); border-right: 1px solid rgba(255,255,255,0.05); }
+    .flow-block-mid {
+      flex: 0 0 56px; display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.02);
     }
-    .scene-icon { float: right; font-size: 18px; opacity: 0.3; }
-    .scene-card h3 { font-size: 15px; margin-bottom: 10px; font-weight: 600; }
-    .scene-card p { font-size: 12px; line-height: 1.7; color: var(--cream-60); }
+    .flow-arrow { font-size: 1.4rem; color: rgba(245,240,232,0.2); }
+    .flow-block-red { background: linear-gradient(160deg, #120808, #0D0D0D); }
+    .flow-label { font-size: 10px; letter-spacing: 0.2em; margin-bottom: 12px; }
+    .flow-label-gold { color: var(--gold); }
+    .flow-label-red  { color: var(--red); }
+    .flow-block h3 { font-size: 17px; margin-bottom: 10px; }
+    .flow-block p { font-size: 13px; color: var(--cream-60); line-height: 1.8; }
+    @media(max-width:768px) {
+      .collab-flow { flex-direction: column; }
+      .flow-block-mid { flex: 0 0 40px; transform: rotate(90deg); border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    }
 
-    /* ═══════════════════════════════════ SCIENCE ════════════════════════════════ */
-    #science { background: #0D0D0D; }
+    .collab-note {
+      border-radius: 14px; padding: 28px 32px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(192,57,43,0.06));
+      border: 1px solid rgba(201,168,76,0.13);
+      font-size: 13px; color: var(--cream-60); line-height: 1.9;
+      text-align: center;
+    }
+    .collab-note strong { color: var(--cream); font-weight: 500; }
 
-    .science-card { margin-bottom: 0; }
-    .science-card-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
-    .science-icon {
-      width: 40px; height: 40px; border-radius: 10px;
+    /* ══ SCIENCE ══ */
+    #science { background: linear-gradient(180deg, #0D0D0D 0%, #0a0a00 100%); }
+
+    .science-pillar {
+      border-radius: 16px; padding: 32px 28px;
+      text-align: center;
+    }
+    .science-icon-wrap {
+      width: 60px; height: 60px; border-radius: 14px; margin: 0 auto 20px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 18px; font-family: 'Noto Serif SC', serif;
-      flex-shrink: 0;
+      font-size: 1.8rem; font-family: 'Noto Serif SC', serif;
     }
-    .science-card h3 { font-size: 15px; margin-bottom: 6px; }
-    .science-card p { font-size: 12px; color: var(--cream-60); line-height: 1.7; }
-
-    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 20px; }
-    .check-item {
-      display: flex; align-items: center; gap: 8px;
-      padding: 8px 12px; border-radius: 8px; font-size: 12px;
-      background: rgba(255,255,255,0.04); color: var(--cream-60);
+    .science-icon-gold { background: rgba(201,168,76,0.12); color: var(--gold); }
+    .science-icon-red  { background: rgba(192,57,43,0.12); color: var(--red); }
+    .science-icon-dim  { background: rgba(245,240,232,0.06); color: var(--cream-40); }
+    .science-pillar h3 { font-size: 15px; margin-bottom: 10px; }
+    .science-pillar p  { font-size: 12px; color: var(--cream-60); line-height: 1.8; }
+    .science-pillar .pillar-label {
+      display: inline-block; margin-bottom: 14px;
+      font-size: 10px; letter-spacing: 0.2em; padding: 3px 10px; border-radius: 4px;
     }
+    .pillar-label-gold { background: rgba(201,168,76,0.1); color: var(--gold); }
+    .pillar-label-red  { background: rgba(192,57,43,0.1); color: var(--red); }
+    .pillar-label-dim  { background: rgba(255,255,255,0.05); color: var(--cream-40); }
 
-    .bridge {
-      margin-top: 24px; border-radius: 16px; padding: 32px;
-      text-align: center;
-      background: linear-gradient(135deg, rgba(201,168,76,0.07) 0%, rgba(192,57,43,0.07) 100%);
+    .science-quote {
+      margin-top: 40px; padding: 36px;
+      border-radius: 18px; text-align: center;
       border: 1px solid rgba(201,168,76,0.15);
+      background: linear-gradient(135deg, rgba(201,168,76,0.05), rgba(192,57,43,0.05));
     }
-    .bridge blockquote { font-size: 15px; font-weight: 500; font-family: 'Noto Serif SC',serif; margin-bottom: 12px; }
-    .bridge p { font-size: 12px; color: var(--cream-60); max-width: 480px; margin: 0 auto; }
+    .science-quote p { font-size: 15px; color: var(--cream-60); line-height: 1.9; }
+    .science-quote strong { color: var(--cream); font-weight: 500; }
 
-    /* ═══════════════════════════════════ CTA ════════════════════════════════════ */
+    /* ══ CTA ══ */
     #cta {
-      padding: 96px 0;
+      padding: 100px 0;
       text-align: center;
-      background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(192,57,43,0.1) 0%, transparent 70%), #0D0D0D;
+      background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(192,57,43,0.1) 0%, transparent 70%), #0D0D0D;
     }
-    #cta h2 { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 16px; }
-    #cta .sub { font-size: 14px; color: var(--cream-60); margin-bottom: 40px; line-height: 1.9; }
-    .divider-logos {
-      display: flex; align-items: center; gap: 16px; margin-bottom: 36px;
+    #cta h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 16px; }
+    #cta .sub { font-size: 14px; color: var(--cream-60); margin-bottom: 16px; line-height: 1.95; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .collab-mark {
+      font-size: 12px; letter-spacing: 0.18em; color: var(--cream-40);
+      margin-bottom: 40px; display: block;
     }
-    .divider-line { flex: 1; height: 1px; }
-    .divider-line-gold { background: linear-gradient(to right, transparent, rgba(201,168,76,0.4)); }
-    .divider-line-red  { background: linear-gradient(to left, transparent, rgba(192,57,43,0.4)); }
-    .divider-label { font-size: 12px; color: var(--cream-40); display: flex; gap: 6px; align-items: center; }
-    .btn-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+    .collab-mark span { color: rgba(201,168,76,0.6); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-bottom: 40px; }
     .disclaimer {
-      margin-top: 40px; font-size: 10px; color: rgba(245,240,232,0.28);
-      max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.7;
+      font-size: 10px; color: rgba(245,240,232,0.25);
+      max-width: 560px; margin: 0 auto; line-height: 1.7;
     }
-
-    /* ── Navbar (minimal) ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 16px 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(13,13,13,0.85); backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    nav .nav-brand { font-size: 12px; letter-spacing: 0.2em; color: var(--cream-60); font-family: 'Noto Serif SC', serif; }
-    nav .nav-sep { color: var(--red); opacity: 0.6; margin: 0 6px; }
-    .nav-back { font-size: 11px; color: var(--cream-40); text-decoration: none; letter-spacing: 0.1em; transition: color 0.2s; }
-    .nav-back:hover { color: var(--gold); }
   </style>
 </head>
 <body>
@@ -264,131 +288,134 @@
   <!-- Navbar -->
   <nav>
     <div>
-      <span class="nav-brand">且酌</span>
-      <span class="nav-sep">×</span>
       <span class="nav-brand">宝玉煮茶</span>
+      <span class="nav-collab">× 且酌 联名出品</span>
     </div>
-    <a href="https://www.yiyeguizhen.com" class="nav-back">← 返回官网</a>
+    <a href="https://www.yiyeguizhen.com/health" class="nav-back">← 了解且酌</a>
   </nav>
 
   <!-- ═══ HERO ═══ -->
   <section id="hero">
-    <div class="badge badge-red">联名呈献 · Limited Collaboration</div>
 
-    <div class="logo-lockup">
-      <div class="logo-qz">
-        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/CdMABrLIqerRhKoR.png" alt="一叶归真" />
-        <span>且 酌</span>
+    <div class="hero-collab-strip">
+      <span class="strip-brand">院士轻养茶</span>
+      <span class="strip-sep">·</span>
+      <span class="strip-brand">选用</span>
+      <div class="strip-logo">
+        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/CdMABrLIqerRhKoR.png" alt="且酌" />
       </div>
-      <div class="logo-sep">×</div>
-      <div class="logo-by">
-        <div class="logo-by-box">BAO<br/>YU<br/>TEA</div>
-        <span>宝玉煮茶</span>
-      </div>
+      <span class="strip-brand">且酌植养成分</span>
     </div>
 
-    <h1 class="hero-headline serif">
-      席间且酌<br/>
-      <span class="red">席后宝玉</span>
+    <div class="hero-eyebrow">宝玉煮茶 · BAOYU TEA</div>
+    <h1 class="hero-title">
+      院士轻养茶
     </h1>
-    <p class="hero-sub">
-      应酬全链路东方养护方案<br/>
-      草本护肝 · 院士还元
-    </p>
+    <p class="hero-subtitle">以茶载道 · 科研为底</p>
+
+    <div class="hero-tags">
+      <span class="hero-tag hero-tag-red">院士团队研发</span>
+      <span class="hero-tag hero-tag-red">国家植物功能成分利用工程技术研究中心</span>
+      <span class="hero-tag hero-tag-gold">且酌东方植养成分</span>
+      <span class="hero-tag hero-tag-red">红楼梦文化 IP</span>
+    </div>
 
     <div class="scroll-cue">
       <div class="scroll-cue-line"></div>
-      <span>向下探索</span>
+      <span>探索产品</span>
     </div>
   </section>
 
-  <!-- ═══ STORY ═══ -->
-  <section id="story" class="section">
+  <!-- ═══ PRODUCTS ═══ -->
+  <section id="products" class="section">
     <div class="container">
       <div class="section-header fade">
-        <div class="badge badge-gold">联名背后的逻辑</div>
-        <h2>两个品牌，一件事</h2>
-        <p>中国人的应酬文化从未消失，消失的是身体扛住的底气。<br/>且酌与宝玉煮茶，各守一段，把这个底气还给你。</p>
+        <div class="badge badge-red">宝玉煮茶 · 两款明星产品</div>
+        <h2>怡红与潇湘</h2>
+        <p>以《红楼梦》人物为脉络，以院士团队的食养研究为根基，<br/>每一款，都是认真对待自己的理由。</p>
       </div>
 
       <div class="grid-2 fade">
-        <!-- 且酌 -->
-        <div class="card card-gold">
-          <div class="card-label card-label-gold">席间护卫 · 且酌®</div>
-          <h3 style="font-size:18px;margin-bottom:10px;">且酌·植养萃</h3>
-          <p style="font-size:13px;color:rgba(245,240,232,0.65);line-height:1.75;">
-            以草本植物精华为核心，院士食养研究方向指导配伍，
-            专为应酬场景设计的东方植养饮品。
-            席间饮用，以植养的方式关照身体的感受。
-          </p>
-          <div class="tag-row">
-            <span class="tag tag-gold">草本植萃</span>
-            <span class="tag tag-gold">东方配伍</span>
-            <span class="tag tag-gold">日常饮用</span>
+        <!-- 怡红公子 -->
+        <div class="product-card">
+          <div class="product-card-inner">
+            <div class="product-char">怡红</div>
+            <h3 class="product-name serif">怡红公子</h3>
+            <p class="product-subtitle">YIHONG GONGZI · 红枣基底 · 提神醒脑</p>
+            <p class="product-desc">
+              以红枣为基底，融合多味东方草本。一杯入腹，温而不燥。
+              无论是应酬之后、工作之余，还是需要提振状态的清晨，
+              怡红公子都是那杯不声不响却有底气的茶。
+            </p>
+            <div class="ingredient-pill">添入且酌东方植养成分</div>
+            <div class="tag-row">
+              <span class="tag tag-red">红枣基底</span>
+              <span class="tag tag-red">提神醒脑</span>
+              <span class="tag tag-red">温热养胃</span>
+              <span class="tag tag-red">应酬后调养</span>
+            </div>
           </div>
-          <img
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/PEYlnUPOWmDgbgSJ.png"
-            alt="且酌产品"
-            class="product-img"
-          />
         </div>
 
-        <!-- 宝玉煮茶 -->
-        <div class="card card-red">
-          <div class="card-label card-label-red">席后还元 · 宝玉煮茶</div>
-          <h3 style="font-size:18px;margin-bottom:10px;">怡红公子·院士轻养茶</h3>
-          <p style="font-size:13px;color:rgba(245,240,232,0.65);line-height:1.75;">
-            以红枣为基底，结合院士团队长期关注的茶食养研究方向，
-            由「国家植物功能成分利用工程技术研究中心」参与研发。
-            一杯添元气，匠心熬煮，东方食养。
-          </p>
-          <div class="tag-row">
-            <span class="tag tag-red">院士研发</span>
-            <span class="tag tag-red">红枣基底</span>
-            <span class="tag tag-red">东方食养</span>
-          </div>
-          <div class="product-placeholder" style="background:radial-gradient(ellipse at center,rgba(192,57,43,0.12) 0%,transparent 70%);border:1px solid rgba(192,57,43,0.12);">
-            <div class="char" style="color:rgba(192,57,43,0.55);">怡红</div>
-            <div class="label">公子 · YIHONG</div>
+        <!-- 潇湘妃子 -->
+        <div class="product-card">
+          <div class="product-card-inner">
+            <div class="product-char" style="background:linear-gradient(135deg,#8b1a6b,rgba(139,26,107,0.35));-webkit-background-clip:text;background-clip:text;">潇湘</div>
+            <h3 class="product-name serif">潇湘妃子</h3>
+            <p class="product-subtitle">XIAOXIANG FEIZI · 洛神花系列 · 养颜舒压</p>
+            <p class="product-desc">
+              以洛神花为主调，色泽如胭脂，入口酸甜回甘。
+              调养气色，舒缓压力，给每一个用力生活的人
+              一杯留给自己的时间。
+            </p>
+            <div class="ingredient-pill">添入且酌东方植养成分</div>
+            <div class="tag-row">
+              <span class="tag tag-red">洛神花</span>
+              <span class="tag tag-red">养颜舒压</span>
+              <span class="tag tag-red">酸甜回甘</span>
+              <span class="tag tag-red">日常调养</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ SCENES ═══ -->
-  <section id="scenes" class="section">
+  <!-- ═══ COLLAB STORY ═══ -->
+  <section id="collab" class="section">
     <div class="container">
       <div class="section-header fade">
-        <div class="badge badge-red">应酬全链路 · 东方养护</div>
-        <h2>四个时刻，两个品牌</h2>
+        <div class="badge badge-gold">联名背后</div>
+        <h2>为什么选择且酌</h2>
+        <p>这不是一次普通的品牌联名，<br/>而是一次从成分层面开始的合作。</p>
       </div>
 
-      <div class="grid-4 fade">
-        <div class="scene-card card-dark" style="border:1px solid rgba(201,168,76,0.18);box-shadow:0 0 28px rgba(201,168,76,0.06);">
-          <div class="scene-time" style="background:rgba(201,168,76,0.14);color:var(--gold);">席前</div>
-          <span class="scene-icon" style="color:var(--gold);">⚑</span>
-          <h3>备战状态</h3>
-          <p>重要饭局前，先为身体建好底气。且酌先行，草本植养，以备周全。</p>
+      <div class="collab-flow fade">
+        <div class="flow-block flow-block-gold">
+          <div class="flow-label flow-label-gold">成分来源</div>
+          <h3 class="serif">且酌 · 植养萃</h3>
+          <p>
+            且酌植养萃系列由院士团队提供食养研究方向，选取东方草本功能成分，
+            经过多道工艺提取精制，在产品背后是一整套经过验证的植物功能成分体系。
+          </p>
         </div>
-        <div class="scene-card card-dark" style="border:1px solid rgba(201,168,76,0.18);box-shadow:0 0 28px rgba(201,168,76,0.06);">
-          <div class="scene-time" style="background:rgba(201,168,76,0.14);color:var(--gold);">席间</div>
-          <span class="scene-icon" style="color:var(--gold);">◈</span>
-          <h3>从容应酬</h3>
-          <p>饮酒间隙，以且酌换杯。草本配伍，场面依旧周到，身体有所照料。</p>
+        <div class="flow-block-mid">
+          <span class="flow-arrow">→</span>
         </div>
-        <div class="scene-card card-dark" style="border:1px solid rgba(192,57,43,0.22);box-shadow:0 0 28px rgba(192,57,43,0.06);">
-          <div class="scene-time" style="background:rgba(192,57,43,0.14);color:var(--red);">席后</div>
-          <span class="scene-icon" style="color:var(--red);">◉</span>
-          <h3>宝玉还元</h3>
-          <p>散场后，一杯怡红公子。院士团队研发的红枣基底，温热入腹，慢慢缓回来。</p>
+        <div class="flow-block flow-block-red">
+          <div class="flow-label flow-label-red">落地于</div>
+          <h3 class="serif">宝玉煮茶 · 院士轻养茶</h3>
+          <p>
+            宝玉煮茶在研发院士轻养茶系列时，选用了且酌的东方植养成分融入配方，
+            让这杯茶不只是好喝，更有一份看得见来处的底气在里面。
+          </p>
         </div>
-        <div class="scene-card card-dark" style="border:1px solid rgba(192,57,43,0.22);box-shadow:0 0 28px rgba(192,57,43,0.06);">
-          <div class="scene-time" style="background:rgba(192,57,43,0.14);color:var(--red);">次日</div>
-          <span class="scene-icon" style="color:var(--red);">◎</span>
-          <h3>元气如常</h3>
-          <p>好的应酬，不以透支为代价。两个品牌守护的，是你明天还能全力以赴的状态。</p>
-        </div>
+      </div>
+
+      <div class="collab-note fade">
+        宝玉煮茶背后站着的，是<strong>中国工程院院士团队</strong>多年的食养研究积累，
+        和<strong>国家植物功能成分利用工程技术研究中心</strong>的成果支撑。
+        这一次通过与且酌的联名，这份研究底色正式写入了每一杯院士轻养茶之中。
       </div>
     </div>
   </section>
@@ -397,48 +424,40 @@
   <section id="science" class="section">
     <div class="container">
       <div class="section-header fade">
-        <div class="badge badge-gold">双重科研背书</div>
-        <h2>两个品牌，同一个底色</h2>
-        <p>且酌与宝玉煮茶都不是凭空而来的消费品——<br/>背后站着的，是真正在做食养研究的科研团队。</p>
+        <div class="badge badge-gold">科研背书</div>
+        <h2>三重背书，一杯有根有据的茶</h2>
+        <p>院士轻养茶之所以值得信赖，<br/>是因为背后的每一层都经得起追问。</p>
       </div>
 
-      <div class="grid-2 fade">
-        <div class="card card-gold science-card">
-          <div class="science-card-header">
-            <div class="science-icon" style="background:rgba(201,168,76,0.15);color:var(--gold);">萃</div>
-            <div>
-              <h3>植养萃系列科研背景</h3>
-              <p>基于院士食养研究方向进行产品设计，深度提取草本植物精华调配，通过CNAS认可实验室检测，适合作为日常饮用的草本植养饮品。</p>
-            </div>
-          </div>
-          <div class="check-grid">
-            <div class="check-item"><span style="color:var(--gold);">✓</span>草本植萃工艺</div>
-            <div class="check-item"><span style="color:var(--gold);">✓</span>院士方向指导</div>
-            <div class="check-item"><span style="color:var(--gold);">✓</span>实验室检测</div>
-            <div class="check-item"><span style="color:var(--gold);">✓</span>合规普通食品</div>
-          </div>
+      <div class="grid-3 fade">
+        <div class="science-pillar card card-gold">
+          <div class="science-icon-wrap science-icon-gold">院</div>
+          <div class="pillar-label pillar-label-gold">第一层</div>
+          <h3>院士团队研发</h3>
+          <p>中国工程院院士长期关注茶与植物功能成分的食养研究方向，为产品提供研究框架与配方指导。</p>
         </div>
 
-        <div class="card card-red science-card">
-          <div class="science-card-header">
-            <div class="science-icon" style="background:rgba(192,57,43,0.15);color:var(--red);">院</div>
-            <div>
-              <h3>院士轻养茶科研背景</h3>
-              <p>由院士团队及「国家植物功能成分利用工程技术研究中心」携手研发，深度提取草本植物精华调配，以《红楼梦》人物精神为文化线索，重构当代人日常调养方式。</p>
-            </div>
-          </div>
-          <div class="check-grid">
-            <div class="check-item"><span style="color:var(--red);">✓</span>院士团队研发</div>
-            <div class="check-item"><span style="color:var(--red);">✓</span>国家级研究中心</div>
-            <div class="check-item"><span style="color:var(--red);">✓</span>红楼梦文化IP</div>
-            <div class="check-item"><span style="color:var(--red);">✓</span>中高端茶空间</div>
-          </div>
+        <div class="science-pillar card card-dark" style="border-color:rgba(255,255,255,0.06);">
+          <div class="science-icon-wrap science-icon-dim">国</div>
+          <div class="pillar-label pillar-label-dim">第二层</div>
+          <h3>国家级研究中心</h3>
+          <p>国家植物功能成分利用工程技术研究中心参与研发，多项植物提取工艺成果转化于产品之中。</p>
+        </div>
+
+        <div class="science-pillar card card-gold">
+          <div class="science-icon-wrap science-icon-gold">萃</div>
+          <div class="pillar-label pillar-label-gold">第三层</div>
+          <h3>且酌植养成分</h3>
+          <p>且酌植养萃系列选用的东方草本功能成分，经 CNAS 认可实验室检测，以精准配比融入院士轻养茶。</p>
         </div>
       </div>
 
-      <div class="bridge fade">
-        <blockquote>"以茶载道，以科学为根基"</blockquote>
-        <p>本次联名，是两家在食养赛道深耕的品牌第一次携手。我们相信好的应酬文化，不是拼命，而是有底气地从容。</p>
+      <div class="science-quote fade">
+        <p>
+          院士轻养茶选择与且酌合作，是因为<strong>成分来路相同</strong>——
+          都指向同一批院士与科研机构的研究积累。<br/>
+          这不是宣传口号，是从原料到配方都能追溯的<strong>食养逻辑</strong>。
+        </p>
       </div>
     </div>
   </section>
@@ -446,25 +465,16 @@
   <!-- ═══ CTA ═══ -->
   <section id="cta">
     <div class="container">
-      <h2 class="serif fade">席间且酌，席后宝玉</h2>
+      <h2 class="serif fade">一杯有来处的茶</h2>
       <p class="sub fade">
-        应酬是中国商业文化的一部分，我们不回避它，<br/>
-        我们只是让你扛得住，扛得好，扛得有品位。
+        宝玉煮茶 · 院士轻养茶<br/>
+        用认真的原料，做一杯认真对待自己的茶。
       </p>
-
-      <div class="divider-logos fade">
-        <div class="divider-line divider-line-gold"></div>
-        <div class="divider-label">
-          <span style="color:var(--gold);">且酌</span>
-          <span>·</span>
-          <span style="color:var(--red);">宝玉煮茶</span>
-        </div>
-        <div class="divider-line divider-line-red"></div>
-      </div>
+      <span class="collab-mark fade">且酌 <span>×</span> 宝玉煮茶 · 联名出品</span>
 
       <div class="btn-row fade">
-        <a href="https://www.yiyeguizhen.com/health/tracks" class="btn btn-gold">了解且酌系列 →</a>
-        <a href="https://www.baoyutea.com" target="_blank" rel="noopener" class="btn btn-outline">探索宝玉煮茶 →</a>
+        <a href="https://www.baoyutea.com" target="_blank" rel="noopener" class="btn btn-red">了解宝玉煮茶 →</a>
+        <a href="https://www.yiyeguizhen.com/health/tracks" class="btn btn-gold-outline">了解且酌系列</a>
       </div>
 
       <p class="disclaimer fade">
@@ -475,7 +485,6 @@
   </section>
 
   <script>
-    // Intersection observer for fade animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
