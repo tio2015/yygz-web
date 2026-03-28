@@ -45,16 +45,15 @@
       padding: 6px 16px; border-radius: 999px;
       font-size: 11px; letter-spacing: 0.18em;
     }
-    .badge-gold { border: 1px solid rgba(201,168,76,0.4); color: var(--gold); background: var(--gold-dim); }
-    .badge-red  { border: 1px solid rgba(192,57,43,0.5); color: var(--red); background: var(--red-dim); }
-    .badge-dim  { border: 1px solid rgba(245,240,232,0.12); color: var(--cream-40); background: rgba(255,255,255,0.04); }
+    .badge-gold { color: var(--gold); background: var(--gold-dim); }
+    .badge-red  { color: var(--red); background: var(--red-dim); }
+    .badge-dim  { color: var(--cream-40); background: rgba(255,255,255,0.04); }
 
     .card {
       border-radius: 16px; padding: 36px;
-      border: 1px solid rgba(255,255,255,0.08);
     }
-    .card-gold { background: linear-gradient(135deg,#1a1500,#0D0D0D); border-color: rgba(201,168,76,0.2); }
-    .card-red  { background: linear-gradient(135deg,#1a0a08,#0D0D0D); border-color: rgba(192,57,43,0.25); }
+    .card-gold { background: linear-gradient(135deg,#1a1500,#0D0D0D); }
+    .card-red  { background: linear-gradient(135deg,#1a0a08,#0D0D0D); }
     .card-dark { background: #141414; }
 
     .btn {
@@ -108,8 +107,7 @@
       display: flex; align-items: center; gap: 10px;
       margin-bottom: 36px;
       padding: 8px 20px; border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.05);
     }
     .strip-brand { font-size: 10px; letter-spacing: 0.25em; color: var(--cream-40); }
     .strip-sep { font-size: 14px; color: rgba(201,168,76,0.5); font-weight: 100; }
@@ -158,8 +156,8 @@
       font-size: 11px; letter-spacing: 0.14em;
       padding: 5px 14px; border-radius: 6px;
     }
-    .hero-tag-red { background: rgba(192,57,43,0.12); color: rgba(245,240,232,0.7); border: 1px solid rgba(192,57,43,0.2); }
-    .hero-tag-gold { background: rgba(201,168,76,0.1); color: rgba(201,168,76,0.8); border: 1px solid rgba(201,168,76,0.18); }
+    .hero-tag-red { background: rgba(192,57,43,0.12); color: rgba(245,240,232,0.7); }
+    .hero-tag-gold { background: rgba(201,168,76,0.1); color: rgba(201,168,76,0.8); }
 
     .scroll-cue {
       display: flex; flex-direction: column; align-items: center; gap: 8px;
@@ -179,7 +177,6 @@
 
     .product-card {
       border-radius: 20px; overflow: hidden;
-      border: 1px solid rgba(192,57,43,0.2);
       background: linear-gradient(160deg, #1a0a08 0%, #0D0D0D 100%);
     }
     .product-photo {
@@ -195,14 +192,13 @@
     .ingredient-pill {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 6px 14px; border-radius: 8px; font-size: 11px;
-      background: rgba(201,168,76,0.08); color: var(--gold);
-      border: 1px solid rgba(201,168,76,0.2);
+      background: rgba(201,168,76,0.1); color: var(--gold);
     }
     .ingredient-pill::before { content: '◈'; font-size: 9px; }
 
     .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
     .tag { padding: 5px 12px; border-radius: 7px; font-size: 11px; }
-    .tag-red { background: rgba(192,57,43,0.1); color: rgba(245,240,232,0.7); border: 1px solid rgba(192,57,43,0.18); }
+    .tag-red { background: rgba(192,57,43,0.1); color: rgba(245,240,232,0.7); }
 
     /* ══ COLLAB STORY ══ */
     #collab { background: #0D0D0D; }
@@ -210,13 +206,12 @@
     .collab-flow {
       display: flex; align-items: stretch; gap: 0;
       border-radius: 20px; overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.06);
       margin-bottom: 32px;
     }
     .flow-block {
       flex: 1; padding: 36px 28px;
     }
-    .flow-block-gold { background: linear-gradient(160deg, #1a1500, #0D0D0D); border-right: 1px solid rgba(255,255,255,0.05); }
+    .flow-block-gold { background: linear-gradient(160deg, #1a1500, #0D0D0D); }
     .flow-block-mid {
       flex: 0 0 56px; display: flex; align-items: center; justify-content: center;
       background: rgba(255,255,255,0.02);
@@ -236,7 +231,6 @@
     .collab-note {
       border-radius: 14px; padding: 28px 32px;
       background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(192,57,43,0.06));
-      border: 1px solid rgba(201,168,76,0.13);
       font-size: 13px; color: var(--cream-60); line-height: 1.9;
       text-align: center;
     }
@@ -245,7 +239,6 @@
     .showcase-img {
       width: 100%; border-radius: 18px; display: block;
       margin-top: 32px;
-      border: 1px solid rgba(255,255,255,0.06);
     }
 
     /* ══ SCIENCE ══ */
@@ -254,7 +247,6 @@
       width: 100%; border-radius: 18px; display: block;
       margin-bottom: 48px; max-height: 380px; object-fit: cover;
       object-position: center 40%;
-      border: 1px solid rgba(255,255,255,0.06);
     }
 
     .science-pillar {
@@ -282,8 +274,7 @@
     .science-quote {
       margin-top: 40px; padding: 36px;
       border-radius: 18px; text-align: center;
-      border: 1px solid rgba(201,168,76,0.15);
-      background: linear-gradient(135deg, rgba(201,168,76,0.05), rgba(192,57,43,0.05));
+      background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(192,57,43,0.06));
     }
     .science-quote p { font-size: 15px; color: var(--cream-60); line-height: 1.9; }
     .science-quote strong { color: var(--cream); font-weight: 500; }
@@ -499,8 +490,7 @@
       <span class="collab-mark fade">且酌 <span>×</span> 宝玉煮茶 · 联名出品</span>
 
       <div class="btn-row fade">
-        <a href="https://www.baoyutea.com" target="_blank" rel="noopener" class="btn btn-red">了解宝玉煮茶 →</a>
-        <a href="https://www.yiyeguizhen.com/health/tracks" class="btn btn-gold-outline">了解且酌系列</a>
+        <a href="https://www.yiyeguizhen.com/health/tracks" class="btn btn-gold-outline">了解且酌植养系列</a>
       </div>
 
       <p class="disclaimer fade">
