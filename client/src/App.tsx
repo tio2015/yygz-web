@@ -15,6 +15,7 @@ import TracksPage from "@/pages/TracksPage";
 import ResearchPage from "@/pages/ResearchPage";
 import PartnerPage from "@/pages/PartnerPage";
 import NotFound from "@/pages/not-found";
+import ColabBaoyuTeaPage from "@/pages/ColabBaoyuTeaPage";
 
 function AppRouter() {
   return (
@@ -23,6 +24,7 @@ function AppRouter() {
       <Route path="/tracks" component={TracksPage} />
       <Route path="/research" component={ResearchPage} />
       <Route path="/partner" component={PartnerPage} />
+      <Route path="/collab/baoyutea" component={ColabBaoyuTeaPage} />
       <Route component={NotFound} />
     </Switch>
   );

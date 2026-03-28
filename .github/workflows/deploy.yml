@@ -54,3 +54,9 @@ jobs:
         run: |
           ossutil cp dist/public/assets/ oss://yiyeguizhen-web-hk/health/assets/ \
             --meta "Cache-Control:max-age=31536000" -r -f
+
+      - name: 部署 且酌×宝玉煮茶 联名页（baoyutea 子域）
+        run: |
+          ossutil cp dist/public/baoyutea/index.html oss://yiyeguizhen-web-hk/baoyutea/index.html \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
+          echo "✅ baoyutea/index.html 部署完成"
