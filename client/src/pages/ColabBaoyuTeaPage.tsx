@@ -40,6 +40,10 @@ const IMG = {
   herbs:      "/imgs/img-020.jpg",  // 草本食材平铺
   teapot:     "/imgs/img-050.jpg",  // 红茶壶+茶点（备用）
   store:      "/imgs/img-300.jpg",  // 大观茶室门店渲染图
+  storeA:     "/imgs/img-401.jpg",  // 大观茶室实景—门面外观
+  storeB:     "/imgs/img-402.jpg",  // 大观茶室实景—霓虹logo
+  storeC:     "/imgs/img-403.jpg",  // 大观茶室实景—室内灯笼
+  storeD:     "/imgs/img-404.jpg",  // 大观茶室实景—吧台
   craftHands: "/imgs/img-055.jpg",  // 手工制茶特写
   drinkRed:   "/imgs/img-109.jpg",  // 门店饮品（深红竖版）
   drinkBrown: "/imgs/img-113.jpg",  // 门店饮品（暖棕竖版）
@@ -194,35 +198,28 @@ function OriginSection() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-10 items-center">
-          {/* 图像侧 */}
-          <div className="relative flex gap-4">
-            <img
-              src={IMG.craftHands}
-              alt="手工制茶"
-              loading="lazy"
-              className="flex-1 rounded-2xl object-cover"
-              style={{
-                height: 340,
-                border: `1px solid ${BY_RED}25`,
-                boxShadow: `0 0 40px rgba(204,34,0,0.10)`,
-              }}
-            />
-            <div className="flex flex-col gap-4 w-28">
-              <img
-                src={IMG.herbs}
-                alt="草本食材"
-                loading="lazy"
-                className="rounded-xl object-cover flex-1"
-                style={{ border: `1px solid ${BY_GOLD}20` }}
-              />
-              <img
-                src={IMG.characters}
-                alt="红楼梦人物"
-                loading="lazy"
-                className="rounded-xl object-cover flex-1"
-                style={{ border: `1px solid ${BY_RED}20`, opacity: 0.85 }}
-              />
-            </div>
+          {/* 图像侧：2×2门店实景 */}
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { src: IMG.storeA, alt: "宝玉煮茶·门店外观" },
+              { src: IMG.storeB, alt: "宝玉煮茶·霓虹logo" },
+              { src: IMG.storeC, alt: "宝玉煮茶·室内空间" },
+              { src: IMG.storeD, alt: "宝玉煮茶·吧台" },
+            ].map((item) => (
+              <div
+                key={item.alt}
+                className="overflow-hidden rounded-xl"
+                style={{ border: `1px solid ${BY_RED}20` }}
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  style={{ height: 160 }}
+                />
+              </div>
+            ))}
           </div>
 
           {/* 文字侧 */}
@@ -872,29 +869,25 @@ function CTASection() {
         </div>
 
         {/* CTA */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button
-            type="button"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-medium transition-all hover:scale-105 cursor-default"
+        <div className="flex items-center justify-center">
+          <a
+            href="https://www.yiyeguizhen.com/health/tracks"
+            className="relative inline-flex items-center gap-2 px-10 py-4 rounded-full text-sm font-semibold tracking-wider transition-transform hover:scale-105"
             style={{
               background: `linear-gradient(135deg, ${BY_RED} 0%, #8B1A00 100%)`,
               color: BY_CREAM,
-              boxShadow: `0 4px 24px rgba(204,34,0,0.35)`,
-              border: "none",
+              boxShadow: `0 0 0 0 rgba(204,34,0,0.7)`,
+              animation: "glow-pulse 2s ease-in-out infinite",
             }}
           >
-            探索宝玉煮茶 →
-          </button>
-          <a
-            href="https://www.yiyeguizhen.com/health/tracks"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-medium transition-all hover:scale-105"
-            style={{
-              background: "transparent",
-              color: `${BY_CREAM}75`,
-              border: `1px solid ${BY_GOLD}35`,
-            }}
-          >
-            且酌更多资料 →
+            <style>{`
+              @keyframes glow-pulse {
+                0%   { box-shadow: 0 0 12px 4px rgba(204,34,0,0.55), 0 4px 24px rgba(204,34,0,0.35); }
+                50%  { box-shadow: 0 0 32px 12px rgba(204,34,0,0.75), 0 4px 40px rgba(204,34,0,0.55); }
+                100% { box-shadow: 0 0 12px 4px rgba(204,34,0,0.55), 0 4px 24px rgba(204,34,0,0.35); }
+              }
+            `}</style>
+            探索且酌更多资料 →
           </a>
         </div>
 
