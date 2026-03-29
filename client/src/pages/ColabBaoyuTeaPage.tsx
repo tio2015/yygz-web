@@ -82,39 +82,14 @@ function HeroSection() {
 
         {/* 左侧：文字内容 */}
         <div className="flex flex-col items-center lg:items-start gap-8 flex-1 text-center lg:text-left">
-          {/* Collab badge */}
-          <div
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs tracking-[0.2em] uppercase"
-            style={{ border: `1px solid ${BY_RED}50`, color: BY_RED, background: `${BY_RED}10` }}
-          >
-            联名呈献 · Limited Collaboration
-          </div>
-
-          {/* Logo lockup */}
-          <div className="flex items-center justify-center lg:justify-start gap-5 flex-wrap">
-            {/* 且酌 logo */}
-            <div className="flex flex-col items-center gap-1.5">
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/CdMABrLIqerRhKoR.png"
-                alt="一叶归真 · 且酌"
-                className="h-10 opacity-90"
-                style={{ filter: "brightness(10)" }}
-              />
-              <span className="text-xs tracking-widest" style={{ color: QZ_GOLD }}>且 酌</span>
-            </div>
-
-            <span className="text-3xl font-thin" style={{ color: BY_RED, opacity: 0.7 }}>×</span>
-
-            {/* 宝玉煮茶 stamp logo */}
-            <div className="flex flex-col items-center gap-1.5">
-              <img
-                src={IMG.logoStamp}
-                alt="宝玉煮茶"
-                className="h-10 object-contain"
-                style={{ filter: "drop-shadow(0 0 6px rgba(192,57,43,0.4))" }}
-              />
-              <span className="text-xs tracking-widest" style={{ color: BY_CREAM, opacity: 0.7 }}>宝玉煮茶</span>
-            </div>
+          {/* 宝玉煮茶 stamp logo 主视觉 */}
+          <div className="flex flex-col items-center lg:items-start gap-2">
+            <img
+              src={IMG.logoStamp}
+              alt="宝玉煮茶"
+              className="h-16 object-contain"
+              style={{ filter: "drop-shadow(0 0 10px rgba(192,57,43,0.5))" }}
+            />
           </div>
 
           {/* 主标题 */}
@@ -123,15 +98,30 @@ function HeroSection() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
               style={{ fontFamily: "'Noto Serif SC', serif", color: BY_CREAM }}
             >
-              席间且酌
+              宝玉煮茶
               <br />
-              <span style={{ color: BY_RED }}>席后宝玉</span>
+              <span style={{ color: BY_RED }}>院士轻养茶</span>
             </h1>
             <p className="text-base sm:text-lg leading-relaxed" style={{ color: `${BY_CREAM}99` }}>
-              应酬全链路东方养护方案
+              中国工程院院士团队参与研发
               <br />
-              草本护肝 · 院士还元
+              红楼文化 · 东方食养 · 席后还元
             </p>
+          </div>
+
+          {/* 联名角标 */}
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs tracking-wider"
+            style={{ border: `1px solid ${QZ_GOLD}35`, color: `${BY_CREAM}70`, background: `${QZ_GOLD}08` }}
+          >
+            <img
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/CdMABrLIqerRhKoR.png"
+              alt="且酌"
+              className="h-3 opacity-70"
+              style={{ filter: "brightness(10)" }}
+            />
+            <span style={{ color: `${QZ_GOLD}80` }}>且酌</span>
+            <span style={{ color: `${BY_CREAM}40` }}>联名出品</span>
           </div>
 
           {/* Scroll cue */}
@@ -198,50 +188,7 @@ function StorySection() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {/* 且酌 card */}
-        <div
-          className="rounded-2xl p-8 space-y-5"
-          style={{
-            background: `linear-gradient(135deg, #1a1500 0%, #0D0D0D 100%)`,
-            border: `1px solid ${QZ_GOLD}25`,
-          }}
-        >
-          <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded text-[11px] tracking-wider"
-            style={{ background: `${QZ_GOLD}15`, color: QZ_GOLD }}
-          >
-            席间护卫 · 且酌®
-          </div>
-          <div>
-            <h3 className="text-xl font-bold mb-2" style={{ color: BY_CREAM, fontFamily: "serif" }}>
-              且酌·植养萃
-            </h3>
-            <p className="text-sm leading-relaxed" style={{ color: `${BY_CREAM}70` }}>
-              以草本植物精华为核心，院士食养研究方向指导配伍，
-              专为应酬场景设计的东方植养饮品。
-              席间饮用，以植养的方式关照身体的感受。
-            </p>
-          </div>
-          <div className="grid grid-cols-3 gap-3 pt-2">
-            {["草本植萃", "东方配伍", "日常饮用"].map((tag) => (
-              <div
-                key={tag}
-                className="text-center py-2.5 rounded-lg text-xs"
-                style={{ background: `${QZ_GOLD}10`, color: QZ_GOLD, border: `1px solid ${QZ_GOLD}20` }}
-              >
-                {tag}
-              </div>
-            ))}
-          </div>
-          <img
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/PEYlnUPOWmDgbgSJ.png"
-            alt="且酌产品"
-            className="w-full rounded-lg object-cover mt-2"
-            style={{ maxHeight: 200, objectFit: "contain" }}
-          />
-        </div>
-
-        {/* 宝玉煮茶 card */}
+        {/* 宝玉煮茶 card — 主角，左边 */}
         <div
           className="rounded-2xl p-8 space-y-5"
           style={{
@@ -297,6 +244,49 @@ function StorySection() {
               style={{ width: 56, height: 56, opacity: 0.4 }}
             />
           </div>
+        </div>
+
+        {/* 且酌 card — 联名方，右边 */}
+        <div
+          className="rounded-2xl p-8 space-y-5"
+          style={{
+            background: `linear-gradient(135deg, #111000 0%, #0D0D0D 100%)`,
+            border: `1px solid ${QZ_GOLD}18`,
+          }}
+        >
+          <div
+            className="inline-flex items-center gap-2 px-3 py-1 rounded text-[11px] tracking-wider"
+            style={{ background: `${QZ_GOLD}12`, color: `${QZ_GOLD}90` }}
+          >
+            席间护卫 · 且酌® 联名
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-2" style={{ color: BY_CREAM, fontFamily: "serif" }}>
+              且酌·植养萃
+            </h3>
+            <p className="text-sm leading-relaxed" style={{ color: `${BY_CREAM}60` }}>
+              以草本植物精华为核心，院士食养研究方向指导配伍，
+              专为应酬场景设计的东方植养饮品。
+              席间饮用，以植养的方式关照身体的感受。
+            </p>
+          </div>
+          <div className="grid grid-cols-3 gap-3 pt-2">
+            {["草本植萃", "东方配伍", "日常饮用"].map((tag) => (
+              <div
+                key={tag}
+                className="text-center py-2.5 rounded-lg text-xs"
+                style={{ background: `${QZ_GOLD}08`, color: `${QZ_GOLD}80`, border: `1px solid ${QZ_GOLD}15` }}
+              >
+                {tag}
+              </div>
+            ))}
+          </div>
+          <img
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/PEYlnUPOWmDgbgSJ.png"
+            alt="且酌产品"
+            className="w-full rounded-lg mt-2"
+            style={{ maxHeight: 200, objectFit: "contain" }}
+          />
         </div>
       </div>
     </section>
@@ -430,41 +420,7 @@ function ScienceSection() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {/* 且酌 science */}
-        <div
-          className="rounded-2xl p-8 space-y-6"
-          style={{ background: "#141414", border: `1px solid ${QZ_GOLD}20` }}
-        >
-          <div className="flex items-start gap-4">
-            <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-lg"
-              style={{ background: `${QZ_GOLD}15`, color: QZ_GOLD }}
-            >
-              萃
-            </div>
-            <div>
-              <h3 className="font-semibold mb-1" style={{ color: BY_CREAM }}>植养萃系列科研背景</h3>
-              <p className="text-xs leading-relaxed" style={{ color: `${BY_CREAM}60` }}>
-                基于院士食养研究方向进行产品设计，深度提取草本植物精华调配，
-                通过CNAS认可实验室检测，适合作为日常饮用的草本植养饮品。
-              </p>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            {["草本植萃工艺", "院士方向指导", "实验室检测", "合规普通食品"].map((item) => (
-              <div
-                key={item}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs"
-                style={{ background: `${QZ_GOLD}08`, color: `${BY_CREAM}80` }}
-              >
-                <span style={{ color: QZ_GOLD }}>✓</span>
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* 宝玉煮茶 science */}
+        {/* 宝玉煮茶 science — 主角，左边 */}
         <div
           className="relative overflow-hidden rounded-2xl p-8 space-y-6"
           style={{ background: "#141414", border: `1px solid ${BY_RED}25` }}
@@ -501,6 +457,40 @@ function ScienceSection() {
                 style={{ background: `${BY_RED}08`, color: `${BY_CREAM}80` }}
               >
                 <span style={{ color: BY_RED }}>✓</span>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 且酌 science — 联名方，右边 */}
+        <div
+          className="rounded-2xl p-8 space-y-6"
+          style={{ background: "#141414", border: `1px solid ${QZ_GOLD}15` }}
+        >
+          <div className="flex items-start gap-4">
+            <div
+              className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-lg"
+              style={{ background: `${QZ_GOLD}12`, color: `${QZ_GOLD}80` }}
+            >
+              萃
+            </div>
+            <div>
+              <h3 className="font-semibold mb-1" style={{ color: BY_CREAM }}>且酌·植养萃科研背景</h3>
+              <p className="text-xs leading-relaxed" style={{ color: `${BY_CREAM}55` }}>
+                基于院士食养研究方向进行产品设计，深度提取草本植物精华调配，
+                通过CNAS认可实验室检测，适合作为日常饮用的草本植养饮品。
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            {["草本植萃工艺", "院士方向指导", "实验室检测", "合规普通食品"].map((item) => (
+              <div
+                key={item}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs"
+                style={{ background: `${QZ_GOLD}06`, color: `${BY_CREAM}60` }}
+              >
+                <span style={{ color: `${QZ_GOLD}70` }}>✓</span>
                 {item}
               </div>
             ))}
@@ -584,11 +574,13 @@ function CTASection() {
             className="text-3xl lg:text-4xl font-bold"
             style={{ fontFamily: "'Noto Serif SC', serif", color: BY_CREAM }}
           >
-            席间且酌，席后宝玉
+            宝玉煮茶
+            <br />
+            <span style={{ color: BY_RED }}>院士轻养茶</span>
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: `${BY_CREAM}60` }}>
-            应酬是中国商业文化的一部分，我们不回避它，<br />
-            我们只是让你扛得住，扛得好，扛得有品位。
+            中国工程院院士团队参与研发，红楼文化东方食养。<br />
+            席后一杯，让身体从容缓回来。
           </p>
         </div>
 
@@ -611,27 +603,27 @@ function CTASection() {
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="/health/tracks"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-medium transition-all hover:scale-105"
-            style={{
-              background: `linear-gradient(135deg, ${QZ_GOLD} 0%, #8B7332 100%)`,
-              color: "#0D0D0D",
-            }}
-          >
-            了解且酌系列 →
-          </a>
-          <a
             href="https://www.baoyutea.com"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-medium transition-all hover:scale-105"
             style={{
-              background: "transparent",
+              background: `linear-gradient(135deg, ${BY_RED} 0%, #8B1A10 100%)`,
               color: BY_CREAM,
-              border: `1px solid ${BY_RED}50`,
             }}
           >
             探索宝玉煮茶 →
+          </a>
+          <a
+            href="/health/tracks"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-medium transition-all hover:scale-105"
+            style={{
+              background: "transparent",
+              color: `${BY_CREAM}70`,
+              border: `1px solid ${QZ_GOLD}30`,
+            }}
+          >
+            了解且酌系列 →
           </a>
         </div>
 
