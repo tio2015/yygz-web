@@ -35,14 +35,14 @@ const QZ_GOLD = "#C9A84C";  // 且酌 金色
 
 /* ─── Image asset paths ─── */
 const IMG = {
-  particles:  "/baoyutea/imgs/img-000.jpg",  // 金色粒子叠加（黑底）
-  logoStamp:  "/baoyutea/imgs/img-010.jpg",  // 宝玉煮茶印章Logo（朱红椭圆）
-  herbs:      "/baoyutea/imgs/img-020.jpg",  // 草本食材平铺
-  teapot:     "/baoyutea/imgs/img-050.jpg",  // 红茶壶+粉色茶点（白底）
-  craftHands: "/baoyutea/imgs/img-055.jpg",  // 手工制茶特写
-  drinkRed:   "/baoyutea/imgs/img-109.jpg",  // 白露·红玉青柠饮（深红竖版）
-  drinkBrown: "/baoyutea/imgs/img-113.jpg",  // 寒露·桂魄煮雪（暖棕竖版，Hero主视觉）
-  characters: "/baoyutea/imgs/img-116.jpg",  // 红楼梦人物线描（朱红，米白底）
+  particles:  "/imgs/img-000.jpg",  // 金色粒子叠加（黑底）
+  logoStamp:  "/imgs/img-010.jpg",  // 宝玉煮茶印章Logo（朱红椭圆）
+  herbs:      "/imgs/img-020.jpg",  // 草本食材平铺
+  teapot:     "/imgs/img-050.jpg",  // 红茶壶+粉色茶点（白底）
+  craftHands: "/imgs/img-055.jpg",  // 手工制茶特写
+  drinkRed:   "/imgs/img-109.jpg",  // 白露·红玉青柠饮（深红竖版）
+  drinkBrown: "/imgs/img-113.jpg",  // 寒露·桂魄煮雪（暖棕竖版，Hero主视觉）
+  characters: "/imgs/img-116.jpg",  // 红楼梦人物线描（朱红，米白底）
 } as const;
 
 /* ─── Section: Hero ─── */
