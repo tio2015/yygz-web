@@ -119,79 +119,71 @@ function HeroSection() {
             </p>
           </div>
 
-          {/* 院士完整背书卡 — 移动竖排 / 桌面横排 */}
+          {/* 院士背书卡 — 集团主站同款竖排居中 */}
           <div
-            className="rounded-2xl overflow-hidden w-full"
+            className="rounded-2xl w-full px-7 py-7 flex flex-col items-center text-center gap-4"
             style={{
-              background: "rgba(14,8,4,0.75)",
-              border: `1px solid ${BY_GOLD}30`,
+              background: "rgba(14,8,4,0.80)",
+              border: `1px solid ${BY_GOLD}28`,
               backdropFilter: "blur(10px)",
-              maxWidth: 480,
+              maxWidth: 420,
             }}
           >
-            {/* 移动端：竖排；sm+：横排 */}
-            <div className="flex flex-col sm:flex-row sm:items-stretch">
+            {/* 大圆形照片 */}
+            <div
+              className="rounded-full overflow-hidden"
+              style={{
+                width: 120,
+                height: 120,
+                border: `2px solid ${BY_GOLD}60`,
+                boxShadow: `0 0 20px rgba(201,168,76,0.30)`,
+              }}
+            >
+              <img
+                src="https://www.yiyeguizhen.com/academician.jpg"
+                alt="刘仲华院士"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-              {/* 圆形头像 — 移动居中，桌面左栏 */}
-              <div className="flex items-center justify-center pt-5 pb-3 sm:py-5 sm:px-5 shrink-0">
-                <div
-                  className="rounded-full overflow-hidden"
-                  style={{
-                    width: 80,
-                    height: 80,
-                    border: `2px solid ${BY_GOLD}60`,
-                    boxShadow: `0 0 14px rgba(201,168,76,0.35)`,
-                  }}
-                >
-                  <img
-                    src="https://www.yiyeguizhen.com/academician.jpg"
-                    alt="刘仲华院士"
-                    className="w-full h-full object-cover"
-                  />
+            {/* 姓名 */}
+            <p
+              className="text-xl font-bold tracking-[0.2em]"
+              style={{ color: BY_CREAM, fontFamily: "'Noto Serif SC', serif" }}
+            >
+              刘仲华
+            </p>
+
+            {/* 身份 */}
+            <p className="text-xs" style={{ color: BY_GOLD }}>
+              中国工程院院士 · 独家授权合作
+            </p>
+
+            {/* 职务描述 */}
+            <div className="space-y-1">
+              <p className="text-xs leading-5" style={{ color: `${BY_CREAM}75` }}>
+                国家植物功能成分利用工程技术研究中心主任
+              </p>
+              <p className="text-xs leading-5" style={{ color: `${BY_CREAM}60` }}>
+                深耕植物功能成分研究三十年
+              </p>
+            </div>
+
+            {/* 分割线 */}
+            <div className="w-10 h-px" style={{ background: `${BY_GOLD}50` }} />
+
+            {/* 三大机构竖排 */}
+            <div className="space-y-2.5 w-full">
+              {[
+                "国家植物功能成分利用工程技术研究中心",
+                "国家中医药管理局亚健康干预重点实验室",
+                "茶学教育部重点实验室",
+              ].map((lab) => (
+                <div key={lab} className="flex items-center justify-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: BY_GOLD }} />
+                  <p className="text-xs leading-5" style={{ color: `${BY_CREAM}75` }}>{lab}</p>
                 </div>
-              </div>
-
-              {/* 姓名 + 职务 — 移动居中，桌面中栏 */}
-              <div
-                className="flex flex-col justify-center items-center sm:items-start px-5 pb-4 sm:py-4 sm:flex-1 text-center sm:text-left"
-                style={{ borderTop: "none", ...(undefined) }}
-              >
-                <p
-                  className="text-base font-bold tracking-[0.15em]"
-                  style={{ color: BY_CREAM, fontFamily: "'Noto Serif SC', serif" }}
-                >
-                  刘 仲 华
-                </p>
-                <p className="text-[11px] mt-1" style={{ color: BY_GOLD }}>
-                  中国工程院院士 · 独家授权合作
-                </p>
-                <p className="text-[10px] mt-1 leading-4" style={{ color: `${BY_CREAM}55` }}>
-                  深耕植物功能成分研究三十年
-                </p>
-              </div>
-
-              {/* 三大机构 — 移动横向滚动列表，桌面右栏 */}
-              <div
-                className="px-5 pb-5 sm:py-4 sm:px-4 sm:shrink-0"
-                style={{
-                  borderTop: `1px solid ${BY_GOLD}15`,
-                  ...(typeof window !== "undefined" ? {} : {}),
-                }}
-              >
-                <div className="flex sm:flex-col gap-3 sm:gap-2 overflow-x-auto sm:overflow-visible pb-1 sm:pb-0">
-                  {[
-                    "国家植物功能成分利用工程技术研究中心",
-                    "国家中医药管理局亚健康干预重点实验室",
-                    "茶学教育部重点实验室",
-                  ].map((lab) => (
-                    <div key={lab} className="flex items-start gap-1.5 shrink-0 sm:shrink">
-                      <span className="mt-1 w-1 h-1 rounded-full shrink-0" style={{ background: BY_GOLD }} />
-                      <p className="text-[10px] leading-4 whitespace-nowrap sm:whitespace-normal" style={{ color: `${BY_CREAM}70` }}>{lab}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
+              ))}
             </div>
           </div>
 
