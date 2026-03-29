@@ -873,23 +873,20 @@ function CTASection() {
 
         {/* CTA */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="https://www.daguanyuan.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-medium transition-all hover:scale-105"
+          <button
+            type="button"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-medium transition-all hover:scale-105 cursor-default"
             style={{
               background: `linear-gradient(135deg, ${BY_RED} 0%, #8B1A00 100%)`,
               color: BY_CREAM,
               boxShadow: `0 4px 24px rgba(204,34,0,0.35)`,
+              border: "none",
             }}
           >
             探索宝玉煮茶 →
-          </a>
+          </button>
           <a
-            href="https://map.baidu.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://www.yiyeguizhen.com/health/tracks"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-medium transition-all hover:scale-105"
             style={{
               background: "transparent",
@@ -897,7 +894,7 @@ function CTASection() {
               border: `1px solid ${BY_GOLD}35`,
             }}
           >
-            找附近大观茶室 →
+            且酌更多资料 →
           </a>
         </div>
 
