@@ -504,19 +504,21 @@ function AcademicSection() {
 
         {/* 且酌产品简介 */}
         <div
-          className="rounded-2xl p-7 flex flex-col sm:flex-row items-start gap-6"
+          className="relative rounded-2xl p-7"
           style={{ background: "#181010", border: `1px solid ${BY_GOLD}20` }}
         >
-          <div className="shrink-0 flex flex-col items-center gap-2">
-            <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/CdMABrLIqerRhKoR.png"
-              alt="且酌"
-              className="h-10 object-contain"
-              style={{ filter: "brightness(10) sepia(1) saturate(2) hue-rotate(10deg)" }}
-            />
-            <span className="text-[10px] tracking-widest" style={{ color: `${BY_GOLD}70` }}>且酌®</span>
-          </div>
-          <div className="flex-1 space-y-3">
+          <style>{`
+            @keyframes logoSpin {
+              0%   { transform: rotateY(0deg); }
+              45%  { transform: rotateY(0deg); }
+              50%  { transform: rotateY(180deg); }
+              95%  { transform: rotateY(180deg); }
+              100% { transform: rotateY(360deg); }
+            }
+          `}</style>
+
+          {/* 文字区 */}
+          <div className="pr-16 space-y-3">
             <div className="flex items-center gap-2">
               <span
                 className="text-[11px] px-2.5 py-1 rounded-full tracking-wider"
@@ -532,6 +534,21 @@ function AcademicSection() {
               专为应酬场景设计的东方植养饮品。
               席间饮用，以植养的方式关照身体的感受，与宝玉煮茶形成完整应酬养护链路。
             </p>
+          </div>
+
+          {/* 一叶归真旋转logo — 右下角 */}
+          <div className="absolute bottom-6 right-6">
+            <img
+              src="https://www.yiyeguizhen.com/logo.png?v=3"
+              alt="一叶归真"
+              style={{
+                width: 48,
+                height: 48,
+                objectFit: "contain",
+                animation: "logoSpin 6s ease-in-out infinite",
+                filter: `drop-shadow(0 0 6px rgba(201,168,76,0.4))`,
+              }}
+            />
           </div>
         </div>
 
