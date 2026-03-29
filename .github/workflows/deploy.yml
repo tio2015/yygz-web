@@ -66,3 +66,9 @@ jobs:
           ossutil cp dist/public/baoyutea/imgs/ oss://yiyeguizhen-web-hk/baoyutea/imgs/ \
             --meta "Cache-Control:max-age=31536000" -r -f
           echo "✅ baoyutea/imgs/ 部署完成"
+
+      - name: 部署 宝玉煮茶 JS/CSS assets（长缓存）
+        run: |
+          ossutil cp dist/public/baoyutea/assets/ oss://yiyeguizhen-web-hk/baoyutea/assets/ \
+            --meta "Cache-Control:max-age=31536000" -r -f
+          echo "✅ baoyutea/assets/ 部署完成"
