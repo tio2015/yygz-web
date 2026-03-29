@@ -119,41 +119,69 @@ function HeroSection() {
             </p>
           </div>
 
-          {/* 院士首屏背书卡 */}
+          {/* 院士完整背书卡 — 集团站同款，首屏可见 */}
           <div
-            className="flex items-center gap-4 px-5 py-3 rounded-2xl"
+            className="rounded-2xl overflow-hidden w-full"
             style={{
-              background: "rgba(14,8,4,0.65)",
-              border: `1px solid ${BY_GOLD}30`,
-              backdropFilter: "blur(8px)",
-              maxWidth: 380,
+              background: "rgba(14,8,4,0.75)",
+              border: `1px solid ${BY_GOLD}35`,
+              backdropFilter: "blur(10px)",
+              maxWidth: 480,
             }}
           >
-            {/* 圆形头像 */}
-            <div
-              className="rounded-full overflow-hidden shrink-0"
-              style={{
-                width: 52,
-                height: 52,
-                border: `2px solid ${BY_GOLD}60`,
-                boxShadow: `0 0 12px rgba(201,168,76,0.3)`,
-              }}
-            >
-              <img
-                src="https://www.yiyeguizhen.com/academician.jpg"
-                alt="刘仲华院士"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            {/* 文字 */}
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-bold tracking-wider" style={{ color: BY_CREAM, fontFamily: "'Noto Serif SC', serif" }}>
-                刘仲华
-              </p>
-              <p className="text-[11px] mt-0.5" style={{ color: BY_GOLD }}>中国工程院院士 · 独家授权合作</p>
-              <p className="text-[10px] mt-0.5 truncate" style={{ color: `${BY_CREAM}55` }}>
-                国家植物功能成分利用工程技术研究中心主任
-              </p>
+            {/* 主行：照片 + 姓名职务 + 机构列表 */}
+            <div className="flex items-stretch">
+              {/* 圆形头像 */}
+              <div className="flex items-center justify-center px-5 py-5 shrink-0">
+                <div
+                  className="rounded-full overflow-hidden"
+                  style={{
+                    width: 90,
+                    height: 90,
+                    border: `2px solid ${BY_GOLD}65`,
+                    boxShadow: `0 0 18px rgba(201,168,76,0.40)`,
+                  }}
+                >
+                  <img
+                    src="https://www.yiyeguizhen.com/academician.jpg"
+                    alt="刘仲华院士"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* 姓名 + 职务 */}
+              <div
+                className="flex flex-col justify-center px-4 py-4 flex-1"
+                style={{ borderLeft: `1px solid ${BY_GOLD}18`, borderRight: `1px solid ${BY_GOLD}18` }}
+              >
+                <p
+                  className="text-lg font-bold tracking-[0.18em]"
+                  style={{ color: BY_CREAM, fontFamily: "'Noto Serif SC', serif" }}
+                >
+                  刘 仲 华
+                </p>
+                <p className="text-[11px] mt-1" style={{ color: BY_GOLD }}>
+                  中国工程院院士 · 独家授权合作
+                </p>
+                <p className="text-[10px] mt-1 leading-4" style={{ color: `${BY_CREAM}60` }}>
+                  深耕植物功能成分研究三十年
+                </p>
+              </div>
+
+              {/* 三大机构 */}
+              <div className="flex flex-col justify-center gap-2 px-4 py-4 shrink-0 min-w-0" style={{ maxWidth: 160 }}>
+                {[
+                  "国家植物功能成分利用工程技术研究中心",
+                  "国家中医药管理局亚健康干预重点实验室",
+                  "茶学教育部重点实验室",
+                ].map((lab) => (
+                  <div key={lab} className="flex items-start gap-1.5">
+                    <span className="mt-1 w-1 h-1 rounded-full shrink-0" style={{ background: BY_GOLD }} />
+                    <p className="text-[9px] leading-4" style={{ color: `${BY_CREAM}70` }}>{lab}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -505,76 +533,7 @@ function AcademicSection() {
           </div>
         </div>
 
-        {/* 院士资料卡 — 一叶归真集团站同款格式 */}
-        <div
-          className="rounded-2xl overflow-hidden"
-          style={{ background: "#0E0A08", border: `1px solid ${BY_GOLD}18` }}
-        >
-          {/* 主卡：照片 + 信息 + 三大机构 */}
-          <div className="flex flex-col sm:flex-row items-center sm:items-stretch">
-
-            {/* 左：圆形照片 */}
-            <div
-              className="flex items-center justify-center p-8 sm:p-10 shrink-0"
-              style={{ background: "#0E0A08" }}
-            >
-              <div
-                className="rounded-full overflow-hidden"
-                style={{
-                  width: 120,
-                  height: 120,
-                  border: `2px solid ${BY_GOLD}40`,
-                  boxShadow: `0 0 24px rgba(201,168,76,0.15)`,
-                }}
-              >
-                <img
-                  src="https://www.yiyeguizhen.com/academician.jpg"
-                  alt="刘仲华院士"
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            {/* 中：姓名 + 简介 */}
-            <div
-              className="flex-1 flex flex-col justify-center px-6 py-8 text-center sm:text-left"
-              style={{ borderLeft: `1px solid ${BY_GOLD}12`, borderRight: `1px solid ${BY_GOLD}12` }}
-            >
-              <h4
-                className="text-2xl font-bold tracking-[0.2em] mb-2"
-                style={{ color: BY_CREAM, fontFamily: "'Noto Serif SC', serif" }}
-              >
-                刘 仲 华
-              </h4>
-              <p className="text-sm mb-4" style={{ color: BY_GOLD }}>
-                中国工程院院士 · 独家授权合作
-              </p>
-              <p className="text-xs leading-6" style={{ color: `${BY_CREAM}70` }}>
-                国家植物功能成分利用工程技术研究中心主任
-                <br />
-                深耕植物功能成分研究三十年
-              </p>
-            </div>
-
-            {/* 右：三大机构 */}
-            <div className="flex flex-col justify-center gap-5 px-8 py-8 shrink-0 sm:min-w-[280px]">
-              {[
-                "国家植物功能成分利用工程技术研究中心",
-                "国家中医药管理局亚健康干预重点实验室",
-                "茶学教育部重点实验室",
-              ].map((lab) => (
-                <div key={lab} className="flex items-start gap-3">
-                  <span
-                    className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"
-                    style={{ background: BY_GOLD }}
-                  />
-                  <p className="text-xs leading-5" style={{ color: `${BY_CREAM}80` }}>{lab}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* 院士卡已移入首屏 Hero，此处不再重复 */}
       </div>
     </section>
   );
