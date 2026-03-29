@@ -119,23 +119,42 @@ function HeroSection() {
             </p>
           </div>
 
-          {/* 机构背书 */}
+          {/* 院士首屏背书卡 */}
           <div
-            className="flex flex-col sm:flex-row items-center gap-3 text-xs"
-            style={{ color: `${BY_CREAM}60` }}
+            className="flex items-center gap-4 px-5 py-3 rounded-2xl"
+            style={{
+              background: "rgba(14,8,4,0.65)",
+              border: `1px solid ${BY_GOLD}30`,
+              backdropFilter: "blur(8px)",
+              maxWidth: 380,
+            }}
           >
-            <span
-              className="px-3 py-1.5 rounded-full"
-              style={{ border: `1px solid ${BY_RED}35`, color: BY_RED, background: `${BY_RED}0D` }}
+            {/* 圆形头像 */}
+            <div
+              className="rounded-full overflow-hidden shrink-0"
+              style={{
+                width: 52,
+                height: 52,
+                border: `2px solid ${BY_GOLD}60`,
+                boxShadow: `0 0 12px rgba(201,168,76,0.3)`,
+              }}
             >
-              中国工程院院士团队
-            </span>
-            <span
-              className="px-3 py-1.5 rounded-full"
-              style={{ border: `1px solid ${BY_GOLD}30`, color: `${BY_GOLD}CC`, background: `${BY_GOLD}0A` }}
-            >
-              国家植物功能成分利用工程技术研究中心
-            </span>
+              <img
+                src="https://www.yiyeguizhen.com/academician.jpg"
+                alt="刘仲华院士"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* 文字 */}
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-bold tracking-wider" style={{ color: BY_CREAM, fontFamily: "'Noto Serif SC', serif" }}>
+                刘仲华
+              </p>
+              <p className="text-[11px] mt-0.5" style={{ color: BY_GOLD }}>中国工程院院士 · 独家授权合作</p>
+              <p className="text-[10px] mt-0.5 truncate" style={{ color: `${BY_CREAM}55` }}>
+                国家植物功能成分利用工程技术研究中心主任
+              </p>
+            </div>
           </div>
 
           {/* 向下探索 */}
@@ -874,17 +893,17 @@ function CTASection() {
             href="https://www.yiyeguizhen.com/health/tracks"
             className="relative inline-flex items-center gap-2 px-10 py-4 rounded-full text-sm font-semibold tracking-wider transition-transform hover:scale-105"
             style={{
-              background: `linear-gradient(135deg, ${BY_RED} 0%, #8B1A00 100%)`,
-              color: BY_CREAM,
-              boxShadow: `0 0 0 0 rgba(204,34,0,0.7)`,
+              background: `linear-gradient(135deg, #B8922A 0%, ${BY_GOLD} 50%, #8A6A1A 100%)`,
+              color: "#1A0800",
+              fontWeight: 700,
               animation: "glow-pulse 2s ease-in-out infinite",
             }}
           >
             <style>{`
               @keyframes glow-pulse {
-                0%   { box-shadow: 0 0 12px 4px rgba(204,34,0,0.55), 0 4px 24px rgba(204,34,0,0.35); }
-                50%  { box-shadow: 0 0 32px 12px rgba(204,34,0,0.75), 0 4px 40px rgba(204,34,0,0.55); }
-                100% { box-shadow: 0 0 12px 4px rgba(204,34,0,0.55), 0 4px 24px rgba(204,34,0,0.35); }
+                0%   { box-shadow: 0 0 14px 4px rgba(201,168,76,0.50), 0 4px 20px rgba(201,168,76,0.30); }
+                50%  { box-shadow: 0 0 36px 14px rgba(201,168,76,0.80), 0 4px 48px rgba(201,168,76,0.55); }
+                100% { box-shadow: 0 0 14px 4px rgba(201,168,76,0.50), 0 4px 20px rgba(201,168,76,0.30); }
               }
             `}</style>
             探索且酌更多资料 →
