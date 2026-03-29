@@ -518,14 +518,26 @@ function AcademicSection() {
           `}</style>
 
           {/* 文字区 */}
-          <div className="pr-16 space-y-3">
-            <div className="flex items-center gap-2">
+          <div className="space-y-3">
+            {/* 第一行：badge 左，logo 右 */}
+            <div className="flex items-center justify-between">
               <span
                 className="text-[11px] px-2.5 py-1 rounded-full tracking-wider"
                 style={{ background: `${BY_GOLD}12`, color: BY_GOLD, border: `1px solid ${BY_GOLD}25` }}
               >
                 联合研发出品
               </span>
+              <img
+                src="https://www.yiyeguizhen.com/logo.png?v=3"
+                alt="一叶归真"
+                style={{
+                  width: 44,
+                  height: 44,
+                  objectFit: "contain",
+                  animation: "logoSpin 6s ease-in-out infinite",
+                  filter: `drop-shadow(0 0 6px rgba(201,168,76,0.4))`,
+                }}
+              />
             </div>
             <h4 className="font-semibold text-sm" style={{ color: BY_CREAM }}>且酌·植养萃</h4>
             <p className="text-xs leading-6" style={{ color: `${BY_CREAM}65` }}>
@@ -534,21 +546,6 @@ function AcademicSection() {
               专为应酬场景设计的东方植养饮品。
               席间饮用，以植养的方式关照身体的感受，与宝玉煮茶形成完整应酬养护链路。
             </p>
-          </div>
-
-          {/* 一叶归真旋转logo — 右下角 */}
-          <div className="absolute bottom-6 right-6">
-            <img
-              src="https://www.yiyeguizhen.com/logo.png?v=3"
-              alt="一叶归真"
-              style={{
-                width: 48,
-                height: 48,
-                objectFit: "contain",
-                animation: "logoSpin 6s ease-in-out infinite",
-                filter: `drop-shadow(0 0 6px rgba(201,168,76,0.4))`,
-              }}
-            />
           </div>
         </div>
 
