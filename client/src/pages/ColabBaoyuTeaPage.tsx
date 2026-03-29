@@ -38,10 +38,13 @@ const IMG = {
   particles:  "/imgs/img-000.jpg",  // 金色粒子（黑底）
   logoStamp:  "/imgs/img-010.jpg",  // 宝玉煮茶印章Logo
   herbs:      "/imgs/img-020.jpg",  // 草本食材平铺
-  teapot:     "/imgs/img-050.jpg",  // 红茶壶+茶点
+  teapot:     "/imgs/img-050.jpg",  // 红茶壶+茶点（备用）
+  store:      "/imgs/img-300.jpg",  // 大观茶室门店渲染图
   craftHands: "/imgs/img-055.jpg",  // 手工制茶特写
-  drinkRed:   "/imgs/img-109.jpg",  // 怡红公子（深红竖版）
-  drinkBrown: "/imgs/img-113.jpg",  // 潇湘妃子（暖棕竖版）
+  drinkRed:   "/imgs/img-109.jpg",  // 门店饮品（深红竖版）
+  drinkBrown: "/imgs/img-113.jpg",  // 门店饮品（暖棕竖版）
+  yihong:     "/imgs/img-200.jpg",  // 怡红公子瓶装产品图
+  xiaoxiang:  "/imgs/img-201.jpg",  // 潇湘妃子瓶装产品图
   characters: "/imgs/img-116.jpg",  // 红楼梦人物线描
 } as const;
 
@@ -101,9 +104,9 @@ function HeroSection() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
               style={{ fontFamily: "'Noto Serif SC', serif", color: BY_CREAM }}
             >
-              以院士茶
+              宝玉煮茶
               <br />
-              <span style={{ color: BY_RED }}>载轻养道</span>
+              <span style={{ color: BY_RED }}>院士轻养茶</span>
             </h1>
             <p className="text-base sm:text-lg leading-relaxed" style={{ color: `${BY_CREAM}99` }}>
               中国工程院院士团队参与研发
@@ -301,7 +304,7 @@ function ProductsSection() {
             {/* 饮品图 */}
             <div className="relative overflow-hidden" style={{ height: 280 }}>
               <img
-                src={IMG.drinkRed}
+                src={IMG.yihong}
                 alt="怡红公子"
                 loading="lazy"
                 className="w-full h-full object-cover"
@@ -375,7 +378,7 @@ function ProductsSection() {
             {/* 饮品图 */}
             <div className="relative overflow-hidden" style={{ height: 280 }}>
               <img
-                src={IMG.drinkBrown}
+                src={IMG.xiaoxiang}
                 alt="潇湘妃子"
                 loading="lazy"
                 className="w-full h-full object-cover"
@@ -435,6 +438,139 @@ function ProductsSection() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Section: 且酌简介 + 院士资料 ─── */
+function AcademicSection() {
+  const ref = useInView();
+  return (
+    <section
+      ref={ref}
+      className="opacity-0 py-16 px-6"
+      style={{ background: "#0A0200" }}
+    >
+      <div className="max-w-5xl mx-auto space-y-6">
+
+        {/* 且酌产品简介 */}
+        <div
+          className="rounded-2xl p-7 flex flex-col sm:flex-row items-start gap-6"
+          style={{ background: "#181010", border: `1px solid ${BY_GOLD}20` }}
+        >
+          <div className="shrink-0 flex flex-col items-center gap-2">
+            <img
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028732695/CdMABrLIqerRhKoR.png"
+              alt="且酌"
+              className="h-10 object-contain"
+              style={{ filter: "brightness(10) sepia(1) saturate(2) hue-rotate(10deg)" }}
+            />
+            <span className="text-[10px] tracking-widest" style={{ color: `${BY_GOLD}70` }}>且酌®</span>
+          </div>
+          <div className="flex-1 space-y-3">
+            <div className="flex items-center gap-2">
+              <span
+                className="text-[11px] px-2.5 py-1 rounded-full tracking-wider"
+                style={{ background: `${BY_GOLD}12`, color: BY_GOLD, border: `1px solid ${BY_GOLD}25` }}
+              >
+                联合研发出品
+              </span>
+            </div>
+            <h4 className="font-semibold text-sm" style={{ color: BY_CREAM }}>且酌·植养萃</h4>
+            <p className="text-xs leading-6" style={{ color: `${BY_CREAM}65` }}>
+              且酌是本次宝玉煮茶·院士轻养茶的联合研发出品方，
+              以草本植物精华为核心，基于院士食养研究方向进行产品设计，
+              专为应酬场景设计的东方植养饮品。
+              席间饮用，以植养的方式关照身体的感受，与宝玉煮茶形成完整应酬养护链路。
+            </p>
+          </div>
+        </div>
+
+        {/* 院士资料卡 */}
+        <div
+          className="relative overflow-hidden rounded-2xl p-7"
+          style={{ background: "#181010", border: `1px solid ${BY_RED}22` }}
+        >
+          {/* 装饰背景 */}
+          <img
+            src={IMG.characters}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="absolute -right-4 -top-4 rounded-xl object-cover pointer-events-none"
+            style={{ width: 100, height: 100, opacity: 0.2 }}
+          />
+
+          <div className="relative z-10 flex flex-col sm:flex-row gap-7">
+            {/* 院士信息主体 */}
+            <div className="flex-1 space-y-4">
+              <div className="flex items-start gap-4">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-lg font-bold"
+                  style={{ background: `${BY_RED}18`, color: BY_RED, fontFamily: "'Noto Serif SC', serif" }}
+                >
+                  院
+                </div>
+                <div>
+                  <h4 className="text-base font-bold" style={{ color: BY_CREAM, fontFamily: "'Noto Serif SC', serif" }}>
+                    刘仲华
+                  </h4>
+                  <p className="text-xs mt-0.5" style={{ color: BY_RED }}>中国工程院院士（2019年当选）</p>
+                  <p className="text-[11px] mt-1 leading-5" style={{ color: `${BY_CREAM}60` }}>
+                    湖南师范大学校长 · 国家植物功能成分利用工程技术研究中心主任
+                  </p>
+                </div>
+              </div>
+              <p className="text-xs leading-6" style={{ color: `${BY_CREAM}70` }}>
+                深耕植物功能成分研究<strong style={{ color: BY_CREAM }}>三十年</strong>，
+                主攻茶叶加工理论与技术、茶叶深加工与资源利用、茶与健康及植物功能成分利用。
+                创新了黑茶加工理论技术体系，推进中国黑茶产业跨越式发展；
+                创新植物功能成分绿色高效分离纯化与利用技术体系。
+              </p>
+            </div>
+
+            {/* 数字荣誉栏 */}
+            <div className="sm:w-48 grid grid-cols-2 sm:grid-cols-1 gap-3 content-start">
+              {[
+                { num: "2项", label: "国家科技进步二等奖" },
+                { num: "70+", label: "发明专利授权" },
+                { num: "160+", label: "SCI论文" },
+                { num: "15部", label: "学术专著" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-lg px-3 py-2.5 text-center"
+                  style={{ background: `${BY_RED}0C`, border: `1px solid ${BY_RED}1A` }}
+                >
+                  <p className="text-sm font-bold" style={{ color: BY_RED }}>{item.num}</p>
+                  <p className="text-[10px] leading-4 mt-0.5" style={{ color: `${BY_CREAM}55` }}>{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 授权说明 */}
+          <div
+            className="relative z-10 mt-5 pt-4 flex flex-wrap gap-3"
+            style={{ borderTop: `1px solid ${BY_RED}18` }}
+          >
+            {[
+              "独家授权合作",
+              "授权期限至2030年",
+              "3个国家级科研平台",
+              "何梁何利科学与技术进步奖",
+            ].map((tag) => (
+              <span
+                key={tag}
+                className="text-[11px] px-2.5 py-1 rounded"
+                style={{ background: `${BY_RED}0A`, color: `${BY_CREAM}70`, border: `1px solid ${BY_RED}18` }}
+              >
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
       </div>
@@ -608,7 +744,7 @@ function StoreSection() {
           {/* 图像 */}
           <div className="lg:col-span-2 relative rounded-2xl overflow-hidden" style={{ height: 360 }}>
             <img
-              src={IMG.teapot}
+              src={IMG.store}
               alt="大观茶室"
               loading="lazy"
               className="w-full h-full object-cover"
@@ -796,6 +932,7 @@ export default function ColabBaoyuTeaPage() {
       <HeroSection />
       <OriginSection />
       <ProductsSection />
+      <AcademicSection />
       <ScienceSection />
       <StoreSection />
       <CTASection />
