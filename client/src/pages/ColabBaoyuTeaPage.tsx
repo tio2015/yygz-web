@@ -875,7 +875,7 @@ function CTASection() {
                 100% { box-shadow: 0 0 8px 2px rgba(201,168,76,0.25), 0 3px 12px rgba(201,168,76,0.15); }
               }
             `}</style>
-            探索且酌更多资料 →
+            点击进入「且酌」网站 →
           </a>
         </div>
 
