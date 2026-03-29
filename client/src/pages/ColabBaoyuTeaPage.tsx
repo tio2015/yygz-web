@@ -119,27 +119,28 @@ function HeroSection() {
             </p>
           </div>
 
-          {/* 院士完整背书卡 — 集团站同款，首屏可见 */}
+          {/* 院士完整背书卡 — 移动竖排 / 桌面横排 */}
           <div
             className="rounded-2xl overflow-hidden w-full"
             style={{
               background: "rgba(14,8,4,0.75)",
-              border: `1px solid ${BY_GOLD}35`,
+              border: `1px solid ${BY_GOLD}30`,
               backdropFilter: "blur(10px)",
               maxWidth: 480,
             }}
           >
-            {/* 主行：照片 + 姓名职务 + 机构列表 */}
-            <div className="flex items-stretch">
-              {/* 圆形头像 */}
-              <div className="flex items-center justify-center px-5 py-5 shrink-0">
+            {/* 移动端：竖排；sm+：横排 */}
+            <div className="flex flex-col sm:flex-row sm:items-stretch">
+
+              {/* 圆形头像 — 移动居中，桌面左栏 */}
+              <div className="flex items-center justify-center pt-5 pb-3 sm:py-5 sm:px-5 shrink-0">
                 <div
                   className="rounded-full overflow-hidden"
                   style={{
-                    width: 90,
-                    height: 90,
-                    border: `2px solid ${BY_GOLD}65`,
-                    boxShadow: `0 0 18px rgba(201,168,76,0.40)`,
+                    width: 80,
+                    height: 80,
+                    border: `2px solid ${BY_GOLD}60`,
+                    boxShadow: `0 0 14px rgba(201,168,76,0.35)`,
                   }}
                 >
                   <img
@@ -150,13 +151,13 @@ function HeroSection() {
                 </div>
               </div>
 
-              {/* 姓名 + 职务 */}
+              {/* 姓名 + 职务 — 移动居中，桌面中栏 */}
               <div
-                className="flex flex-col justify-center px-4 py-4 flex-1"
-                style={{ borderLeft: `1px solid ${BY_GOLD}18`, borderRight: `1px solid ${BY_GOLD}18` }}
+                className="flex flex-col justify-center items-center sm:items-start px-5 pb-4 sm:py-4 sm:flex-1 text-center sm:text-left"
+                style={{ borderTop: "none", ...(undefined) }}
               >
                 <p
-                  className="text-lg font-bold tracking-[0.18em]"
+                  className="text-base font-bold tracking-[0.15em]"
                   style={{ color: BY_CREAM, fontFamily: "'Noto Serif SC', serif" }}
                 >
                   刘 仲 华
@@ -164,24 +165,33 @@ function HeroSection() {
                 <p className="text-[11px] mt-1" style={{ color: BY_GOLD }}>
                   中国工程院院士 · 独家授权合作
                 </p>
-                <p className="text-[10px] mt-1 leading-4" style={{ color: `${BY_CREAM}60` }}>
+                <p className="text-[10px] mt-1 leading-4" style={{ color: `${BY_CREAM}55` }}>
                   深耕植物功能成分研究三十年
                 </p>
               </div>
 
-              {/* 三大机构 */}
-              <div className="flex flex-col justify-center gap-2 px-4 py-4 shrink-0 min-w-0" style={{ maxWidth: 160 }}>
-                {[
-                  "国家植物功能成分利用工程技术研究中心",
-                  "国家中医药管理局亚健康干预重点实验室",
-                  "茶学教育部重点实验室",
-                ].map((lab) => (
-                  <div key={lab} className="flex items-start gap-1.5">
-                    <span className="mt-1 w-1 h-1 rounded-full shrink-0" style={{ background: BY_GOLD }} />
-                    <p className="text-[9px] leading-4" style={{ color: `${BY_CREAM}70` }}>{lab}</p>
-                  </div>
-                ))}
+              {/* 三大机构 — 移动横向滚动列表，桌面右栏 */}
+              <div
+                className="px-5 pb-5 sm:py-4 sm:px-4 sm:shrink-0"
+                style={{
+                  borderTop: `1px solid ${BY_GOLD}15`,
+                  ...(typeof window !== "undefined" ? {} : {}),
+                }}
+              >
+                <div className="flex sm:flex-col gap-3 sm:gap-2 overflow-x-auto sm:overflow-visible pb-1 sm:pb-0">
+                  {[
+                    "国家植物功能成分利用工程技术研究中心",
+                    "国家中医药管理局亚健康干预重点实验室",
+                    "茶学教育部重点实验室",
+                  ].map((lab) => (
+                    <div key={lab} className="flex items-start gap-1.5 shrink-0 sm:shrink">
+                      <span className="mt-1 w-1 h-1 rounded-full shrink-0" style={{ background: BY_GOLD }} />
+                      <p className="text-[10px] leading-4 whitespace-nowrap sm:whitespace-normal" style={{ color: `${BY_CREAM}70` }}>{lab}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
+
             </div>
           </div>
 
@@ -860,9 +870,9 @@ function CTASection() {
           >
             <style>{`
               @keyframes glow-pulse {
-                0%   { box-shadow: 0 0 14px 4px rgba(201,168,76,0.50), 0 4px 20px rgba(201,168,76,0.30); }
-                50%  { box-shadow: 0 0 36px 14px rgba(201,168,76,0.80), 0 4px 48px rgba(201,168,76,0.55); }
-                100% { box-shadow: 0 0 14px 4px rgba(201,168,76,0.50), 0 4px 20px rgba(201,168,76,0.30); }
+                0%   { box-shadow: 0 0 8px 2px rgba(201,168,76,0.25), 0 3px 12px rgba(201,168,76,0.15); }
+                50%  { box-shadow: 0 0 18px 6px rgba(201,168,76,0.45), 0 4px 24px rgba(201,168,76,0.28); }
+                100% { box-shadow: 0 0 8px 2px rgba(201,168,76,0.25), 0 3px 12px rgba(201,168,76,0.15); }
               }
             `}</style>
             探索且酌更多资料 →
