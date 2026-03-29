@@ -913,9 +913,9 @@ export default function ColabBaoyuTeaPage() {
   return (
     <div style={{ background: BY_DARK }}>
       <HeroSection />
+      <AcademicSection />
       <OriginSection />
       <ProductsSection />
-      <AcademicSection />
       <ScienceSection />
       <StoreSection />
       <CTASection />
