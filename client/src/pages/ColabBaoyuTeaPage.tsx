@@ -60,7 +60,7 @@ function HeroSection() {
       style={{
         minHeight: "92vh",
         background: `radial-gradient(ellipse 80% 60% at 50% 40%, rgba(204,34,0,0.22) 0%, transparent 65%),
-                     radial-gradient(ellipse 50% 40% at 80% 80%, rgba(201,168,76,0.08) 0%, transparent 60%),
+                     radial-gradient(ellipse 50% 40% at 80% 80%, rgba(201,168,76,0.10) 0%, transparent 60%),
                      ${BY_DARK}`,
       }}
     >
@@ -84,25 +84,27 @@ function HeroSection() {
       />
 
       {/* 内容：桌面两栏，移动单列 */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 py-16 flex flex-col lg:flex-row items-center gap-12">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 py-16 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
 
-        {/* 左侧文字 */}
-        <div className="flex flex-col items-center lg:items-start gap-8 flex-1 text-center lg:text-left">
-          {/* 印章 Logo */}
+        {/* ── 左栏：品牌文字 ── */}
+        <div className="flex flex-col items-center lg:items-start gap-7 lg:flex-1 text-center lg:text-left">
+
+          {/* 印章 Logo — 加大增强 */}
           <img
             src={IMG.logoStamp}
             alt="宝玉煮茶"
-            className="h-20 object-contain"
-            style={{ filter: "drop-shadow(0 0 12px rgba(204,34,0,0.55))" }}
+            className="h-28 object-contain"
+            style={{ filter: "drop-shadow(0 0 18px rgba(204,34,0,0.70))" }}
           />
 
-          {/* 主标题 */}
-          <div className="space-y-4 max-w-lg">
+          {/* 主标题区 */}
+          <div className="space-y-4 max-w-md">
+            {/* 金色小标签 */}
             <p
-              className="text-xs tracking-[0.25em] font-medium"
-              style={{ color: `${BY_GOLD}` }}
+              className="text-[11px] tracking-[0.28em] font-medium"
+              style={{ color: BY_GOLD }}
             >
-              FROM DAGUANYUAN BAOYU TEA LAB
+              红楼文化 · 东方食养
             </p>
             <h1
               className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
@@ -112,31 +114,55 @@ function HeroSection() {
               <br />
               <span style={{ color: BY_RED }}>院士轻养茶</span>
             </h1>
-            <p className="text-base sm:text-lg leading-relaxed" style={{ color: `${BY_CREAM}99` }}>
+            <p className="text-base leading-relaxed" style={{ color: `${BY_CREAM}90` }}>
               中国工程院院士团队参与研发
-              <br />
-              红楼文化 · 东方食养 · 院士轻养茶
             </p>
+
+            {/* 三个亮点 badge */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2 pt-1">
+              {["院士科研背书", "东方食养配方", "红楼文化IP"].map((tag) => (
+                <span
+                  key={tag}
+                  className="text-[10px] tracking-wider px-3 py-1 rounded-full"
+                  style={{ background: `${BY_RED}18`, color: `${BY_CREAM}90`, border: `1px solid ${BY_RED}35` }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* 院士背书卡 — 集团主站同款竖排居中 */}
+          {/* 向下探索 */}
           <div
-            className="rounded-2xl w-full px-7 py-7 flex flex-col items-center text-center gap-4"
+            className="hidden lg:flex flex-col items-start gap-2 opacity-45 mt-4"
+            style={{ color: BY_CREAM }}
+          >
+            <div className="w-px h-10" style={{ background: `linear-gradient(to bottom, transparent, ${BY_CREAM})` }} />
+            <span className="text-[9px] tracking-[0.3em]">向下探索</span>
+          </div>
+        </div>
+
+        {/* ── 右栏：院士卡 + 产品瓶 ── */}
+        <div className="flex flex-col items-center gap-6 w-full lg:w-auto lg:flex-shrink-0" style={{ maxWidth: 360 }}>
+
+          {/* 院士背书卡 */}
+          <div
+            className="rounded-2xl w-full px-6 py-6 flex flex-col items-center text-center gap-3.5"
             style={{
-              background: "rgba(14,8,4,0.80)",
-              border: `1px solid ${BY_GOLD}28`,
-              backdropFilter: "blur(10px)",
-              maxWidth: 420,
+              background: "rgba(14,8,4,0.82)",
+              border: `1px solid ${BY_GOLD}30`,
+              backdropFilter: "blur(12px)",
+              boxShadow: `0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(201,168,76,0.10)`,
             }}
           >
-            {/* 大圆形照片 */}
+            {/* 圆形院士照片 */}
             <div
               className="rounded-full overflow-hidden"
               style={{
                 width: 120,
                 height: 120,
                 border: `2px solid ${BY_GOLD}60`,
-                boxShadow: `0 0 20px rgba(201,168,76,0.30)`,
+                boxShadow: `0 0 24px rgba(201,168,76,0.35)`,
               }}
             >
               <img
@@ -146,34 +172,25 @@ function HeroSection() {
               />
             </div>
 
-            {/* 姓名 */}
             <p
               className="text-xl font-bold tracking-[0.2em]"
               style={{ color: BY_CREAM, fontFamily: "'Noto Serif SC', serif" }}
             >
               刘仲华
             </p>
-
-            {/* 身份 */}
             <p className="text-xs" style={{ color: BY_GOLD }}>
               中国工程院院士 · 独家授权合作
             </p>
-
-            {/* 职务描述 */}
-            <div className="space-y-1">
-              <p className="text-xs leading-5" style={{ color: `${BY_CREAM}75` }}>
+            <div className="space-y-0.5">
+              <p className="text-xs leading-5" style={{ color: `${BY_CREAM}72` }}>
                 国家植物功能成分利用工程技术研究中心主任
               </p>
-              <p className="text-xs leading-5" style={{ color: `${BY_CREAM}60` }}>
+              <p className="text-xs leading-5" style={{ color: `${BY_CREAM}55` }}>
                 深耕植物功能成分研究三十年
               </p>
             </div>
-
-            {/* 分割线 */}
-            <div className="w-10 h-px" style={{ background: `${BY_GOLD}50` }} />
-
-            {/* 三大机构竖排 */}
-            <div className="space-y-2.5 w-full">
+            <div className="w-8 h-px" style={{ background: `${BY_GOLD}45` }} />
+            <div className="space-y-2 w-full">
               {[
                 "国家植物功能成分利用工程技术研究中心",
                 "国家中医药管理局亚健康干预重点实验室",
@@ -187,13 +204,37 @@ function HeroSection() {
             </div>
           </div>
 
-          {/* 向下探索 */}
-          <div
-            className="flex flex-col items-center gap-2 opacity-50 animate-bounce"
-            style={{ color: BY_CREAM }}
-          >
-            <div className="w-px h-12" style={{ background: `linear-gradient(to bottom, transparent, ${BY_CREAM})` }} />
-            <span className="text-[10px] tracking-widest">向下探索</span>
+          {/* 产品瓶展示 — 怡红公子 + 潇湘妃子 并排缩略 */}
+          <div className="flex gap-3 w-full">
+            {[
+              { src: IMG.yihong, name: "怡红公子" },
+              { src: IMG.xiaoxiang, name: "潇湘妃子" },
+            ].map((p) => (
+              <div
+                key={p.name}
+                className="flex-1 rounded-xl overflow-hidden relative"
+                style={{
+                  border: `1px solid ${BY_GOLD}20`,
+                  boxShadow: `0 0 20px rgba(201,168,76,0.12)`,
+                }}
+              >
+                <img
+                  src={p.src}
+                  alt={p.name}
+                  className="w-full object-cover"
+                  style={{ height: 110 }}
+                />
+                <div
+                  className="absolute bottom-0 inset-x-0 py-1.5 text-center text-[10px] tracking-wider"
+                  style={{
+                    background: "linear-gradient(to top, rgba(26,8,0,0.90), transparent)",
+                    color: `${BY_CREAM}90`,
+                  }}
+                >
+                  {p.name}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
