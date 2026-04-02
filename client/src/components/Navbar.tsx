@@ -60,14 +60,16 @@ function DropdownItem({ item, location }: { item: NavItem; location: string }) {
           className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-48 bg-[oklch(0.10_0.005_260/95%)] backdrop-blur-xl border border-gold/15 rounded-sm shadow-xl z-50 overflow-hidden"
         >
           {item.children.map((child) => (
-            <Link
+            <a
               key={child.href}
               href={child.href}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="block px-4 py-3 text-sm text-muted-foreground hover:text-gold hover:bg-gold/8 transition-colors duration-200 border-b border-white/5 last:border-0 whitespace-nowrap"
             >
               {child.label}
-            </Link>
+            </a>
           ))}
         </div>
       )}
@@ -165,13 +167,15 @@ export default function Navbar() {
                   {mobileExpanded === item.label && (
                     <div className="ml-4 border-l border-gold/15 pl-3 flex flex-col gap-0.5">
                       {item.children.map((child) => (
-                        <Link
+                        <a
                           key={child.href}
                           href={child.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="px-4 py-2.5 text-sm text-muted-foreground hover:text-gold transition-colors"
                         >
                           {child.label}
-                        </Link>
+                        </a>
                       ))}
                     </div>
                   )}
