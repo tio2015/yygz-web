@@ -268,9 +268,23 @@ export const PARTNERSHIP_ADVANTAGES = [
 ];
 
 /* ─── 导航 ─── */
-export const NAV_ITEMS = [
+export type NavItem = {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+};
+
+export const NAV_ITEMS: NavItem[] = [
   { label: "首页", href: "/" },
   { label: "三大赛道", href: "/tracks" },
   { label: "科研实力", href: "/research" },
+  {
+    label: "精选联名",
+    href: "#",
+    children: [
+      { label: "京沪高铁悦清悦醒糖", href: "/collab/xingtang" },
+      { label: "宝玉煮茶院士轻养茶", href: "/collab/baoyutea" },
+    ],
+  },
   { label: "合作共赢", href: "/partner" },
 ];

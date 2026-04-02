@@ -2,15 +2,84 @@
  * Navbar: Dark luxury top navigation
  * Frosted glass effect, gold accent, responsive hamburger
  */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { BRAND, NAV_ITEMS } from "@/lib/data";
-import { Menu, X } from "lucide-react";
+import { BRAND, NAV_ITEMS, type NavItem } from "@/lib/data";
+import { Menu, X, ChevronDown } from "lucide-react";
+
+function DropdownItem({ item, location }: { item: NavItem; location: string }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  if (!item.children) {
+    return (
+      <Link
+        href={item.href}
+        className={`px-4 py-2 text-sm tracking-wide transition-all duration-300 rounded-sm ${
+          location === item.href
+            ? "text-gold bg-gold/10"
+            : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+        }`}
+      >
+        {item.label}
+      </Link>
+    );
+  }
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        onMouseEnter={() => setOpen(true)}
+        className={`flex items-center gap-1 px-4 py-2 text-sm tracking-wide transition-all duration-300 rounded-sm ${
+          open
+            ? "text-gold bg-gold/10"
+            : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+        }`}
+      >
+        {item.label}
+        <ChevronDown
+          size={13}
+          className={`transition-transform duration-200 ${open ? "rotate-180 text-gold" : ""}`}
+        />
+      </button>
+
+      {open && (
+        <div
+          onMouseLeave={() => setOpen(false)}
+          className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-48 bg-[oklch(0.10_0.005_260/95%)] backdrop-blur-xl border border-gold/15 rounded-sm shadow-xl z-50 overflow-hidden"
+        >
+          {item.children.map((child) => (
+            <Link
+              key={child.href}
+              href={child.href}
+              onClick={() => setOpen(false)}
+              className="block px-4 py-3 text-sm text-muted-foreground hover:text-gold hover:bg-gold/8 transition-colors duration-200 border-b border-white/5 last:border-0 whitespace-nowrap"
+            >
+              {child.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Navbar() {
   const [location] = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -20,6 +89,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
+    setMobileExpanded(null);
   }, [location]);
 
   return (
@@ -51,17 +121,7 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-1">
           {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`px-4 py-2 text-sm tracking-wide transition-all duration-300 rounded-sm ${
-                location === item.href
-                  ? "text-gold bg-gold/10"
-                  : "text-muted-foreground hover:text-foreground hover:bg-white/5"
-              }`}
-            >
-              {item.label}
-            </Link>
+            <DropdownItem key={item.href} item={item} location={location} />
           ))}
           <Link
             href="/partner"
@@ -85,19 +145,51 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden bg-[oklch(0.10_0.005_260/95%)] backdrop-blur-xl border-t border-gold/10">
           <div className="container py-4 flex flex-col gap-1">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`px-4 py-3 text-sm tracking-wide rounded-sm transition-colors ${
-                  location === item.href
-                    ? "text-gold bg-gold/10"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {NAV_ITEMS.map((item) =>
+              item.children ? (
+                <div key={item.href}>
+                  <button
+                    onClick={() =>
+                      setMobileExpanded(mobileExpanded === item.label ? null : item.label)
+                    }
+                    className="w-full flex items-center justify-between px-4 py-3 text-sm tracking-wide rounded-sm text-muted-foreground hover:text-foreground"
+                  >
+                    {item.label}
+                    <ChevronDown
+                      size={13}
+                      className={`transition-transform duration-200 ${
+                        mobileExpanded === item.label ? "rotate-180 text-gold" : ""
+                      }`}
+                    />
+                  </button>
+                  {mobileExpanded === item.label && (
+                    <div className="ml-4 border-l border-gold/15 pl-3 flex flex-col gap-0.5">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className="px-4 py-2.5 text-sm text-muted-foreground hover:text-gold transition-colors"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`px-4 py-3 text-sm tracking-wide rounded-sm transition-colors ${
+                    location === item.href
+                      ? "text-gold bg-gold/10"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
             <Link
               href="/partner"
               className="mt-2 px-4 py-3 text-sm font-medium bg-gold text-charcoal rounded-sm text-center"
