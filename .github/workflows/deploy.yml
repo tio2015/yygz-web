@@ -55,15 +55,15 @@ jobs:
           ossutil cp dist/public/assets/ oss://yiyeguizhen-web-hk/health/assets/ \
             --meta "Cache-Control:max-age=31536000" -r -f
 
-      - name: 部署 gaotie 子域（京沪高铁悦清悦醒糖落地页）
+      - name: 部署 gaotie 子域（京沪高铁悦清悦醒糖落地页 · bucket 根）
         run: |
-          ossutil cp dist/public/index.html oss://yiyeguizhen-web-hk/gaotie/index.html \
+          ossutil cp dist/public/index.html oss://yiyeguizhen-web-hk/index.html \
             --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
-          ossutil cp dist/public/index.html oss://yiyeguizhen-web-hk/gaotie/collab/xingtang/index.html \
+          ossutil cp dist/public/index.html oss://yiyeguizhen-web-hk/collab/xingtang/index.html \
             --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
-          ossutil cp dist/public/assets/ oss://yiyeguizhen-web-hk/gaotie/assets/ \
+          ossutil cp dist/public/assets/ oss://yiyeguizhen-web-hk/assets/ \
             --meta "Cache-Control:max-age=31536000" -r -f
-          echo "✅ gaotie 子域内容部署完成（待 OSS 控制台绑定 gaotie.yiyeguizhen.com 自定义域名 + 挂载点 /gaotie/）"
+          echo "✅ gaotie 子域内容部署完成（OSS bucket 根，gaotie.yiyeguizhen.com 已绑域）"
 
       - name: 部署 且酌×宝玉煮茶 联名页（baoyutea 子域）
         run: |
