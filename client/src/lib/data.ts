@@ -282,7 +282,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: "精选联名",
     href: "#",
     children: [
-      { label: "京沪高铁悦清悦醒糖", href: "https://gaotie.yiyeguizhen.com/collab/xingtang" },
+      { label: "京沪高铁悦清悦醒糖", href: "https://www.yiyeguizhen.com/gaotie/" },
       { label: "宝玉煮茶院士轻养茶", href: "https://baoyutea.yiyeguizhen.com/" },
     ],
   },
