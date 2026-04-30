@@ -55,15 +55,23 @@ jobs:
           ossutil cp dist/public/assets/ oss://yiyeguizhen-web-hk/health/assets/ \
             --meta "Cache-Control:max-age=31536000" -r -f
 
-      - name: 部署 gaotie 子域（京沪高铁悦清悦醒糖落地页 · bucket 根）
+      - name: bucket 根 redirect 保护（防止主站 yiyeguizhen.com/ 被 SPA 入口覆盖）
         run: |
-          ossutil cp dist/public/index.html oss://yiyeguizhen-web-hk/index.html \
-            --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
-          ossutil cp dist/public/index.html oss://yiyeguizhen-web-hk/collab/xingtang/index.html \
-            --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
-          ossutil cp dist/public/assets/ oss://yiyeguizhen-web-hk/assets/ \
-            --meta "Cache-Control:max-age=31536000" -r -f
-          echo "✅ gaotie 子域内容部署完成（OSS bucket 根，gaotie.yiyeguizhen.com 已绑域）"
+          cat > /tmp/root_redirect.html <<'HTML'
+          <!doctype html>
+          <html lang="zh-CN">
+          <head>
+          <meta charset="utf-8">
+          <title>一叶归真</title>
+          <meta http-equiv="refresh" content="0;url=/health/">
+          <script>location.replace('/health/');</script>
+          <link rel="canonical" href="https://www.yiyeguizhen.com/health/">
+          </head>
+          <body>正在跳转到 <a href="/health/">主站</a>...</body>
+          </html>
+          HTML
+          ossutil cp /tmp/root_redirect.html oss://yiyeguizhen-web-hk/index.html -f
+          echo "✅ bucket 根 redirect 保护已部署（yiyeguizhen.com/ → /health/）"
 
       - name: 部署 且酌×宝玉煮茶 联名页（baoyutea 子域）
         run: |
